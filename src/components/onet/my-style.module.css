@@ -1,0 +1,122 @@
+/* src/YourComponent.css */
+
+.logo {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
+  /* margin: auto; */
+  margin-bottom: 30px;
+}
+
+.frontPage {
+  /* height: 100vh; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.frontPageImage,
+.frontPageContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: "1px solid red";
+}
+
+.frontPageContent > h3 {
+  /* margin-top: -10px; */
+  font-size: 20px;
+  color: gray;
+}
+
+.frontPageContent > h6 {
+  font-size: large;
+}
+
+.frontPageContent > h1 {
+  font-size: 35px;
+}
+
+.frontPageImage img {
+  max-width: 100%;
+  height: auto;
+}
+
+.frontPageContent {
+  text-align: center;
+}
+
+/* secondpage containerv  */
+
+/* my-style.module.css */
+.secondPage {
+  /* page-break-before: always; */
+  /* your existing styles */
+}
+
+/* Apply styles to the first <p> element */
+.secondPage > p:nth-of-type(1) {
+  font-size: 20px;
+  padding: 20px;
+  font-weight: 700;
+  color: gray;
+}
+
+/* Apply styles to the second <p> element */
+.secondPage > p:nth-of-type(2) {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.secondPage > p:nth-of-type(3) {
+  list-style: none;
+  font-size: 16px;
+  line-height: 20px;
+}
+.secondPage > p:nth-of-type(4) {
+  text-align: center;
+}
+
+.thirdPage {
+  page-break-before: always;
+  height: 100vh;
+  margin-top: 200px;
+}
+
+.thirdPage > p {
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.interestSphere {
+  /* border: 1px solid green; */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.interestSphereContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+}
+
+.interestSphereParagraph {
+  width: 70%;
+  padding: 12px;
+  font-size: large;
+  /* border: 1px solid red; */
+}
+.interestSphereScoreBox {
+  width: 20%;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: green;
+}
