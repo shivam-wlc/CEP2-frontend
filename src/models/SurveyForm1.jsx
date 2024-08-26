@@ -63,9 +63,6 @@ const SurveyForm1 = ({ open, onClose, onSubmit }) => {
   const handleThingsForFutureChange = (event) =>
     setThingsForFuture(event.target.value);
 
-  console.log("selectedPathways", selectedPathways);
-  console.log("selectedOptions", selectedOptions);
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -113,6 +110,7 @@ const SurveyForm1 = ({ open, onClose, onSubmit }) => {
       dispatchToRedux(
         notify({ type: "success", message: "Survey submitted successfully" })
       );
+
       setSelectedLevel("");
       setGrade("");
       setCareer("");
@@ -123,6 +121,7 @@ const SurveyForm1 = ({ open, onClose, onSubmit }) => {
       setNationality("");
 
       onSubmit();
+      navigate("/careerrexploreranalysis");
     } catch (error) {
       dispatchToRedux(
         notify({ type: "error", message: "Something went wrong" })

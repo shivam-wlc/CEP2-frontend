@@ -25,14 +25,14 @@ const getQuestions = createAsyncThunk("onet/getQuestions", async (payload) => {
 
 const getResultAndJob = createAsyncThunk(
   "onet/getResultAndJob",
-  async (payload) => {
+  async ({ answers, token, userId }) => {
     return FetchApi.fetch(`${config.api}/api/onet/resultmatchingcareers`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${payload.token}`,
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ answers, userId }),
     });
   }
 );

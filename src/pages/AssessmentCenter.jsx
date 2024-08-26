@@ -97,13 +97,17 @@ const AssessmentCenter = () => {
   //   // navigate("/interest-profiler");
   //   setSurveyModalOpen(true);
   // };
-  
+
+  // const handleClick = () => {
+  //   if (unifiedRecord?.survey?.isTaken) {
+  //     navigate("/interest-profiler");
+  //   } else {
+  //     setSurveyModalOpen(true);
+  //   }
+  // };
+
   const handleClick = () => {
-    if (unifiedRecord?.survey?.isTaken) {
-      navigate("/interest-profiler");
-    } else {
-      setSurveyModalOpen(true);
-    }
+    navigate("/interest-profiler");
   };
 
   const handleSurveyFormSubmit = () => {

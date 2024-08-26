@@ -143,6 +143,7 @@ const UnifiedRecord = () => {
           <Table size="medium" aria-label="a dense table">
             <TableHead sx={{ backgroundColor: "transparent" }}>
               <TableRow>
+                <TableCell sx={tableHeadStyle}>Student Id</TableCell>
                 <TableCell sx={tableHeadStyle}>Student Name</TableCell>
                 <TableCell sx={tableHeadStyle}>Interest Profile</TableCell>
                 <TableCell sx={tableHeadStyle}>Disc Profile</TableCell>
@@ -155,6 +156,7 @@ const UnifiedRecord = () => {
             <TableBody>
               {allData?.unifiedRecordData?.map((row, index) => (
                 <TableRow key={index}>
+                  <TableCell>202408000{index + 1}</TableCell>
                   <TableCell>
                     {row.userId.firstName + " " + row.userId.lastName}
                   </TableCell>
