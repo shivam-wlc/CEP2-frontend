@@ -57,6 +57,7 @@ const SingleResultPage = React.lazy(
   () => import("../pages/SingleResultPage.jsx")
 );
 
+const TestUI = React.lazy(() => import("../pages/Test/NewTest.jsx"));
 const AppRoutes = () => {
   const authenticated = useSelector(selectAuthenticated);
   return (
@@ -262,7 +263,16 @@ const AppRoutes = () => {
           </Suspense>
         }
       />
-      
+
+      <Route
+        path="/test"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <TestUI />
+          </Suspense>
+        }
+      />
+
       <Route
         path="*"
         element={

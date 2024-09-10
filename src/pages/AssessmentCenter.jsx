@@ -286,14 +286,6 @@ const AssessmentCenter = () => {
           </Box>
         </Box>
       </Box>
-      {/* {!userData?.surveys?.surveyForm1 && ( */}
-      {!unifiedRecord?.survey?.isTaken && (
-        <SurveyForm1
-          open={surveyModalOpen}
-          onClose={() => setSurveyModalOpen(false)}
-          onSubmit={handleSurveyFormSubmit}
-        />
-      )}
     </>
   );
 };

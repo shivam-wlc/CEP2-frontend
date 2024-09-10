@@ -26,6 +26,16 @@ import homePageHero from "./homepageHero.jpg";
 import NewGraph from "./graphNew.png";
 import discHero from "./disc/hero.png.png";
 import discLogo from "./disc/logo.png.png";
+import interestHero from "./Interest/hero.png";
+import mayConsider from "./Interest/MayConsider.png";
+import NotInterested from "./Interest/NotInterested.png";
+import okay from "./Interest/Okay.png";
+import veryInterested from "./Interest/VeryInterested.png";
+import worthTrying from "./Interest/Worthtryingout.png";
+import interestLogo from "./Interest/logo.png.png";
+import surevyHero from "./EducationalSurvey/hero.png";
+import homeHero from "./Explore/hero.png";
+import careerReportImg from "./Explore/uys.png";
 
 const socialMediaIcons = [
   { icon: FacebookIcon, name: "Facebook" },
@@ -67,4 +77,14 @@ export {
   NewGraph,
   discLogo,
   discHero,
+  interestHero,
+  mayConsider,
+  NotInterested,
+  okay,
+  veryInterested,
+  worthTrying,
+  interestLogo,
+  surevyHero,
+  homeHero,
+  careerReportImg,
 };

@@ -1,25 +1,19 @@
-import React, { useState } from "react";
-import { Box } from "@mui/material";
-import PreTest from "./PreTest";
-import backgroundImage from "../../assets/interestProfiler.webp";
-import Questions from "./Questions";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getQuestions } from "../../redux/slices/onetSlice.js";
-import { selectToken } from "../../redux/slices/authSlice.js";
-import Headers from "../../components/Headers.jsx";
+import {
+  getQuestions,
+  selectOnet,
+  getResultAndJob,
+} from "../../redux/slices/onetSlice.js";
+import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import InterestQuestionCard from "./InterestQuestionCard.jsx";
+import globalStyle from "./Common.module.css";
+import { interestHero, interestLogo } from "../../assets/assest.js";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   containerStyle: {
-    // backgroundImage: `url(${backgroundImage})`,
-    // backgroundSize: 'cover',
-    // backgroundPosition: 'center',
-    // background:
-    //   "radial-gradient(at bottom right, #f9f9f3 0, #f9f9f3 3px, rgba(249,249,243,0.2) 3px, rgba(249,249,243,0.2) 6px, rgba(249,249,243,0.75) 6px, rgba(249,249,243,0.75) 9px, rgba(249,249,243,0.25) 9px, rgba(249,249,243,0.25) 12px, rgba(249,249,243,0.3) 12px, rgba(249,249,243,0.3) 15px, rgba(249,249,243,0.75) 15px, rgba(249,249,243,0.75) 18px, rgba(249,249,243,0.2) 18px, rgba(249,249,243,0.2) 21px, transparent 21px, transparent 24px), radial-gradient(at top left, transparent 0, transparent 3px, rgba(249,249,243,0.2) 3px, rgba(249,249,243,0.2) 6px, rgba(249,249,243,0.75) 6px, rgba(249,249,243,0.75) 9px, rgba(249,249,243,0.3) 9px, rgba(249,249,243,0.3) 12px, rgba(249,249,243,0.25) 12px, rgba(249,249,243,0.25) 15px, rgba(249,249,243,0.75) 15px, rgba(249,249,243,0.75) 18px, rgba(249,249,243,0.2) 18px, rgba(249,249,243,0.2) 21px, #f9f9f3 21px, #f9f9f3 24px, transparent 24px, transparent 60px)",
-    // backgroundBlendMode: "multiply",
-    // backgroundSize: "24px 24px, 24px 24px",
     backgroundColor: "white",
-    // backgroundColor: "#333333",
-
     height: "101vh",
     width: "101vw",
     display: "flex",
@@ -33,32 +27,72 @@ const styles = {
 
 export default function InterestProfiler() {
   const dispatchToRedux = useDispatch();
+  const navigate = useNavigate();
   const token = useSelector(selectToken);
-  const [hide, setHide] = useState(false);
-  const hadnleChooseOption = async (type) => {
+  const userId = useSelector(selectUserId);
+  const onet = useSelector(selectOnet);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [overallAnswers, setOverallAnswers] = useState(new Array(30).fill("?"));
+  const [selectedValue, setSelectedValue] = useState(null);
+  console.log("overallAnswers", overallAnswers);
+
+  const handleChooseOption = async () => {
     await dispatchToRedux(
-      getQuestions({ resource: type, start: 1, end: 60, token })
+      getQuestions({ resource: "questions_30", start: 1, end: 60, token })
     );
-    setHide(true);
+  };
+
+  useEffect(() => {
+    handleChooseOption();
+  }, []);
+
+  const handleNext = () => {
+    if (currentQuestionIndex < onet?.questions?.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+
+    if (currentQuestionIndex === onet?.questions?.length - 1) {
+      handleSubmitButton();
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+    }
+  };
+
+  const handleSubmitButton = async () => {
+    // await dispatchToRedux(
+    //   getResultAndJob({ answers: overallAnswers.join(""), token, userId })
+    // );
+    // console.log("overallAnswers", overallAnswers.join(""));
+    navigate("/disc");
   };
   return (
-    <Box
-      sx={{
-        ...styles.containerStyle,
-      }}
-    >
-      {hide ? (
-        <Questions />
-      ) : (
-        <Box
-          sx={{
-            ...styles.containerStyle,
-            backgroundColor: "white",
-          }}
-        >
-          <PreTest hadnleChooseOption={hadnleChooseOption} />
-        </Box>
-      )}
-    </Box>
+    <div className={globalStyle["container"]}>
+      <div className={globalStyle["left"]}>
+        <img src={interestHero} alt="heroImage" />
+      </div>
+      <div className={globalStyle["right"]}>
+        <img src={interestLogo} alt="logo" width={250} />
+        {onet?.questions?.length > 0 && (
+          <InterestQuestionCard
+            questionNumber={currentQuestionIndex + 1}
+            questionStatment={onet?.questions[currentQuestionIndex]["text"]}
+            totalQuestions={onet?.questions?.length}
+            onNext={handleNext}
+            onPrevious={handlePrevious}
+            isLastQuestion={
+              currentQuestionIndex === onet?.questions?.length - 1
+            }
+            isFirstQuestion={currentQuestionIndex === 0}
+            overallAnswers={overallAnswers}
+            setOverallAnswers={setOverallAnswers}
+            handleSubmitButton={handleSubmitButton}
+          />
+        )}
+      </div>
+    </div>
   );
 }
