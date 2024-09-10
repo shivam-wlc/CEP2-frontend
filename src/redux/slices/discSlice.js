@@ -9,13 +9,30 @@ const initialState = {
 export const getDiscQuestions = createAsyncThunk(
   "disc/getDiscQuestions",
   async ({ userId, token }) => {
-    return FetchApi.fetch(`${config.api}/api/disc/getallquestions`, {
+    return FetchApi.fetch(`${config.api}/api/discQuestions/getallquestions`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
+  }
+);
+
+export const saveDiscAnswers = createAsyncThunk(
+  "disc/saveDiscAnswers",
+  async ({ answers, userId, token }) => {
+    return FetchApi.fetch(
+      `${config.api}/api/disc/savediscanswers`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ answers, userId }),
+      }
+    );
   }
 );
 

@@ -18,10 +18,12 @@ import {
 } from "@mui/icons-material";
 import WestIcon from "@mui/icons-material/West";
 import EastIcon from "@mui/icons-material/East";
-import { useSelector } from "react-redux";
-import { selectOnet } from "../../redux/slices/onetSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectOnet, getResultAndJob } from "../../redux/slices/onetSlice";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../../assets/assest.js";
+
+import { selectUserId, selectToken } from "../../redux/slices/authSlice.js";
 
 const styles = {
   loader: {
@@ -42,6 +44,9 @@ const styles = {
 
 function Questions() {
   const navigate = useNavigate();
+  const dispatchToRedux = useDispatch();
+  const userId = useSelector(selectUserId);
+  const token = useSelector(selectToken);
   const onet = useSelector(selectOnet);
   const [loading, setLoading] = useState(false);
   const [answers, setAnswers] = useState(
@@ -69,7 +74,11 @@ function Questions() {
   };
   const handleSubmit = async () => {
     setLoading(true);
-    navigate(`/interest-profiler/result?answers=${answers.join("")}`);
+    await dispatchToRedux(
+      getResultAndJob({ answers: answers.join(""), token, userId })
+    );
+    // navigate(`/interest-profiler/result?answers=${answers.join("")}`);
+    navigate("/disc");
     // setLoading(false);
   };
 
@@ -93,6 +102,7 @@ function Questions() {
         sx={{
           width: "50%",
           height: "70%",
+          border:"1px solid black",
           // borderRadius: "20px",
           background: "rgba(255,255,255,0.25)",
           // -webkit-backdrop-filter: blur(16px);

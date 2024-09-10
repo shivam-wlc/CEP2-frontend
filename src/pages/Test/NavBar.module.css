@@ -1,0 +1,34 @@
+.navContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 5rem;
+    box-shadow: 0rem .5rem .8rem #ff88007b;
+    border-radius: 1rem;
+    padding: .8rem;
+
+}
+.right{
+    display: flex;
+}
+.navLinks{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+.navLinks li {
+    padding: .5rem;
+    margin: 0 1rem;
+    border-radius: .5rem;
+}
+.navLinks li:hover{
+    cursor: pointer;
+    background-color: #ef5ba36a;
+    color: #BF2F75;
+    transition: all 400ms;
+}
+.active{
+    background-color: #ef5ba36a;
+    color: #BF2F75;
+}

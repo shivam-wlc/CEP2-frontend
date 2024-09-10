@@ -52,7 +52,12 @@ const ResumeDashboardPage = React.lazy(
 );
 
 const DiscAssessment = React.lazy(() => import("../pages/DiscAssessment.jsx"));
+const SurveyPage = React.lazy(() => import("../pages/SurveyPage.jsx"));
+const SingleResultPage = React.lazy(
+  () => import("../pages/SingleResultPage.jsx")
+);
 
+const TestUI = React.lazy(() => import("../pages/Test/NewTest.jsx"));
 const AppRoutes = () => {
   const authenticated = useSelector(selectAuthenticated);
   return (
@@ -234,12 +239,36 @@ const AppRoutes = () => {
           </Suspense>
         }
       />
-
       <Route
         path="/disc"
         element={
           <Suspense fallback={<InitialLoaders />}>
             <DiscAssessment />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/survey"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <SurveyPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/careerrexploreranalysis"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <SingleResultPage />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/test"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <TestUI />
           </Suspense>
         }
       />

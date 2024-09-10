@@ -9,6 +9,12 @@ import {
   Grid,
   Avatar,
   Link,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  TableHead,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { fonts } from "../../utility/fonts.js";
@@ -17,25 +23,24 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
   if (!open) return null;
 
   const fixedQuestions = [
-    "What is your current level of education?",
-    "What is the letter grade that best represents your current overall Grade Point Average (GPA)?",
-    "Where do you consider your next career step to be?",
-    "Do you have a preference for a geographic location where you would like to study and/or work?",
-    "What are the top 3 things that you care about most when considering your future education?",
-    "What is your current Nationality?",
-    "At this point in your career journey, which Career Cluster most appealing to you?",
+    "Education",
+    "GPA Grade",
+    "Next Career Step",
+    "Preferred Location",
+    "Top 3 Concerns",
+    "Nationality",
+    "Career Cluster",
   ];
 
   const surveyAnswers = [
-    data?.survey?.educationLevel,
-    data?.survey?.gradePoints,
-    data?.survey?.nextCareerStep,
-    data?.survey?.preferredLocation.join(", "),
-    data?.survey?.top3thingsForFuture.join(", "),
-    data?.survey?.nationality,
-    data?.survey?.selectedPathways.join(", "),
+    data?.survey?.educationLevel || "N/A",
+    data?.survey?.gradePoints || "N/A",
+    data?.survey?.nextCareerStep || "N/A",
+    data?.survey?.preferredLocation.join(", ") || "N/A",
+    data?.survey?.top3thingsForFuture.join(", ") || "N/A",
+    data?.survey?.nationality || "N/A",
+    data?.survey?.selectedPathways.join(", ") || "N/A",
   ];
-
   const commonTypography = {
     fontFamily: fonts.poppins,
     mb: 1,
@@ -75,7 +80,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
         <CloseIcon />
       </IconButton>
       <Typography variant="h4" fontWeight="600" sx={commonTypography}>
-        Unified Record Details
+        Unified Record
       </Typography>
       <Divider sx={{ my: 2 }} />
 
@@ -125,9 +130,15 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
 
       <Divider sx={{ my: 2 }} />
 
+      {/* interest profile  */}
       {data?.unifiedRecord?.interestProfile?.isTaken ? (
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="600" sx={commonTypography}>
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={commonTypography}
+            textAlign={"center"}
+          >
             Interest Profile
           </Typography>
           <Typography>
@@ -137,30 +148,35 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
 
           <Box mt={2}>
             <Typography variant="h6" fontWeight="600" sx={commonTypography}>
-              Results
+              Interest Profile Results
             </Typography>
-            {data?.interestProfile.results.result.map((item) => (
-              <Box key={item.area} mb={1}>
-                <Typography>
-                  <strong>{item.area}:</strong> {item.score}
-                </Typography>
-                <Typography sx={{ color: "#555" }}>
-                  {item.description}
-                </Typography>
-              </Box>
-            ))}
+
+            <TableContainer component={Paper}>
+              <Table>
+                <TableBody>
+                  {data?.interestProfile.results.result.map((item) => (
+                    <TableRow key={item.area}>
+                      <TableCell sx={{ fontWeight: "bold" }}>
+                        {item.area}
+                      </TableCell>
+                      <TableCell align="right">{item.score}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Box>
 
           <Box mt={2}>
             <Typography variant="h6" fontWeight="600" sx={commonTypography}>
               Career Options
             </Typography>
-            {data?.interestProfile.careers.career.map((career) => (
-              <Typography key={career.code}>
-                <Link href={career.href} target="_blank" rel="noopener">
-                  {career.title}
-                </Link>
-              </Typography>
+            {data?.interestProfile.careers.career.map((career, index) => (
+              <>
+                <Typography key={career.code} sx={{ mb: 1 }}>
+                  {index + 1}. {career.title}
+                </Typography>
+              </>
             ))}
           </Box>
         </Box>
@@ -181,40 +197,103 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
 
       <Divider sx={{ my: 2 }} />
 
-      <Box mb={2}>
-        <Typography variant="h5" fontWeight="600" sx={commonTypography}>
-          Disc Profile
-        </Typography>
-        <Typography>
-          <strong>Status:</strong>{" "}
-          {data?.discProfile?.isTaken ? "Complete" : "Incomplete"}
-        </Typography>
-        <Typography>
-          <strong>Details:</strong> {data?.discProfile?.details || "N/A"}
-        </Typography>
-      </Box>
-
-      <Divider sx={{ my: 2 }} />
-
-      {data?.unifiedRecord?.survey?.isTaken ? (
-        <Box mb={2}>
-          <Typography variant="h5" fontWeight="600" sx={commonTypography}>
-            Survey
+      {data?.unifiedRecord?.discProfile?.isTaken ? (
+        <Box>
+          {" "}
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={commonTypography}
+            textAlign={"center"}
+          >
+            Disc Profile
           </Typography>
-          {fixedQuestions.map((question, index) => (
-            <Box key={index} mb={1}>
-              <Typography>
-                <strong>Question:</strong> {question}
-              </Typography>
-              <Typography>
-                <strong>Answer:</strong> {surveyAnswers[index] || "N/A"}
-              </Typography>
-            </Box>
-          ))}
+          <TableContainer component={Paper} sx={{ mt: 2 }}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell align="center">D</TableCell>
+                  <TableCell align="center">I</TableCell>
+                  <TableCell align="center">S</TableCell>
+                  <TableCell align="center">C</TableCell>
+                  <TableCell align="center">B</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {Object.keys(data?.discProfile?.scores || {}).map((key) => (
+                  <TableRow key={key}>
+                    <TableCell sx={{ fontWeight: "bold" }}>{key}</TableCell>
+                    <TableCell align="center">
+                      {data.discProfile.scores[key].D}
+                    </TableCell>
+                    <TableCell align="center">
+                      {data.discProfile.scores[key].I}
+                    </TableCell>
+                    <TableCell align="center">
+                      {data.discProfile.scores[key].S}
+                    </TableCell>
+                    <TableCell align="center">
+                      {data.discProfile.scores[key].C}
+                    </TableCell>
+                    <TableCell align="center">
+                      {data.discProfile.scores[key].B}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Box>
       ) : (
         <Box mb={2}>
           <Typography variant="h5" fontWeight="600" sx={commonTypography}>
+            Disc Profile
+          </Typography>
+          <Typography>
+            <strong>Status:</strong>{" "}
+            {data?.discProfile?.isTaken ? "Complete" : "Incomplete"}
+          </Typography>
+          <Typography>
+            <strong>Details:</strong> {data?.discProfile?.details || "N/A"}
+          </Typography>
+        </Box>
+      )}
+
+      <Divider sx={{ my: 2 }} />
+
+      {/* Survey Section */}
+      {data?.unifiedRecord?.survey?.isTaken ? (
+        <Box mb={2}>
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ fontFamily: fonts.poppins, mb: 1 }}
+          >
+            Survey
+          </Typography>
+          <TableContainer component={Paper}>
+            <Table>
+              <TableBody>
+                {fixedQuestions.map((question, index) => (
+                  <TableRow key={index}>
+                    <TableCell sx={{ fontWeight: "bold" }}>
+                      {question}
+                    </TableCell>
+                    <TableCell>{surveyAnswers[index]}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
+      ) : (
+        <Box mb={2}>
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ fontFamily: fonts.poppins, mb: 1 }}
+          >
             Survey
           </Typography>
           <Typography>
@@ -229,12 +308,183 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
 
       <Divider sx={{ my: 2 }} />
 
+      {/* Resume Section  */}
+      {/* Resume Section */}
       {data?.unifiedRecord?.resume?.isCompleted ? (
         <>
           <Box mb={2}>
             <Typography variant="h5" fontWeight="600" sx={commonTypography}>
               Resume
             </Typography>
+
+            {/* Personal Info */}
+            <TableContainer component={Paper} sx={{ mb: 2 }}>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
+                    <TableCell>{`${data?.resume?.personalInfo?.firstName} ${data?.resume?.personalInfo?.lastName}`}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
+                    <TableCell>{data?.resume?.personalInfo?.email}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "bold" }}>Mobile</TableCell>
+                    <TableCell>{data?.resume?.personalInfo?.mobile}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "bold" }}>LinkedIn</TableCell>
+                    <TableCell>
+                      {data?.resume?.personalInfo?.linkedIn}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "bold" }}>GitHub</TableCell>
+                    <TableCell>{data?.resume?.personalInfo?.github}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "bold" }}>Website</TableCell>
+                    <TableCell>{data?.resume?.personalInfo?.website}</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+            {/* Summary */}
+            <Box mb={2}>
+              <Typography variant="h6" fontWeight="600" sx={commonTypography}>
+                Summary
+              </Typography>
+              <Typography>{data?.resume?.summary}</Typography>
+            </Box>
+
+            {/* Education */}
+            <Box mb={2}>
+              <Typography variant="h6" fontWeight="600" sx={commonTypography}>
+                Education
+              </Typography>
+              {data?.resume?.education.map((edu) => (
+                <Box key={edu._id} mb={1}>
+                  <Typography variant="body1">
+                    <strong>{edu.degree}</strong> - {edu.institution}
+                  </Typography>
+                  <Typography variant="body2">
+                    {new Date(edu.startDate).toLocaleDateString()} -{" "}
+                    {new Date(edu.endDate).toLocaleDateString()} | Grade:{" "}
+                    {edu.grade}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+
+            {/* Experience */}
+            <Box mb={2}>
+              <Typography variant="h6" fontWeight="600" sx={commonTypography}>
+                Experience
+              </Typography>
+              {data?.resume?.experience.map((exp) => (
+                <Box key={exp._id} mb={1}>
+                  <Typography variant="body1">
+                    <strong>{exp.jobTitle}</strong> - {exp.company},{" "}
+                    {exp.location}
+                  </Typography>
+                  <Typography variant="body2">
+                    {new Date(exp.startDate).toLocaleDateString()} -{" "}
+                    {new Date(exp.endDate).toLocaleDateString()}
+                  </Typography>
+                  <Typography variant="body2">
+                    <strong>Responsibilities:</strong>{" "}
+                    {exp.responsibilities.join(" ")}
+                  </Typography>
+                  <Typography variant="body2">
+                    <strong>Achievements:</strong> {exp.achievements}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+
+            {/* Skills */}
+            <Box mb={2}>
+              <Typography variant="h6" fontWeight="600" sx={commonTypography}>
+                Skills
+              </Typography>
+              <Typography variant="body2">
+                <strong>Technical:</strong>{" "}
+                {data?.resume?.skills?.technical.join(", ")}
+              </Typography>
+              <Typography variant="body2">
+                <strong>Soft:</strong> {data?.resume?.skills?.soft.join(", ")}
+              </Typography>
+            </Box>
+
+            {/* Projects */}
+            <Box mb={2}>
+              <Typography variant="h6" fontWeight="600" sx={commonTypography}>
+                Projects
+              </Typography>
+              {data?.resume?.projects.map((proj) => (
+                <Box key={proj._id} mb={1}>
+                  <Typography variant="body1">
+                    <strong>{proj.title}</strong>
+                  </Typography>
+                  <Typography variant="body2">{proj.description}</Typography>
+                  <Typography variant="body2">
+                    <strong>Technologies:</strong>{" "}
+                    {proj.technologies.join(", ")}
+                  </Typography>
+                  <Typography variant="body2">
+                    <strong>Link:</strong> <a href={proj.link}>{proj.link}</a>
+                  </Typography>
+                  <Typography variant="body2">
+                    {new Date(proj.startDate).toLocaleDateString()} -{" "}
+                    {new Date(proj.endDate).toLocaleDateString()}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+
+            {/* Certifications */}
+            <Box mb={2}>
+              <Typography variant="h6" fontWeight="600" sx={commonTypography}>
+                Certifications
+              </Typography>
+              {data?.resume?.certifications.map((cert) => (
+                <Box key={cert._id} mb={1}>
+                  <Typography variant="body1">
+                    <strong>{cert.name}</strong> - {cert.institution}
+                  </Typography>
+                  <Typography variant="body2">
+                    Issue Date: {new Date(cert.issueDate).toLocaleDateString()}
+                  </Typography>
+                  <Typography variant="body2">
+                    <strong>Link:</strong> <a href={cert.link}>{cert.link}</a>
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+
+            {/* Languages */}
+            <Box mb={2}>
+              <Typography variant="h6" fontWeight="600" sx={commonTypography}>
+                Languages
+              </Typography>
+              {data?.resume?.languages.map((lang) => (
+                <Typography key={lang._id} variant="body2">
+                  {lang.name} - {lang.proficiency}
+                </Typography>
+              ))}
+            </Box>
+
+            {/* Hobbies */}
+            <Box mb={2}>
+              <Typography variant="h6" fontWeight="600" sx={commonTypography}>
+                Hobbies
+              </Typography>
+              <Typography variant="body2">
+                {data?.resume?.hobbies.join(", ")}
+              </Typography>
+            </Box>
           </Box>
         </>
       ) : (

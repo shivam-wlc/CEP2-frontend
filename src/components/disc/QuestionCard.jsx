@@ -2,6 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import "../../styles/Question.css";
 import { GrLinkNext } from "react-icons/gr";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { saveDiscAnswers } from "../../redux/slices/discSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserId, selectToken } from "../../redux/slices/authSlice.js";
+import {
+  getUnifiedRecordData,
+  selectUnifiedRecord,
+} from "../../redux/slices/unifiedRecordSlice.js";
+import SurveyForm1 from "../../models/SurveyForm1.jsx";
+import { useNavigate } from "react-router-dom";
 
 const QuestionCard = ({
   questionNumber,
@@ -14,7 +23,18 @@ const QuestionCard = ({
   overallAnswers = [],
   setOverallAnswers,
 }) => {
+  const navigate = useNavigate();
   const [ans, setAns] = useState([]);
+  const userId = useSelector(selectUserId);
+  const token = useSelector(selectToken);
+  const unifiedRecord = useSelector(selectUnifiedRecord);
+
+  const dispatchToRedux = useDispatch();
+  const [surveyModalOpen, setSurveyModalOpen] = React.useState(false);
+
+  useEffect(() => {
+    dispatchToRedux(getUnifiedRecordData({ userId, token }));
+  }, []);
 
   const addStatementAns = (currentAns, statementQuestionIndex) => {
     setAns((prevAns) => {
@@ -36,7 +56,6 @@ const QuestionCard = ({
       }
 
       updatedAns.push({ statementNumber, statementAns: currentAns });
-      // console.log(updatedAns);
       return updatedAns;
     });
   };
@@ -52,14 +71,13 @@ const QuestionCard = ({
   const allAnswersSelected = ans.length === 2;
 
   const handleNext = () => {
-    onNext();
     const updatedOverallAnswers = overallAnswers.filter(
       (answer) => answer.questionNumber !== questionNumber
     );
     updatedOverallAnswers.push({ questionNumber, questionAns: ans });
-    // console.log("over", updatedOverallAnswers);
     setOverallAnswers(updatedOverallAnswers);
     setAns([]);
+    onNext();
   };
 
   const handlePrevious = () => {
@@ -67,15 +85,12 @@ const QuestionCard = ({
   };
 
   useEffect(() => {
-    // console.log("hi", overallAnswers);
     const currentQuestionAns = overallAnswers.find(
       (ans) => ans.questionNumber === questionNumber
     );
-    // console.log(currentQuestionAns, "current");
 
     if (currentQuestionAns) {
       setAns(currentQuestionAns.questionAns.map((answer) => ({ ...answer })));
-      // console.log(currentQuestionAns.questionAns);
     } else {
       setAns([]);
     }
@@ -87,13 +102,25 @@ const QuestionCard = ({
       progressBarRef.current.style.width = `${
         (questionNumber / totalQuestions) * 100
       }%`;
-      // console.log((questionNumber / totalQuestions) * 100);
     }
   }, [questionNumber]);
 
   const handleSubmitButton = () => {
+    // Update the overallAnswers with the current question's answers
+    const updatedOverallAnswers = overallAnswers.filter(
+      (answer) => answer.questionNumber !== questionNumber
+    );
+    updatedOverallAnswers.push({ questionNumber, questionAns: ans });
+    setOverallAnswers(updatedOverallAnswers);
+
     if (allAnswersSelected) {
-      console.log("Submit", overallAnswers);
+      console.log("Submit", updatedOverallAnswers);
+      dispatchToRedux(
+        saveDiscAnswers({ userId, token, answers: updatedOverallAnswers })
+      );
+      // setSurveyModalOpen(true);
+      // Save the answers in the overallAnswers array
+      navigate("/survey");
     }
   };
 
@@ -174,7 +201,7 @@ const QuestionCard = ({
             onClick={handleSubmitButton}
             disabled={!allAnswersSelected}
           >
-            Submit{" "}
+            Submit and move to Education Survey{" "}
             <span>
               <GrLinkNext />
             </span>
@@ -191,17 +218,6 @@ const QuestionCard = ({
             </span>
           </button>
         )}
-
-        {/* <button
-          id="navButton"
-          onClick={handleNext}
-          disabled={!allAnswersSelected}
-        >
-          {isLastQuestion ? "Submit" : "Next"}
-          <span>
-            <GrLinkNext />
-          </span>
-        </button> */}
       </div>
     </>
   );

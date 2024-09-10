@@ -34,6 +34,30 @@ const DiscAssessment = () => {
     fetchQuestions();
   }, [dispatchToRedux, userId, token]);
 
+  // useEffect(() => {
+  //   const fetchQuestions = async () => {
+  //     try {
+  //       const actionResult = await dispatchToRedux(
+  //         getDiscQuestions({ userId, token })
+  //       ).unwrap();
+
+  //       const questions = actionResult.questions || [];
+
+  //       // Sort questions based on questionNumber
+  //       const sortedQuestions = questions.sort((a, b) => {
+  //         return parseInt(a.questionNumber) - parseInt(b.questionNumber);
+  //       });
+
+  //       // Set sorted questions to state
+  //       setQuestions(sortedQuestions);
+  //     } catch (error) {
+  //       console.error("Failed to fetch questions: ", error);
+  //     }
+  //   };
+
+  //   fetchQuestions();
+  // }, [dispatchToRedux, userId, token]);
+
   const handleNext = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
