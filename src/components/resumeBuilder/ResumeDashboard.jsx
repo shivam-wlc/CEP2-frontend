@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Headers from "../Headers";
+import dashboardStyles from "../../styles/ResumeDashboard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import commonStyle from "../../styles/Common.module.css";
+
 import {
   selectAuthenticated,
   selectToken,
@@ -18,16 +20,18 @@ import {
   List,
   ListItem,
   ListItemText,
-  Paper,
-  Button,
   TextField,
   Typography,
   Box,
   IconButton,
+  MenuItem,
+  Divider,
 } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
 import ViewResume from "./sections/ViewResume.jsx";
 import { updatedResumeStatus } from "../../redux/slices/unifiedRecordSlice.js";
+import TopSubCard from "./TopSubCard.jsx";
+import { countryList } from "../../utility/countryList.js";
 
 const ResumeDashboard = () => {
   const isAuthenticated = useSelector(selectAuthenticated);
@@ -41,12 +45,16 @@ const ResumeDashboard = () => {
   const [formData, setFormData] = useState({
     personalInfo: {
       firstName: "",
+      middleName: "",
       lastName: "",
+      userName: "",
+      gender: "",
+      birthdate: "",
+      nationality: "",
       email: "",
       mobile: "",
-      address: "",
+      telephone: "",
       linkedIn: "",
-      github: "",
       website: "",
     },
     summary: "",
@@ -105,9 +113,9 @@ const ResumeDashboard = () => {
   const [isGenerated, setIsGenerated] = useState(true);
   console.log("resume", resume);
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login"); // Redirect to login if not authenticated
-    }
+    // if (!isAuthenticated) {
+    //   navigate("/login"); // Redirect to login if not authenticated
+    // }
   }, [isAuthenticated, navigate]);
 
   useEffect(() => {
@@ -137,71 +145,6 @@ const ResumeDashboard = () => {
       }));
     }
   }, [resume]);
-
-  // const handleInputChange = (section, field, event, index) => {
-  //   const value = event.target.value;
-
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [section]:
-  //       section === "skills"
-  //         ? {
-  //             ...prev.skills,
-  //             [field]: prev.skills[field].map((skill, i) =>
-  //               i === index ? value : skill
-  //             ),
-  //           }
-  //         : section === "summary"
-  //           ? value
-  //           : section === "education" || section === "experience"
-  //             ? prev[section].map((item, i) =>
-  //                 i === index ? { ...item, [field]: value } : item
-  //               )
-  //             : section === "certifications"
-  //               ? prev[section].map((cert, i) =>
-  //                   i === index ? { ...cert, [field]: value } : cert
-  //                 )
-  //               : section === "projects"
-  //                 ? prev.projects.map((project, i) =>
-  //                     i === index ? { ...project, [field]: value } : project
-  //                   )
-  //                 : { ...prev[section], [field]: value },
-  //   }));
-  // };
-
-  // const handleInputChange = (section, field, event, index) => {
-  //   const value = event.target.value;
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [section]:
-  //       section === "skills"
-  //         ? {
-  //             ...prev.skills,
-  //             [field]: prev.skills[field].map((skill, i) =>
-  //               i === index ? value : skill
-  //             ),
-  //           }
-  //         : section === "summary"
-  //           ? value
-  //           : section === "education" || section === "experience"
-  //             ? prev[section].map((item, i) =>
-  //                 i === index ? { ...item, [field]: value } : item
-  //               )
-  //             : section === "certifications"
-  //               ? prev[section].map((cert, i) =>
-  //                   i === index ? { ...cert, [field]: value } : cert
-  //                 )
-  //               : section === "languages"
-  //                 ? prev.languages.map((lang, i) =>
-  //                     i === index ? { ...lang, [field]: value } : lang
-  //                   )
-  //                 : section === "hobbies"
-  //                   ? prev.hobbies.map((hobby, i) =>
-  //                       i === index ? value : hobby
-  //                     )
-  //                   : { ...prev[section], [field]: value },
-  //   }));
-  // };
 
   const handleInputChange = (section, field, event, index) => {
     const value = event.target.value;
@@ -380,8 +323,16 @@ const ResumeDashboard = () => {
   };
 
   const handleSaveSection = (section) => {
+    console.log("hello");
+
     // Implement the save functionality here, dispatch an action to save the specific section
-    console.log("Form data:", formData);
+    const currentSectionIndex = sectionList.indexOf(section);
+    const nextSection = sectionList[currentSectionIndex + 1];
+    console.log(nextSection);
+    setActiveSection(nextSection);
+
+    console.log("Form data:", formData, token, userId, "hell");
+
     dispatchToRedux(updateResume({ token, userId, formData }));
   };
 
@@ -390,8 +341,10 @@ const ResumeDashboard = () => {
       case "Personal Info":
         return (
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            {/* first name */}
+            <Grid item xs={12} sm={6} lg={4}>
               <TextField
+                variant="filled"
                 label="First Name"
                 fullWidth
                 value={formData.personalInfo.firstName}
@@ -400,8 +353,22 @@ const ResumeDashboard = () => {
                 }
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* middle name */}
+            <Grid item xs={12} sm={6} lg={4}>
               <TextField
+                variant="filled"
+                label="Middle Name"
+                fullWidth
+                value={formData.personalInfo.middleName}
+                onChange={(e) =>
+                  handleInputChange("personalInfo", "middleName", e)
+                }
+              />
+            </Grid>
+            {/* last name */}
+            <Grid item xs={12} sm={6} lg={4}>
+              <TextField
+                variant="filled"
                 label="Last Name"
                 fullWidth
                 value={formData.personalInfo.lastName}
@@ -410,57 +377,120 @@ const ResumeDashboard = () => {
                 }
               />
             </Grid>
+            {/* user name */}
+            <Grid item xs={12} sm={6} lg={4}>
+              <TextField
+                variant="filled"
+                label="User Name"
+                fullWidth
+                value={formData.personalInfo.userName}
+                onChange={(e) =>
+                  handleInputChange("personalInfo", "userName", e)
+                }
+              />
+            </Grid>
+            {/* gender */}
+            <Grid item xs={12} sm={6} lg={4}>
+              <TextField
+                variant="filled"
+                label="Gender"
+                select
+                fullWidth
+                value={formData.personalInfo.gender}
+                onChange={(e) => handleInputChange("personalInfo", "gender", e)}
+              >
+                {/* Define the options */}
+                <MenuItem value="male">Male</MenuItem>
+                <MenuItem value="female">Female</MenuItem>
+                <MenuItem value="other">Other</MenuItem>
+              </TextField>
+            </Grid>
+            {/* Birthdate */}
+            <Grid item xs={12} sm={6} lg={4}>
+              <TextField
+                variant="filled"
+                label="Birthdate"
+                type="date"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                value={formData.personalInfo.birthdate}
+                onChange={(e) =>
+                  handleInputChange("personalInfo", "birthdate", e)
+                }
+              />
+            </Grid>
+            {/* Nationality*/}
             <Grid item xs={12} sm={6}>
               <TextField
+                variant="filled"
+                label="Nationality"
+                select
+                fullWidth
+                value={formData.personalInfo.nationality}
+                onChange={(e) =>
+                  handleInputChange("personalInfo", "nationality", e)
+                }
+              >
+                {countryList.map((country) => (
+                  <MenuItem key={country.name} value={country.name}>
+                    {country.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            {/* email */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="filled"
                 label="Email"
                 fullWidth
                 value={formData.personalInfo.email}
                 onChange={(e) => handleInputChange("personalInfo", "email", e)}
               />
             </Grid>
+            {/* mobile */}
             <Grid item xs={12} sm={6}>
               <TextField
+                variant="filled"
                 label="Mobile"
                 fullWidth
                 value={formData.personalInfo.mobile}
                 onChange={(e) => handleInputChange("personalInfo", "mobile", e)}
               />
             </Grid>
+            {/* tele */}
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Address"
+                variant="filled"
+                label="Telephone"
                 fullWidth
-                value={formData.personalInfo.address}
+                value={formData.personalInfo.telephone}
                 onChange={(e) =>
-                  handleInputChange("personalInfo", "address", e)
+                  handleInputChange("personalInfo", "telephone", e)
                 }
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
-                label="LinkedIn"
-                fullWidth
-                value={formData.personalInfo.linkedIn}
-                onChange={(e) =>
-                  handleInputChange("personalInfo", "linkedIn", e)
-                }
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="GitHub"
-                fullWidth
-                value={formData.personalInfo.github}
-                onChange={(e) => handleInputChange("personalInfo", "github", e)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="Website"
+                variant="filled"
+                label="Personal Website URL"
                 fullWidth
                 value={formData.personalInfo.website}
                 onChange={(e) =>
                   handleInputChange("personalInfo", "website", e)
+                }
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="filled"
+                label="Linkdin URL"
+                fullWidth
+                value={formData.personalInfo.linkedIn}
+                onChange={(e) =>
+                  handleInputChange("personalInfo", "linkedIn", e)
                 }
               />
             </Grid>
@@ -472,6 +502,7 @@ const ResumeDashboard = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
+                sx={{ backgroundColor: "#F2F2F2" }}
                 label="Professional Summary"
                 fullWidth
                 multiline
@@ -488,79 +519,39 @@ const ResumeDashboard = () => {
           <Grid container spacing={2}>
             {formData.education.map((edu, index) => (
               <React.Fragment key={index}>
-                <Grid item xs={12} sm={6}>
+                {" "}
+                {/* to be remove */}
+                <Grid item xs={12}>
                   <TextField
-                    label="Degree"
+                    variant="filled"
+                    label="Your current school/educational institution"
                     fullWidth
                     value={edu.degree}
                     onChange={(e) =>
-                      handleInputChange("education", "degree", e, index)
+                      handleInputChange("education", "institute", e, index)
                     }
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <TextField
-                    label="Institution"
+                    variant="filled"
+                    label="Website URL of school/education institution "
                     fullWidth
                     value={edu.institution}
                     onChange={(e) =>
-                      handleInputChange("education", "institution", e, index)
+                      handleInputChange("education", "websiteurl", e, index)
                     }
                   />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    label="Start Date"
-                    fullWidth
-                    type="date"
-                    InputLabelProps={{ shrink: true }}
-                    value={edu.startDate}
-                    onChange={(e) =>
-                      handleInputChange("education", "startDate", e, index)
-                    }
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    label="End Date"
-                    fullWidth
-                    type="date"
-                    InputLabelProps={{ shrink: true }}
-                    value={edu.endDate}
-                    onChange={(e) =>
-                      handleInputChange("education", "endDate", e, index)
-                    }
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    label="Grade"
-                    fullWidth
-                    value={edu.grade}
-                    onChange={(e) =>
-                      handleInputChange("education", "grade", e, index)
-                    }
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <IconButton
-                    color="secondary"
-                    onClick={() => handleRemoveEducation(index)}
-                    disabled={formData.education.length === 1} // Disable remove button if there's only one education entry
-                  >
-                    <Remove />
-                  </IconButton>
                 </Grid>
               </React.Fragment>
             ))}
             <Grid item xs={12}>
-              <Button
-                variant="outlined"
-                startIcon={<Add />}
+              <button
+                className={commonStyle["navButton"]}
                 onClick={handleAddEducation}
               >
-                Add Education
-              </Button>
+                + Add Education
+              </button>
             </Grid>
           </Grid>
         );
@@ -570,8 +561,9 @@ const ResumeDashboard = () => {
           <Grid container spacing={2}>
             {formData.experience.map((exp, index) => (
               <React.Fragment key={index}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <TextField
+                    variant="filled"
                     label="Job Title"
                     fullWidth
                     value={exp.jobTitle}
@@ -582,6 +574,7 @@ const ResumeDashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Company"
                     fullWidth
                     value={exp.company}
@@ -592,6 +585,7 @@ const ResumeDashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Location"
                     fullWidth
                     value={exp.location}
@@ -602,6 +596,7 @@ const ResumeDashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Start Date"
                     fullWidth
                     type="date"
@@ -614,6 +609,7 @@ const ResumeDashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="End Date"
                     fullWidth
                     type="date"
@@ -626,6 +622,7 @@ const ResumeDashboard = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
+                    variant="filled"
                     label="Responsibilities"
                     fullWidth
                     multiline
@@ -641,8 +638,9 @@ const ResumeDashboard = () => {
                     }
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <TextField
+                    variant="filled"
                     label="Achievements"
                     fullWidth
                     value={exp.achievements}
@@ -663,13 +661,12 @@ const ResumeDashboard = () => {
               </React.Fragment>
             ))}
             <Grid item xs={12}>
-              <Button
-                variant="outlined"
-                startIcon={<Add />}
+              <button
+                className={commonStyle["navButton"]}
                 onClick={handleAddExperience}
               >
-                Add Experience
-              </Button>
+                + Add Experience
+              </button>
             </Grid>
           </Grid>
         );
@@ -682,6 +679,7 @@ const ResumeDashboard = () => {
                 {formData.skills[type].map((skill, index) => (
                   <Grid item xs={12} sm={6} key={index}>
                     <TextField
+                      variant="filled"
                       label={`${type.charAt(0).toUpperCase() + type.slice(1)} Skill`}
                       fullWidth
                       value={skill}
@@ -699,13 +697,12 @@ const ResumeDashboard = () => {
                   </Grid>
                 ))}
                 <Grid item xs={12}>
-                  <Button
-                    variant="outlined"
-                    startIcon={<Add />}
+                  <button
+                    className={commonStyle.navButton}
                     onClick={() => handleAddSkill(type)}
                   >
-                    Add {type.charAt(0).toUpperCase() + type.slice(1)} Skill
-                  </Button>
+                    + Add {type.charAt(0).toUpperCase() + type.slice(1)} Skill
+                  </button>
                 </Grid>
               </React.Fragment>
             ))}
@@ -717,8 +714,9 @@ const ResumeDashboard = () => {
           <Grid container spacing={2}>
             {formData.certifications.map((cert, index) => (
               <React.Fragment key={index}>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Certification Name"
                     fullWidth
                     value={cert.name}
@@ -727,8 +725,9 @@ const ResumeDashboard = () => {
                     }
                   />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Institution"
                     fullWidth
                     value={cert.institution}
@@ -742,8 +741,9 @@ const ResumeDashboard = () => {
                     }
                   />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12}>
                   <TextField
+                    variant="filled"
                     label="Link"
                     fullWidth
                     value={cert.link}
@@ -752,8 +752,9 @@ const ResumeDashboard = () => {
                     }
                   />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Issue Date"
                     fullWidth
                     type="date"
@@ -776,13 +777,12 @@ const ResumeDashboard = () => {
               </React.Fragment>
             ))}
             <Grid item xs={12}>
-              <Button
-                variant="outlined"
-                startIcon={<Add />}
+              <button
+                className={commonStyle.navButton}
                 onClick={handleAddCertification}
               >
-                Add Certification
-              </Button>
+                + Add Certification
+              </button>
             </Grid>
           </Grid>
         );
@@ -795,6 +795,7 @@ const ResumeDashboard = () => {
               <React.Fragment key={index}>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Project Title"
                     fullWidth
                     value={project.title}
@@ -805,16 +806,7 @@ const ResumeDashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    label="Description"
-                    fullWidth
-                    value={project.description}
-                    onChange={(e) =>
-                      handleInputChange("projects", "description", e, index)
-                    }
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
+                    variant="filled"
                     label="Technologies"
                     fullWidth
                     value={project.technologies.join(", ")}
@@ -828,8 +820,20 @@ const ResumeDashboard = () => {
                     }
                   />
                 </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="filled"
+                    label="Description"
+                    fullWidth
+                    value={project.description}
+                    onChange={(e) =>
+                      handleInputChange("projects", "description", e, index)
+                    }
+                  />
+                </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Start Date"
                     fullWidth
                     type="date"
@@ -842,6 +846,7 @@ const ResumeDashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="End Date"
                     fullWidth
                     type="date"
@@ -852,8 +857,9 @@ const ResumeDashboard = () => {
                     }
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <TextField
+                    variant="filled"
                     label="Project Link"
                     fullWidth
                     value={project.link}
@@ -874,13 +880,12 @@ const ResumeDashboard = () => {
               </React.Fragment>
             ))}
             <Grid item xs={12}>
-              <Button
-                variant="outlined"
-                startIcon={<Add />}
+              <button
+                className={commonStyle.navButton}
                 onClick={handleAddProject}
               >
-                Add Project
-              </Button>
+                + Add Project
+              </button>
             </Grid>
           </Grid>
         );
@@ -894,6 +899,7 @@ const ResumeDashboard = () => {
               <React.Fragment key={index}>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Language"
                     fullWidth
                     value={language.name}
@@ -904,6 +910,7 @@ const ResumeDashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    variant="filled"
                     label="Proficiency"
                     fullWidth
                     value={language.proficiency}
@@ -924,13 +931,12 @@ const ResumeDashboard = () => {
               </React.Fragment>
             ))}
             <Grid item xs={12}>
-              <Button
-                variant="outlined"
-                startIcon={<Add />}
+              <button
+                className={commonStyle.navButton}
                 onClick={handleAddLanguage}
               >
-                Add Language
-              </Button>
+                + Add Language
+              </button>
             </Grid>
           </Grid>
         );
@@ -940,9 +946,10 @@ const ResumeDashboard = () => {
           <Grid container spacing={2}>
             {formData.hobbies.map((hobby, index) => (
               <React.Fragment key={index}>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6}>
                   <TextField
-                    label="Hobby"
+                    variant="filled"
+                    label="Your Hobbies"
                     fullWidth
                     value={hobby}
                     onChange={(e) =>
@@ -962,13 +969,12 @@ const ResumeDashboard = () => {
               </React.Fragment>
             ))}
             <Grid item xs={12}>
-              <Button
-                variant="outlined"
-                startIcon={<Add />}
+              <button
+                className={commonStyle.navButton}
                 onClick={handleAddHobby}
               >
-                Add Hobby
-              </Button>
+                + Add Hobby
+              </button>
             </Grid>
           </Grid>
         );
@@ -979,6 +985,8 @@ const ResumeDashboard = () => {
   };
 
   const handleGenerateClick = () => {
+    console.log("Mai kha namaste ji");
+
     setIsGenerated(false);
 
     try {
@@ -988,105 +996,98 @@ const ResumeDashboard = () => {
     }
   };
 
+  const sectionList = [
+    "Personal Info",
+    "Summary",
+    "Education",
+    "Experience",
+    "Skills",
+    "Projects",
+    "Certifications",
+    "Languages",
+    "Hobbies",
+  ];
+
   return (
-    <>
-      <Headers />
+    <div className={dashboardStyles["container"]}>
       {isGenerated ? (
-        <Box>
-          <Box sx={{ my: 5 }}>
-            <Container maxWidth="lg">
-              <Grid container spacing={3}>
-                <Grid item xs={12} sm={4}>
-                  <Paper>
+        <Box
+          sx={{
+            mx: "5rem",
+            mt: "5rem",
+            borderRadius: "1.25rem",
+          }}
+        >
+          <TopSubCard currentSection={sectionList.indexOf(activeSection) + 1} />
+          <Box>
+            <Box sx={{ my: 5 }}>
+              <Container maxWidth="lg">
+                <Grid container spacing={3}>
+                  {/* left */}
+                  <Grid item xs={12} sm={4}>
                     <List>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Personal Info")}
-                      >
-                        <ListItemText primary="Personal Info" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Summary")}
-                      >
-                        <ListItemText primary="Summary" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Education")}
-                      >
-                        <ListItemText primary="Education" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Experience")}
-                      >
-                        <ListItemText primary="Experience" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Skills")}
-                      >
-                        <ListItemText primary="Skills" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Projects")}
-                      >
-                        <ListItemText primary="Projects" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Certifications")}
-                      >
-                        <ListItemText primary="Certifications" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Languages")}
-                      >
-                        <ListItemText primary="Languages" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        onClick={() => setActiveSection("Hobbies")}
-                      >
-                        <ListItemText primary="Hobbies" />
-                      </ListItem>
+                      {sectionList.map((section, index) => (
+                        <ListItem
+                          key={index}
+                          button
+                          onClick={() => setActiveSection(section)}
+                          className={
+                            activeSection === section
+                              ? `${dashboardStyles["active-section"]} ${dashboardStyles["section"]}`
+                              : dashboardStyles["section"]
+                          }
+                        >
+                          <ListItemText primary={section} />
+                        </ListItem>
+                      ))}
                       {/* Add more sections as needed */}
                     </List>
-                  </Paper>
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                  <Paper>
+                  </Grid>
+                  {/* right */}
+                  <Grid item xs={12} sm={8}>
                     <Box p={3}>
                       <Typography variant="h6">{activeSection}</Typography>
+                      <Divider sx={{ my: "1rem" }} />
                       {renderSectionContent()}
-                      <Box mt={3}>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={() => handleSaveSection(activeSection)}
+                      <Box
+                        mt={3}
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <button
+                          className={commonStyle.navButton}
+                          onClick={() => {
+                            sectionList.indexOf(activeSection) ===
+                            sectionList.length - 1
+                              ? handleGenerateClick()
+                              : handleSaveSection(activeSection);
+                          }}
                         >
-                          Save {activeSection}
-                        </Button>
+                          {sectionList.indexOf(activeSection) ===
+                          sectionList.length - 1
+                            ? `Generate Resume`
+                            : `Save & Next`}
+                        </button>
                       </Box>
                     </Box>
-                  </Paper>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Container>
-          </Box>
+              </Container>
+            </Box>
 
-          <Box sx={{ width: "30%", m: "auto" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleGenerateClick}
-              fullWidth
-            >
-              Generate Resume
-            </Button>
+            {/* <Box sx={{ width: "30%", m: "auto" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleGenerateClick}
+                fullWidth
+              >
+                Generate Resume
+              </Button>
+            </Box> */}
           </Box>
         </Box>
       ) : (
@@ -1094,7 +1095,7 @@ const ResumeDashboard = () => {
       )}
 
       {/* Resume Builder */}
-    </>
+    </div>
   );
 };
 

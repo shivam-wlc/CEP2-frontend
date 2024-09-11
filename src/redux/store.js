@@ -20,7 +20,6 @@ import creatorReducer from "./slices/creatorSlice.js";
 import onetSlice from "./slices/onetSlice.js";
 import userSlice from "./slices/userSlice.js";
 import zylaSlice from "./slices/zylaSlice.js";
-import universitySlice from "./slices/universitySlice.js";
 import surveySlice from "./slices/surveySlice.js";
 import unifiedRecordSlice from "./slices/unifiedRecordSlice.js";
 import userDetailsSlice from "./slices/userDetailsSlice.js";
@@ -44,7 +43,6 @@ const rootReducer = combineReducers({
   onet: onetSlice,
   user: userSlice,
   zyla: zylaSlice,
-  university: universitySlice,
   survey: surveySlice,
   unifiedRecord: unifiedRecordSlice,
   userDetails: userDetailsSlice,

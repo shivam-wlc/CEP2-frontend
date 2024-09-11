@@ -18,8 +18,6 @@ import TotalUsers from "./glass/totalUser.png";
 import InterestProfileHeroImage from "./careerProfiler/interestProfilerHero.jpg";
 import WhatsappIcon from "./socialMedia/whatsapp.png";
 import graph from "./graph.png";
-import studentIcon from "./howItWorks/student.png";
-import counselorIcon from "./howItWorks/discussion.png";
 import GoldFish from "./goldFish.jpg";
 import pdfPhoto from "./careerProfiler/for-pdf.jpg";
 import homePageHero from "./homepageHero.jpg";
@@ -36,6 +34,25 @@ import interestLogo from "./Interest/logo.png.png";
 import surevyHero from "./EducationalSurvey/hero.png";
 import homeHero from "./Explore/hero.png";
 import careerReportImg from "./Explore/uys.png";
+// assesment center
+import assessmentHeaderImg from "./assessmentCenter/headerBg.png";
+import assessmentCardBg from "./assessmentCenter/cardBg.png";
+import assessmentHeroImg from "./assessmentCenter/hero.png";
+
+//resume
+import resumeBulbImage from "./resumeBuilder/bulb.png";
+import resumeHeroImage from "./resumeBuilder/hero.png";
+import resumeLSCard1 from "./resumeBuilder/lsCard1.png";
+import resumeLSCard2 from "./resumeBuilder/lsCard2.png";
+import resumeLSCard3 from "./resumeBuilder/lsCard3.png";
+import resumeTipsImage from "./resumeBuilder/tipsImage.png";
+// how it works
+
+import worksHeroImg from "./newHowItWorks/hero.png";
+import worksStep1Img from "./newHowItWorks/step1.png";
+import worksStep2Img from "./newHowItWorks/step2.png";
+import worksStep3Img from "./newHowItWorks/step3.png";
+import worksStep4Img from "./newHowItWorks/step3.png";
 
 const socialMediaIcons = [
   { icon: FacebookIcon, name: "Facebook" },
@@ -69,8 +86,6 @@ export {
   InterestProfileHeroImage,
   WhatsappIcon,
   graph,
-  studentIcon,
-  counselorIcon,
   GoldFish,
   pdfPhoto,
   homePageHero,
@@ -87,4 +102,20 @@ export {
   surevyHero,
   homeHero,
   careerReportImg,
+  assessmentCardBg,
+  assessmentHeaderImg,
+  assessmentHeroImg,
+  // resume
+  resumeBulbImage,
+  resumeHeroImage,
+  resumeLSCard1,
+  resumeLSCard2,
+  resumeLSCard3,
+  resumeTipsImage,
+  //how it works
+  worksStep1Img,
+  worksHeroImg,
+  worksStep2Img,
+  worksStep3Img,
+  worksStep4Img,
 };

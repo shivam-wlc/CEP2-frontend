@@ -1,0 +1,102 @@
+.header{
+    height: 15rem;
+    background-size: 100% 130%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #720361;
+    position: relative;
+    background-blend-mode:overlay;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+.header h2{
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: white;
+    font-weight: 900;
+}
+/* main */
+.main{
+    margin: 5rem;
+    display: flex;
+    gap: 5rem;
+}
+.right h3{
+    margin: 1.5rem 0;
+    font-size: 3.1rem;
+}
+.right p{
+    font-size: 1.1rem;
+}
+.right h3 + p{
+    color: gray;
+}
+.right span, .right b{
+    display: block;
+    margin: 1rem 0;
+}
+/* assessment format */
+.assessment-format{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem;
+}
+.assessment-format h3{
+    font-size: 3.1rem;
+}
+.assessment-format > p{
+    text-align: center;
+    margin: 1rem 5rem 0;
+}
+.assessment-format  p{
+    font-size: 1.1rem;
+    color: gray;
+}
+.good-to-know{
+    margin: 2rem 5rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+.good-to-know div{
+    width: 10rem;
+    height: 1.3rem;
+    background-image: linear-gradient(to right, #bf2f7500, #BF2F75);
+}
+.good-to-know div:last-child{
+    transform: rotate(180deg);
+}
+.good-to-know h4{
+    color: #BF2F75;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    
+}
+.cardsList{
+    width: 100%;
+    display: flex;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.cardsList li{
+    background-repeat: no-repeat ;
+    width: 30%;
+    padding: 2rem 1rem;
+    list-style: none;
+    border-radius: 1.2rem;
+}
+.cardsList li > h5{
+    color: #BF2F75;
+    text-align: center;
+    font-size: 1.1rem;
+}
+.cardsList li p{
+    margin-top: 1rem;
+    text-align: center;
+}

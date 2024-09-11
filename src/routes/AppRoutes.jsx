@@ -5,11 +5,11 @@ import Workspace from "../pages/Workspace.jsx";
 import { useSelector } from "react-redux";
 import { selectAuthenticated } from "../redux/slices/authSlice.js";
 import CreatorProfile from "../pages/CreatorProfile.jsx";
+import Layout from "../components/Layout.jsx";
 
 // Import components lazily
 const Home = React.lazy(() => import("../pages/Home"));
 const Explore = React.lazy(() => import("../pages/Explore"));
-const Learn = React.lazy(() => import("../pages/Learn"));
 const AssessmentCenter = React.lazy(() => import("../pages/AssessmentCenter"));
 const Register = React.lazy(() => import("../pages/Register"));
 const Login = React.lazy(() => import("../pages/Login"));
@@ -32,12 +32,6 @@ const PaymentConfirmation = React.lazy(
 );
 
 const HowItWorks = React.lazy(() => import("../pages/HowItWorks.jsx"));
-const HowItWorksStudents = React.lazy(
-  () => import("../pages/HowItWorksStudent.jsx")
-);
-const HowItWorksCounsellors = React.lazy(
-  () => import("../pages/HowItWorksCounsellor.jsx")
-);
 
 const GeneratePdf = React.lazy(
   () => import("../components/onet/DetailedPdf.jsx")
@@ -57,7 +51,6 @@ const SingleResultPage = React.lazy(
   () => import("../pages/SingleResultPage.jsx")
 );
 
-const TestUI = React.lazy(() => import("../pages/Test/NewTest.jsx"));
 const AppRoutes = () => {
   const authenticated = useSelector(selectAuthenticated);
   return (
@@ -66,34 +59,60 @@ const AppRoutes = () => {
         path="/"
         element={
           <Suspense fallback={<InitialLoaders />}>
-            <Home />
+            <Layout />
           </Suspense>
         }
-      />
-      <Route
-        path="/explore"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <Explore />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/learn"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <Learn />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/assessment"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <AssessmentCenter />
-          </Suspense>
-        }
-      />
+      >
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<InitialLoaders />}>
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/explore"
+          element={
+            <Suspense fallback={<InitialLoaders />}>
+              <Explore />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/assessment"
+          element={
+            <Suspense fallback={<InitialLoaders />}>
+              <AssessmentCenter />
+            </Suspense>
+          }
+        />
+        <Route
+          path="resume-builder"
+          element={
+            <Suspense fallback={<InitialLoaders />}>
+              <ResumeBuilderPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/resume-dashboard"
+          element={
+            <Suspense fallback={<InitialLoaders />}>
+              <ResumeDashboardPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/how-it-works"
+          element={
+            <Suspense fallback={<InitialLoaders />}>
+              <HowItWorks />
+            </Suspense>
+          }
+        />
+      </Route>
+      \
       <Route
         path="/register"
         element={
@@ -191,30 +210,6 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/how-it-works"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <HowItWorks />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/how-it-works-student"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <HowItWorksStudents />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/how-it-works-counsellor"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <HowItWorksCounsellors />
-          </Suspense>
-        }
-      />
-      <Route
         path="/generate-assessmnet-pdf"
         element={
           <Suspense fallback={<InitialLoaders />}>
@@ -223,22 +218,6 @@ const AppRoutes = () => {
         }
       />
       {/* Resume Routes  */}
-      <Route
-        path="/resume-builder"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <ResumeBuilderPage />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/resume-dashboard"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <ResumeDashboardPage />
-          </Suspense>
-        }
-      />
       <Route
         path="/disc"
         element={
@@ -263,16 +242,6 @@ const AppRoutes = () => {
           </Suspense>
         }
       />
-
-      <Route
-        path="/test"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <TestUI />
-          </Suspense>
-        }
-      />
-
       <Route
         path="*"
         element={

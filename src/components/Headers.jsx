@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import AppBar from "@mui/material/AppBar";
+import navBar from "../styles/Headers.module.css";
+import commonStyles from "../styles/Common.module.css";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import EastIcon from "@mui/icons-material/East";
 import { Link, useNavigate } from "react-router-dom";
 import { pages, settings } from "../utility/paths.js";
-import { Logo } from "../assets/assest.js";
+import { interestLogo } from "../assets/assest.js";
 import { fonts } from "../utility/fonts.js";
 import { colors } from "../utility/color.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,6 +25,7 @@ import {
   selectUserProfile,
 } from "../redux/slices/profileSlice.js";
 import { Divider } from "@mui/material";
+import { MdArrowOutward } from "react-icons/md";
 
 const Headers = () => {
   const navigate = useNavigate();
@@ -41,7 +38,26 @@ const Headers = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   // getUserProfile
+  const navItems = [
+    {
+      name: "Explore",
+      slug: "/explore",
+    },
+    {
+      name: "Assessment Center",
+      slug: "/assessment",
+    },
+    {
+      name: "Resume Builder",
+      slug: "/resume-builder",
+    },
+    {
+      name: "How it works?",
+      slug: "/how-it-works",
+    },
+  ];
 
+  console.log("userData", userData);
   useEffect(() => {
     if (authenticated) {
       dispatchToRedux(getUserProfile({ userId, token }));
@@ -62,7 +78,7 @@ const Headers = () => {
 
   const handleNavigate = (path) => {
     handleCloseNavMenu();
-    navigate(path); // Use navigate function to redirect to the specified path
+    navigate(path);
   };
 
   const handleCloseUserMenu = (name) => {
@@ -79,208 +95,116 @@ const Headers = () => {
     } catch (error) {}
   };
 
-  return (
-    <AppBar
-      position="sticky"
-      sx={{
-        backgroundColor: colors.white,
-        boxShadow: "none",
-        borderBottom: "1px solid #E5E5E5",
-        // height: "11vh",
-      }}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box
-            sx={{ display: { xs: "none", md: "flex" }, marginRight: 1 }}
-            component={Link}
-            to={"/"}
-          >
-            <img src={Logo} alt="Career Explorer" width={200} />
-          </Box>
+  const [activeLink, setActiveLink] = useState("/");
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color={colors.darkGray}
+  useEffect(() => {
+    setActiveLink(window.location.pathname);
+  }, [navigate]);
+
+  function handleNavClick(slug) {
+    navigate(slug);
+  }
+
+  return (
+    <nav className={navBar["navContainer"]}>
+      <Link to={"/"}>
+        <img src={interestLogo} alt="logo" width={"50%"} />
+      </Link>
+      <div className={navBar["right"]}>
+        <ul className={navBar["navLinks"]}>
+          {navItems.map((item, index) => (
+            <li
+              key={index}
+              onClick={() => handleNavClick(item.slug)}
+              className={item.slug === activeLink ? navBar.active : ""}
             >
-              <MenuIcon />
-            </IconButton>
+              {item.name}
+            </li>
+          ))}
+        </ul>
+        {authenticated ? (
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar
+                  alt={userData?.firstName}
+                  src={userData?.profilePicture}
+                  sx={{ width: 55, height: 55, marginRight: 1 }}
+                />
+              </IconButton>
+            </Tooltip>
             <Menu
+              sx={{ mt: "65px" }}
               id="menu-appbar"
-              anchorEl={anchorElNav}
+              anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
                 vertical: "top",
-                horizontal: "left",
+                horizontal: "right",
               }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
             >
-              {pages.map((page) => (
+              <MenuItem>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                  <Typography
+                    sx={{ fontFamily: fonts.sans, fontWeight: "bold" }}
+                  >
+                    {userData?.firstName + " " + userData?.lastName}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: fonts.sans,
+                      color: colors.darkGray,
+                      fontSize: "0.8rem",
+                    }}
+                  >
+                    {userData?.email}
+                  </Typography>
+                </Box>
+              </MenuItem>{" "}
+              <Divider />
+              {settings.map((setting) => (
                 <MenuItem
-                  key={page.name}
-                  onClick={() => handleNavigate(page.path)}
+                  key={setting.name}
+                  onClick={() => handleCloseUserMenu(setting.name)}
                 >
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-
-          <Box
-            component={Link}
-            to={"/"}
-            sx={{
-              display: { xs: "flex", md: "none" },
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              margin: "auto",
-            }}
-          >
-            <img src={Logo} alt="Career Explorer" width={150} />
-          </Box>
-
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              justifyContent: "flex-end",
-              gap: "2rem",
-              marginRight: "5rem",
-              //   border: "1px solid red",
-            }}
-          >
-            {pages.map((page) => (
-              <Button
-                key={page.name}
-                onClick={() => handleNavigate(page.path)}
-                sx={{
-                  my: 2,
-                  color: colors.darkGray,
-                  fontFamily: fonts.poppins,
-                  fontWeight: 500,
-                  fontSize: 16,
-                  display: "block",
-                }}
-              >
-                {page.name}
-              </Button>
-            ))}
-          </Box>
-
-          {authenticated ? (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar
-                    alt={userData?.firstName}
-                    src={userData?.profilePicture}
-                    sx={{ width: 55, height: 55, marginRight: 1 }}
-                  />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "65px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem>
-                  <Box
-                    sx={{ display: "flex", flexDirection: "column", gap: 1 }}
-                  >
-                    <Typography
-                      sx={{ fontFamily: fonts.sans, fontWeight: "bold" }}
-                    >
-                      {userData?.firstName + " " + userData?.lastName}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontFamily: fonts.sans,
-                        color: colors.darkGray,
-                        fontSize: "0.8rem",
-                      }}
-                    >
-                      {userData?.email}
-                    </Typography>
-                  </Box>
-                </MenuItem>{" "}
-                <Divider />
-                {settings.map((setting) => (
-                  <MenuItem
-                    key={setting.name}
-                    onClick={() => handleCloseUserMenu(setting.name)}
-                  >
-                    <Typography
-                      textAlign="center"
-                      sx={{ fontFamily: fonts.sans }}
-                    >
-                      {setting.name}
-                    </Typography>
-                  </MenuItem>
-                ))}
-                <Divider />
-                <MenuItem onClick={handleLogout}>
                   <Typography
                     textAlign="center"
-                    sx={{ color: colors.red, fontFamily: fonts.poppins }}
+                    sx={{ fontFamily: fonts.sans }}
                   >
-                    Logout
+                    {setting.name}
                   </Typography>
                 </MenuItem>
-              </Menu>
-            </Box>
-          ) : (
-            <Box sx={{ flexGrow: 0 }} component={Link} to={"/register"}>
-              <Button
-                sx={{
-                  color: colors.white,
-                  fontFamily: fonts.poppins,
-                  fontWeight: 500,
-                  fontSize: { xs: 12, md: 14 },
-                  backgroundColor: colors.midGray,
-                  paddingX: { xs: 2, md: 3 },
-                  paddingY: { xs: 1.5, md: 1.5 },
-
-                  borderRadius: 7,
-                  "&:hover": {
-                    backgroundColor: colors.midGray,
-                  },
-                }}
-              >
-                Signup
-                <EastIcon
-                  sx={{ display: { xs: "none", md: "inline" }, marginLeft: 1 }}
-                />
-              </Button>
-            </Box>
-          )}
-        </Toolbar>
-      </Container>
-    </AppBar>
+              ))}
+              <Divider />
+              <MenuItem onClick={handleLogout}>
+                <Typography
+                  textAlign="center"
+                  sx={{ color: colors.red, fontFamily: fonts.poppins }}
+                >
+                  Logout
+                </Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+        ) : (
+          <button
+            className={commonStyles.navButton}
+            onClick={() => navigate("/register")}
+          >
+            Sign up
+            <span>
+              <MdArrowOutward />
+            </span>
+          </button>
+        )}
+      </div>
+    </nav>
   );
 };
 
