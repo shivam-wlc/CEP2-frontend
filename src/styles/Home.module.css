@@ -1,3 +1,6 @@
+.container{
+    margin-top: 10rem;
+}
 .main {
     display: flex;
     margin: 5rem;
