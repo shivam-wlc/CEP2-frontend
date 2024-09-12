@@ -54,6 +54,28 @@ import worksStep2Img from "./newHowItWorks/step2.png";
 import worksStep3Img from "./newHowItWorks/step3.png";
 import worksStep4Img from "./newHowItWorks/step3.png";
 
+//backgroundImage
+import backgroundVector from "./Vector.png";
+
+// user dashboard
+import india from "./userDashboard/India.png";
+import arab from "./userDashboard/Arab.png";
+import german from "./userDashboard/German.png";
+import italian from "./userDashboard/Italian.png";
+import japan from "./userDashboard/Japan.png";
+import indonesia from "./userDashboard/indonesia.png";
+import koria from "./userDashboard/koria.png";
+import england from "./userDashboard/england.png";
+import french from "./userDashboard/french.png";
+import maleshia from "./userDashboard/maleshia.png";
+import liked from "./userDashboard/liked.png";
+import consumed from "./userDashboard/consumed.png";
+import shared from "./userDashboard/shared.png";
+import followed from "./userDashboard/followed.png";
+import asstaken from "./userDashboard/asstaken.png";
+import resumecreated from "./userDashboard/resume.png";
+import enrolled from "./userDashboard/enroled.png";
+
 const socialMediaIcons = [
   { icon: FacebookIcon, name: "Facebook" },
   { icon: InstagramIcon, name: "Instagram" },
@@ -118,4 +140,24 @@ export {
   worksStep2Img,
   worksStep3Img,
   worksStep4Img,
+  //background vector
+  backgroundVector,
+  //user dashboard
+  india,
+  japan,
+  german,
+  arab,
+  italian,
+  indonesia,
+  french,
+  koria,
+  england,
+  maleshia,
+  liked,
+  consumed,
+  followed,
+  shared,
+  asstaken,
+  resumecreated,
+  enrolled,
 };

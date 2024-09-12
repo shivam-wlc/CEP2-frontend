@@ -54,7 +54,10 @@ const ResumeBuilder = () => {
   ];
 
   return (
-    <div className={resumeBuilderStyles["container"]}>
+    <div
+      className={resumeBuilderStyles["container"]}
+      style={{ backgroundColor: "#FAFAFA" }}
+    >
       <section
         className={resumeBuilderStyles["header"]}
         style={{ backgroundImage: `url(${assessmentHeaderImg})` }}

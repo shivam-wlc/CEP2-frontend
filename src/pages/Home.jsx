@@ -41,7 +41,15 @@ const Home = () => {
 
   return (
     <>
-      <div className={homeStyle.container}>
+      <div
+        className={homeStyle.container}
+        // style={{
+        //   backgroundImage: `url("./${backgroundVector}")`,
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        //   backgroundRepeat: "no-repeat",
+        // }}
+      >
         <section className={homeStyle.main}>
           <div className={homeStyle["left"]}>
             <h3>Turning possibility to reality</h3>
@@ -71,7 +79,7 @@ const Home = () => {
               the best choices
             </p>
             <button>
-              Go To Explore{" "}
+              Go To Explore
               <span>
                 <MdArrowOutward />
               </span>
@@ -191,7 +199,7 @@ const Home = () => {
             className={commonStyles.navButton}
             onClick={() => navigate("#")}
           >
-            Comming Soon...
+            Coming Soon...
           </button>
         </section>
       </div>

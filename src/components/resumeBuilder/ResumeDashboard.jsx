@@ -26,6 +26,7 @@ import {
   IconButton,
   MenuItem,
   Divider,
+  Button,
 } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
 import ViewResume from "./sections/ViewResume.jsx";
@@ -41,7 +42,7 @@ const ResumeDashboard = () => {
   const dispatchToRedux = useDispatch();
   const navigate = useNavigate();
 
-  const [activeSection, setActiveSection] = useState("Personal Info");
+  const [activeSection, setActiveSection] = useState("Personal Information");
   const [formData, setFormData] = useState({
     personalInfo: {
       firstName: "",
@@ -336,12 +337,43 @@ const ResumeDashboard = () => {
     dispatchToRedux(updateResume({ token, userId, formData }));
   };
 
+  const inputBoxStyle = {
+    "& .MuiFilledInput-root": {
+      borderRadius: "25px", // Adjust the value as per your needs
+    },
+    "& .MuiFilledInput-underline:before": {
+      borderBottom: "none", // Remove underline in non-focus state
+    },
+    "& .MuiFilledInput-underline:hover:not(.Mui-disabled):before": {
+      borderBottom: "none", // Remove underline on hover
+    },
+    "& .MuiFilledInput-underline:after": {
+      borderBottom: "none", // Remove underline in focus state
+    },
+  };
+
   const renderSectionContent = () => {
     switch (activeSection) {
-      case "Personal Info":
+      case "Personal Information":
         return (
           <Grid container spacing={2}>
             {/* first name */}
+            {/* <Grid item xs={12} sm={6} lg={4}>
+              <TextField
+                variant="filled"
+                label="First Name"
+                fullWidth
+                value={formData.personalInfo.firstName}
+                onChange={(e) =>
+                  handleInputChange("personalInfo", "firstName", e)
+                }
+                sx={{
+                  "& .MuiFilledInput-root": {
+                    borderRadius: "25px", // Adjust the value as per your needs
+                  },
+                }}
+              />
+            </Grid> */}
             <Grid item xs={12} sm={6} lg={4}>
               <TextField
                 variant="filled"
@@ -351,8 +383,10 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "firstName", e)
                 }
+                sx={inputBoxStyle}
               />
             </Grid>
+
             {/* middle name */}
             <Grid item xs={12} sm={6} lg={4}>
               <TextField
@@ -363,6 +397,7 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "middleName", e)
                 }
+                sx={inputBoxStyle}
               />
             </Grid>
             {/* last name */}
@@ -375,6 +410,7 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "lastName", e)
                 }
+                sx={inputBoxStyle}
               />
             </Grid>
             {/* user name */}
@@ -387,6 +423,7 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "userName", e)
                 }
+                sx={inputBoxStyle}
               />
             </Grid>
             {/* gender */}
@@ -398,6 +435,7 @@ const ResumeDashboard = () => {
                 fullWidth
                 value={formData.personalInfo.gender}
                 onChange={(e) => handleInputChange("personalInfo", "gender", e)}
+                sx={inputBoxStyle}
               >
                 {/* Define the options */}
                 <MenuItem value="male">Male</MenuItem>
@@ -419,6 +457,7 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "birthdate", e)
                 }
+                sx={inputBoxStyle}
               />
             </Grid>
             {/* Nationality*/}
@@ -432,6 +471,7 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "nationality", e)
                 }
+                sx={inputBoxStyle}
               >
                 {countryList.map((country) => (
                   <MenuItem key={country.name} value={country.name}>
@@ -448,6 +488,7 @@ const ResumeDashboard = () => {
                 fullWidth
                 value={formData.personalInfo.email}
                 onChange={(e) => handleInputChange("personalInfo", "email", e)}
+                sx={inputBoxStyle}
               />
             </Grid>
             {/* mobile */}
@@ -458,6 +499,7 @@ const ResumeDashboard = () => {
                 fullWidth
                 value={formData.personalInfo.mobile}
                 onChange={(e) => handleInputChange("personalInfo", "mobile", e)}
+                sx={inputBoxStyle}
               />
             </Grid>
             {/* tele */}
@@ -470,6 +512,7 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "telephone", e)
                 }
+                sx={inputBoxStyle}
               />
             </Grid>
             <Grid item xs={12}>
@@ -481,6 +524,7 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "website", e)
                 }
+                sx={inputBoxStyle}
               />
             </Grid>
             <Grid item xs={12}>
@@ -492,6 +536,7 @@ const ResumeDashboard = () => {
                 onChange={(e) =>
                   handleInputChange("personalInfo", "linkedIn", e)
                 }
+                sx={inputBoxStyle}
               />
             </Grid>
           </Grid>
@@ -502,7 +547,7 @@ const ResumeDashboard = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                sx={{ backgroundColor: "#F2F2F2" }}
+                sx={{ ...inputBoxStyle, backgroundColor: "#F2F2F2" }}
                 label="Professional Summary"
                 fullWidth
                 multiline
@@ -530,6 +575,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("education", "institute", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -541,6 +587,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("education", "websiteurl", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
               </React.Fragment>
@@ -570,6 +617,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("experience", "jobTitle", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -581,6 +629,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("experience", "company", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -592,6 +641,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("experience", "location", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -605,6 +655,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("experience", "startDate", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -618,6 +669,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("experience", "endDate", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -636,6 +688,7 @@ const ResumeDashboard = () => {
                         index
                       )
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -647,6 +700,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("experience", "achievements", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -686,6 +740,7 @@ const ResumeDashboard = () => {
                       onChange={(e) =>
                         handleInputChange("skills", type, e, index)
                       }
+                      sx={inputBoxStyle}
                     />
                     <IconButton
                       color="secondary"
@@ -723,6 +778,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("certifications", "name", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -739,6 +795,7 @@ const ResumeDashboard = () => {
                         index
                       )
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -750,6 +807,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("certifications", "link", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -763,6 +821,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("certifications", "issueDate", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -802,6 +861,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("projects", "title", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -818,6 +878,7 @@ const ResumeDashboard = () => {
                         index
                       )
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -829,6 +890,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("projects", "description", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -842,6 +904,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("projects", "startDate", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -855,6 +918,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("projects", "endDate", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -866,6 +930,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("projects", "link", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -906,6 +971,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("languages", "name", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -917,6 +983,7 @@ const ResumeDashboard = () => {
                     onChange={(e) =>
                       handleInputChange("languages", "proficiency", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -941,7 +1008,7 @@ const ResumeDashboard = () => {
           </Grid>
         );
 
-      case "Hobbies":
+      case "Hobbies & Interests":
         return (
           <Grid container spacing={2}>
             {formData.hobbies.map((hobby, index) => (
@@ -949,12 +1016,13 @@ const ResumeDashboard = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     variant="filled"
-                    label="Your Hobbies"
+                    label="Your Hobbies & Interests"
                     fullWidth
                     value={hobby}
                     onChange={(e) =>
                       handleInputChange("hobbies", "hobby", e, index)
                     }
+                    sx={inputBoxStyle}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -997,7 +1065,7 @@ const ResumeDashboard = () => {
   };
 
   const sectionList = [
-    "Personal Info",
+    "Personal Information",
     "Summary",
     "Education",
     "Experience",
@@ -1005,7 +1073,7 @@ const ResumeDashboard = () => {
     "Projects",
     "Certifications",
     "Languages",
-    "Hobbies",
+    "Hobbies & Interests",
   ];
 
   return (
@@ -1015,17 +1083,25 @@ const ResumeDashboard = () => {
           sx={{
             mx: "5rem",
             mt: "5rem",
-            borderRadius: "1.25rem",
           }}
         >
           <TopSubCard currentSection={sectionList.indexOf(activeSection) + 1} />
           <Box>
-            <Box sx={{ my: 5 }}>
-              <Container maxWidth="lg">
-                <Grid container spacing={3}>
+            <Box
+              sx={{
+                // my: 5,
+                mt: -2.5,
+                backgroundColor: "#ffff",
+                p: 3,
+                // borderRadius: "1.25rem",
+                borderRadius: "0 0 1.25rem 1.25rem",
+              }}
+            >
+              <Container maxWidth="lg" sx={{ mt: 7 }}>
+                <Grid container spacing={1}>
                   {/* left */}
                   <Grid item xs={12} sm={4}>
-                    <List>
+                    <List sx={{ width: "85%" }}>
                       {sectionList.map((section, index) => (
                         <ListItem
                           key={index}
@@ -1046,7 +1122,7 @@ const ResumeDashboard = () => {
                   {/* right */}
                   <Grid item xs={12} sm={8}>
                     <Box p={3}>
-                      <Typography variant="h6">{activeSection}</Typography>
+                      <Typography variant="h6" fontWeight="bold">{activeSection}</Typography>
                       <Divider sx={{ my: "1rem" }} />
                       {renderSectionContent()}
                       <Box
