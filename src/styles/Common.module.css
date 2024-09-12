@@ -1,81 +1,93 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* .container {
+  height: 100vh;
+  width: 100vw;
+  border: "10px solid black";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url("../assets/Vector.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
 .left {
-    width: 40%;
-    height: 100%;
-    margin: 1rem;
-    display: flex;
-    align-items: center;
+  width: 40%;
+  height: 100%;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .left img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3%;
-    width: 60%;
-    height: 100%;
-    margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+  width: 60%;
+  height: 100%;
+  margin: 1rem;
 }
 
 .questions-container {
-    box-shadow: 5px 10px 50px gray;
-    border-radius: 1.85rem;
-    width: 85%;
+  box-shadow: 5px 10px 50px gray;
+  border-radius: 1.85rem;
+  width: 85%;
 }
 
 .navButton {
-    background-image: linear-gradient(to top left, #720361, #BF2F75);
-    border: none;
-    padding: .6rem 1rem;
-    border-radius: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    /* height: 3rem; */
-    font-size: 1.125rem;
-    gap: 0.875rem;
-    color: white;
-    cursor: pointer;
+  background-image: linear-gradient(to top left, #720361, #bf2f75);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  font-size: 1.125rem;
+  gap: 0.875rem;
+  color: white;
+  cursor: pointer;
 }
 
 .navButton span {
-    display: flex;
-    align-items: center;
-    border-radius: 50%;
-    height: 2.25rem;
-    width: 2.25rem;
-    justify-content: center;
-    background-color: white;
-    color: #FF8A00;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  height: 2.25rem;
+  width: 2.25rem;
+  justify-content: center;
+  background-color: white;
+  color: #ff8a00;
+  flex-shrink: 0;
 }
 
 .navButtonContainer {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 5%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 5%;
 }
-.yellowText{
-    color: #FF8A00;
+.yellowText {
+  color: #ff8a00;
 }
