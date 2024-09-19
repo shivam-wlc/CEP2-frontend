@@ -480,6 +480,27 @@ const Workspace = (props) => {
     }
   };
 
+  const inputBoxStyle = {
+    "& .MuiFilledInput-root": {
+      borderRadius: "25px", // Adjust the value as per your needs
+      backgroundColor: "#f9fafb",
+    },
+    "& .MuiFilledInput-underline:before": {
+      borderBottom: "none", // Remove underline in non-focus state
+    },
+    "& .MuiFilledInput-underline:hover:not(.Mui-disabled):before": {
+      borderBottom: "none", // Remove underline on hover
+    },
+    "& .MuiFilledInput-underline:after": {
+      borderBottom: "none", // Remove underline in focus state
+    },
+
+    "& .MuiFilledInput-input": {
+      padding: "10px 14px", // Adjust the value as per your needs
+    },
+   
+  };
+
   const drawer = (
     <div>
       <Box
@@ -557,16 +578,30 @@ const Workspace = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <TextField
-            fullWidth
-            InputProps={{
-              endAdornment: (
-                <IconButton>
-                  <SearchIcon />
-                </IconButton>
-              ),
+          <Box
+            sx={{
+              border: "1px solid white",
+              width: "100%",
+              display: "flex",
+              justifyContent: "right",
+              alignItems: "center",
             }}
-          />
+          >
+            <TextField
+              // fullWidth
+
+              variant="filled"
+              label="Search Here"
+              InputProps={{
+                endAdornment: (
+                  <IconButton>
+                    <SearchIcon />
+                  </IconButton>
+                ),
+              }}
+              sx={inputBoxStyle}
+            />
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton size="large" aria-label="show new messages" color="gray">
             {/* <Badge badgeContent={5} color="error">

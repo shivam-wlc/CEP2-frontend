@@ -51,6 +51,8 @@ const SingleResultPage = React.lazy(
   () => import("../pages/SingleResultPage.jsx")
 );
 
+const Pricing = React.lazy(() => import("../pages/Pricing.jsx"));
+
 const AppRoutes = () => {
   const authenticated = useSelector(selectAuthenticated);
   return (
@@ -108,6 +110,14 @@ const AppRoutes = () => {
           element={
             <Suspense fallback={<InitialLoaders />}>
               <HowItWorks />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/pricing"
+          element={
+            <Suspense fallback={<InitialLoaders />}>
+              <Pricing />
             </Suspense>
           }
         />

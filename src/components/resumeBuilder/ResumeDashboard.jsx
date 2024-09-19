@@ -1122,7 +1122,9 @@ const ResumeDashboard = () => {
                   {/* right */}
                   <Grid item xs={12} sm={8}>
                     <Box p={3}>
-                      <Typography variant="h6" fontWeight="bold">{activeSection}</Typography>
+                      <Typography variant="h6" fontWeight="bold">
+                        {activeSection}
+                      </Typography>
                       <Divider sx={{ my: "1rem" }} />
                       {renderSectionContent()}
                       <Box
@@ -1151,6 +1153,11 @@ const ResumeDashboard = () => {
                     </Box>
                   </Grid>
                 </Grid>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  <button className={commonStyle.navButton}>
+                    Generate Resume
+                  </button>
+                </Box>
               </Container>
             </Box>
 

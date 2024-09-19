@@ -55,6 +55,10 @@ const Headers = () => {
       name: "How it works?",
       slug: "/how-it-works",
     },
+    {
+      name: "Pricing",
+      slug: "/pricing",
+    },
   ];
 
   console.log("userData", userData);
