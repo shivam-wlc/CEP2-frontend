@@ -83,6 +83,13 @@ import HighSchools from "./Pricing/HighSchools.png";
 //auth
 import leftPannelAuth from "./Auth/left pannel.png";
 import background from "./Auth/Background.png";
+//about
+import Founder from "./About/Founder.png";
+import A from "./About/A.png";
+import B from "./About/B.png";
+import C from "./About/C.png";
+import D from "./About/D.png";
+import E from "./About/E.png";
 
 const socialMediaIcons = [
   { icon: FacebookIcon, name: "Facebook" },
@@ -176,4 +183,11 @@ export {
   //auth
   leftPannelAuth,
   background,
+  //about
+  Founder,
+  A,
+  B,
+  C,
+  D,
+  E,
 };

@@ -156,7 +156,7 @@ const UnifiedRecord = () => {
             <TableBody>
               {allData?.unifiedRecordData?.map((row, index) => (
                 <TableRow key={index}>
-                  <TableCell>202408000{index + 1}</TableCell>
+                  <TableCell>{row?.unique_id}</TableCell>
                   <TableCell>
                     {row.userId.firstName + " " + row.userId.lastName}
                   </TableCell>

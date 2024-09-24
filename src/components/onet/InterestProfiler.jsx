@@ -34,7 +34,6 @@ export default function InterestProfiler() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [overallAnswers, setOverallAnswers] = useState(new Array(30).fill("?"));
   const [selectedValue, setSelectedValue] = useState(null);
-  console.log("overallAnswers", overallAnswers);
 
   const handleChooseOption = async () => {
     await dispatchToRedux(
@@ -48,7 +47,7 @@ export default function InterestProfiler() {
 
   const handleNext = () => {
     if (currentQuestionIndex < onet?.questions?.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }
 
     if (currentQuestionIndex === onet?.questions?.length - 1) {
@@ -63,12 +62,18 @@ export default function InterestProfiler() {
   };
 
   const handleSubmitButton = async () => {
-    // await dispatchToRedux(
-    //   getResultAndJob({ answers: overallAnswers.join(""), token, userId })
-    // );
-    // console.log("overallAnswers", overallAnswers.join(""));
+    const finalAnswer = overallAnswers[overallAnswers.length - 1];
+    if (finalAnswer === "?") {
+      console.log("Please select an answer for the last question.");
+      return;
+    }
+    await dispatchToRedux(
+      getResultAndJob({ answers: overallAnswers.join(""), token, userId })
+    );
+
     navigate("/disc");
   };
+
   return (
     <div className={globalStyle["container"]}>
       <div className={globalStyle["left"]}>

@@ -52,6 +52,13 @@ const SingleResultPage = React.lazy(
 );
 
 const Pricing = React.lazy(() => import("../pages/Pricing.jsx"));
+const AboutUs = React.lazy(() => import("../pages/AboutUs.jsx"));
+const TermsAndConditons = React.lazy(
+  () => import("../pages/TermsAndConditons.jsx")
+);
+const PrivacyAndPolicy = React.lazy(
+  () => import("../pages/PrivacyAndPolicy.jsx")
+);
 
 const AppRoutes = () => {
   const authenticated = useSelector(selectAuthenticated);
@@ -249,6 +256,31 @@ const AppRoutes = () => {
         element={
           <Suspense fallback={<InitialLoaders />}>
             <SingleResultPage />
+          </Suspense>
+        }
+      />
+      {/* About us page  */}
+      <Route
+        path="/about-us"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <AboutUs />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/terms-and-conditions"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <TermsAndConditons />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/privacy-and-policy"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <PrivacyAndPolicy />
           </Suspense>
         }
       />

@@ -9,7 +9,6 @@ import {
   getUnifiedRecordData,
   selectUnifiedRecord,
 } from "../../redux/slices/unifiedRecordSlice.js";
-import SurveyForm1 from "../../models/SurveyForm1.jsx";
 import { useNavigate } from "react-router-dom";
 
 const QuestionCard = ({
@@ -30,7 +29,6 @@ const QuestionCard = ({
   const unifiedRecord = useSelector(selectUnifiedRecord);
 
   const dispatchToRedux = useDispatch();
-  const [surveyModalOpen, setSurveyModalOpen] = React.useState(false);
 
   useEffect(() => {
     dispatchToRedux(getUnifiedRecordData({ userId, token }));

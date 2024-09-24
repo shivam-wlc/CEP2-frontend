@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { GrLinkNext } from "react-icons/gr";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Select from "react-select";
-import styles from "./QuestionCard.module.css";
-import globalStyle from "./Questions.module.css";
+import styles from "../styles/QuestionCard.module.css";
+import globalStyle from "../styles/Questions.module.css";
 
 const SurveyQuestionCards = ({
   questionNumber,
