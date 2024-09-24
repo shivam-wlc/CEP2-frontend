@@ -52,7 +52,7 @@ import worksHeroImg from "./newHowItWorks/hero.png";
 import worksStep1Img from "./newHowItWorks/step1.png";
 import worksStep2Img from "./newHowItWorks/step2.png";
 import worksStep3Img from "./newHowItWorks/step3.png";
-import worksStep4Img from "./newHowItWorks/step3.png";
+import worksStep4Img from "./newHowItWorks/step4.png";
 
 //backgroundImage
 import backgroundVector from "./Vector.png";
@@ -75,6 +75,14 @@ import followed from "./userDashboard/followed.png";
 import asstaken from "./userDashboard/asstaken.png";
 import resumecreated from "./userDashboard/resume.png";
 import enrolled from "./userDashboard/enroled.png";
+// pricing
+import commingSoon from "./Pricing/commingSoon.png";
+import Councellers from "./Pricing/Councellers.png";
+import student from "./Pricing/Student.png";
+import HighSchools from "./Pricing/HighSchools.png";
+//auth
+import leftPannelAuth from "./Auth/left pannel.png";
+import background from "./Auth/Background.png";
 
 const socialMediaIcons = [
   { icon: FacebookIcon, name: "Facebook" },
@@ -160,4 +168,12 @@ export {
   asstaken,
   resumecreated,
   enrolled,
+  //pricing
+  commingSoon,
+  Councellers,
+  student,
+  HighSchools,
+  //auth
+  leftPannelAuth,
+  background,
 };

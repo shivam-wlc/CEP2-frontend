@@ -146,7 +146,7 @@ const HowItWorks = () => {
         </div>
         <div
           className={worksStyles["stepsImage"]}
-          style={{ backgroundImage: `url(${worksStep1Img})` }}
+          style={{ backgroundImage: `url(${worksStep4Img})` }}
         ></div>
       </section>
     </div>
