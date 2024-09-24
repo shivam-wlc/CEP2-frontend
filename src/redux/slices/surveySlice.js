@@ -5,6 +5,7 @@ import { config } from "../../config/config.js";
 const initialState = {
   survey: [],
   clusterData: [],
+  surveyQuestions: [],
 };
 
 export const saveSurveyData = createAsyncThunk(
@@ -50,6 +51,19 @@ export const getCareerClusterOptions = createAsyncThunk(
   }
 );
 
+export const getSurveyQuestions = createAsyncThunk(
+  "survey/getSurveyQuestions",
+  async ({ token }) => {
+    return FetchApi.fetch(`${config.api}/api/survey/getsurveyquestions`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
+);
+
 const surveySlice = createSlice({
   name: "survey",
   initialState,
@@ -67,9 +81,14 @@ const surveySlice = createSlice({
     builder.addCase(getCareerClusterOptions.fulfilled, (state, action) => {
       state.clusterData = action.payload.clusterData;
     });
+
+    builder.addCase(getSurveyQuestions.fulfilled, (state, action) => {
+      state.surveyQuestions = action.payload.questions;
+    });
   },
 });
 
 export const selectSurvey = (state) => state.survey.survey;
 export const selectClusterData = (state) => state.survey.clusterData;
+export const selectSurveyQuestions = (state) => state.survey.surveyQuestions;
 export default surveySlice.reducer;
