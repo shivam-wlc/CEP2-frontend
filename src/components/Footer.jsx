@@ -26,36 +26,35 @@ const Footer = () => {
           <h3>Usefull Links</h3>
           <div className={footerStyles["line"]}></div>
           <ul>
-            <Link to="/about-us">
-              <li style={{ color: "#a98fa4", textDecoration: "none" }}>
-                About Us
-              </li>
-            </Link>
-            <Link to="/privacy-and-policy">
-              <li>Privacy Policy</li>
+            <li>Link 1</li>
+            <li>Link 2</li>
+            <li>Link 3</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Usefull Links</h3>
+          <div className={footerStyles["line"]}></div>
+          <ul>
+            <li>Contact Us</li>
+            <li>Link 2</li>
+            <li>Link 3</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Usefull Links</h3>
+          <div className={footerStyles["line"]}></div>
+          <ul>
+            <Link to="/about-us" style={{ textDecoration: "none" }}>
+              <li style={{ color: "#a98fa4" }}>About Us</li>
             </Link>
 
-            <Link to="/terms-and-conditions">
-              <li>Terms and Conditions</li>
+            <Link to="/privacy-and-policy" style={{ textDecoration: "none" }}>
+              <li style={{ color: "#a98fa4" }}>Privacy Policy</li>
             </Link>
-          </ul>
-        </div>
-        <div>
-          <h3>Usefull Links</h3>
-          <div className={footerStyles["line"]}></div>
-          <ul>
-            <li>Link 1</li>
-            <li>Link 2</li>
-            <li>Link 3</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Usefull Links</h3>
-          <div className={footerStyles["line"]}></div>
-          <ul>
-            <li>Link 1</li>
-            <li>Link 2</li>
-            <li>Link 3</li>
+
+            <Link to="/terms-and-conditions" style={{ textDecoration: "none" }}>
+              <li style={{ color: "#a98fa4" }}>Terms and Conditions</li>
+            </Link>
           </ul>
         </div>
       </div>

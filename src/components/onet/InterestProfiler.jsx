@@ -70,7 +70,6 @@ export default function InterestProfiler() {
     await dispatchToRedux(
       getResultAndJob({ answers: overallAnswers.join(""), token, userId })
     );
-
     navigate("/disc");
   };
 
