@@ -1,5 +1,6 @@
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Modal, TextField, Button, Typography, Box } from "@mui/material";
+
 import {
   FacebookIcon,
   InstagramIcon,
@@ -8,8 +9,8 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from "../assets/assest.js";
-import { fonts } from "../utility/fonts";
 import GeneralButton from "../components/general/GeneralButton.jsx";
+import { fonts } from "../utility/fonts";
 
 const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
   const [copySuccess, setCopySuccess] = useState(false);
@@ -57,9 +58,7 @@ const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
   ];
 
   const shareOnSocialMedia = (platform) => {
-    const platformUrl = sharingPlatform.find(
-      (item) => item.name === platform
-    )?.url;
+    const platformUrl = sharingPlatform.find((item) => item.name === platform)?.url;
 
     if (platformUrl) {
       window.open(platformUrl + videoUrl, "_blank");
@@ -93,9 +92,7 @@ const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
         >
           Share Video
         </Typography>
-        <Box
-          sx={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}
-        >
+        <Box sx={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
           <TextField
             fullWidth
             label="Video Link"
@@ -108,10 +105,7 @@ const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
             }}
           />
 
-          <GeneralButton
-            onClick={() => copyToClipboard(videoUrl)}
-            text={copySuccess ? "Copied!" : "Copy"}
-          />
+          <GeneralButton onClick={() => copyToClipboard(videoUrl)} text={copySuccess ? "Copied!" : "Copy"} />
         </Box>
         <Box
           sx={{
@@ -126,12 +120,7 @@ const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
               onClick={() => shareOnSocialMedia(platform.name)}
               style={{ margin: "0 5px", padding: "5px", cursor: "pointer" }}
             >
-              <img
-                src={platform.icon}
-                alt={platform.name}
-                width="35"
-                height="35"
-              />
+              <img src={platform.icon} alt={platform.name} width="35" height="35" />
             </Button>
           ))}
         </Box>

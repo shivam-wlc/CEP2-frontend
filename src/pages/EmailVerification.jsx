@@ -1,7 +1,8 @@
+import { Box, CircularProgress, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { config } from "../config/config.js";
-import { Box, CircularProgress, Typography } from "@mui/material";
 
 const EmailVerification = () => {
   //   let { token } = useParams();
@@ -14,15 +15,12 @@ const EmailVerification = () => {
     token = searchParams.get("token");
     const verifyEmail = async () => {
       try {
-        const response = await fetch(
-          `${config.api}/api/auth/verify-email?token=${token}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch(`${config.api}/api/auth/verify-email?token=${token}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         const data = await response.json();
         if (response.ok) {
           setVerificationStatus(data.message);
@@ -47,12 +45,7 @@ const EmailVerification = () => {
   return (
     <Box>
       {isLoading ? (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          height="200px"
-        >
+        <Box display="flex" justifyContent="center" alignItems="center" height="200px">
           <CircularProgress color="inherit" />
         </Box>
       ) : (

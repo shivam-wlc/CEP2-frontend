@@ -202,37 +202,30 @@
 
 // export default UserMyAssessment;
 
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import {
-  Typography,
   Box,
   Container,
+  IconButton,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
-  IconButton,
+  Typography,
 } from "@mui/material";
+import { fontSize } from "@mui/system";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { selectAuthenticated, selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import { getUserProfile, selectUserProfile } from "../../redux/slices/profileSlice.js";
 import { fonts } from "../../utility/fonts.js";
 import GeneralButton from "../general/GeneralButton.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
-import {
-  selectUserId,
-  selectAuthenticated,
-  selectToken,
-} from "../../redux/slices/authSlice.js";
-import {
-  getUserProfile,
-  selectUserProfile,
-} from "../../redux/slices/profileSlice.js";
-import { useNavigate } from "react-router-dom";
-import { fontSize } from "@mui/system";
 
 const UserMyAssessment = () => {
   const dispatchToRedux = useDispatch();
@@ -320,18 +313,10 @@ const UserMyAssessment = () => {
         <Table aria-label="simple table" border="1" borderColor="#dbd6db">
           <TableHead>
             <TableRow sx={{ background: "#720361" }}>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                Date
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                Assessment
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                Status
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                Report
-              </TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>Date</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>Assessment</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>Status</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>Report</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -340,9 +325,7 @@ const UserMyAssessment = () => {
                 <TableCell>{row.date}</TableCell>
                 <TableCell>{row.assessment}</TableCell>
                 <TableCell>
-                  <Box
-                    sx={{ display: "flex", alignItems: "center", gap: "10px" }}
-                  >
+                  <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
                     <CheckCircleIcon color="success" />
                     {row.status}
                   </Box>

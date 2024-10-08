@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import FetchApi from "../../client.js";
 import { config } from "../../config/config.js";
 
@@ -12,17 +13,14 @@ const initialState = {
 export const getUnifiedRecordData = createAsyncThunk(
   "unifiedRecord/getUnifiedRecordData",
   async ({ userId, token }) => {
-    return FetchApi.fetch(
-      `${config.api}/api/unifiedrecord/getunifiedrecorddata/${userId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  }
+    return FetchApi.fetch(`${config.api}/api/unifiedrecord/getunifiedrecorddata/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
 );
 
 export const getAllUnifiedRecordData = createAsyncThunk(
@@ -34,49 +32,40 @@ export const getAllUnifiedRecordData = createAsyncThunk(
       limit: limit.toString(),
     });
 
-    return FetchApi.fetch(
-      `${config.api}/api/unifiedrecord/getallunifiedrecorddata?${queryParams}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  }
+    return FetchApi.fetch(`${config.api}/api/unifiedrecord/getallunifiedrecorddata?${queryParams}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
 );
 
 export const getUnifiedRecordDataOfUser = createAsyncThunk(
   "unifiedRecord/getUnifiedRecordDataOfUser",
   async ({ unifiedId, token }) => {
-    return FetchApi.fetch(
-      `${config.api}/api/unifiedrecord/getunifiedrecorddataofuser/${unifiedId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  }
+    return FetchApi.fetch(`${config.api}/api/unifiedrecord/getunifiedrecorddataofuser/${unifiedId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
 );
 
 export const updatedResumeStatus = createAsyncThunk(
   "unifiedRecord/updatedResumeStatus",
   async ({ userId, token }) => {
-    return FetchApi.fetch(
-      `${config.api}/api/unifiedrecord/updateunifiedrecordstatus/${userId}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  }
+    return FetchApi.fetch(`${config.api}/api/unifiedrecord/updateunifiedrecordstatus/${userId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
 );
 
 const unifiedRecordSlice = createSlice({
@@ -99,8 +88,7 @@ const unifiedRecordSlice = createSlice({
 });
 
 export const selectUnifiedRecord = (state) => state.unifiedRecord.unifiedRecord;
-export const selectAllUnifiedData = (state) =>
-  state.unifiedRecord.allUnifiedData;
+export const selectAllUnifiedData = (state) => state.unifiedRecord.allUnifiedData;
 
 export const selectUserUnified = (state) => state.unifiedRecord.userUnified;
 export default unifiedRecordSlice.reducer;

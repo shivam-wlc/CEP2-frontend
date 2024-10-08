@@ -1,25 +1,22 @@
-import * as React from "react";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
-import { fonts } from "../utility/fonts.js";
-import { colors } from "../utility/color.js";
-import {
-  selectAuthenticated,
-  selectUserId,
-  selectToken,
-} from "../redux/slices/authSlice.js";
-import { addHistory } from "../redux/slices/userSlice.js";
-import { useSelector, useDispatch } from "react-redux";
+import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import SharingVideoModal from "../models/SharingVideoModal.jsx";
-import ShareIcon from "@mui/icons-material/Share";
+import { selectAuthenticated, selectToken, selectUserId } from "../redux/slices/authSlice.js";
+import { addHistory } from "../redux/slices/userSlice.js";
+import { colors } from "../utility/color.js";
+import { fonts } from "../utility/fonts.js";
 
 const VideoCard = ({ video }) => {
   const authenticated = useSelector(selectAuthenticated);
@@ -114,12 +111,7 @@ const VideoCard = ({ video }) => {
           marginTop: "-20px",
         }}
       >
-        <Rating
-          name="size-large"
-          readOnly
-          defaultValue={video?.averageRating}
-          size="large"
-        />
+        <Rating name="size-large" readOnly defaultValue={video?.averageRating} size="large" />
         {`(${video?.ratings?.length || "0"})`}
         <IconButton onClick={handleOpenModal}>
           <ShareIcon />

@@ -1,13 +1,6 @@
+import { Box, Button, CircularProgress, MenuItem, Modal, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import {
-  Modal,
-  Box,
-  Typography,
-  TextField,
-  MenuItem,
-  Button,
-  CircularProgress,
-} from "@mui/material";
+
 import { fonts } from "../utility/fonts.js";
 
 const StatusUpdateModal = ({ isOpen, onClose, onSubmit, isButtonLoading }) => {

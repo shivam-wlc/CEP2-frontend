@@ -534,7 +534,15 @@
 
 // export default Profile;
 
-import React, { useEffect, useState } from "react";
+import {
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+  // TikTok as TikTokIcon,
+  Language as WebsiteIcon,
+  LinkedIn as LinkedInIcon,
+  Telegram as TelegramIcon,
+} from "@mui/icons-material";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import {
   Avatar,
   Box,
@@ -550,9 +558,11 @@ import {
   Tabs,
   TextField,
 } from "@mui/material";
-import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
-import { fonts } from "../utility/fonts.js";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { notify } from "../redux/slices/alertSlice.js";
+import { selectAuthenticated, selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import {
   getUserProfile,
   selectUserProfile,
@@ -560,23 +570,10 @@ import {
   updateUserProfile,
   uploadProfilePicture,
 } from "../redux/slices/profileSlice.js";
-import {
-  selectAuthenticated,
-  selectUserId,
-  selectToken,
-} from "../redux/slices/authSlice.js";
-import { notify } from "../redux/slices/alertSlice.js";
-import { checkPassStrength } from "../utility/validate.js";
 import { convertUTCDateToLocalDate } from "../utility/convertTimeToUTC.js";
 import { countryList } from "../utility/countryList.js";
-import {
-  Facebook as FacebookIcon,
-  Instagram as InstagramIcon,
-  LinkedIn as LinkedInIcon,
-  Telegram as TelegramIcon,
-  // TikTok as TikTokIcon,
-  Language as WebsiteIcon,
-} from "@mui/icons-material";
+import { fonts } from "../utility/fonts.js";
+import { checkPassStrength } from "../utility/validate.js";
 
 const Profile = () => {
   const dispatchToRedux = useDispatch();
@@ -653,25 +650,17 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (tabValue === 0) {
-      const {
-        password,
-        newPassword,
-        prevPassword,
-        confirmPassword,
-        ...updatedData
-      } = formData;
+      const { password, newPassword, prevPassword, confirmPassword, ...updatedData } = formData;
 
       try {
         setIsButtonLoading2(true);
-        dispatchToRedux(
-          updateUserProfile({ updatedData, userId: userData?._id, token })
-        );
+        dispatchToRedux(updateUserProfile({ updatedData, userId: userData?._id, token }));
 
         dispatchToRedux(
           notify({
             type: "success",
             message: "Profile updated successfully",
-          })
+          }),
         );
         setIsButtonLoading2(false);
       } catch (error) {
@@ -679,21 +668,17 @@ const Profile = () => {
           notify({
             type: "error",
             message: "Something went wrong, please try again",
-          })
+          }),
         );
         setIsButtonLoading2(false);
       }
     } else if (tabValue === 1) {
-      if (
-        !formData.prevPassword ||
-        !formData.newPassword ||
-        !formData.confirmPassword
-      ) {
+      if (!formData.prevPassword || !formData.newPassword || !formData.confirmPassword) {
         dispatchToRedux(
           notify({
             type: "warning",
             message: "Please fill all the required fields",
-          })
+          }),
         );
         return;
       }
@@ -703,7 +688,7 @@ const Profile = () => {
           notify({
             type: "warning",
             message: "Password is too weak",
-          })
+          }),
         );
         return;
       }
@@ -713,23 +698,21 @@ const Profile = () => {
           notify({
             type: "error",
             message: "New Passwords and Confirm Password do not match",
-          })
+          }),
         );
         return;
       }
 
       try {
         setIsButtonLoading(true);
-        const response = dispatchToRedux(
-          updatePassword({ formData, userId, token })
-        );
+        const response = dispatchToRedux(updatePassword({ formData, userId, token }));
         setIsButtonLoading(false);
         if (response) {
           dispatchToRedux(
             notify({
               type: "success",
               message: "Password Updated Successfully",
-            })
+            }),
           );
         }
       } catch (error) {
@@ -738,7 +721,7 @@ const Profile = () => {
           notify({
             type: "error",
             message: "Something went wrong, Please Try Again",
-          })
+          }),
         );
       }
     }
@@ -767,14 +750,14 @@ const Profile = () => {
           file: selectedFile,
           userId: userData?._id,
           token,
-        })
+        }),
       )
         .then(() => {
           dispatchToRedux(
             notify({
               type: "success",
               message: "Profile picture uploaded successfully",
-            })
+            }),
           );
           setImageUploadingLoader(false);
         })
@@ -783,7 +766,7 @@ const Profile = () => {
             notify({
               type: "error",
               message: "Failed to upload profile picture",
-            })
+            }),
           );
           setImageUploadingLoader(false);
         });
@@ -1036,8 +1019,7 @@ const Profile = () => {
                 py: 1,
                 fontWeight: "bold",
                 textTransform: "none",
-                backgroundImage:
-                  "linear-gradient(to top left, #720361, #BF2F75)",
+                backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
                 borderRadius: "2rem",
                 color: "white",
               }}
@@ -1045,11 +1027,7 @@ const Profile = () => {
               // color="primary"
               disabled={isButtonLoading}
             >
-              {isButtonLoading ? (
-                <CircularProgress size={24} />
-              ) : (
-                "Save Changes"
-              )}
+              {isButtonLoading ? <CircularProgress size={24} /> : "Save Changes"}
             </Button>
           </form>
         )}
@@ -1091,12 +1069,7 @@ const Profile = () => {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={showPassword}
-                      onChange={togglePasswordVisibility}
-                    />
-                  }
+                  control={<Checkbox checked={showPassword} onChange={togglePasswordVisibility} />}
                   label="Show Passwords"
                 />
               </Grid>
@@ -1109,8 +1082,7 @@ const Profile = () => {
                 py: 1,
                 fontWeight: "bold",
                 textTransform: "none",
-                backgroundImage:
-                  "linear-gradient(to top left, #720361, #BF2F75)",
+                backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
                 borderRadius: "2rem",
                 color: "white",
               }}
@@ -1118,11 +1090,7 @@ const Profile = () => {
               // color="primary"
               disabled={isButtonLoading}
             >
-              {isButtonLoading ? (
-                <CircularProgress size={24} />
-              ) : (
-                "Save Changes"
-              )}
+              {isButtonLoading ? <CircularProgress size={24} /> : "Save Changes"}
             </Button>
           </form>
         )}
@@ -1216,8 +1184,7 @@ const Profile = () => {
                 py: 1,
                 fontWeight: "bold",
                 textTransform: "none",
-                backgroundImage:
-                  "linear-gradient(to top left, #720361, #BF2F75)",
+                backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
                 borderRadius: "2rem",
                 color: "white",
               }}
@@ -1225,11 +1192,7 @@ const Profile = () => {
               // color="primary"
               disabled={isButtonLoading}
             >
-              {isButtonLoading ? (
-                <CircularProgress size={24} />
-              ) : (
-                "Save Changes"
-              )}
+              {isButtonLoading ? <CircularProgress size={24} /> : "Save Changes"}
             </Button>
           </form>
         )}
@@ -1266,8 +1229,7 @@ const Profile = () => {
                 py: 1,
                 fontWeight: "bold",
                 textTransform: "none",
-                backgroundImage:
-                  "linear-gradient(to top left, #720361, #BF2F75)",
+                backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
                 borderRadius: "2rem",
                 color: "white",
               }}
@@ -1275,11 +1237,7 @@ const Profile = () => {
               // color="primary"
               disabled={isButtonLoading}
             >
-              {isButtonLoading ? (
-                <CircularProgress size={24} />
-              ) : (
-                "Save Changes"
-              )}
+              {isButtonLoading ? <CircularProgress size={24} /> : "Save Changes"}
             </Button>
           </form>
         )}

@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import FetchApi from "../../client.js";
 import { config } from "../../config/config.js";
 
@@ -11,32 +12,26 @@ const initialState = {
 export const saveSurveyData = createAsyncThunk(
   "survey/saveSurveyData",
   async ({ formData, userId, token }) => {
-    return FetchApi.fetch(
-      `${config.api}/api/survey/savesurveyform1/${userId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      }
-    );
-  }
-);
-
-export const getSurveyData = createAsyncThunk(
-  "survey/getSurveyData",
-  async ({ userId, token }) => {
-    return FetchApi.fetch(`${config.api}/api/survey/getsurveyform1/${userId}`, {
-      method: "GET",
+    return FetchApi.fetch(`${config.api}/api/survey/savesurveyform1/${userId}`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify(formData),
     });
-  }
+  },
 );
+
+export const getSurveyData = createAsyncThunk("survey/getSurveyData", async ({ userId, token }) => {
+  return FetchApi.fetch(`${config.api}/api/survey/getsurveyform1/${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+});
 
 export const getCareerClusterOptions = createAsyncThunk(
   "survey/getCareerClusterOptions",
@@ -48,21 +43,18 @@ export const getCareerClusterOptions = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       },
     });
-  }
+  },
 );
 
-export const getSurveyQuestions = createAsyncThunk(
-  "survey/getSurveyQuestions",
-  async ({ token }) => {
-    return FetchApi.fetch(`${config.api}/api/survey/getsurveyquestions`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  }
-);
+export const getSurveyQuestions = createAsyncThunk("survey/getSurveyQuestions", async ({ token }) => {
+  return FetchApi.fetch(`${config.api}/api/survey/getsurveyquestions`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+});
 
 const surveySlice = createSlice({
   name: "survey",

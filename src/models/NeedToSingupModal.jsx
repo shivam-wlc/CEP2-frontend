@@ -1,9 +1,10 @@
-import React from "react";
 import { Divider, Modal, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { fonts } from "../utility/fonts";
-import GeneralButton from "../components/general/GeneralButton";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+
+import GeneralButton from "../components/general/GeneralButton";
+import { fonts } from "../utility/fonts";
 
 const NeedToSingupModal = ({ open, onClose }) => {
   const navigate = useNavigate();

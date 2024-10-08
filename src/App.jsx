@@ -1,9 +1,10 @@
-import AppRoutes from "./routes/AppRoutes";
-import { selectAlert } from "./redux/slices/alertSlice";
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import AlertMessage from "./components/AlertMessage.jsx";
+import { useSelector } from "react-redux";
+
 import { backgroundVector } from "./assets/assest.js";
+import AlertMessage from "./components/AlertMessage.jsx";
+import { selectAlert } from "./redux/slices/alertSlice";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   const alert = useSelector(selectAlert);

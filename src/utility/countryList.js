@@ -5,8 +5,7 @@ const countryList = [
     emoji: "🇦🇫",
     unicode: "U+1F1E6 U+1F1EB",
     dial_code: "+93",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AF.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AF.svg",
   },
   {
     name: "Albania",
@@ -14,8 +13,7 @@ const countryList = [
     emoji: "🇦🇱",
     unicode: "U+1F1E6 U+1F1F1",
     dial_code: "+355",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AL.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AL.svg",
   },
   {
     name: "Andorra",
@@ -23,8 +21,7 @@ const countryList = [
     emoji: "🇦🇩",
     unicode: "U+1F1E6 U+1F1E9",
     dial_code: "+376",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AD.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AD.svg",
   },
   {
     name: "Angola",
@@ -32,8 +29,7 @@ const countryList = [
     emoji: "🇦🇴",
     unicode: "U+1F1E6 U+1F1F4",
     dial_code: "+244",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AO.svg",
   },
   {
     name: "Anguilla",
@@ -41,8 +37,7 @@ const countryList = [
     emoji: "🇦🇮",
     unicode: "U+1F1E6 U+1F1EE",
     dial_code: "+1264",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AI.svg",
   },
   {
     name: "Antarctica",
@@ -50,8 +45,7 @@ const countryList = [
     emoji: "🇦🇶",
     unicode: "U+1F1E6 U+1F1F6",
     dial_code: "+672",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AQ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AQ.svg",
   },
   {
     name: "Antigua & Barbuda",
@@ -59,8 +53,7 @@ const countryList = [
     emoji: "🇦🇬",
     unicode: "U+1F1E6 U+1F1EC",
     dial_code: "+1268",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AG.svg",
   },
   {
     name: "Argentina",
@@ -68,8 +61,7 @@ const countryList = [
     emoji: "🇦🇷",
     unicode: "U+1F1E6 U+1F1F7",
     dial_code: "+54",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AR.svg",
   },
   {
     name: "Armenia",
@@ -77,8 +69,7 @@ const countryList = [
     emoji: "🇦🇲",
     unicode: "U+1F1E6 U+1F1F2",
     dial_code: "+374",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AM.svg",
   },
   {
     name: "Aruba",
@@ -86,8 +77,7 @@ const countryList = [
     emoji: "🇦🇼",
     unicode: "U+1F1E6 U+1F1FC",
     dial_code: "+297",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AW.svg",
   },
 
   {
@@ -96,8 +86,7 @@ const countryList = [
     emoji: "🇦🇺",
     unicode: "U+1F1E6 U+1F1FA",
     dial_code: "+61",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AU.svg",
   },
   {
     name: "Austria",
@@ -105,8 +94,7 @@ const countryList = [
     emoji: "🇦🇹",
     unicode: "U+1F1E6 U+1F1F9",
     dial_code: "+43",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AT.svg",
   },
   {
     name: "Azerbaijan",
@@ -114,8 +102,7 @@ const countryList = [
     emoji: "🇦🇿",
     unicode: "U+1F1E6 U+1F1FF",
     dial_code: "+994",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AZ.svg",
   },
   {
     name: "Bahamas",
@@ -123,8 +110,7 @@ const countryList = [
     emoji: "🇧🇸",
     unicode: "U+1F1E7 U+1F1F8",
     dial_code: "+1242",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BS.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BS.svg",
   },
   {
     name: "Bahrain",
@@ -132,8 +118,7 @@ const countryList = [
     emoji: "🇧🇭",
     unicode: "U+1F1E7 U+1F1ED",
     dial_code: "+973",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BH.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BH.svg",
   },
   {
     name: "Bangladesh",
@@ -141,8 +126,7 @@ const countryList = [
     emoji: "🇧🇩",
     unicode: "U+1F1E7 U+1F1E9",
     dial_code: "+880",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BD.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BD.svg",
   },
   {
     name: "Barbados",
@@ -150,8 +134,7 @@ const countryList = [
     emoji: "🇧🇧",
     unicode: "U+1F1E7 U+1F1E7",
     dial_code: "+1246",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BB.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BB.svg",
   },
   {
     name: "Belarus",
@@ -159,8 +142,7 @@ const countryList = [
     emoji: "🇧🇾",
     unicode: "U+1F1E7 U+1F1FE",
     dial_code: "+375",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BY.svg",
   },
   {
     name: "Belgium",
@@ -168,8 +150,7 @@ const countryList = [
     emoji: "🇧🇪",
     unicode: "U+1F1E7 U+1F1EA",
     dial_code: "+32",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BE.svg",
   },
   {
     name: "Belize",
@@ -177,8 +158,7 @@ const countryList = [
     emoji: "🇧🇿",
     unicode: "U+1F1E7 U+1F1FF",
     dial_code: "+501",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BZ.svg",
   },
   {
     name: "Benin",
@@ -186,8 +166,7 @@ const countryList = [
     emoji: "🇧🇯",
     unicode: "U+1F1E7 U+1F1EF",
     dial_code: "+229",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BJ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BJ.svg",
   },
   {
     name: "Bermuda",
@@ -195,8 +174,7 @@ const countryList = [
     emoji: "🇧🇲",
     unicode: "U+1F1E7 U+1F1F2",
     dial_code: "+1441",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BM.svg",
   },
   {
     name: "Bhutan",
@@ -204,8 +182,7 @@ const countryList = [
     emoji: "🇧🇹",
     unicode: "U+1F1E7 U+1F1F9",
     dial_code: "+975",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BT.svg",
   },
   {
     name: "Bolivia",
@@ -213,8 +190,7 @@ const countryList = [
     emoji: "🇧🇴",
     unicode: "U+1F1E7 U+1F1F4",
     dial_code: "+591",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BO.svg",
   },
   {
     name: "Bosnia & Herzegovina",
@@ -222,8 +198,7 @@ const countryList = [
     emoji: "🇧🇦",
     unicode: "U+1F1E7 U+1F1E6",
     dial_code: "+387",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BA.svg",
   },
   {
     name: "Botswana",
@@ -231,8 +206,7 @@ const countryList = [
     emoji: "🇧🇼",
     unicode: "U+1F1E7 U+1F1FC",
     dial_code: "+267",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BW.svg",
   },
   {
     name: "Brazil",
@@ -240,8 +214,7 @@ const countryList = [
     emoji: "🇧🇷",
     unicode: "U+1F1E7 U+1F1F7",
     dial_code: "+55",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BR.svg",
   },
 
   {
@@ -250,8 +223,7 @@ const countryList = [
     emoji: "🇧🇳",
     unicode: "U+1F1E7 U+1F1F3",
     dial_code: "+673",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BN.svg",
   },
   {
     name: "Bulgaria",
@@ -259,8 +231,7 @@ const countryList = [
     emoji: "🇧🇬",
     unicode: "U+1F1E7 U+1F1EC",
     dial_code: "+359",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BG.svg",
   },
   {
     name: "Burkina Faso",
@@ -268,8 +239,7 @@ const countryList = [
     emoji: "🇧🇫",
     unicode: "U+1F1E7 U+1F1EB",
     dial_code: "+226",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BF.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BF.svg",
   },
   {
     name: "Burundi",
@@ -277,8 +247,7 @@ const countryList = [
     emoji: "🇧🇮",
     unicode: "U+1F1E7 U+1F1EE",
     dial_code: "+257",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BI.svg",
   },
   {
     name: "Cabo Verde",
@@ -286,8 +255,7 @@ const countryList = [
     emoji: "🇨🇻",
     unicode: "U+1F1E8 U+1F1FB",
     dial_code: "+238",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CV.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CV.svg",
   },
   {
     name: "Cambodia",
@@ -295,8 +263,7 @@ const countryList = [
     emoji: "🇰🇭",
     unicode: "U+1F1F0 U+1F1ED",
     dial_code: "+855",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KH.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KH.svg",
   },
   {
     name: "Cameroon",
@@ -304,8 +271,7 @@ const countryList = [
     emoji: "🇨🇲",
     unicode: "U+1F1E8 U+1F1F2",
     dial_code: "+237",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CM.svg",
   },
   {
     name: "Canada",
@@ -313,8 +279,7 @@ const countryList = [
     emoji: "🇨🇦",
     unicode: "U+1F1E8 U+1F1E6",
     dial_code: "+1",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CA.svg",
   },
   {
     name: "Cayman Islands",
@@ -322,8 +287,7 @@ const countryList = [
     emoji: "🇰🇾",
     unicode: "U+1F1F0 U+1F1FE",
     dial_code: "+1345",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KY.svg",
   },
   {
     name: "Central African Republic",
@@ -331,8 +295,7 @@ const countryList = [
     emoji: "🇨🇫",
     unicode: "U+1F1E8 U+1F1EB",
     dial_code: "+236",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CF.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CF.svg",
   },
   {
     name: "Chad",
@@ -340,8 +303,7 @@ const countryList = [
     emoji: "🇹🇩",
     unicode: "U+1F1F9 U+1F1E9",
     dial_code: "+235",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TD.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TD.svg",
   },
   {
     name: "Chile",
@@ -349,8 +311,7 @@ const countryList = [
     emoji: "🇨🇱",
     unicode: "U+1F1E8 U+1F1F1",
     dial_code: "+56",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CL.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CL.svg",
   },
   {
     name: "China",
@@ -358,8 +319,7 @@ const countryList = [
     emoji: "🇨🇳",
     unicode: "U+1F1E8 U+1F1F3",
     dial_code: "+86",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CN.svg",
   },
 
   {
@@ -368,8 +328,7 @@ const countryList = [
     emoji: "🇨🇴",
     unicode: "U+1F1E8 U+1F1F4",
     dial_code: "+57",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CO.svg",
   },
   {
     name: "Comoros",
@@ -377,8 +336,7 @@ const countryList = [
     emoji: "🇰🇲",
     unicode: "U+1F1F0 U+1F1F2",
     dial_code: "+269",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KM.svg",
   },
   {
     name: "Congo - Brazzaville",
@@ -386,8 +344,7 @@ const countryList = [
     emoji: "🇨🇬",
     unicode: "U+1F1E8 U+1F1EC",
     dial_code: "+242",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CG.svg",
   },
   {
     name: "Congo - Kinshasa",
@@ -395,8 +352,7 @@ const countryList = [
     emoji: "🇨🇩",
     unicode: "U+1F1E8 U+1F1E9",
     dial_code: "+243",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CD.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CD.svg",
   },
   {
     name: "Cook Islands",
@@ -404,8 +360,7 @@ const countryList = [
     emoji: "🇨🇰",
     unicode: "U+1F1E8 U+1F1F0",
     dial_code: "+682",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CK.svg",
   },
   {
     name: "Costa Rica",
@@ -413,8 +368,7 @@ const countryList = [
     emoji: "🇨🇷",
     unicode: "U+1F1E8 U+1F1F7",
     dial_code: "+506",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CR.svg",
   },
   {
     name: "Croatia",
@@ -422,8 +376,7 @@ const countryList = [
     emoji: "🇭🇷",
     unicode: "U+1F1ED U+1F1F7",
     dial_code: "+385",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HR.svg",
   },
   {
     name: "Cuba",
@@ -431,8 +384,7 @@ const countryList = [
     emoji: "🇨🇺",
     unicode: "U+1F1E8 U+1F1FA",
     dial_code: "+53",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CU.svg",
   },
   {
     name: "Curaçao",
@@ -440,8 +392,7 @@ const countryList = [
     emoji: "🇨🇼",
     unicode: "U+1F1E8 U+1F1FC",
     dial_code: "+599",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CW.svg",
   },
   {
     name: "Cyprus",
@@ -449,8 +400,7 @@ const countryList = [
     emoji: "🇨🇾",
     unicode: "U+1F1E8 U+1F1FE",
     dial_code: "+357",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CY.svg",
   },
   {
     name: "Czechia",
@@ -458,8 +408,7 @@ const countryList = [
     emoji: "🇨🇿",
     unicode: "U+1F1E8 U+1F1FF",
     dial_code: "+420",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CZ.svg",
   },
   {
     name: "Côte d’Ivoire",
@@ -467,8 +416,7 @@ const countryList = [
     emoji: "🇨🇮",
     unicode: "U+1F1E8 U+1F1EE",
     dial_code: "+225",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CI.svg",
   },
   {
     name: "Denmark",
@@ -476,8 +424,7 @@ const countryList = [
     emoji: "🇩🇰",
     unicode: "U+1F1E9 U+1F1F0",
     dial_code: "+45",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DK.svg",
   },
   {
     name: "Djibouti",
@@ -485,8 +432,7 @@ const countryList = [
     emoji: "🇩🇯",
     unicode: "U+1F1E9 U+1F1EF",
     dial_code: "+253",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DJ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DJ.svg",
   },
   {
     name: "Dominica",
@@ -494,8 +440,7 @@ const countryList = [
     emoji: "🇩🇲",
     unicode: "U+1F1E9 U+1F1F2",
     dial_code: "+1767",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DM.svg",
   },
   {
     name: "Dominican Republic",
@@ -503,8 +448,7 @@ const countryList = [
     emoji: "🇩🇴",
     unicode: "U+1F1E9 U+1F1F4",
     dial_code: "+1 809, +1 829, +1 849",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DO.svg",
   },
   {
     name: "Ecuador",
@@ -512,8 +456,7 @@ const countryList = [
     emoji: "🇪🇨",
     unicode: "U+1F1EA U+1F1E8",
     dial_code: "+593",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/EC.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/EC.svg",
   },
   {
     name: "Egypt",
@@ -521,8 +464,7 @@ const countryList = [
     emoji: "🇪🇬",
     unicode: "U+1F1EA U+1F1EC",
     dial_code: "+20",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/EG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/EG.svg",
   },
   {
     name: "El Salvador",
@@ -530,8 +472,7 @@ const countryList = [
     emoji: "🇸🇻",
     unicode: "U+1F1F8 U+1F1FB",
     dial_code: "+503",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SV.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SV.svg",
   },
   {
     name: "Equatorial Guinea",
@@ -539,8 +480,7 @@ const countryList = [
     emoji: "🇬🇶",
     unicode: "U+1F1EC U+1F1F6",
     dial_code: "+240",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GQ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GQ.svg",
   },
   {
     name: "Eritrea",
@@ -548,8 +488,7 @@ const countryList = [
     emoji: "🇪🇷",
     unicode: "U+1F1EA U+1F1F7",
     dial_code: "+291",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ER.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ER.svg",
   },
   {
     name: "Estonia",
@@ -557,8 +496,7 @@ const countryList = [
     emoji: "🇪🇪",
     unicode: "U+1F1EA U+1F1EA",
     dial_code: "+372",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/EE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/EE.svg",
   },
   {
     name: "Eswatini",
@@ -566,8 +504,7 @@ const countryList = [
     emoji: "🇸🇿",
     unicode: "U+1F1F8 U+1F1FF",
     dial_code: "+268",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SZ.svg",
   },
   {
     name: "Ethiopia",
@@ -575,8 +512,7 @@ const countryList = [
     emoji: "🇪🇹",
     unicode: "U+1F1EA U+1F1F9",
     dial_code: "+251",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ET.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ET.svg",
   },
   {
     name: "Falkland Islands",
@@ -584,8 +520,7 @@ const countryList = [
     emoji: "🇫🇰",
     unicode: "U+1F1EB U+1F1F0",
     dial_code: "+500",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FK.svg",
   },
   {
     name: "Faroe Islands",
@@ -593,8 +528,7 @@ const countryList = [
     emoji: "🇫🇴",
     unicode: "U+1F1EB U+1F1F4",
     dial_code: "+298",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FO.svg",
   },
   {
     name: "Fiji",
@@ -602,8 +536,7 @@ const countryList = [
     emoji: "🇫🇯",
     unicode: "U+1F1EB U+1F1EF",
     dial_code: "+679",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FJ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FJ.svg",
   },
   {
     name: "Finland",
@@ -611,8 +544,7 @@ const countryList = [
     emoji: "🇫🇮",
     unicode: "U+1F1EB U+1F1EE",
     dial_code: "+358",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FI.svg",
   },
   {
     name: "France",
@@ -620,8 +552,7 @@ const countryList = [
     emoji: "🇫🇷",
     unicode: "U+1F1EB U+1F1F7",
     dial_code: "+33",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FR.svg",
   },
   {
     name: "French Guiana",
@@ -629,8 +560,7 @@ const countryList = [
     emoji: "🇬🇫",
     unicode: "U+1F1EC U+1F1EB",
     dial_code: "+594",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GF.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GF.svg",
   },
   {
     name: "French Polynesia",
@@ -638,8 +568,7 @@ const countryList = [
     emoji: "🇵🇫",
     unicode: "U+1F1F5 U+1F1EB",
     dial_code: "+689",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PF.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PF.svg",
   },
 
   {
@@ -648,8 +577,7 @@ const countryList = [
     emoji: "🇬🇦",
     unicode: "U+1F1EC U+1F1E6",
     dial_code: "+241",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GA.svg",
   },
   {
     name: "Gambia",
@@ -657,8 +585,7 @@ const countryList = [
     emoji: "🇬🇲",
     unicode: "U+1F1EC U+1F1F2",
     dial_code: "+220",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GM.svg",
   },
   {
     name: "Georgia",
@@ -666,8 +593,7 @@ const countryList = [
     emoji: "🇬🇪",
     unicode: "U+1F1EC U+1F1EA",
     dial_code: "+995",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GE.svg",
   },
   {
     name: "Germany",
@@ -675,8 +601,7 @@ const countryList = [
     emoji: "🇩🇪",
     unicode: "U+1F1E9 U+1F1EA",
     dial_code: "+49",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/DE.svg",
   },
   {
     name: "Ghana",
@@ -684,8 +609,7 @@ const countryList = [
     emoji: "🇬🇭",
     unicode: "U+1F1EC U+1F1ED",
     dial_code: "+233",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GH.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GH.svg",
   },
   {
     name: "Gibraltar",
@@ -693,8 +617,7 @@ const countryList = [
     emoji: "🇬🇮",
     unicode: "U+1F1EC U+1F1EE",
     dial_code: "+350",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GI.svg",
   },
   {
     name: "Greece",
@@ -702,8 +625,7 @@ const countryList = [
     emoji: "🇬🇷",
     unicode: "U+1F1EC U+1F1F7",
     dial_code: "+30",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GR.svg",
   },
   {
     name: "Greenland",
@@ -711,8 +633,7 @@ const countryList = [
     emoji: "🇬🇱",
     unicode: "U+1F1EC U+1F1F1",
     dial_code: "+299",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GL.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GL.svg",
   },
   {
     name: "Grenada",
@@ -720,8 +641,7 @@ const countryList = [
     emoji: "🇬🇩",
     unicode: "U+1F1EC U+1F1E9",
     dial_code: "+1473",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GD.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GD.svg",
   },
   {
     name: "Guadeloupe",
@@ -729,8 +649,7 @@ const countryList = [
     emoji: "🇬🇵",
     unicode: "U+1F1EC U+1F1F5",
     dial_code: "+590",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GP.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GP.svg",
   },
   {
     name: "Guam",
@@ -738,8 +657,7 @@ const countryList = [
     emoji: "🇬🇺",
     unicode: "U+1F1EC U+1F1FA",
     dial_code: "+1671",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GU.svg",
   },
   {
     name: "Guatemala",
@@ -747,8 +665,7 @@ const countryList = [
     emoji: "🇬🇹",
     unicode: "U+1F1EC U+1F1F9",
     dial_code: "+502",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GT.svg",
   },
   {
     name: "Guernsey",
@@ -756,8 +673,7 @@ const countryList = [
     emoji: "🇬🇬",
     unicode: "U+1F1EC U+1F1EC",
     dial_code: "+44",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GG.svg",
   },
   {
     name: "Guinea",
@@ -765,8 +681,7 @@ const countryList = [
     emoji: "🇬🇳",
     unicode: "U+1F1EC U+1F1F3",
     dial_code: "+224",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GN.svg",
   },
   {
     name: "Guinea-Bissau",
@@ -774,8 +689,7 @@ const countryList = [
     emoji: "🇬🇼",
     unicode: "U+1F1EC U+1F1FC",
     dial_code: "+245",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GW.svg",
   },
   {
     name: "Guyana",
@@ -783,8 +697,7 @@ const countryList = [
     emoji: "🇬🇾",
     unicode: "U+1F1EC U+1F1FE",
     dial_code: "+592",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GY.svg",
   },
   {
     name: "Haiti",
@@ -792,8 +705,7 @@ const countryList = [
     emoji: "🇭🇹",
     unicode: "U+1F1ED U+1F1F9",
     dial_code: "+509",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HT.svg",
   },
 
   {
@@ -802,8 +714,7 @@ const countryList = [
     emoji: "🇭🇳",
     unicode: "U+1F1ED U+1F1F3",
     dial_code: "+504",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HN.svg",
   },
   {
     name: "Hong Kong SAR China",
@@ -811,8 +722,7 @@ const countryList = [
     emoji: "🇭🇰",
     unicode: "U+1F1ED U+1F1F0",
     dial_code: "+852",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HK.svg",
   },
   {
     name: "Hungary",
@@ -820,8 +730,7 @@ const countryList = [
     emoji: "🇭🇺",
     unicode: "U+1F1ED U+1F1FA",
     dial_code: "+36",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/HU.svg",
   },
   {
     name: "Iceland",
@@ -829,8 +738,7 @@ const countryList = [
     emoji: "🇮🇸",
     unicode: "U+1F1EE U+1F1F8",
     dial_code: "+354",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IS.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IS.svg",
   },
   {
     name: "India",
@@ -838,8 +746,7 @@ const countryList = [
     emoji: "🇮🇳",
     unicode: "U+1F1EE U+1F1F3",
     dial_code: "+91",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IN.svg",
   },
   {
     name: "Indonesia",
@@ -847,8 +754,7 @@ const countryList = [
     emoji: "🇮🇩",
     unicode: "U+1F1EE U+1F1E9",
     dial_code: "+62",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ID.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ID.svg",
   },
   {
     name: "Iran",
@@ -856,8 +762,7 @@ const countryList = [
     emoji: "🇮🇷",
     unicode: "U+1F1EE U+1F1F7",
     dial_code: "+98",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IR.svg",
   },
   {
     name: "Iraq",
@@ -865,8 +770,7 @@ const countryList = [
     emoji: "🇮🇶",
     unicode: "U+1F1EE U+1F1F6",
     dial_code: "+964",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IQ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IQ.svg",
   },
   {
     name: "Ireland",
@@ -874,8 +778,7 @@ const countryList = [
     emoji: "🇮🇪",
     unicode: "U+1F1EE U+1F1EA",
     dial_code: "+353",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IE.svg",
   },
   {
     name: "Isle of Man",
@@ -883,8 +786,7 @@ const countryList = [
     emoji: "🇮🇲",
     unicode: "U+1F1EE U+1F1F2",
     dial_code: "+44",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IM.svg",
   },
   {
     name: "Israel",
@@ -892,8 +794,7 @@ const countryList = [
     emoji: "🇮🇱",
     unicode: "U+1F1EE U+1F1F1",
     dial_code: "+972",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IL.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IL.svg",
   },
   {
     name: "Italy",
@@ -901,8 +802,7 @@ const countryList = [
     emoji: "🇮🇹",
     unicode: "U+1F1EE U+1F1F9",
     dial_code: "+39",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/IT.svg",
   },
   {
     name: "Jamaica",
@@ -910,8 +810,7 @@ const countryList = [
     emoji: "🇯🇲",
     unicode: "U+1F1EF U+1F1F2",
     dial_code: "+1 876",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/JM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/JM.svg",
   },
   {
     name: "Japan",
@@ -919,8 +818,7 @@ const countryList = [
     emoji: "🇯🇵",
     unicode: "U+1F1EF U+1F1F5",
     dial_code: "+81",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/JP.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/JP.svg",
   },
   {
     name: "Jersey",
@@ -928,8 +826,7 @@ const countryList = [
     emoji: "🇯🇪",
     unicode: "U+1F1EF U+1F1EA",
     dial_code: "+44",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/JE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/JE.svg",
   },
   {
     name: "Jordan",
@@ -937,8 +834,7 @@ const countryList = [
     emoji: "🇯🇴",
     unicode: "U+1F1EF U+1F1F4",
     dial_code: "+962",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/JO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/JO.svg",
   },
   {
     name: "Kazakhstan",
@@ -946,8 +842,7 @@ const countryList = [
     emoji: "🇰🇿",
     unicode: "U+1F1F0 U+1F1FF",
     dial_code: "+7",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KZ.svg",
   },
   {
     name: "Kenya",
@@ -955,8 +850,7 @@ const countryList = [
     emoji: "🇰🇪",
     unicode: "U+1F1F0 U+1F1EA",
     dial_code: "+254",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KE.svg",
   },
   {
     name: "Kiribati",
@@ -964,8 +858,7 @@ const countryList = [
     emoji: "🇰🇮",
     unicode: "U+1F1F0 U+1F1EE",
     dial_code: "+686",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KI.svg",
   },
   {
     name: "Kosovo",
@@ -973,8 +866,7 @@ const countryList = [
     emoji: "🇽🇰",
     unicode: "U+1F1FD U+1F1F0",
     dial_code: "+383",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/XK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/XK.svg",
   },
   {
     name: "Kuwait",
@@ -982,8 +874,7 @@ const countryList = [
     emoji: "🇰🇼",
     unicode: "U+1F1F0 U+1F1FC",
     dial_code: "+965",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KW.svg",
   },
   {
     name: "Kyrgyzstan",
@@ -991,8 +882,7 @@ const countryList = [
     emoji: "🇰🇬",
     unicode: "U+1F1F0 U+1F1EC",
     dial_code: "+996",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KG.svg",
   },
   {
     name: "Laos",
@@ -1000,8 +890,7 @@ const countryList = [
     emoji: "🇱🇦",
     unicode: "U+1F1F1 U+1F1E6",
     dial_code: "+856",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LA.svg",
   },
   {
     name: "Latvia",
@@ -1009,8 +898,7 @@ const countryList = [
     emoji: "🇱🇻",
     unicode: "U+1F1F1 U+1F1FB",
     dial_code: "+371",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LV.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LV.svg",
   },
   {
     name: "Lebanon",
@@ -1018,8 +906,7 @@ const countryList = [
     emoji: "🇱🇧",
     unicode: "U+1F1F1 U+1F1E7",
     dial_code: "+961",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LB.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LB.svg",
   },
   {
     name: "Lesotho",
@@ -1027,8 +914,7 @@ const countryList = [
     emoji: "🇱🇸",
     unicode: "U+1F1F1 U+1F1F8",
     dial_code: "+266",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LS.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LS.svg",
   },
   {
     name: "Liberia",
@@ -1036,8 +922,7 @@ const countryList = [
     emoji: "🇱🇷",
     unicode: "U+1F1F1 U+1F1F7",
     dial_code: "+231",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LR.svg",
   },
   {
     name: "Libya",
@@ -1045,8 +930,7 @@ const countryList = [
     emoji: "🇱🇾",
     unicode: "U+1F1F1 U+1F1FE",
     dial_code: "+218",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LY.svg",
   },
   {
     name: "Liechtenstein",
@@ -1054,8 +938,7 @@ const countryList = [
     emoji: "🇱🇮",
     unicode: "U+1F1F1 U+1F1EE",
     dial_code: "+423",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LI.svg",
   },
   {
     name: "Lithuania",
@@ -1063,8 +946,7 @@ const countryList = [
     emoji: "🇱🇹",
     unicode: "U+1F1F1 U+1F1F9",
     dial_code: "+370",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LT.svg",
   },
   {
     name: "Luxembourg",
@@ -1072,8 +954,7 @@ const countryList = [
     emoji: "🇱🇺",
     unicode: "U+1F1F1 U+1F1FA",
     dial_code: "+352",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LU.svg",
   },
   {
     name: "Macao SAR China",
@@ -1081,8 +962,7 @@ const countryList = [
     emoji: "🇲🇴",
     unicode: "U+1F1F2 U+1F1F4",
     dial_code: "+853",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MO.svg",
   },
   {
     name: "Madagascar",
@@ -1090,8 +970,7 @@ const countryList = [
     emoji: "🇲🇬",
     unicode: "U+1F1F2 U+1F1EC",
     dial_code: "+261",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MG.svg",
   },
   {
     name: "Malawi",
@@ -1099,8 +978,7 @@ const countryList = [
     emoji: "🇲🇼",
     unicode: "U+1F1F2 U+1F1FC",
     dial_code: "+265",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MW.svg",
   },
   {
     name: "Malaysia",
@@ -1108,8 +986,7 @@ const countryList = [
     emoji: "🇲🇾",
     unicode: "U+1F1F2 U+1F1FE",
     dial_code: "+60",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MY.svg",
   },
   {
     name: "Maldives",
@@ -1117,8 +994,7 @@ const countryList = [
     emoji: "🇲🇻",
     unicode: "U+1F1F2 U+1F1FB",
     dial_code: "+960",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MV.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MV.svg",
   },
   {
     name: "Mali",
@@ -1126,8 +1002,7 @@ const countryList = [
     emoji: "🇲🇱",
     unicode: "U+1F1F2 U+1F1F1",
     dial_code: "+223",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ML.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ML.svg",
   },
   {
     name: "Malta",
@@ -1135,8 +1010,7 @@ const countryList = [
     emoji: "🇲🇹",
     unicode: "U+1F1F2 U+1F1F9",
     dial_code: "+356",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MT.svg",
   },
   {
     name: "Marshall Islands",
@@ -1144,8 +1018,7 @@ const countryList = [
     emoji: "🇲🇭",
     unicode: "U+1F1F2 U+1F1ED",
     dial_code: "+692",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MH.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MH.svg",
   },
   {
     name: "Martinique",
@@ -1153,8 +1026,7 @@ const countryList = [
     emoji: "🇲🇶",
     unicode: "U+1F1F2 U+1F1F6",
     dial_code: "+596",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MQ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MQ.svg",
   },
   {
     name: "Mauritania",
@@ -1162,8 +1034,7 @@ const countryList = [
     emoji: "🇲🇷",
     unicode: "U+1F1F2 U+1F1F7",
     dial_code: "+222",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MR.svg",
   },
   {
     name: "Mauritius",
@@ -1171,8 +1042,7 @@ const countryList = [
     emoji: "🇲🇺",
     unicode: "U+1F1F2 U+1F1FA",
     dial_code: "+230",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MU.svg",
   },
   {
     name: "Mayotte",
@@ -1180,8 +1050,7 @@ const countryList = [
     emoji: "🇾🇹",
     unicode: "U+1F1FE U+1F1F9",
     dial_code: "+262",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/YT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/YT.svg",
   },
   {
     name: "Mexico",
@@ -1189,8 +1058,7 @@ const countryList = [
     emoji: "🇲🇽",
     unicode: "U+1F1F2 U+1F1FD",
     dial_code: "+52",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MX.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MX.svg",
   },
   {
     name: "Micronesia",
@@ -1198,8 +1066,7 @@ const countryList = [
     emoji: "🇫🇲",
     unicode: "U+1F1EB U+1F1F2",
     dial_code: "+691",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/FM.svg",
   },
   {
     name: "Moldova",
@@ -1207,8 +1074,7 @@ const countryList = [
     emoji: "🇲🇩",
     unicode: "U+1F1F2 U+1F1E9",
     dial_code: "+373",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MD.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MD.svg",
   },
   {
     name: "Monaco",
@@ -1216,8 +1082,7 @@ const countryList = [
     emoji: "🇲🇨",
     unicode: "U+1F1F2 U+1F1E8",
     dial_code: "+377",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MC.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MC.svg",
   },
   {
     name: "Mongolia",
@@ -1225,8 +1090,7 @@ const countryList = [
     emoji: "🇲🇳",
     unicode: "U+1F1F2 U+1F1F3",
     dial_code: "+976",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MN.svg",
   },
   {
     name: "Montenegro",
@@ -1234,8 +1098,7 @@ const countryList = [
     emoji: "🇲🇪",
     unicode: "U+1F1F2 U+1F1EA",
     dial_code: "+382",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ME.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ME.svg",
   },
   {
     name: "Montserrat",
@@ -1243,8 +1106,7 @@ const countryList = [
     emoji: "🇲🇸",
     unicode: "U+1F1F2 U+1F1F8",
     dial_code: "+1 664",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MS.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MS.svg",
   },
   {
     name: "Morocco",
@@ -1252,8 +1114,7 @@ const countryList = [
     emoji: "🇲🇦",
     unicode: "U+1F1F2 U+1F1E6",
     dial_code: "+212",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MA.svg",
   },
   {
     name: "Mozambique",
@@ -1261,8 +1122,7 @@ const countryList = [
     emoji: "🇲🇿",
     unicode: "U+1F1F2 U+1F1FF",
     dial_code: "+258",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MZ.svg",
   },
   {
     name: "Myanmar (Burma)",
@@ -1270,8 +1130,7 @@ const countryList = [
     emoji: "🇲🇲",
     unicode: "U+1F1F2 U+1F1F2",
     dial_code: "+95",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MM.svg",
   },
   {
     name: "Namibia",
@@ -1279,8 +1138,7 @@ const countryList = [
     emoji: "🇳🇦",
     unicode: "U+1F1F3 U+1F1E6",
     dial_code: "+264",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NA.svg",
   },
   {
     name: "Nauru",
@@ -1288,8 +1146,7 @@ const countryList = [
     emoji: "🇳🇷",
     unicode: "U+1F1F3 U+1F1F7",
     dial_code: "+674",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NR.svg",
   },
   {
     name: "Nepal",
@@ -1297,8 +1154,7 @@ const countryList = [
     emoji: "🇳🇵",
     unicode: "U+1F1F3 U+1F1F5",
     dial_code: "+977",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NP.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NP.svg",
   },
   {
     name: "Netherlands",
@@ -1306,8 +1162,7 @@ const countryList = [
     emoji: "🇳🇱",
     unicode: "U+1F1F3 U+1F1F1",
     dial_code: "+31",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NL.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NL.svg",
   },
   {
     name: "New Caledonia",
@@ -1315,8 +1170,7 @@ const countryList = [
     emoji: "🇳🇨",
     unicode: "U+1F1F3 U+1F1E8",
     dial_code: "+687",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NC.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NC.svg",
   },
   {
     name: "New Zealand",
@@ -1324,8 +1178,7 @@ const countryList = [
     emoji: "🇳🇿",
     unicode: "U+1F1F3 U+1F1FF",
     dial_code: "+64",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NZ.svg",
   },
   {
     name: "Nicaragua",
@@ -1333,8 +1186,7 @@ const countryList = [
     emoji: "🇳🇮",
     unicode: "U+1F1F3 U+1F1EE",
     dial_code: "+505",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NI.svg",
   },
   {
     name: "Niger",
@@ -1342,8 +1194,7 @@ const countryList = [
     emoji: "🇳🇪",
     unicode: "U+1F1F3 U+1F1EA",
     dial_code: "+227",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NE.svg",
   },
   {
     name: "Nigeria",
@@ -1351,8 +1202,7 @@ const countryList = [
     emoji: "🇳🇬",
     unicode: "U+1F1F3 U+1F1EC",
     dial_code: "+234",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NG.svg",
   },
   {
     name: "Niue",
@@ -1360,8 +1210,7 @@ const countryList = [
     emoji: "🇳🇺",
     unicode: "U+1F1F3 U+1F1FA",
     dial_code: "+683",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NU.svg",
   },
   {
     name: "Norfolk Island",
@@ -1369,8 +1218,7 @@ const countryList = [
     emoji: "🇳🇫",
     unicode: "U+1F1F3 U+1F1EB",
     dial_code: "+672",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NF.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NF.svg",
   },
   {
     name: "North Korea",
@@ -1378,8 +1226,7 @@ const countryList = [
     emoji: "🇰🇵",
     unicode: "U+1F1F0 U+1F1F5",
     dial_code: "+850",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KP.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KP.svg",
   },
   {
     name: "Northern Mariana Islands",
@@ -1387,8 +1234,7 @@ const countryList = [
     emoji: "🇲🇵",
     unicode: "U+1F1F2 U+1F1F5",
     dial_code: "+1 670",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MP.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/MP.svg",
   },
   {
     name: "Norway",
@@ -1396,8 +1242,7 @@ const countryList = [
     emoji: "🇳🇴",
     unicode: "U+1F1F3 U+1F1F4",
     dial_code: "+47",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/NO.svg",
   },
   {
     name: "Oman",
@@ -1405,8 +1250,7 @@ const countryList = [
     emoji: "🇴🇲",
     unicode: "U+1F1F4 U+1F1F2",
     dial_code: "+968",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/OM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/OM.svg",
   },
   {
     name: "Pakistan",
@@ -1414,8 +1258,7 @@ const countryList = [
     emoji: "🇵🇰",
     unicode: "U+1F1F5 U+1F1F0",
     dial_code: "+92",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PK.svg",
   },
   {
     name: "Palau",
@@ -1423,8 +1266,7 @@ const countryList = [
     emoji: "🇵🇼",
     unicode: "U+1F1F5 U+1F1FC",
     dial_code: "+680",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PW.svg",
   },
   {
     name: "Palestinian Territories",
@@ -1432,8 +1274,7 @@ const countryList = [
     emoji: "🇵🇸",
     unicode: "U+1F1F5 U+1F1F8",
     dial_code: "+970",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PS.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PS.svg",
   },
   {
     name: "Panama",
@@ -1441,8 +1282,7 @@ const countryList = [
     emoji: "🇵🇦",
     unicode: "U+1F1F5 U+1F1E6",
     dial_code: "+507",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PA.svg",
   },
   {
     name: "Papua New Guinea",
@@ -1450,8 +1290,7 @@ const countryList = [
     emoji: "🇵🇬",
     unicode: "U+1F1F5 U+1F1EC",
     dial_code: "+675",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PG.svg",
   },
   {
     name: "Paraguay",
@@ -1459,8 +1298,7 @@ const countryList = [
     emoji: "🇵🇾",
     unicode: "U+1F1F5 U+1F1FE",
     dial_code: "+595",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PY.svg",
   },
   {
     name: "Peru",
@@ -1468,8 +1306,7 @@ const countryList = [
     emoji: "🇵🇪",
     unicode: "U+1F1F5 U+1F1EA",
     dial_code: "+51",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PE.svg",
   },
   {
     name: "Philippines",
@@ -1477,8 +1314,7 @@ const countryList = [
     emoji: "🇵🇭",
     unicode: "U+1F1F5 U+1F1ED",
     dial_code: "+63",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PH.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PH.svg",
   },
   {
     name: "Pitcairn Islands",
@@ -1486,8 +1322,7 @@ const countryList = [
     emoji: "🇵🇳",
     unicode: "U+1F1F5 U+1F1F3",
     dial_code: "+64",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PN.svg",
   },
   {
     name: "Poland",
@@ -1495,8 +1330,7 @@ const countryList = [
     emoji: "🇵🇱",
     unicode: "U+1F1F5 U+1F1F1",
     dial_code: "+48",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PL.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PL.svg",
   },
   {
     name: "Portugal",
@@ -1504,8 +1338,7 @@ const countryList = [
     emoji: "🇵🇹",
     unicode: "U+1F1F5 U+1F1F9",
     dial_code: "+351",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PT.svg",
   },
   {
     name: "Puerto Rico",
@@ -1513,8 +1346,7 @@ const countryList = [
     emoji: "🇵🇷",
     unicode: "U+1F1F5 U+1F1F7",
     dial_code: "+1 787",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PR.svg",
   },
   {
     name: "Qatar",
@@ -1522,8 +1354,7 @@ const countryList = [
     emoji: "🇶🇦",
     unicode: "U+1F1F6 U+1F1E6",
     dial_code: "+974",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/QA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/QA.svg",
   },
   {
     name: "Réunion",
@@ -1531,8 +1362,7 @@ const countryList = [
     emoji: "🇷🇪",
     unicode: "U+1F1F7 U+1F1EA",
     dial_code: "+262",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RE.svg",
   },
   {
     name: "Romania",
@@ -1540,8 +1370,7 @@ const countryList = [
     emoji: "🇷🇴",
     unicode: "U+1F1F7 U+1F1F4",
     dial_code: "+40",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RO.svg",
   },
   {
     name: "Russia",
@@ -1549,8 +1378,7 @@ const countryList = [
     emoji: "🇷🇺",
     unicode: "U+1F1F7 U+1F1FA",
     dial_code: "+7",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RU.svg",
   },
   {
     name: "Rwanda",
@@ -1558,8 +1386,7 @@ const countryList = [
     emoji: "🇷🇼",
     unicode: "U+1F1F7 U+1F1FC",
     dial_code: "+250",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RW.svg",
   },
 
   {
@@ -1568,8 +1395,7 @@ const countryList = [
     emoji: "🇸🇭",
     unicode: "U+1F1F8 U+1F1ED",
     dial_code: "+290",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SH.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SH.svg",
   },
   {
     name: "Saint Kitts & Nevis",
@@ -1577,8 +1403,7 @@ const countryList = [
     emoji: "🇰🇳",
     unicode: "U+1F1F0 U+1F1F3",
     dial_code: "+1 869",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KN.svg",
   },
   {
     name: "Saint Lucia",
@@ -1586,8 +1411,7 @@ const countryList = [
     emoji: "🇱🇨",
     unicode: "U+1F1F1 U+1F1E8",
     dial_code: "+1 758",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LC.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LC.svg",
   },
 
   {
@@ -1596,8 +1420,7 @@ const countryList = [
     emoji: "🇵🇲",
     unicode: "U+1F1F5 U+1F1F2",
     dial_code: "+508",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/PM.svg",
   },
   {
     name: "Samoa",
@@ -1605,8 +1428,7 @@ const countryList = [
     emoji: "🇼🇸",
     unicode: "U+1F1FC U+1F1F8",
     dial_code: "+685",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/WS.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/WS.svg",
   },
   {
     name: "San Marino",
@@ -1614,8 +1436,7 @@ const countryList = [
     emoji: "🇸🇲",
     unicode: "U+1F1F8 U+1F1F2",
     dial_code: "+378",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SM.svg",
   },
   {
     name: "Sao Tome & Principe",
@@ -1623,8 +1444,7 @@ const countryList = [
     emoji: "🇸🇹",
     unicode: "U+1F1F8 U+1F1F9",
     dial_code: "+239",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ST.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ST.svg",
   },
   {
     name: "Saudi Arabia",
@@ -1632,8 +1452,7 @@ const countryList = [
     emoji: "🇸🇦",
     unicode: "U+1F1F8 U+1F1E6",
     dial_code: "+966",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SA.svg",
   },
   {
     name: "Senegal",
@@ -1641,8 +1460,7 @@ const countryList = [
     emoji: "🇸🇳",
     unicode: "U+1F1F8 U+1F1F3",
     dial_code: "+221",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SN.svg",
   },
   {
     name: "Serbia",
@@ -1650,8 +1468,7 @@ const countryList = [
     emoji: "🇷🇸",
     unicode: "U+1F1F7 U+1F1F8",
     dial_code: "+381",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RS.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/RS.svg",
   },
   {
     name: "Seychelles",
@@ -1659,8 +1476,7 @@ const countryList = [
     emoji: "🇸🇨",
     unicode: "U+1F1F8 U+1F1E8",
     dial_code: "+248",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SC.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SC.svg",
   },
   {
     name: "Sierra Leone",
@@ -1668,8 +1484,7 @@ const countryList = [
     emoji: "🇸🇱",
     unicode: "U+1F1F8 U+1F1F1",
     dial_code: "+232",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SL.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SL.svg",
   },
   {
     name: "Singapore",
@@ -1677,8 +1492,7 @@ const countryList = [
     emoji: "🇸🇬",
     unicode: "U+1F1F8 U+1F1EC",
     dial_code: "+65",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SG.svg",
   },
   {
     name: "Sint Maarten",
@@ -1686,8 +1500,7 @@ const countryList = [
     emoji: "🇸🇽",
     unicode: "U+1F1F8 U+1F1FD",
     dial_code: "+1 721",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SX.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SX.svg",
   },
   {
     name: "Slovakia",
@@ -1695,8 +1508,7 @@ const countryList = [
     emoji: "🇸🇰",
     unicode: "U+1F1F8 U+1F1F0",
     dial_code: "+421",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SK.svg",
   },
   {
     name: "Slovenia",
@@ -1704,8 +1516,7 @@ const countryList = [
     emoji: "🇸🇮",
     unicode: "U+1F1F8 U+1F1EE",
     dial_code: "+386",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SI.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SI.svg",
   },
   {
     name: "Solomon Islands",
@@ -1713,8 +1524,7 @@ const countryList = [
     emoji: "🇸🇧",
     unicode: "U+1F1F8 U+1F1E7",
     dial_code: "+677",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SB.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SB.svg",
   },
   {
     name: "Somalia",
@@ -1722,8 +1532,7 @@ const countryList = [
     emoji: "🇸🇴",
     unicode: "U+1F1F8 U+1F1F4",
     dial_code: "+252",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SO.svg",
   },
   {
     name: "South Africa",
@@ -1731,8 +1540,7 @@ const countryList = [
     emoji: "🇿🇦",
     unicode: "U+1F1FF U+1F1E6",
     dial_code: "+27",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ZA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ZA.svg",
   },
 
   {
@@ -1741,8 +1549,7 @@ const countryList = [
     emoji: "🇰🇷",
     unicode: "U+1F1F0 U+1F1F7",
     dial_code: "+82",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/KR.svg",
   },
   {
     name: "South Sudan",
@@ -1750,8 +1557,7 @@ const countryList = [
     emoji: "🇸🇸",
     unicode: "U+1F1F8 U+1F1F8",
     dial_code: "+211",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SS.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SS.svg",
   },
   {
     name: "Spain",
@@ -1759,8 +1565,7 @@ const countryList = [
     emoji: "🇪🇸",
     unicode: "U+1F1EA U+1F1F8",
     dial_code: "+34",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ES.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ES.svg",
   },
   {
     name: "Sri Lanka",
@@ -1768,8 +1573,7 @@ const countryList = [
     emoji: "🇱🇰",
     unicode: "U+1F1F1 U+1F1F0",
     dial_code: "+94",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/LK.svg",
   },
   {
     name: "Sudan",
@@ -1777,8 +1581,7 @@ const countryList = [
     emoji: "🇸🇩",
     unicode: "U+1F1F8 U+1F1E9",
     dial_code: "+249",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SD.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SD.svg",
   },
   {
     name: "Suriname",
@@ -1786,8 +1589,7 @@ const countryList = [
     emoji: "🇸🇷",
     unicode: "U+1F1F8 U+1F1F7",
     dial_code: "+597",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SR.svg",
   },
 
   {
@@ -1796,8 +1598,7 @@ const countryList = [
     emoji: "🇸🇪",
     unicode: "U+1F1F8 U+1F1EA",
     dial_code: "+46",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SE.svg",
   },
   {
     name: "Switzerland",
@@ -1805,8 +1606,7 @@ const countryList = [
     emoji: "🇨🇭",
     unicode: "U+1F1E8 U+1F1ED",
     dial_code: "+41",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CH.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CH.svg",
   },
   {
     name: "Syria",
@@ -1814,8 +1614,7 @@ const countryList = [
     emoji: "🇸🇾",
     unicode: "U+1F1F8 U+1F1FE",
     dial_code: "+963",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/SY.svg",
   },
   {
     name: "Taiwan",
@@ -1823,8 +1622,7 @@ const countryList = [
     emoji: "🇹🇼",
     unicode: "U+1F1F9 U+1F1FC",
     dial_code: "+886",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TW.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TW.svg",
   },
   {
     name: "Tajikistan",
@@ -1832,8 +1630,7 @@ const countryList = [
     emoji: "🇹🇯",
     unicode: "U+1F1F9 U+1F1EF",
     dial_code: "+992",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TJ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TJ.svg",
   },
   {
     name: "Tanzania",
@@ -1841,8 +1638,7 @@ const countryList = [
     emoji: "🇹🇿",
     unicode: "U+1F1F9 U+1F1FF",
     dial_code: "+255",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TZ.svg",
   },
   {
     name: "Thailand",
@@ -1850,8 +1646,7 @@ const countryList = [
     emoji: "🇹🇭",
     unicode: "U+1F1F9 U+1F1ED",
     dial_code: "+66",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TH.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TH.svg",
   },
   {
     name: "Timor-Leste",
@@ -1859,8 +1654,7 @@ const countryList = [
     emoji: "🇹🇱",
     unicode: "U+1F1F9 U+1F1F1",
     dial_code: "+670",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TL.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TL.svg",
   },
   {
     name: "Togo",
@@ -1868,8 +1662,7 @@ const countryList = [
     emoji: "🇹🇬",
     unicode: "U+1F1F9 U+1F1EC",
     dial_code: "+228",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TG.svg",
   },
   {
     name: "Tokelau",
@@ -1877,8 +1670,7 @@ const countryList = [
     emoji: "🇹🇰",
     unicode: "U+1F1F9 U+1F1F0",
     dial_code: "+690",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TK.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TK.svg",
   },
   {
     name: "Tonga",
@@ -1886,8 +1678,7 @@ const countryList = [
     emoji: "🇹🇴",
     unicode: "U+1F1F9 U+1F1F4",
     dial_code: "+676",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TO.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TO.svg",
   },
   {
     name: "Trinidad & Tobago",
@@ -1895,8 +1686,7 @@ const countryList = [
     emoji: "🇹🇹",
     unicode: "U+1F1F9 U+1F1F9",
     dial_code: "+1 868",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TT.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TT.svg",
   },
   {
     name: "Tunisia",
@@ -1904,8 +1694,7 @@ const countryList = [
     emoji: "🇹🇳",
     unicode: "U+1F1F9 U+1F1F3",
     dial_code: "+216",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TN.svg",
   },
   {
     name: "Turkey",
@@ -1913,8 +1702,7 @@ const countryList = [
     emoji: "🇹🇷",
     unicode: "U+1F1F9 U+1F1F7",
     dial_code: "+90",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TR.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TR.svg",
   },
   {
     name: "Turkmenistan",
@@ -1922,8 +1710,7 @@ const countryList = [
     emoji: "🇹🇲",
     unicode: "U+1F1F9 U+1F1F2",
     dial_code: "+993",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TM.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TM.svg",
   },
   {
     name: "Turks & Caicos Islands",
@@ -1931,8 +1718,7 @@ const countryList = [
     emoji: "🇹🇨",
     unicode: "U+1F1F9 U+1F1E8",
     dial_code: "+1 649",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TC.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TC.svg",
   },
   {
     name: "Tuvalu",
@@ -1940,8 +1726,7 @@ const countryList = [
     emoji: "🇹🇻",
     unicode: "U+1F1F9 U+1F1FB",
     dial_code: "+688",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TV.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/TV.svg",
   },
   {
     name: "Uganda",
@@ -1949,8 +1734,7 @@ const countryList = [
     emoji: "🇺🇬",
     unicode: "U+1F1FA U+1F1EC",
     dial_code: "+256",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/UG.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/UG.svg",
   },
   {
     name: "Ukraine",
@@ -1958,8 +1742,7 @@ const countryList = [
     emoji: "🇺🇦",
     unicode: "U+1F1FA U+1F1E6",
     dial_code: "+380",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/UA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/UA.svg",
   },
   {
     name: "United Arab Emirates",
@@ -1967,8 +1750,7 @@ const countryList = [
     emoji: "🇦🇪",
     unicode: "U+1F1E6 U+1F1EA",
     dial_code: "+971",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/AE.svg",
   },
   {
     name: "United Kingdom",
@@ -1976,8 +1758,7 @@ const countryList = [
     emoji: "🇬🇧",
     unicode: "U+1F1EC U+1F1E7",
     dial_code: "+44",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GB.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/GB.svg",
   },
   {
     name: "United States",
@@ -1985,8 +1766,7 @@ const countryList = [
     emoji: "🇺🇸",
     unicode: "U+1F1FA U+1F1F8",
     dial_code: "+1",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/US.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/US.svg",
   },
   {
     name: "Uruguay",
@@ -1994,8 +1774,7 @@ const countryList = [
     emoji: "🇺🇾",
     unicode: "U+1F1FA U+1F1FE",
     dial_code: "+598",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/UY.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/UY.svg",
   },
   {
     name: "Uzbekistan",
@@ -2003,8 +1782,7 @@ const countryList = [
     emoji: "🇺🇿",
     unicode: "U+1F1FA U+1F1FF",
     dial_code: "+998",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/UZ.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/UZ.svg",
   },
   {
     name: "Vanuatu",
@@ -2012,8 +1790,7 @@ const countryList = [
     emoji: "🇻🇺",
     unicode: "U+1F1FB U+1F1FA",
     dial_code: "+678",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/VU.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/VU.svg",
   },
   {
     name: "Vatican City",
@@ -2021,8 +1798,7 @@ const countryList = [
     emoji: "🇻🇦",
     unicode: "U+1F1FB U+1F1E6",
     dial_code: "+379",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/VA.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/VA.svg",
   },
   {
     name: "Venezuela",
@@ -2030,8 +1806,7 @@ const countryList = [
     emoji: "🇻🇪",
     unicode: "U+1F1FB U+1F1EA",
     dial_code: "+58",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/VE.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/VE.svg",
   },
   {
     name: "Vietnam",
@@ -2039,8 +1814,7 @@ const countryList = [
     emoji: "🇻🇳",
     unicode: "U+1F1FB U+1F1F3",
     dial_code: "+84",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/VN.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/VN.svg",
   },
   {
     name: "Wallis & Futuna",
@@ -2048,8 +1822,7 @@ const countryList = [
     emoji: "🇼🇫",
     unicode: "U+1F1FC U+1F1EB",
     dial_code: "+681",
-    image:
-      "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/WF.svg",
+    image: "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/WF.svg",
   },
 ];
 

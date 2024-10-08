@@ -1,13 +1,10 @@
+import { Box, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { selectAuthenticated, selectToken, selectUserId } from "../../redux/slices/authSlice.js";
 import { getHistory, selectHistory } from "../../redux/slices/userSlice.js";
 import { fonts } from "../../utility/fonts.js";
-import {
-  selectAuthenticated,
-  selectToken,
-  selectUserId,
-} from "../../redux/slices/authSlice.js";
-import { Box, Typography } from "@mui/material";
 import UserDashboardVideoCard from "../UserDashboardVideoCard.jsx";
 
 const UserHistory = () => {
@@ -45,17 +42,12 @@ const UserHistory = () => {
               margin: "auto",
             }}
           >
-            <Typography
-              variant="h5"
-              sx={{ fontFamily: fonts.sans, fontWeight: "600" }}
-            >
+            <Typography variant="h5" sx={{ fontFamily: fonts.sans, fontWeight: "600" }}>
               No History Found
             </Typography>
           </Box>
         ) : (
-          videoHistory?.map((video) => (
-            <UserDashboardVideoCard key={video._id} video={video.videoId} />
-          ))
+          videoHistory?.map((video) => <UserDashboardVideoCard key={video._id} video={video.videoId} />)
         )}
       </Box>
     </>

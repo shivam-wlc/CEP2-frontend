@@ -1,30 +1,12 @@
+import { Button, CircularProgress, Container, MenuItem, Modal, Select, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectPlaylist,
-  addVideoToPlaylist,
-  getUserPlaylists,
-} from "../redux/slices/userSlice.js";
-import {
-  Modal,
-  Typography,
-  Button,
-  Select,
-  MenuItem,
-  Container,
-  CircularProgress,
-} from "@mui/material";
-import { fonts } from "../utility/fonts.js";
-import { notify } from "../redux/slices/alertSlice.js";
 
-const AddVideoToPlaylistModal = ({
-  open,
-  onClose,
-  videoId,
-  userId,
-  authenticated,
-  token,
-}) => {
+import { notify } from "../redux/slices/alertSlice.js";
+import { addVideoToPlaylist, getUserPlaylists, selectPlaylist } from "../redux/slices/userSlice.js";
+import { fonts } from "../utility/fonts.js";
+
+const AddVideoToPlaylistModal = ({ open, onClose, videoId, userId, authenticated, token }) => {
   const dispatchToRedux = useDispatch();
   const playlists = useSelector(selectPlaylist);
   const [selectedPlaylist, setSelectedPlaylist] = useState("");
@@ -38,9 +20,7 @@ const AddVideoToPlaylistModal = ({
 
   const handleAddToPlaylist = async () => {
     if (!selectedPlaylist) {
-      dispatchToRedux(
-        notify({ type: "error", message: "Please select a playlist" })
-      );
+      dispatchToRedux(notify({ type: "error", message: "Please select a playlist" }));
       return;
     }
 
@@ -52,15 +32,13 @@ const AddVideoToPlaylistModal = ({
           videoId,
           userId,
           token,
-        })
+        }),
       );
 
       setIsButtonLoading(false);
       onClose();
       if (addingPlyistResponse.payload.message) {
-        dispatchToRedux(
-          notify({ type: "success", message: "Video added to playlist" })
-        );
+        dispatchToRedux(notify({ type: "success", message: "Video added to playlist" }));
       }
     } catch (error) {
       setIsButtonLoading(false);

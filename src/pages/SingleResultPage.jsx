@@ -1,15 +1,15 @@
-import React from "react";
 import {
   Box,
-  Typography,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
+  Typography,
 } from "@mui/material";
+import React from "react";
 
 const SingleResultPage = () => {
   // Dummy DISC scores

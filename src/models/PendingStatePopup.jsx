@@ -1,8 +1,9 @@
+import { Backdrop, Box, Divider, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Box, Typography, Backdrop, Divider } from "@mui/material";
-import { fonts } from "../utility/fonts.js";
-import GeneralButton from "../components/general/GeneralButton.jsx";
 import { useNavigate } from "react-router-dom";
+
+import GeneralButton from "../components/general/GeneralButton.jsx";
+import { fonts } from "../utility/fonts.js";
 
 const PendingStatePopup = () => {
   const [openBackdrop, setOpenBackdrop] = useState(true);
@@ -16,10 +17,7 @@ const PendingStatePopup = () => {
   return (
     <div>
       <div>
-        <Backdrop
-          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }}
-          open={openBackdrop}
-        />
+        <Backdrop sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }} open={openBackdrop} />
         <Box
           sx={{
             position: "absolute",
@@ -39,19 +37,13 @@ const PendingStatePopup = () => {
           }}
         >
           <Box>
-            <Typography
-              variant="h5"
-              sx={{ fontFamily: fonts.sans, fontWeight: "600" }}
-            >
+            <Typography variant="h5" sx={{ fontFamily: fonts.sans, fontWeight: "600" }}>
               Your Creator Account is in Pending State
             </Typography>
           </Box>
           <Divider sx={{ width: "70%", margin: "10px 0" }} />
 
-          <Typography
-            variant="body1"
-            sx={{ padding: "10px", margin: "10px 0" }}
-          >
+          <Typography variant="body1" sx={{ padding: "10px", margin: "10px 0" }}>
             Click Below to go to Home page
           </Typography>
           <GeneralButton onClick={handleClick} text="Home" />

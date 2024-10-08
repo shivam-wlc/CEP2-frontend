@@ -523,7 +523,6 @@
 
 // export default Register;
 
-import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -534,21 +533,23 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import FormField from "../components/FormField.jsx";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
 import { background, leftPannelAuth, Logo } from "../assets/assest.js";
 import AuthIcon1 from "../assets/icons/AuthIcon1.png";
 import AuthIcon2 from "../assets/icons/AuthIcon2.png";
 import AuthIcon3 from "../assets/icons/AuthIcon3.png";
-import { fonts } from "../utility/fonts.js";
-import { countryList } from "../utility/countryList.js";
-import { notify } from "../redux/slices/alertSlice.js";
-import { useDispatch } from "react-redux";
-import { isValidEmail, checkPassStrength } from "../utility/validate.js";
-import { convertToUTC } from "../utility/convertTimeToUTC.js";
-import { signup } from "../redux/slices/authSlice.js";
-import { Link, useNavigate } from "react-router-dom";
-import { colors } from "../utility/color.js";
+import FormField from "../components/FormField.jsx";
 import CheckYourMailBox from "../models/CheckYourMailBox.jsx";
+import { notify } from "../redux/slices/alertSlice.js";
+import { signup } from "../redux/slices/authSlice.js";
+import { colors } from "../utility/color.js";
+import { convertToUTC } from "../utility/convertTimeToUTC.js";
+import { countryList } from "../utility/countryList.js";
+import { fonts } from "../utility/fonts.js";
+import { checkPassStrength, isValidEmail } from "../utility/validate.js";
 
 const Register = () => {
   const dispatchToRedux = useDispatch();
@@ -593,7 +594,7 @@ const Register = () => {
         notify({
           type: "warning",
           message: "Please fill all the fields",
-        })
+        }),
       );
       return;
     }
@@ -602,7 +603,7 @@ const Register = () => {
         notify({
           type: "warning",
           message: "Please enter a valid email address",
-        })
+        }),
       );
       return;
     }
@@ -612,7 +613,7 @@ const Register = () => {
           type: "warning",
           message:
             "Password must contain at least one uppercase letter, one number, one special character, and minimum 8 characters",
-        })
+        }),
       );
       return;
     }
@@ -637,7 +638,7 @@ const Register = () => {
           notify({
             type: "success",
             message: "Account created successfully, please login",
-          })
+          }),
         );
         setFormData({
           firstName: "",
@@ -657,7 +658,7 @@ const Register = () => {
           notify({
             type: "error",
             message: "Failed to create account. Please try again.",
-          })
+          }),
         );
       }
     } catch (error) {
@@ -666,7 +667,7 @@ const Register = () => {
         notify({
           type: "error",
           message: "Something went wrong, please try again",
-        })
+        }),
       );
     }
   };
@@ -744,26 +745,10 @@ const Register = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <FormField
-                    label="FIRST NAME"
-                    name="firstName"
-                    width="100%"
-                    onChange={handleChange}
-                  />
-                  <FormField
-                    label="LAST NAME"
-                    name="lastName"
-                    width="100%"
-                    onChange={handleChange}
-                  />
+                  <FormField label="FIRST NAME" name="firstName" width="100%" onChange={handleChange} />
+                  <FormField label="LAST NAME" name="lastName" width="100%" onChange={handleChange} />
                 </Box>
-                <FormField
-                  label="EMAIL"
-                  name="email"
-                  type="email"
-                  width="100%"
-                  onChange={handleChange}
-                />
+                <FormField label="EMAIL" name="email" type="email" width="100%" onChange={handleChange} />
 
                 <Typography
                   variant="body1"
@@ -943,12 +928,10 @@ const Register = () => {
                     <Button
                       variant="contained"
                       sx={{
-                        backgroundImage:
-                          "linear-gradient(to top left, #720361, #BF2F75)",
+                        backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
                         width: "50%",
                         "&:hover": {
-                          backgroundImage:
-                            "linear-gradient(to top left, #740262, #d83b87)",
+                          backgroundImage: "linear-gradient(to top left, #740262, #d83b87)",
                         },
                         borderRadius: "2rem",
                         padding: "10px 0px",
@@ -963,12 +946,10 @@ const Register = () => {
                       variant="contained"
                       disabled={isButtonLoading}
                       sx={{
-                        backgroundImage:
-                          "linear-gradient(to top left, #720361, #BF2F75)",
+                        backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
                         width: "50%",
                         "&:hover": {
-                          backgroundImage:
-                            "linear-gradient(to top left, #740262, #d83b87)",
+                          backgroundImage: "linear-gradient(to top left, #740262, #d83b87)",
                         },
                         borderRadius: "2rem",
                         padding: "10px 0px",
@@ -989,9 +970,7 @@ const Register = () => {
                 justifyContent: "center",
               }}
             >
-              <Typography sx={{ fontWeight: "bold" }}>
-                Already Register?
-              </Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Already Register?</Typography>
               <Link to="/login" style={{ textDecoration: "none" }}>
                 <Typography
                   sx={{

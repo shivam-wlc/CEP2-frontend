@@ -82,15 +82,11 @@
 
 // export default UserMyLikes;
 
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getMyLikedVideos,
-  selectMyLikedVideos,
-} from "../../redux/slices/userSlice.js";
-import { selectUserId, selectToken } from "../../redux/slices/authSlice.js";
+import { Delete, Edit } from "@mui/icons-material";
 import {
   Box,
+  IconButton,
+  Pagination,
   Table,
   TableBody,
   TableCell,
@@ -98,10 +94,12 @@ import {
   TableHead,
   TableRow,
   Typography,
-  IconButton,
-  Pagination,
 } from "@mui/material";
-import { Edit, Delete } from "@mui/icons-material";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import { getMyLikedVideos, selectMyLikedVideos } from "../../redux/slices/userSlice.js";
 
 function UserMyLikes() {
   const dispatchToRedux = useDispatch();
@@ -126,8 +124,7 @@ function UserMyLikes() {
       {
         _id: "2",
         videoId: {
-          thumbnailUrl:
-            "https://miro.medium.com/v2/resize:fit:1200/1*60RQyL8WeifCvfJX8dQCcQ.jpeg",
+          thumbnailUrl: "https://miro.medium.com/v2/resize:fit:1200/1*60RQyL8WeifCvfJX8dQCcQ.jpeg",
           title: "Yoga for Beginners",
         },
         rating: 5,
@@ -193,21 +190,11 @@ function UserMyLikes() {
         <Table border="1" borderColor="#dbd6db">
           <TableHead>
             <TableRow sx={{ background: "#720361" }}>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                Thumbnail
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                My Rating
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                My Notes
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                Shared with
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "600" }}>
-                Action
-              </TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>Thumbnail</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>My Rating</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>My Notes</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>Shared with</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "600" }}>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -265,15 +252,8 @@ function UserMyLikes() {
         </Table>
       </TableContainer>
 
-      <Box
-        sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}
-      >
-        <Pagination
-          count={likedVideoData.totalPages}
-          page={page}
-          onChange={handlePageChange}
-          size="large"
-        />
+      <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
+        <Pagination count={likedVideoData.totalPages} page={page} onChange={handlePageChange} size="large" />
       </Box>
     </Box>
   );

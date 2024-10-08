@@ -1,4 +1,5 @@
 import React from "react";
+
 import styles from "../styles/ButtonLoader.module.css";
 
 const LinearDotLoader = () => {

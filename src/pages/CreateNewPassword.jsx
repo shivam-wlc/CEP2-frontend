@@ -1,17 +1,18 @@
-import React, { useState } from "react";
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import { Logo } from "../assets/assest.js";
-import FormField from "../components/FormField";
 import AuthIcon1 from "../assets/icons/AuthIcon1.png";
 import AuthIcon2 from "../assets/icons/AuthIcon2.png";
 import AuthIcon3 from "../assets/icons/AuthIcon3.png";
-import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { checkPassStrength } from "../utility/validate";
-import { forgetPassVerify } from "../redux/slices/authSlice";
+import FormField from "../components/FormField";
 import { notify } from "../redux/slices/alertSlice.js";
+import { forgetPassVerify } from "../redux/slices/authSlice";
 import { colors } from "../utility/color.js";
-import { Link, useNavigate } from "react-router-dom";
+import { checkPassStrength } from "../utility/validate";
 
 const CreateNewPassword = () => {
   const dispatchToRedux = useDispatch();
@@ -35,21 +36,15 @@ const CreateNewPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.newPassword || !formData.confirmNewPassword) {
-      return dispatchToRedux(
-        notify({ type: "warning", message: "Please fill all the fields" })
-      );
+      return dispatchToRedux(notify({ type: "warning", message: "Please fill all the fields" }));
     }
 
     if (!checkPassStrength(formData.newPassword)) {
-      return dispatchToRedux(
-        notify({ type: "warning", message: "Password is too weak" })
-      );
+      return dispatchToRedux(notify({ type: "warning", message: "Password is too weak" }));
     }
 
     if (formData.newPassword !== formData.confirmNewPassword) {
-      return dispatchToRedux(
-        notify({ type: "warning", message: "Passwords do not match" })
-      );
+      return dispatchToRedux(notify({ type: "warning", message: "Passwords do not match" }));
     }
     const searchParams = new URLSearchParams(location.search);
     const user = searchParams.get("user");
@@ -63,7 +58,7 @@ const CreateNewPassword = () => {
           confirmPassword: formData.confirmNewPassword,
           userId: user,
           token,
-        })
+        }),
       );
 
       if (response.payload.ok) {
@@ -71,7 +66,7 @@ const CreateNewPassword = () => {
           notify({
             type: "success",
             message: "Password reset successfully, login to continue",
-          })
+          }),
         );
         navigate("/login");
       }
@@ -211,9 +206,7 @@ const CreateNewPassword = () => {
               >
                 Forgot Your Password
               </Typography>
-              <Box
-                sx={{ border: "2px solid black", marginTop: "1.5rem" }}
-              ></Box>
+              <Box sx={{ border: "2px solid black", marginTop: "1.5rem" }}></Box>
             </Box>
           </Box>
 
@@ -257,12 +250,7 @@ const CreateNewPassword = () => {
                     padding: "2rem",
                   }}
                 >
-                  <FormField
-                    label="EMAIL"
-                    name="email"
-                    type="email"
-                    onChange={handleChange}
-                  />
+                  <FormField label="EMAIL" name="email" type="email" onChange={handleChange} />
                   <FormField
                     label="NEW PASSWORD"
                     name="newPassword"

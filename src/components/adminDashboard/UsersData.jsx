@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import {
   Avatar,
   Box,
@@ -16,17 +16,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { fonts } from "../../utility/fonts.js";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllUsers,
-  selectUsersData,
-  updateActiveStatus,
-} from "../../redux/slices/adminSlice.js";
+
+import StatusUpdateModal from "../../models/StatusUpdateModal.jsx";
+import { getAllUsers, selectUsersData, updateActiveStatus } from "../../redux/slices/adminSlice.js";
 import { notify } from "../../redux/slices/alertSlice.js";
 import { selectToken } from "../../redux/slices/authSlice.js";
-import StatusUpdateModal from "../../models/StatusUpdateModal.jsx";
+import { fonts } from "../../utility/fonts.js";
 
 const UsersData = () => {
   const dispatchToRedux = useDispatch();
@@ -43,7 +40,6 @@ const UsersData = () => {
 
   let users = usersInfo?.users || [];
 
-
   useEffect(() => {
     dispatchToRedux(getAllUsers({ token, page: page + 1, limit: rowsPerPage }));
   }, [dispatchToRedux, token, page, rowsPerPage]);
@@ -54,14 +50,11 @@ const UsersData = () => {
 
   const handleSearchClick = () => {
     setPage(0);
-    dispatchToRedux(
-      getAllUsers({ token, page: 1, limit: rowsPerPage, search: searchQuery })
-    );
+    dispatchToRedux(getAllUsers({ token, page: 1, limit: rowsPerPage, search: searchQuery }));
   };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-  
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -103,7 +96,7 @@ const UsersData = () => {
         notify({
           type: "error",
           message: "Something went wrong, Please try again",
-        })
+        }),
       );
       return;
     }
@@ -113,27 +106,23 @@ const UsersData = () => {
         notify({
           type: "error",
           message: "Please select a status",
-        })
+        }),
       );
       return;
     }
 
     try {
       setIsButtonLoading(true);
-      await dispatchToRedux(
-        updateActiveStatus({ userId: selectedUserId, status, token })
-      );
+      await dispatchToRedux(updateActiveStatus({ userId: selectedUserId, status, token }));
       setIsButtonLoading(false);
-      dispatchToRedux(
-        notify({ type: "success", message: "Status updated successfully" })
-      );
+      dispatchToRedux(notify({ type: "success", message: "Status updated successfully" }));
     } catch (error) {
       setIsButtonLoading(false);
       dispatchToRedux(
         notify({
           type: "error",
           message: "Something went wrong, Please try again",
-        })
+        }),
       );
     }
 
@@ -146,11 +135,7 @@ const UsersData = () => {
     <>
       <Box sx={{}}>
         <Box sx={{ ml: 2, mt: 2 }}>
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ fontFamily: fonts.poppins }}
-          >
+          <Typography variant="h5" fontWeight="600" sx={{ fontFamily: fonts.poppins }}>
             Users
           </Typography>
         </Box>
@@ -218,8 +203,7 @@ const UsersData = () => {
                       fontWeight: "600",
                     }}
                   >
-                    <Avatar src={user.profilePicture} alt="no" />{" "}
-                    {user?.firstName + " " + user?.lastName}
+                    <Avatar src={user.profilePicture} alt="no" /> {user?.firstName + " " + user?.lastName}
                   </TableCell>
 
                   <TableCell sx={tableBodyStyle}>

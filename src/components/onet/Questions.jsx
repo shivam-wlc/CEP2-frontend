@@ -1,29 +1,26 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  FormControl,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  MobileStepper,
-  CircularProgress,
-  AppBar,
-  Toolbar,
-} from "@mui/material";
-import {
-  ArrowBackIosOutlined,
-  ArrowForwardIosOutlined,
-} from "@mui/icons-material";
-import WestIcon from "@mui/icons-material/West";
+import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from "@mui/icons-material";
 import EastIcon from "@mui/icons-material/East";
-import { useSelector, useDispatch } from "react-redux";
-import { selectOnet, getResultAndJob } from "../../redux/slices/onetSlice";
+import WestIcon from "@mui/icons-material/West";
+import {
+  AppBar,
+  Box,
+  Button,
+  CircularProgress,
+  FormControl,
+  FormControlLabel,
+  MobileStepper,
+  Radio,
+  RadioGroup,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "../../assets/assest.js";
 
-import { selectUserId, selectToken } from "../../redux/slices/authSlice.js";
+import { Logo } from "../../assets/assest.js";
+import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import { getResultAndJob, selectOnet } from "../../redux/slices/onetSlice";
 
 const styles = {
   loader: {
@@ -31,8 +28,7 @@ const styles = {
     height: "50px",
     borderRadius: "50%",
     background: "conic-gradient(#0000 10%, #766DF4)",
-    WebkitMask:
-      "radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0)",
+    WebkitMask: "radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0)",
     animation: "rotateAnimation 1s infinite linear",
     "@keyframes rotateAnimation": {
       to: {
@@ -49,9 +45,7 @@ function Questions() {
   const token = useSelector(selectToken);
   const onet = useSelector(selectOnet);
   const [loading, setLoading] = useState(false);
-  const [answers, setAnswers] = useState(
-    new Array(onet?.questions?.length).fill("")
-  );
+  const [answers, setAnswers] = useState(new Array(onet?.questions?.length).fill(""));
   const [activeStep, setActiveStep] = useState(0);
   const maxSteps = onet?.questions?.length;
 
@@ -74,9 +68,7 @@ function Questions() {
   };
   const handleSubmit = async () => {
     setLoading(true);
-    await dispatchToRedux(
-      getResultAndJob({ answers: answers.join(""), token, userId })
-    );
+    await dispatchToRedux(getResultAndJob({ answers: answers.join(""), token, userId }));
     // navigate(`/interest-profiler/result?answers=${answers.join("")}`);
     navigate("/disc");
     // setLoading(false);
@@ -102,7 +94,7 @@ function Questions() {
         sx={{
           width: "50%",
           height: "70%",
-          border:"1px solid black",
+          border: "1px solid black",
           // borderRadius: "20px",
           background: "rgba(255,255,255,0.25)",
           // -webkit-backdrop-filter: blur(16px);

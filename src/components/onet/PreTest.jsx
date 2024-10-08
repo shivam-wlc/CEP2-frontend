@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Box, Typography, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import React, { useState } from "react";
+
 import { fonts } from "../../utility/fonts.js";
 
 const styles = {
@@ -86,8 +87,7 @@ export default function PreTest({ hadnleChooseOption }) {
             fontSize: "20px",
           }}
         >
-          Uncover Your Ideal Career Path with Our Interest Profiler assessment
-          and Find Your Passion Today!
+          Uncover Your Ideal Career Path with Our Interest Profiler assessment and Find Your Passion Today!
         </Typography>
       </Box>
       <Box
@@ -120,9 +120,7 @@ export default function PreTest({ hadnleChooseOption }) {
               }}
             >
               <Typography sx={styles.buttonHeading}>Career Peek</Typography>
-              <Typography sx={styles.buttonSubHeading}>
-                Contains 30 Questions
-              </Typography>
+              <Typography sx={styles.buttonSubHeading}>Contains 30 Questions</Typography>
             </Box>
           </>
         )}

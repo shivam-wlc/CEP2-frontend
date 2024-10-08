@@ -1,26 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Box, Container } from "@mui/system";
-import { Typography, Link, Avatar, Pagination } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getCreatorProfile,
-  selectCreatorProfile,
-} from "../redux/slices/creatorSlice.js";
-import { useParams } from "react-router-dom";
-import Headers from "../components/Headers.jsx";
-import { fonts } from "../utility/fonts.js";
-import { convertUTCtoMonthAndYear } from "../utility/convertTimeToUTC.js";
-import PhoneIcon from "@mui/icons-material/Phone";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { colors } from "../utility/color.js";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import PhoneIcon from "@mui/icons-material/Phone";
+import { Avatar, Link, Pagination, Typography } from "@mui/material";
+import { Box, Container } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
 import { socialMediaIcons } from "../assets/assest.js";
 import GeneralButton from "../components/general/GeneralButton.jsx";
-import {
-  getAuthorVideos,
-  selectAuthorVideos,
-} from "../redux/slices/creatorSlice.js";
+import Headers from "../components/Headers.jsx";
 import VideoCard from "../components/VideoCard.jsx";
+import { getCreatorProfile, selectCreatorProfile } from "../redux/slices/creatorSlice.js";
+import { getAuthorVideos, selectAuthorVideos } from "../redux/slices/creatorSlice.js";
+import { colors } from "../utility/color.js";
+import { convertUTCtoMonthAndYear } from "../utility/convertTimeToUTC.js";
+import { fonts } from "../utility/fonts.js";
 
 const CreatorProfile = () => {
   const dispatch = useDispatch();
@@ -62,9 +57,7 @@ const CreatorProfile = () => {
           {socialMediaIcons.find((icon) => icon.name === link.name)?.icon && ( // Check if icon exists in socialMediaIcons
             <Link href={link.link} target="_blank" underline="none">
               <img
-                src={
-                  socialMediaIcons.find((icon) => icon.name === link.name).icon
-                }
+                src={socialMediaIcons.find((icon) => icon.name === link.name).icon}
                 alt={link.name}
                 style={{ width: "32px", height: "32px" }} // Adjust width and height as needed
               />
@@ -155,9 +148,7 @@ const CreatorProfile = () => {
               >
                 <Box sx={{ display: "flex", gap: "0.5rem" }}>
                   {userData?.location && <LocationOnIcon />}
-                  <Typography sx={{ fontFamily: fonts.sans }}>
-                    {userData?.location}
-                  </Typography>
+                  <Typography sx={{ fontFamily: fonts.sans }}>{userData?.location}</Typography>
                 </Box>
                 <Box sx={{ display: "flex", gap: "0.5rem" }}>
                   <PhoneIcon />
@@ -196,9 +187,7 @@ const CreatorProfile = () => {
                 ))}
               </Box> */}
               <Box>
-                <SocialMediaLinks
-                  socialMediaLinks={userData?.socialMediaLinks}
-                />
+                <SocialMediaLinks socialMediaLinks={userData?.socialMediaLinks} />
               </Box>
 
               <Box sx={{ padding: "1.5rem", textAlign: "right" }}>
@@ -226,11 +215,7 @@ const CreatorProfile = () => {
       </Container>
 
       <Box sx={{ display: "flex", justifyContent: "center", padding: "3rem" }}>
-        <Pagination
-          count={creatorVideos?.totalPages}
-          size="large"
-          onChange={handlePageChange}
-        />
+        <Pagination count={creatorVideos?.totalPages} size="large" onChange={handlePageChange} />
       </Box>
     </>
   );

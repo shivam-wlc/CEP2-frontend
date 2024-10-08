@@ -1,18 +1,18 @@
-import AdminHome from "./adminDashboard/AdminHome.jsx";
-import UsersData from "./adminDashboard/UsersData.jsx";
-import CollaboratorsData from "./adminDashboard/CollaboratorsData.jsx";
-import CreatorHome from "../components/creatorDashboard/CreatorHome.jsx";
-import CreatorVideos from "../components/creatorDashboard/CreatorVideos.jsx";
 import CreatorAnalytics from "../components/creatorDashboard/CreatorAnalytics.jsx";
+import CreatorHome from "../components/creatorDashboard/CreatorHome.jsx";
 import CreatorSocialMedia from "../components/creatorDashboard/CreatorSocialMedia.jsx";
-import Profile from "./Profile.jsx";
-import PendingStatePopup from "../models/PendingStatePopup.jsx";
-import UserHome from "../components/userDashboard/UserHome.jsx";
+import CreatorVideos from "../components/creatorDashboard/CreatorVideos.jsx";
 import UserHistory from "../components/userDashboard/UserHistory.jsx";
+import UserHome from "../components/userDashboard/UserHome.jsx";
+import UserMyAssessment from "../components/userDashboard/UserMyAssessment.jsx";
 import UserMyLikes from "../components/userDashboard/UserMyLikes.jsx";
 import UserPlaylist from "../components/userDashboard/UserPlaylist.jsx";
-import UserMyAssessment from "../components/userDashboard/UserMyAssessment.jsx";
+import PendingStatePopup from "../models/PendingStatePopup.jsx";
+import AdminHome from "./adminDashboard/AdminHome.jsx";
+import CollaboratorsData from "./adminDashboard/CollaboratorsData.jsx";
 import UnifiedRecord from "./adminDashboard/UnifiedRecord.jsx";
+import UsersData from "./adminDashboard/UsersData.jsx";
+import Profile from "./Profile.jsx";
 
 const renderCurrentPage = (currentPage, userData) => {
   if (userData.activeDashboard === "admin") {
@@ -23,8 +23,8 @@ const renderCurrentPage = (currentPage, userData) => {
         return <UsersData />;
       case "Creators":
         return <CollaboratorsData />;
-        case "Records":
-          return <UnifiedRecord />;
+      case "Records":
+        return <UnifiedRecord />;
       case "Profile":
         return <Profile />;
       default:

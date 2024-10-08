@@ -1,22 +1,23 @@
-import React from "react";
+import CloseIcon from "@mui/icons-material/Close";
 import {
+  Avatar,
   Box,
   Button,
-  IconButton,
-  Typography,
-  Paper,
   Divider,
   Grid,
-  Avatar,
+  IconButton,
   Link,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
-  TableRow,
   TableHead,
+  TableRow,
+  Typography,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import React from "react";
+
 import { fonts } from "../../utility/fonts.js";
 
 const UserUnifiedModal = ({ open, onClose, data }) => {
@@ -106,8 +107,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
               User Details
             </Typography>
             <Typography>
-              <strong>Date of Birth:</strong>{" "}
-              {new Date(data?.user?.dateOfBirth).toLocaleDateString()}
+              <strong>Date of Birth:</strong> {new Date(data?.user?.dateOfBirth).toLocaleDateString()}
             </Typography>
             <Typography>
               <strong>Country:</strong> {data?.user?.country}
@@ -133,17 +133,11 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
       {/* interest profile  */}
       {data?.unifiedRecord?.interestProfile?.isTaken ? (
         <Box mb={2}>
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={commonTypography}
-            textAlign={"center"}
-          >
+          <Typography variant="h5" fontWeight="600" sx={commonTypography} textAlign={"center"}>
             Interest Profile
           </Typography>
           <Typography>
-            <strong>Payment Status:</strong>{" "}
-            {data?.interestProfile.payment.isPaid ? "Paid" : "Not Paid"}
+            <strong>Payment Status:</strong> {data?.interestProfile.payment.isPaid ? "Paid" : "Not Paid"}
           </Typography>
 
           <Box mt={2}>
@@ -156,9 +150,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
                 <TableBody>
                   {data?.interestProfile.results.result.map((item) => (
                     <TableRow key={item.area}>
-                      <TableCell sx={{ fontWeight: "bold" }}>
-                        {item.area}
-                      </TableCell>
+                      <TableCell sx={{ fontWeight: "bold" }}>{item.area}</TableCell>
                       <TableCell align="right">{item.score}</TableCell>
                     </TableRow>
                   ))}
@@ -186,8 +178,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
             Interest Profile
           </Typography>
           <Typography>
-            <strong>Status:</strong>{" "}
-            {data?.interestProfile?.isTaken ? "Complete" : "Incomplete"}
+            <strong>Status:</strong> {data?.interestProfile?.isTaken ? "Complete" : "Incomplete"}
           </Typography>
           <Typography>
             <strong>Details:</strong> {data?.interestProfile?.details || "N/A"}
@@ -200,12 +191,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
       {data?.unifiedRecord?.discProfile?.isTaken ? (
         <Box>
           {" "}
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={commonTypography}
-            textAlign={"center"}
-          >
+          <Typography variant="h5" fontWeight="600" sx={commonTypography} textAlign={"center"}>
             Disc Profile
           </Typography>
           <TableContainer component={Paper} sx={{ mt: 2 }}>
@@ -224,21 +210,11 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
                 {Object.keys(data?.discProfile?.scores || {}).map((key) => (
                   <TableRow key={key}>
                     <TableCell sx={{ fontWeight: "bold" }}>{key}</TableCell>
-                    <TableCell align="center">
-                      {data.discProfile.scores[key].D}
-                    </TableCell>
-                    <TableCell align="center">
-                      {data.discProfile.scores[key].I}
-                    </TableCell>
-                    <TableCell align="center">
-                      {data.discProfile.scores[key].S}
-                    </TableCell>
-                    <TableCell align="center">
-                      {data.discProfile.scores[key].C}
-                    </TableCell>
-                    <TableCell align="center">
-                      {data.discProfile.scores[key].B}
-                    </TableCell>
+                    <TableCell align="center">{data.discProfile.scores[key].D}</TableCell>
+                    <TableCell align="center">{data.discProfile.scores[key].I}</TableCell>
+                    <TableCell align="center">{data.discProfile.scores[key].S}</TableCell>
+                    <TableCell align="center">{data.discProfile.scores[key].C}</TableCell>
+                    <TableCell align="center">{data.discProfile.scores[key].B}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -251,8 +227,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
             Disc Profile
           </Typography>
           <Typography>
-            <strong>Status:</strong>{" "}
-            {data?.discProfile?.isTaken ? "Complete" : "Incomplete"}
+            <strong>Status:</strong> {data?.discProfile?.isTaken ? "Complete" : "Incomplete"}
           </Typography>
           <Typography>
             <strong>Details:</strong> {data?.discProfile?.details || "N/A"}
@@ -265,11 +240,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
       {/* Survey Section */}
       {data?.unifiedRecord?.survey?.isTaken ? (
         <Box mb={2}>
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ fontFamily: fonts.poppins, mb: 1 }}
-          >
+          <Typography variant="h5" fontWeight="600" sx={{ fontFamily: fonts.poppins, mb: 1 }}>
             Survey
           </Typography>
           <TableContainer component={Paper}>
@@ -277,9 +248,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
               <TableBody>
                 {fixedQuestions.map((question, index) => (
                   <TableRow key={index}>
-                    <TableCell sx={{ fontWeight: "bold" }}>
-                      {question}
-                    </TableCell>
+                    <TableCell sx={{ fontWeight: "bold" }}>{question}</TableCell>
                     <TableCell>{surveyAnswers[index]}</TableCell>
                   </TableRow>
                 ))}
@@ -289,16 +258,11 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
         </Box>
       ) : (
         <Box mb={2}>
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ fontFamily: fonts.poppins, mb: 1 }}
-          >
+          <Typography variant="h5" fontWeight="600" sx={{ fontFamily: fonts.poppins, mb: 1 }}>
             Survey
           </Typography>
           <Typography>
-            <strong>Status:</strong>{" "}
-            {data?.survey?.isTaken ? "Complete" : "Incomplete"}
+            <strong>Status:</strong> {data?.survey?.isTaken ? "Complete" : "Incomplete"}
           </Typography>
           <Typography>
             <strong>Details:</strong> {data?.survey?.details || "N/A"}
@@ -335,9 +299,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
                   </TableRow>
                   <TableRow>
                     <TableCell sx={{ fontWeight: "bold" }}>LinkedIn</TableCell>
-                    <TableCell>
-                      {data?.resume?.personalInfo?.linkedIn}
-                    </TableCell>
+                    <TableCell>{data?.resume?.personalInfo?.linkedIn}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell sx={{ fontWeight: "bold" }}>GitHub</TableCell>
@@ -371,8 +333,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
                   </Typography>
                   <Typography variant="body2">
                     {new Date(edu.startDate).toLocaleDateString()} -{" "}
-                    {new Date(edu.endDate).toLocaleDateString()} | Grade:{" "}
-                    {edu.grade}
+                    {new Date(edu.endDate).toLocaleDateString()} | Grade: {edu.grade}
                   </Typography>
                 </Box>
               ))}
@@ -386,16 +347,14 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
               {data?.resume?.experience.map((exp) => (
                 <Box key={exp._id} mb={1}>
                   <Typography variant="body1">
-                    <strong>{exp.jobTitle}</strong> - {exp.company},{" "}
-                    {exp.location}
+                    <strong>{exp.jobTitle}</strong> - {exp.company}, {exp.location}
                   </Typography>
                   <Typography variant="body2">
                     {new Date(exp.startDate).toLocaleDateString()} -{" "}
                     {new Date(exp.endDate).toLocaleDateString()}
                   </Typography>
                   <Typography variant="body2">
-                    <strong>Responsibilities:</strong>{" "}
-                    {exp.responsibilities.join(" ")}
+                    <strong>Responsibilities:</strong> {exp.responsibilities.join(" ")}
                   </Typography>
                   <Typography variant="body2">
                     <strong>Achievements:</strong> {exp.achievements}
@@ -410,8 +369,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
                 Skills
               </Typography>
               <Typography variant="body2">
-                <strong>Technical:</strong>{" "}
-                {data?.resume?.skills?.technical.join(", ")}
+                <strong>Technical:</strong> {data?.resume?.skills?.technical.join(", ")}
               </Typography>
               <Typography variant="body2">
                 <strong>Soft:</strong> {data?.resume?.skills?.soft.join(", ")}
@@ -430,8 +388,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
                   </Typography>
                   <Typography variant="body2">{proj.description}</Typography>
                   <Typography variant="body2">
-                    <strong>Technologies:</strong>{" "}
-                    {proj.technologies.join(", ")}
+                    <strong>Technologies:</strong> {proj.technologies.join(", ")}
                   </Typography>
                   <Typography variant="body2">
                     <strong>Link:</strong> <a href={proj.link}>{proj.link}</a>
@@ -481,9 +438,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
               <Typography variant="h6" fontWeight="600" sx={commonTypography}>
                 Hobbies
               </Typography>
-              <Typography variant="body2">
-                {data?.resume?.hobbies.join(", ")}
-              </Typography>
+              <Typography variant="body2">{data?.resume?.hobbies.join(", ")}</Typography>
             </Box>
           </Box>
         </>
@@ -493,8 +448,7 @@ const UserUnifiedModal = ({ open, onClose, data }) => {
             Resume
           </Typography>
           <Typography>
-            <strong>Status:</strong>{" "}
-            {data?.resume?.isCompleted ? "Complete" : "Incomplete"}
+            <strong>Status:</strong> {data?.resume?.isCompleted ? "Complete" : "Incomplete"}
           </Typography>
           <Typography>
             <strong>Details:</strong> {data?.resume?.details || "N/A"}

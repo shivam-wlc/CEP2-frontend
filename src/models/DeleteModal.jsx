@@ -1,23 +1,9 @@
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Modal,
-  Typography,
-} from "@mui/material";
+import { Box, Button, CircularProgress, Modal, Typography } from "@mui/material";
 import React from "react";
+
 import GeneralButton from "../components/general/GeneralButton.jsx";
 
-const DeleteModal = ({
-  open,
-  onClose,
-  onDelete,
-  title,
-  text,
-  fonts,
-  colors,
-  isButtonLoading,
-}) => {
+const DeleteModal = ({ open, onClose, onDelete, title, text, fonts, colors, isButtonLoading }) => {
   const handleDelete = () => {
     onDelete();
     onClose();

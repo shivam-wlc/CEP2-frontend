@@ -7,25 +7,16 @@ function fetchApi(url, options = {}) {
     throw new Error(`Use regular fetch to make request to '${url}'`);
   }
   if (options.body) {
-    options.body =
-      typeof options.body === "string"
-        ? options.body
-        : JSON.stringify(options.body);
+    options.body = typeof options.body === "string" ? options.body : JSON.stringify(options.body);
   }
   options.credentials = options.credentials || "include";
   options.headers = options.headers || {};
   options.headers.Accept = options.headers.Accept || "application/json";
-  options.headers["Content-Type"] =
-    options.headers["Content-Type"] || "application/json";
+  options.headers["Content-Type"] = options.headers["Content-Type"] || "application/json";
   return fetch(url, options).then(checkStatus).then(parseJSON).catch(logError);
 }
 function checkStatus(response) {
-  if (
-    response.status == 400 ||
-    response.status == 500 ||
-    response.status == 401 ||
-    response.status == 404
-  ) {
+  if (response.status == 400 || response.status == 500 || response.status == 401 || response.status == 404) {
     // response.status === 401 && window.location.replace("/login");
     // response.json().then((res) => alert(res.message));
     // return;

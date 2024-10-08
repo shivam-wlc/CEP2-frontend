@@ -1,4 +1,6 @@
-import React from "react";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion,
   AccordionDetails,
@@ -15,16 +17,13 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
-import { fonts } from "../utility/fonts.js";
+import React from "react";
 import { Link } from "react-router-dom";
 
+import { fonts } from "../utility/fonts.js";
+
 const LearnAcoordian = ({ university }) => {
-  const defaultLogo =
-    "https://www.medvocation.com/assets/static/images/default-university-logo.png";
+  const defaultLogo = "https://www.medvocation.com/assets/static/images/default-university-logo.png";
 
   const isValidImageUrl = (url) => {
     const image = new Image();
@@ -34,9 +33,7 @@ const LearnAcoordian = ({ university }) => {
 
   const handleRedirectToWebsite = (website) => {
     const url =
-      website.startsWith("http://") || website.startsWith("https://")
-        ? website
-        : `https://${website}`;
+      website.startsWith("http://") || website.startsWith("https://") ? website : `https://${website}`;
     window.open(url, "_blank");
   };
   return (
@@ -73,14 +70,8 @@ const LearnAcoordian = ({ university }) => {
             }}
           >
             <Box sx={{ flex: "1 1 auto" }}>
-              <TableContainer
-                component={Paper}
-                sx={{ boxShadow: "none", width: "90%" }}
-              >
-                <Table
-                  sx={{ borderCollapse: "collapse", "th, td": { border: 0 } }}
-                  aria-label="simple table"
-                >
+              <TableContainer component={Paper} sx={{ boxShadow: "none", width: "90%" }}>
+                <Table sx={{ borderCollapse: "collapse", "th, td": { border: 0 } }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
                       <TableCell>
@@ -149,10 +140,7 @@ const LearnAcoordian = ({ university }) => {
                 margin: "auto",
               }}
             >
-              <Typography
-                variant="h6"
-                sx={{ color: "#076c7e", textAlign: "center" }}
-              >
+              <Typography variant="h6" sx={{ color: "#076c7e", textAlign: "center" }}>
                 {university.Name}
               </Typography>
               <Typography variant="subtitle2" sx={{ color: "#888" }}>

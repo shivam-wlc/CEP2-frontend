@@ -1,7 +1,8 @@
-import React from "react";
 import { Box, Typography } from "@mui/material";
-import { fonts } from "../utility/fonts.js";
+import React from "react";
+
 import { colors } from "../utility/color.js";
+import { fonts } from "../utility/fonts.js";
 
 const FirstView = ({ icon, numbers, title }) => {
   return (

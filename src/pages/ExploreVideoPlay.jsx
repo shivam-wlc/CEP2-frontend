@@ -1,38 +1,35 @@
-import React, { useEffect, useState } from "react";
-import Headers from "../components/Headers";
-import { Box, Container } from "@mui/system";
-import {
-  videoDetailById,
-  selectAllComments,
-  getAllComments,
-  addComment,
-  getLikeStatus,
-  toggleLike,
-  addRating,
-  getUserRatingOfVideo,
-} from "../redux/slices/creatorSlice.js";
-import {
-  selectAuthenticated,
-  selectUserId,
-  selectToken,
-} from "../redux/slices/authSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import { IconButton, Rating, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Box, Container } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { IconButton, Rating, TextField } from "@mui/material";
-import { fonts } from "../utility/fonts.js";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
 import GeneralButton from "../components/general/GeneralButton.jsx";
-import { notify } from "../redux/slices/alertSlice.js";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import Headers from "../components/Headers";
 import AddVideoToPlaylistModal from "../models/AddVideoToPlaylistModal.jsx";
 import NeedToSingupModal from "../models/NeedToSingupModal.jsx";
+import { notify } from "../redux/slices/alertSlice.js";
+import { selectAuthenticated, selectToken, selectUserId } from "../redux/slices/authSlice";
+import {
+  addComment,
+  addRating,
+  getAllComments,
+  getLikeStatus,
+  getUserRatingOfVideo,
+  selectAllComments,
+  toggleLike,
+  videoDetailById,
+} from "../redux/slices/creatorSlice.js";
+import { fonts } from "../utility/fonts.js";
 
 const ExploreVideoPlay = () => {
   const dispatchToRedux = useDispatch();
@@ -52,8 +49,7 @@ const ExploreVideoPlay = () => {
   const [liked, setLiked] = useState(false);
   const [ratingValue, setRatingValue] = useState(0);
   //playlist
-  const [openAddVideoToPlaylistModal, setOpenAddVideoToPlaylistModal] =
-    useState(false);
+  const [openAddVideoToPlaylistModal, setOpenAddVideoToPlaylistModal] = useState(false);
   const [selectedVideoId, setSelectedVideoId] = useState("");
 
   const [needToSingupOpen, setNeedToSingupOpen] = useState(false);
@@ -94,9 +90,7 @@ const ExploreVideoPlay = () => {
     const fetchLikeStatus = async () => {
       if (authenticated) {
         try {
-          const response = await dispatchToRedux(
-            getLikeStatus({ videoId, userId })
-          );
+          const response = await dispatchToRedux(getLikeStatus({ videoId, userId }));
           setLiked(response.payload.isLiked);
         } catch (error) {
           console.error("Error fetching comments:", error);
@@ -115,21 +109,20 @@ const ExploreVideoPlay = () => {
     }
 
     try {
-      const toggleLikeResponse = await dispatchToRedux(
-        toggleLike({ videoId, userId, token })
-      );
+      const toggleLikeResponse = await dispatchToRedux(toggleLike({ videoId, userId, token }));
 
       try {
-        const likeStatusResponse = await dispatchToRedux(
-          getLikeStatus({ videoId, userId })
-        );
+        const likeStatusResponse = await dispatchToRedux(getLikeStatus({ videoId, userId }));
         setLiked(likeStatusResponse.payload.isLiked);
       } catch (error) {
         console.error("Error fetching like status:", error);
       }
 
       dispatchToRedux(
-        notify({ type: "success", message: toggleLikeResponse.payload.message })
+        notify({
+          type: "success",
+          message: toggleLikeResponse.payload.message,
+        }),
       );
     } catch (error) {
       console.error("Error toggling like:", error);
@@ -145,14 +138,10 @@ const ExploreVideoPlay = () => {
 
     try {
       setIsButtonLoading(true);
-      await dispatchToRedux(
-        addComment({ userId, videoId, comment: writeCommnet, token })
-      );
+      await dispatchToRedux(addComment({ userId, videoId, comment: writeCommnet, token }));
       setWriteComment("");
       setIsButtonLoading(false);
-      dispatchToRedux(
-        notify({ type: "success", message: "Comment added successfully" })
-      );
+      dispatchToRedux(notify({ type: "success", message: "Comment added successfully" }));
     } catch (error) {
       setIsButtonLoading(false);
       console.error("Error adding comment:", error);
@@ -165,9 +154,7 @@ const ExploreVideoPlay = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (authenticated) {
-        const getRatingResponse = await dispatchToRedux(
-          getUserRatingOfVideo({ videoId, userId })
-        );
+        const getRatingResponse = await dispatchToRedux(getUserRatingOfVideo({ videoId, userId }));
 
         if (getRatingResponse.payload.userRating) {
           setRatingValue(getRatingResponse.payload.userRating);
@@ -238,9 +225,7 @@ const ExploreVideoPlay = () => {
     <>
       <Headers />
       <Container sx={{ paddingTop: "2rem" }}>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          {renderVideo()}
-        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>{renderVideo()}</Box>
 
         <Box
           sx={{
@@ -262,8 +247,7 @@ const ExploreVideoPlay = () => {
               fontFamily: fonts.sans,
             }}
           >
-            Likes:{" "}
-            <span style={{ fontWeight: "600" }}>{videoData?.likes.length}</span>
+            Likes: <span style={{ fontWeight: "600" }}>{videoData?.likes.length}</span>
           </Typography>
           <IconButton>
             <Rating
@@ -284,9 +268,7 @@ const ExploreVideoPlay = () => {
                 <FavoriteBorderIcon sx={{ fontSize: "3rem", color: "red" }} />
               )}
             </IconButton>
-            <IconButton
-              onClick={() => handleOpenAddVideoToPlaylistModal(videoData._id)}
-            >
+            <IconButton onClick={() => handleOpenAddVideoToPlaylistModal(videoData._id)}>
               <PlaylistAddIcon sx={{ fontSize: "3rem", color: "gray" }} />
             </IconButton>
           </Box>
@@ -302,10 +284,7 @@ const ExploreVideoPlay = () => {
         >
           {videoData?.title}
         </Typography>
-        <Typography
-          variant="body1"
-          sx={{ fontFamily: fonts.sans, width: "100%", margin: "auto" }}
-        >
+        <Typography variant="body1" sx={{ fontFamily: fonts.sans, width: "100%", margin: "auto" }}>
           {videoData?.description}
         </Typography>
 
@@ -327,10 +306,7 @@ const ExploreVideoPlay = () => {
             value={writeCommnet}
             onChange={(e) => setWriteComment(e.target.value)}
           />
-          <GeneralButton
-            text="Add Comment"
-            onClick={() => handleAddComment(videoData._id)}
-          />
+          <GeneralButton text="Add Comment" onClick={() => handleAddComment(videoData._id)} />
         </Box>
         <Box>
           <Typography
@@ -355,10 +331,7 @@ const ExploreVideoPlay = () => {
                   width: "80%",
                 }}
               >
-                <Typography
-                  variant="subtitle1"
-                  sx={{ fontWeight: "600", fontFamily: fonts.sans }}
-                >
+                <Typography variant="subtitle1" sx={{ fontWeight: "600", fontFamily: fonts.sans }}>
                   {comment?.username}
                 </Typography>
                 <Typography variant="body1" sx={{ fontFamily: fonts.sans }}>

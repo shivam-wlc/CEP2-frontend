@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import FetchApi from "../../client.js";
 import { config } from "../../config/config";
 
@@ -17,17 +18,14 @@ export const getAllUsers = createAsyncThunk(
       limit: limit.toString(),
     });
 
-    return FetchApi.fetch(
-      `${config.api}/api/admin/all-users-data?${queryParams}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  }
+    return FetchApi.fetch(`${config.api}/api/admin/all-users-data?${queryParams}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
 );
 
 export const getAllCreators = createAsyncThunk(
@@ -39,31 +37,25 @@ export const getAllCreators = createAsyncThunk(
       limit: limit.toString(),
     });
 
-    return FetchApi.fetch(
-      `${config.api}/api/admin/all-creators-data?${queryParams}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  }
-);
-
-export const getGeneralUserData = createAsyncThunk(
-  "admin/getGeneralUserData",
-  async ({ token }) => {
-    return FetchApi.fetch(`${config.api}/api/admin/getgeneralinformation`, {
+    return FetchApi.fetch(`${config.api}/api/admin/all-creators-data?${queryParams}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
-  }
+  },
 );
+
+export const getGeneralUserData = createAsyncThunk("admin/getGeneralUserData", async ({ token }) => {
+  return FetchApi.fetch(`${config.api}/api/admin/getgeneralinformation`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+});
 
 export const updateActiveStatus = createAsyncThunk(
   "admin/updateActiveStatus",
@@ -76,7 +68,7 @@ export const updateActiveStatus = createAsyncThunk(
       },
       body: JSON.stringify({ status }),
     });
-  }
+  },
 );
 
 const adminSlice = createSlice({
@@ -101,9 +93,7 @@ const adminSlice = createSlice({
 
       // Helper function to update user status in an array
       const updateUserStatus = (array) =>
-        array.map((item) =>
-          item._id === user._id ? { ...item, status: user.status } : item
-        );
+        array.map((item) => (item._id === user._id ? { ...item, status: user.status } : item));
 
       // Check if user exists in `users` and update if found
       if (state.users.some((item) => item._id === user._id)) {
