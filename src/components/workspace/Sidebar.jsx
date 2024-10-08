@@ -96,23 +96,17 @@
 // };
 
 // export default Sidebar;
-import React from "react";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import HistoryIcon from "@mui/icons-material/History";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import SettingsIcon from "@mui/icons-material/Settings";
-import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import AssessmentIcon from "@mui/icons-material/Assessment";
-import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import HistoryIcon from "@mui/icons-material/History";
+import QueueMusicIcon from "@mui/icons-material/QueueMusic";
+import SettingsIcon from "@mui/icons-material/Settings";
 import ShareIcon from "@mui/icons-material/Share";
+import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import React from "react";
 
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
 import { fonts } from "../../utility/fonts.js";
 
 const Sidebar = ({ userRole, handleMenuItemClick, currentPage }) => {
@@ -178,9 +172,7 @@ const Sidebar = ({ userRole, handleMenuItemClick, currentPage }) => {
             onClick={() => handleMenuItemClick(menuItem.name)}
             sx={{
               background:
-                currentPage === menuItem.name
-                  ? "linear-gradient(to top left, #720361, #BF2F75);"
-                  : "",
+                currentPage === menuItem.name ? "linear-gradient(to top left, #720361, #BF2F75);" : "",
               borderRadius: 1,
             }}
           >

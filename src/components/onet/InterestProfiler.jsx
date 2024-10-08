@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getQuestions,
-  selectOnet,
-  getResultAndJob,
-} from "../../redux/slices/onetSlice.js";
-import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
-import InterestQuestionCard from "./InterestQuestionCard.jsx";
-import globalStyle from "./Common.module.css";
-import { interestHero, interestLogo } from "../../assets/assest.js";
 import { useNavigate } from "react-router-dom";
+
+import { interestHero, interestLogo } from "../../assets/assest.js";
+import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import { getQuestions, getResultAndJob, selectOnet } from "../../redux/slices/onetSlice.js";
+import globalStyle from "./Common.module.css";
+import InterestQuestionCard from "./InterestQuestionCard.jsx";
 
 const styles = {
   containerStyle: {
@@ -36,9 +33,7 @@ export default function InterestProfiler() {
   const [selectedValue, setSelectedValue] = useState(null);
 
   const handleChooseOption = async () => {
-    await dispatchToRedux(
-      getQuestions({ resource: "questions_30", start: 1, end: 60, token })
-    );
+    await dispatchToRedux(getQuestions({ resource: "questions_30", start: 1, end: 60, token }));
   };
 
   useEffect(() => {
@@ -67,9 +62,7 @@ export default function InterestProfiler() {
       console.log("Please select an answer for the last question.");
       return;
     }
-    await dispatchToRedux(
-      getResultAndJob({ answers: overallAnswers.join(""), token, userId })
-    );
+    await dispatchToRedux(getResultAndJob({ answers: overallAnswers.join(""), token, userId }));
     navigate("/disc");
   };
 
@@ -87,9 +80,7 @@ export default function InterestProfiler() {
             totalQuestions={onet?.questions?.length}
             onNext={handleNext}
             onPrevious={handlePrevious}
-            isLastQuestion={
-              currentQuestionIndex === onet?.questions?.length - 1
-            }
+            isLastQuestion={currentQuestionIndex === onet?.questions?.length - 1}
             isFirstQuestion={currentQuestionIndex === 0}
             overallAnswers={overallAnswers}
             setOverallAnswers={setOverallAnswers}

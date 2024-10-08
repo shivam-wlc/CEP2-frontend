@@ -1,96 +1,96 @@
-.header{
-    height: 15rem;
-    background-size: 100% 130%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #720361;
-    position: relative;
-    background-blend-mode:overlay;
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+.header {
+  height: 15rem;
+  background-size: 100% 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #720361;
+  position: relative;
+  background-blend-mode: overlay;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
-.header h2{
-    position: absolute;
-    bottom: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3rem;
-    color: white;
-    font-weight: 900;
+.header h2 {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: white;
+  font-weight: 900;
 }
-.container{
-    padding: 5rem;
+.container {
+  padding: 5rem;
 }
-.hero{
-    display: flex;
-    gap: 1.5rem;
+.hero {
+  display: flex;
+  gap: 1.5rem;
 }
-.hero img{
-    height: 24rem;
+.hero img {
+  height: 24rem;
 }
-.hero-text-about-us{
-    margin-top: 1rem;
-    color: #FF8A00;
-    font-weight: 700;
+.hero-text-about-us {
+  margin-top: 1rem;
+  color: #ff8a00;
+  font-weight: 700;
 }
-.hero-text-about-us+h3{
-    color: rgb(0, 0, 0);
-    font-weight: 900;
-    font-size: 2.5rem;
-    margin: 1.5rem 0;
+.hero-text-about-us + h3 {
+  color: rgb(0, 0, 0);
+  font-weight: 900;
+  font-size: 2.5rem;
+  margin: 1.5rem 0;
 }
-.hero-text-content{
-    color: gray;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1rem;
+.hero-text-content {
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
-.hero-text-content-founder-name{
-    font-weight: 900;
-    font-size: 1.25rem;
+.hero-text-content-founder-name {
+  font-weight: 900;
+  font-size: 1.25rem;
 }
-.hero-text-content-founder-position{
-    color: gray;
-    margin-top: .5rem;
+.hero-text-content-founder-position {
+  color: gray;
+  margin-top: 0.5rem;
 }
-.bottom-container{
-    margin-top: 5rem;
-    background-color: white;
-    padding: 2rem 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 1px 1px 10px gray;
-    border-radius: 1rem;
+.bottom-container {
+  margin-top: 5rem;
+  background-color: white;
+  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 1px 10px gray;
+  border-radius: 1rem;
 }
-.bottom-container h3{
-    font-size: 2rem;   
+.bottom-container h3 {
+  font-size: 2rem;
 }
-.bottom-container p{
-    text-align: center;
-    margin: 1.5rem 0;
+.bottom-container p {
+  text-align: center;
+  margin: 1.5rem 0;
 }
-.cards-container{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-.cards-container > div{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
+.cards-container > div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
 }
-.cards-container > div div p{
-    text-align: start;
+.cards-container > div div p {
+  text-align: start;
 }
-.cards-container > div div p:first-child{
-    margin-top: -.2rem;
-    font-weight: 600;
+.cards-container > div div p:first-child {
+  margin-top: -0.2rem;
+  font-weight: 600;
 }
-.cards-container > div div p:last-child{
-    margin-top: -1rem;
+.cards-container > div div p:last-child {
+  margin-top: -1rem;
 }

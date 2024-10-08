@@ -75,11 +75,4 @@ const top3thingsForFuture = [
   { aspect: "Physical environment" },
 ];
 
-export {
-  levelOfEducation,
-  gradePoints,
-  nextCareer,
-  mostAppealing,
-  preferredLocation,
-  top3thingsForFuture,
-};
+export { levelOfEducation, gradePoints, nextCareer, mostAppealing, preferredLocation, top3thingsForFuture };

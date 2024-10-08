@@ -1,5 +1,6 @@
-import React from "react";
 import { Box } from "@mui/material";
+import React from "react";
+
 import styles from "../styles/InitialLoaders.module.css";
 
 const InitialLoaders = () => {

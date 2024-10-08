@@ -1,18 +1,19 @@
-import * as React from "react";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
-import { fonts } from "../utility/fonts.js";
-import { colors } from "../utility/color.js";
-import { selectAuthenticated } from "../redux/slices/authSlice.js";
+import * as React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { selectAuthenticated } from "../redux/slices/authSlice.js";
+import { colors } from "../utility/color.js";
+import { fonts } from "../utility/fonts.js";
 const UserDashboardVideoCard = ({ video }) => {
   const authenticated = useSelector(selectAuthenticated);
   const navigate = useNavigate();
@@ -27,7 +28,6 @@ const UserDashboardVideoCard = ({ video }) => {
 
         margin: "auto",
         cursor: "pointer",
-
       }}
     >
       <CardMedia
@@ -81,7 +81,11 @@ const UserDashboardVideoCard = ({ video }) => {
         <Typography
           variant="body2"
           color={colors.darkGray}
-          sx={{ fontFamily: fonts.sans, textAlign: "center", marginTop: "-10px", }}
+          sx={{
+            fontFamily: fonts.sans,
+            textAlign: "center",
+            marginTop: "-10px",
+          }}
         >
           by:{" "}
           <span
@@ -99,12 +103,7 @@ const UserDashboardVideoCard = ({ video }) => {
           marginTop: "-20px",
         }}
       >
-        <Rating
-          name="size-large"
-          readOnly
-          defaultValue={video?.averageRating}
-          size="large"
-        />
+        <Rating name="size-large" readOnly defaultValue={video?.averageRating} size="large" />
         {`(${video?.ratings?.length || "0"})`}
       </CardActions>
     </Card>

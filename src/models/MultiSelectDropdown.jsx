@@ -291,30 +291,24 @@
 
 // export default MultiSelectDropdown;
 
-import React, { useEffect, useState } from "react";
 import {
   Autocomplete,
-  TextField,
   Checkbox,
   FormControl,
-  Typography,
-  Select,
-  MenuItem,
   ListItemText,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
 } from "@mui/material";
-import {
-  getCareerClusterOptions,
-  selectClusterData,
-} from "../redux/slices/surveySlice.js";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectToken } from "../redux/slices/authSlice.js";
-import { notify } from "../redux/slices/alertSlice.js";
 
-const MultiSelectDropdown = ({
-  fonts,
-  selectedOptions,
-  setSelectedOptions,
-}) => {
+import { notify } from "../redux/slices/alertSlice.js";
+import { selectToken } from "../redux/slices/authSlice.js";
+import { getCareerClusterOptions, selectClusterData } from "../redux/slices/surveySlice.js";
+
+const MultiSelectDropdown = ({ fonts, selectedOptions, setSelectedOptions }) => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const clusterData = useSelector(selectClusterData);
@@ -336,7 +330,7 @@ const MultiSelectDropdown = ({
           notify({
             type: "error",
             message: "Please select up to 2 Career Clusters",
-          })
+          }),
         );
       }
     } else {
@@ -354,12 +348,10 @@ const MultiSelectDropdown = ({
       category.CareerPathways.map((pathway) => ({
         careerCluster: category.CareerClusters,
         careerPathway: pathway,
-      }))
+      })),
     );
 
-  const filteredData = clusterData.filter((category) =>
-    d.includes(category.CareerClusters)
-  );
+  const filteredData = clusterData.filter((category) => d.includes(category.CareerClusters));
 
   const handleOptionChange = (event, newValue) => {
     const groupedByCluster = newValue.reduce((acc, curr) => {
@@ -374,7 +366,7 @@ const MultiSelectDropdown = ({
           notify({
             type: "warning",
             message: "You can choose up to 2 Career Pathways per cluster",
-          })
+          }),
         );
         return;
       }
@@ -387,8 +379,8 @@ const MultiSelectDropdown = ({
     <>
       <FormControl fullWidth sx={{ mb: 2 }}>
         <Typography sx={{ fontFamily: fonts.sans, fontWeight: "600" }}>
-          At this point in your career journey, which Career Cluster most appeal
-          to you?<span style={{ color: "red" }}>*</span>
+          At this point in your career journey, which Career Cluster most appeal to you?
+          <span style={{ color: "red" }}>*</span>
         </Typography>
         <Select
           multiple
@@ -422,7 +414,7 @@ const MultiSelectDropdown = ({
               category.CareerPathways.map((pathway) => ({
                 careerCluster: category.CareerClusters,
                 careerPathway: pathway,
-              }))
+              })),
             )}
             groupBy={(option) => option.careerCluster}
             getOptionLabel={(option) => option.careerPathway}
@@ -431,11 +423,9 @@ const MultiSelectDropdown = ({
             open={open}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
-            disableCloseOnSelect 
+            disableCloseOnSelect
             renderOption={(props, option, { selected }) => {
-              const isChecked = selectedOptions.some(
-                (item) => item.careerPathway === option.careerPathway
-              );
+              const isChecked = selectedOptions.some((item) => item.careerPathway === option.careerPathway);
               return (
                 <li {...props}>
                   <Checkbox checked={isChecked} style={{ marginRight: 8 }} />

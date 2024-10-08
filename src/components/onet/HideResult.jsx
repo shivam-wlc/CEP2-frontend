@@ -1,10 +1,10 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { fonts } from "../../utility/fonts.js";
 import ReactEcharts from "echarts-for-react";
-import PurchaseBox from "./PurchaseBox.jsx";
-
 import React from "react";
+
+import { fonts } from "../../utility/fonts.js";
+import PurchaseBox from "./PurchaseBox.jsx";
 
 const HideResult = ({ option, result }) => {
   const limitedResults = result.slice(0, 4);
@@ -40,8 +40,7 @@ const HideResult = ({ option, result }) => {
                 padding: "1rem",
               }}
             >
-              Thank for for taking our assessement you are one step closer to
-              finding your ideal career.
+              Thank for for taking our assessement you are one step closer to finding your ideal career.
             </Typography>
           </Box>
           <Box sx={{ width: "90%", margin: "auto" }}>
@@ -65,12 +64,10 @@ const HideResult = ({ option, result }) => {
                 margin: "auto",
               }}
             >
-              The Interest Profiler Test is designed to reveal your key areas of
-              interest based on the work activities that you find most
-              compelling and enjoyable. Using the personalized insights in this
-              report, you’ll gain a better understanding of what type of work
-              best aligns with your passions — and what doesn’t — so you can
-              make a better-informed career decision.
+              The Interest Profiler Test is designed to reveal your key areas of interest based on the work
+              activities that you find most compelling and enjoyable. Using the personalized insights in this
+              report, you’ll gain a better understanding of what type of work best aligns with your passions —
+              and what doesn’t — so you can make a better-informed career decision.
             </Typography>
 
             <Typography
@@ -108,10 +105,7 @@ const HideResult = ({ option, result }) => {
                 height: "600px",
               }}
             >
-              <ReactEcharts
-                option={option}
-                style={{ width: "100%", height: "100%" }}
-              />
+              <ReactEcharts option={option} style={{ width: "100%", height: "100%" }} />
             </Box>
           </Box>
           <Box sx={{ width: "90%", margin: "auto" }}>
@@ -139,8 +133,8 @@ const HideResult = ({ option, result }) => {
                 // padding: "1rem",
               }}
             >
-              We assess your preferred fields through RIASEC assessment and
-              present your results based on the interests you've provided
+              We assess your preferred fields through RIASEC assessment and present your results based on the
+              interests you've provided
             </Typography>
           </Box>{" "}
           <Box
@@ -167,19 +161,12 @@ const HideResult = ({ option, result }) => {
                     borderRadius: "7px",
                     "&:hover": {
                       cursor: "pointer",
-                      boxShadow:
-                        "rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px",
+                      boxShadow: "rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px",
                     },
                   }}
                 >
-                  <Typography sx={{ color: "#70798C" }}>
-                    {element.title}
-                  </Typography>
-                  {element.fit && (
-                    <Typography sx={{ color: "#A99985" }}>
-                      {element.fit} fit
-                    </Typography>
-                  )}
+                  <Typography sx={{ color: "#70798C" }}>{element.title}</Typography>
+                  {element.fit && <Typography sx={{ color: "#A99985" }}>{element.fit} fit</Typography>}
                 </Box>
               </Grid>
             ))}

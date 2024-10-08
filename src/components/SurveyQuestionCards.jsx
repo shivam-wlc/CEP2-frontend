@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GrLinkNext } from "react-icons/gr";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Select from "react-select";
+
 import styles from "../styles/QuestionCard.module.css";
 import globalStyle from "../styles/Questions.module.css";
 
@@ -29,9 +30,7 @@ const SurveyQuestionCards = ({
     if (isMultiple) {
       processedOptionValue = optionValue.map((value) => value.value);
     } else processedOptionValue = optionValue.value;
-    const updatedOverallAnswer = overallAnswers.filter(
-      (ans) => !ans.hasOwnProperty(answerKey)
-    );
+    const updatedOverallAnswer = overallAnswers.filter((ans) => !ans.hasOwnProperty(answerKey));
     updatedOverallAnswer.push({ [answerKey]: processedOptionValue });
     console.log(updatedOverallAnswer);
     setOverallAnswers(updatedOverallAnswer);
@@ -87,21 +86,13 @@ const SurveyQuestionCards = ({
         </div>
       </div>
       <div className={globalStyle["navButtonContainer"]}>
-        <button
-          className={globalStyle["navButton"]}
-          onClick={handlePrevious}
-          disabled={isFirstQuestion}
-        >
+        <button className={globalStyle["navButton"]} onClick={handlePrevious} disabled={isFirstQuestion}>
           <span>
             <IoMdArrowRoundBack />
           </span>
           Previous
         </button>
-        <button
-          className={globalStyle["navButton"]}
-          onClick={handleNext}
-          disabled={!optionValue}
-        >
+        <button className={globalStyle["navButton"]} onClick={handleNext} disabled={!optionValue}>
           {isLastQuestion ? "Submit" : "Next"}
           <span>
             <GrLinkNext />

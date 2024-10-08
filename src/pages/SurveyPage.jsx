@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import SurveyQuestionCards from "../components/SurveyQuestionCards.jsx";
-import globalStyle from "../styles/Questions.module.css";
-import { interestLogo, surevyHero } from "../assets/assest.js";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserId, selectToken } from "../redux/slices/authSlice.js";
+import { useNavigate } from "react-router-dom";
+
+import { interestLogo, surevyHero } from "../assets/assest.js";
+import SurveyQuestionCards from "../components/SurveyQuestionCards.jsx";
+import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import {
+  getCareerClusterOptions,
   getSurveyQuestions,
   saveSurveyData,
-  selectSurveyQuestions,
-  getCareerClusterOptions,
   selectClusterData,
+  selectSurveyQuestions,
 } from "../redux/slices/surveySlice.js";
+import globalStyle from "../styles/Questions.module.css";
 
 const SurveyPage = () => {
   const dispatchToRedux = useDispatch();
@@ -133,8 +134,7 @@ const SurveyPage = () => {
       ],
     },
     {
-      question:
-        "What are the top 3 things that you care about most when considering your future education?",
+      question: "What are the top 3 things that you care about most when considering your future education?",
       key: "top3thingsForFuture",
       isMutiple: true,
       options: [
@@ -144,10 +144,8 @@ const SurveyPage = () => {
           label: "Academic ranking and reputation",
         },
         {
-          value:
-            "Academic environment (small class sizes, student/faculty ratio)",
-          label:
-            "Academic environment (small class sizes, student/faculty ratio)",
+          value: "Academic environment (small class sizes, student/faculty ratio)",
+          label: "Academic environment (small class sizes, student/faculty ratio)",
         },
         {
           value: "Flexibility of delivery (online, classroom, hybrid learning)",
@@ -170,8 +168,7 @@ const SurveyPage = () => {
       ],
     },
     {
-      question:
-        "At this point in your career journey, which Career Cluster most appeal to you?",
+      question: "At this point in your career journey, which Career Cluster most appeal to you?",
       key: "mostappealCarrer",
       isMutiple: false,
       options: [

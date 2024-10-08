@@ -1,4 +1,5 @@
 import React from "react";
+
 import { PageNotFound } from "../assets/assest.js";
 
 const InvalidPages = () => {
@@ -18,4 +19,3 @@ const InvalidPages = () => {
 };
 
 export default InvalidPages;
-

@@ -191,27 +191,15 @@
 
 // export default Explore;
 
+import { Box, Button, Container, MenuItem, Pagination, TextField, Typography } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  MenuItem,
-  Pagination,
-  TextField,
-  Typography,
-} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+
+import GeneralButton from "../components/general/GeneralButton";
 import Headers from "../components/Headers";
 import VideoCard from "../components/VideoCard";
+import { allvideos, resetState, selectAllVideosData, videoFilter } from "../redux/slices/creatorSlice";
 import { categories, tags } from "../utility/category";
-import {
-  allvideos,
-  selectAllVideosData,
-  videoFilter,
-  resetState,
-} from "../redux/slices/creatorSlice";
-import GeneralButton from "../components/general/GeneralButton";
 import { fonts } from "../utility/fonts.js";
 
 const Explore = () => {
@@ -222,10 +210,8 @@ const Explore = () => {
       _id: "66b37c7c6f15606f4047729e",
       creatorId: "66b0bbec7034f8bd5fe19f04",
       videoLink: "https://youtu.be/F4Zu5ZZAG7I?si=kYqWC4iKZSdyiOjN",
-      title:
-        "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
-      description:
-        "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
+      title: "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
+      description: "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
       tags: ["literature"],
       language: "Aymara",
       youtubeLink: true,
@@ -386,7 +372,7 @@ const Explore = () => {
     (category) => {
       dispatchToRedux(videoFilter({ category }));
     },
-    [dispatchToRedux]
+    [dispatchToRedux],
   );
 
   const handleSearchClick = useCallback(() => {
@@ -440,8 +426,7 @@ const Explore = () => {
                 fontFamily: fonts.sans,
                 margin: "0 0.5rem",
                 textTransform: "none",
-                backgroundColor:
-                  selectedCatagory === category ? "#FF8A00" : "#ff880033",
+                backgroundColor: selectedCatagory === category ? "#FF8A00" : "#ff880033",
                 color: selectedCatagory === category ? "white" : "#FF8A00",
                 fontWeight: "bold",
                 whiteSpace: "nowrap",
@@ -519,17 +504,12 @@ const Explore = () => {
                 width: "100vw",
               }}
             >
-              <Typography
-                variant="h5"
-                sx={{ fontFamily: fonts.sans, fontWeight: "600" }}
-              >
+              <Typography variant="h5" sx={{ fontFamily: fonts.sans, fontWeight: "600" }}>
                 No Video Found
               </Typography>
             </Box>
           ) : (
-            allVideosData?.map((video) => (
-              <VideoCard key={video._id} video={video} />
-            ))
+            allVideosData?.map((video) => <VideoCard key={video._id} video={video} />)
           )}
         </Box>
 
@@ -541,11 +521,7 @@ const Explore = () => {
             padding: "1rem",
           }}
         >
-          <Pagination
-            count={allVideosData?.totalPages}
-            size="large"
-            onChange={handlePageChange}
-          />
+          <Pagination count={allVideosData?.totalPages} size="large" onChange={handlePageChange} />
         </Box>
       </Container>
     </Box>

@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
-import { fonts } from "../../utility/fonts.js";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { CreatorIcon, MaleFemaleIcon, NewUser, TotalUsers } from "../../assets/assest.js";
 import usersIcon from "../../assets/glass/ic_glass_users.png";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  getGeneralUserData,
-  selectGeneralData,
-} from "../../redux/slices/adminSlice.js";
-import {
-  CreatorIcon,
-  MaleFemaleIcon,
-  NewUser,
-  TotalUsers,
-} from "../../assets/assest.js";
+import { getGeneralUserData, selectGeneralData } from "../../redux/slices/adminSlice.js";
 import { selectToken } from "../../redux/slices/authSlice.js";
+import { fonts } from "../../utility/fonts.js";
 
 const AdminHome = () => {
   const dispatchToRedux = useDispatch();
@@ -26,29 +19,14 @@ const AdminHome = () => {
 
   return (
     <div>
-      <Typography
-        variant="h5"
-        sx={{ fontFamily: fonts.poppins, fontWeight: "600" }}
-      >
+      <Typography variant="h5" sx={{ fontFamily: fonts.poppins, fontWeight: "600" }}>
         Hi, Welcome Back
       </Typography>
 
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 4 }}>
-        <DetailsCard
-          icon={NewUser}
-          numbers={generalData?.last7DaysJoinedUsers}
-          title={"New Users"}
-        />
-        <DetailsCard
-          icon={TotalUsers}
-          numbers={generalData?.totalUsers}
-          title={"Total Users"}
-        />
-        <DetailsCard
-          icon={CreatorIcon}
-          numbers={generalData?.totalCreators}
-          title={"Total Creators"}
-        />
+        <DetailsCard icon={NewUser} numbers={generalData?.last7DaysJoinedUsers} title={"New Users"} />
+        <DetailsCard icon={TotalUsers} numbers={generalData?.totalUsers} title={"Total Users"} />
+        <DetailsCard icon={CreatorIcon} numbers={generalData?.totalCreators} title={"Total Creators"} />
 
         <Box
           sx={{
@@ -61,17 +39,9 @@ const AdminHome = () => {
             alignItems: "center",
           }}
         >
-          <img
-            src={MaleFemaleIcon}
-            alt="users"
-            width={"80px"}
-            height={"80px"}
-          />
+          <img src={MaleFemaleIcon} alt="users" width={"80px"} height={"80px"} />
           <Box>
-            <Typography
-              variant="h6"
-              sx={{ fontFamily: fonts.poppins, fontWeight: "600" }}
-            >
+            <Typography variant="h6" sx={{ fontFamily: fonts.poppins, fontWeight: "600" }}>
               {generalData?.maleCount} / {generalData?.femaleCount}
             </Typography>
             <Typography
@@ -108,16 +78,10 @@ const DetailsCard = ({ icon, numbers, title }) => {
     >
       <img src={icon} alt="users" width={"80px"} height={"80px"} />
       <Box>
-        <Typography
-          variant="h6"
-          sx={{ fontFamily: fonts.poppins, fontWeight: "600" }}
-        >
+        <Typography variant="h6" sx={{ fontFamily: fonts.poppins, fontWeight: "600" }}>
           {numbers}
         </Typography>
-        <Typography
-          variant="body"
-          sx={{ fontFamily: fonts.poppins, fontWeight: "600", color: "gray" }}
-        >
+        <Typography variant="body" sx={{ fontFamily: fonts.poppins, fontWeight: "600", color: "gray" }}>
           {title}
         </Typography>
       </Box>

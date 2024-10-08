@@ -1,3 +1,4 @@
+// eslint-disable-next-line simple-import-sort/imports
 const categories = [
   "Education",
   "Guidance",

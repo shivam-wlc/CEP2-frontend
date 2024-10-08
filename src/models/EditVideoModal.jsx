@@ -1,26 +1,21 @@
-import React from "react";
 import {
+  Autocomplete,
   Box,
   Button,
+  CircularProgress,
   Dialog,
+  FormControl,
+  InputLabel,
   MenuItem,
   Select,
   TextField,
-  Autocomplete,
-  InputLabel,
-  FormControl,
-  CircularProgress,
 } from "@mui/material";
-import { categories, languages, tags } from "../utility/category.js";
-import GeneralButton from "../components/general/GeneralButton.jsx";
+import React from "react";
 
-const EditVideoModal = ({
-  open,
-  onClose,
-  video,
-  onUpdate,
-  isButtonLoading,
-}) => {
+import GeneralButton from "../components/general/GeneralButton.jsx";
+import { categories, languages, tags } from "../utility/category.js";
+
+const EditVideoModal = ({ open, onClose, video, onUpdate, isButtonLoading }) => {
   const defaultVideo = {
     title: "",
     description: "",
@@ -64,7 +59,7 @@ const EditVideoModal = ({
           width="560"
           height="315"
           src={`https://www.youtube.com/embed/${formData.youtubeVideoId}`}
-          frameborder="0"
+          frameBorder="0"
           allowfullscreen
           style={{
             maxWidth: "80%",
@@ -131,13 +126,7 @@ const EditVideoModal = ({
             tags: newValue,
           });
         }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Video Tags"
-            placeholder="Select Video tags"
-          />
-        )}
+        renderInput={(params) => <TextField {...params} label="Video Tags" placeholder="Select Video tags" />}
         sx={{
           //   maxWidth: "80%",
           width: "80%",
@@ -148,10 +137,7 @@ const EditVideoModal = ({
         }}
       />
       <FormControl fullWidth>
-        <InputLabel
-          id="select_language"
-          sx={{ textAlign: "center", width: "35%" }}
-        >
+        <InputLabel id="select_language" sx={{ textAlign: "center", width: "35%" }}>
           Select Language
         </InputLabel>
 
@@ -178,10 +164,7 @@ const EditVideoModal = ({
         </Select>
       </FormControl>
       <FormControl fullWidth>
-        <InputLabel
-          id="select_category"
-          sx={{ textAlign: "center", width: "35%" }}
-        >
+        <InputLabel id="select_category" sx={{ textAlign: "center", width: "35%" }}>
           Select Category
         </InputLabel>
 

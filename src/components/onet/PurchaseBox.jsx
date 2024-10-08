@@ -1,9 +1,10 @@
-import { Box, Typography, Button } from "@mui/material";
-import { fonts } from "../../utility/fonts.js";
+import { Box, Button, Typography } from "@mui/material";
 import { loadStripe } from "@stripe/stripe-js";
+import { useSelector } from "react-redux";
+
 import { config } from "../../config/config.js";
 import { selectUserId } from "../../redux/slices/authSlice.js";
-import { useSelector } from "react-redux";
+import { fonts } from "../../utility/fonts.js";
 
 const PurchaseBox = () => {
   const userId = useSelector(selectUserId);
@@ -84,8 +85,7 @@ const PurchaseBox = () => {
           marginBottom: "1rem",
         }}
       >
-        Discover your complete career profile and get personalized insights into
-        your ideal career paths.
+        Discover your complete career profile and get personalized insights into your ideal career paths.
       </Typography>
       <Typography
         variant="body1"

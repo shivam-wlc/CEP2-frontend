@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectUserProfile,
-  updatePaymentStatus,
-} from "../redux/slices/profileSlice.js";
-import { selectUserId, selectToken } from "../redux/slices/authSlice.js";
-import Headers from "../components/Headers.jsx";
 import { Box, Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import Headers from "../components/Headers.jsx";
+import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
+import { selectUserProfile, updatePaymentStatus } from "../redux/slices/profileSlice.js";
 
 const PaymentConfirmation = () => {
   const dispatchToRedux = useDispatch();
@@ -20,9 +18,7 @@ const PaymentConfirmation = () => {
     const fetchData = async () => {
       await dispatchToRedux(updatePaymentStatus({ userId, token }));
       setTimeout(() => {
-        navigate(
-          `/interest-profiler/result?answers=${userData?.assessment30?.answers}`
-        );
+        navigate(`/interest-profiler/result?answers=${userData?.assessment30?.answers}`);
       }, 3000); // 3000 milliseconds = 3 seconds for demonstration
     };
 

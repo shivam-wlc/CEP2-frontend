@@ -1,25 +1,17 @@
-import React, { useEffect, useRef } from "react";
-import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectOnet,
-  selectDetailedCareerData,
-  generateDeatiledDataOfCareers,
-} from "../../redux/slices/onetSlice.js";
-import { selectUserId, selectToken } from "../../redux/slices/authSlice.js";
-import {
-  selectUserProfile,
-  getUserProfile,
-} from "../../redux/slices/profileSlice.js";
+import jsPDF from "jspdf";
+import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 // images
+import { InterestProfileHeroImage, Logo, pdfPhoto } from "../../assets/assest.js";
+import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
 import {
-  Logo,
-  InterestProfileHeroImage,
-  pdfPhoto,
-} from "../../assets/assest.js";
-
+  generateDeatiledDataOfCareers,
+  selectDetailedCareerData,
+  selectOnet,
+} from "../../redux/slices/onetSlice.js";
+import { getUserProfile, selectUserProfile } from "../../redux/slices/profileSlice.js";
 import styles from "./my-style.module.css";
 
 const DetailedPdf = () => {
@@ -61,13 +53,7 @@ const DetailedPdf = () => {
           cropCanvas.width = canvas.width;
           cropCanvas.height = canvas.height / numPages;
           const cropCtx = cropCanvas.getContext("2d");
-          cropCtx.drawImage(
-            canvas,
-            0,
-            -j * cropCanvas.height,
-            canvas.width,
-            canvas.height
-          );
+          cropCtx.drawImage(canvas, 0, -j * cropCanvas.height, canvas.width, canvas.height);
           const cropImgData = cropCanvas.toDataURL("image/png");
 
           if (yOffset + cropCanvas.height > pdfHeight) {
@@ -81,7 +67,7 @@ const DetailedPdf = () => {
             0,
             yOffset,
             imgWidth,
-            (cropCanvas.height * pdfWidth) / canvas.width
+            (cropCanvas.height * pdfWidth) / canvas.width,
           );
           yOffset += (cropCanvas.height * pdfWidth) / canvas.width;
         }
@@ -122,28 +108,22 @@ const DetailedPdf = () => {
           <p className={styles.heading}>Career Direction Report</p>
           <p className={styles.subheading}>About This Report</p>
           <p className={styles.paragraph}>
-            The Career Directions Report is derived from well tested and proven
-            methodologies that analyze an individuals’ interests using six
-            domains – Realistic, Conventional, Enterprising, Social, Artistic
-            and Investigative. We call these Interest Spheres and a short
-            explanation of each one is shown later. <br /> <br />
-            We all have unique personalities and interests that come together to
-            define who we are. The weight of influence of each of these Interest
-            Spheres is different for each one of us and how they combine gives
-            us insights on the career choices we can make. <br />
-            <br /> Our predictive algorithms use the responses that you have
-            given to present to you different job profiles that you should
-            investigate further and consider for your future. Remember your
-            future is in your hands to craft as you choose. Initial choices will
-            no doubt be refined as you explore the opportunities that are right
-            for you. <br />
+            The Career Directions Report is derived from well tested and proven methodologies that analyze an
+            individuals’ interests using six domains – Realistic, Conventional, Enterprising, Social, Artistic
+            and Investigative. We call these Interest Spheres and a short explanation of each one is shown
+            later. <br /> <br />
+            We all have unique personalities and interests that come together to define who we are. The weight
+            of influence of each of these Interest Spheres is different for each one of us and how they
+            combine gives us insights on the career choices we can make. <br />
+            <br /> Our predictive algorithms use the responses that you have given to present to you different
+            job profiles that you should investigate further and consider for your future. Remember your
+            future is in your hands to craft as you choose. Initial choices will no doubt be refined as you
+            explore the opportunities that are right for you. <br />
             <br />
-            Share the findings of this report with your friends and family and
-            get them to help you assess and fine-tune your career ideas so you
-            can visualize the best future for you. <br />
-            <br /> The world of work is moving at a tremendous pace. We
-            encourage you to use the resources on the CareerExplorer.me platform
-            to navigate in the direction that is best for you.
+            Share the findings of this report with your friends and family and get them to help you assess and
+            fine-tune your career ideas so you can visualize the best future for you. <br />
+            <br /> The world of work is moving at a tremendous pace. We encourage you to use the resources on
+            the CareerExplorer.me platform to navigate in the direction that is best for you.
           </p>
           <br />
           <br />
@@ -158,12 +138,10 @@ const DetailedPdf = () => {
 
         <div className={styles.thirdPage}>
           <p className={styles.paragraph}>
-            {userData?.name} this is your Interests Profile Graph derived from
-            your responses from the Interest Profiler Assessment. Core elements
-            that make up who you are always remain, but as your experiences grow
-            some of your interests become more or less pronounced on the graph.
-            Your initial focus should be on the combination of your top 3
-            Interest Spheres.
+            {userData?.name} this is your Interests Profile Graph derived from your responses from the
+            Interest Profiler Assessment. Core elements that make up who you are always remain, but as your
+            experiences grow some of your interests become more or less pronounced on the graph. Your initial
+            focus should be on the combination of your top 3 Interest Spheres.
           </p>
 
           <div>

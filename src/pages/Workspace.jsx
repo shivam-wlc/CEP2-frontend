@@ -379,7 +379,11 @@
 
 // export default Workspace;
 
-import React, { useState, useEffect } from "react";
+import LogoutIcon from "@mui/icons-material/Logout";
+import MailIcon from "@mui/icons-material/Mail";
+import MenuIcon from "@mui/icons-material/Menu";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   AppBar,
   Avatar,
@@ -397,30 +401,17 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useNavigate, Link } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { Logo } from "../assets/assest.js";
-import { fonts } from "../utility/fonts.js";
-
+import React, { useEffect, useState } from "react";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import {
-  logout,
-  selectUserId,
-  selectAuthenticated,
-  selectToken,
-} from "../redux/slices/authSlice.js";
-import {
-  getUserProfile,
-  selectUserProfile,
-} from "../redux/slices/profileSlice.js";
+import { Link, useNavigate } from "react-router-dom";
 
-import Sidebar from "../components/workspace/Sidebar.jsx";
+import { Logo } from "../assets/assest.js";
 import renderCurrentPage from "../components/PageRender.jsx";
+import Sidebar from "../components/workspace/Sidebar.jsx";
+import { logout, selectAuthenticated, selectToken, selectUserId } from "../redux/slices/authSlice.js";
+import { getUserProfile, selectUserProfile } from "../redux/slices/profileSlice.js";
+import { fonts } from "../utility/fonts.js";
 const drawerWidth = 280;
 
 const Workspace = (props) => {
@@ -498,7 +489,6 @@ const Workspace = (props) => {
     "& .MuiFilledInput-input": {
       padding: "10px 14px", // Adjust the value as per your needs
     },
-   
   };
 
   const drawer = (
@@ -527,8 +517,7 @@ const Workspace = (props) => {
     </div>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex", backgroundColor: "#f9fafb" }}>
@@ -542,9 +531,7 @@ const Workspace = (props) => {
           boxShadow: "none",
         }}
       >
-        <Toolbar
-          sx={{ height: "10vh", boxShadow: "none", backgroundColor: "#BC2876" }}
-        >
+        <Toolbar sx={{ height: "10vh", boxShadow: "none", backgroundColor: "#BC2876" }}>
           <Box sx={{ mr: "100px" }}>
             <Typography
               variant="h7"
@@ -555,8 +542,7 @@ const Workspace = (props) => {
               }}
             >
               {/* {userData?.name || "User Name"} */}
-              {"Hi " + userData?.firstName + " " + userData?.lastName ||
-                "Hi User Name"}
+              {"Hi " + userData?.firstName + " " + userData?.lastName || "Hi User Name"}
             </Typography>
             <Typography
               variant="h7"
@@ -608,12 +594,7 @@ const Workspace = (props) => {
               <MailIcon />
             </Badge> */}
           </IconButton>
-          <IconButton
-            size="large"
-            aria-label="show new notifications"
-            color="gray"
-            sx={{ mr: 3 }}
-          >
+          <IconButton size="large" aria-label="show new notifications" color="gray" sx={{ mr: 3 }}>
             {/* <Badge badgeContent={17} color="error">
               <NotificationsIcon />
             </Badge> */}
@@ -650,12 +631,8 @@ const Workspace = (props) => {
                   gap: 1,
                 }}
               >
-                <Typography
-                  textAlign="left"
-                  sx={{ fontWeight: "bold", fontFamily: fonts.sans }}
-                >
-                  {userData?.firstName + " " + userData?.lastName ||
-                    "User Name"}
+                <Typography textAlign="left" sx={{ fontWeight: "bold", fontFamily: fonts.sans }}>
+                  {userData?.firstName + " " + userData?.lastName || "User Name"}
                 </Typography>
                 <Typography
                   textAlign="center"
@@ -683,10 +660,7 @@ const Workspace = (props) => {
                   textDecoration: "none",
                 }}
               >
-                <Typography
-                  textAlign="center"
-                  sx={{ fontFamily: fonts.sans, color: "black" }}
-                >
+                <Typography textAlign="center" sx={{ fontFamily: fonts.sans, color: "black" }}>
                   Home
                 </Typography>
               </Box>

@@ -225,38 +225,35 @@
 
 // export default UserPlaylist;
 
+import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getUserPlaylists,
-  selectPlaylist,
-  removeVideoFromPlaylist,
-  deletePlaylist,
-} from "../../redux/slices/userSlice.js";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { fonts } from "../../utility/fonts.js";
-import {
-  Button,
-  Typography,
-  Box,
-  Container,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  IconButton,
-  Grid,
-} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import CloseIcon from "@mui/icons-material/Close";
-import GeneralButton from "../general/GeneralButton.jsx";
-import {
-  selectUserId,
-  selectAuthenticated,
-  selectToken,
-} from "../../redux/slices/authSlice.js";
+import { useNavigate } from "react-router-dom";
+
 import CreatePlaylistModal from "../../models/CreatePlaylistModal.jsx";
 import { notify } from "../../redux/slices/alertSlice.js";
-import { useNavigate } from "react-router-dom";
+import { selectAuthenticated, selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import {
+  deletePlaylist,
+  getUserPlaylists,
+  removeVideoFromPlaylist,
+  selectPlaylist,
+} from "../../redux/slices/userSlice.js";
+import { fonts } from "../../utility/fonts.js";
+import GeneralButton from "../general/GeneralButton.jsx";
 
 const UserPlaylist = () => {
   const navigate = useNavigate();
@@ -277,8 +274,7 @@ const UserPlaylist = () => {
     },
     {
       _id: "2",
-      thumbnailUrl:
-        "https://miro.medium.com/v2/resize:fit:1200/1*60RQyL8WeifCvfJX8dQCcQ.jpeg",
+      thumbnailUrl: "https://miro.medium.com/v2/resize:fit:1200/1*60RQyL8WeifCvfJX8dQCcQ.jpeg",
       title: "How to Become a Lawyer",
       rating: 5,
       ratedby: 10,
@@ -321,7 +317,7 @@ const UserPlaylist = () => {
       stars.push(
         <span key={i} style={{ color: i < rating ? "#FFD700" : "#E1E1E1" }}>
           ★
-        </span>
+        </span>,
       );
     }
     return <>{stars}</>;
@@ -345,9 +341,7 @@ const UserPlaylist = () => {
 
   const handleRemoveVideo = async (playlistId, videoId) => {
     try {
-      await dispatchToRedux(
-        removeVideoFromPlaylist({ userId, playlistId, videoId, token })
-      );
+      await dispatchToRedux(removeVideoFromPlaylist({ userId, playlistId, videoId, token }));
       dispatchToRedux(notify({ type: "success", message: "Video removed" }));
     } catch (error) {
       console.error("Error removing video from playlist:", error);
@@ -379,10 +373,7 @@ const UserPlaylist = () => {
           >
             My Playlist
           </Typography>
-          <GeneralButton
-            onClick={handleCreatePlaylist}
-            text="Create Playlist"
-          />
+          <GeneralButton onClick={handleCreatePlaylist} text="Create Playlist" />
         </Box>
 
         <Box
@@ -402,10 +393,7 @@ const UserPlaylist = () => {
                 width: "100%",
               }}
             >
-              <Typography
-                variant="h5"
-                sx={{ fontFamily: fonts.sans, fontWeight: "600" }}
-              >
+              <Typography variant="h5" sx={{ fontFamily: fonts.sans, fontWeight: "600" }}>
                 No Playlist Found
               </Typography>
             </Box>
@@ -441,18 +429,12 @@ const UserPlaylist = () => {
 
                       <Box sx={{ display: "flex", alignItems: "center" }}>
                         {renderStars(video.rating)}
-                        <Typography
-                          variant="body2"
-                          sx={{ marginLeft: "0.5rem" }}
-                        >
+                        <Typography variant="body2" sx={{ marginLeft: "0.5rem" }}>
                           ({video.ratedby})
                         </Typography>
                       </Box>
 
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "#777", marginTop: "0.5rem" }}
-                      >
+                      <Typography variant="body2" sx={{ color: "#777", marginTop: "0.5rem" }}>
                         Shared with: {video.sharedWith} users
                       </Typography>
 
@@ -466,9 +448,7 @@ const UserPlaylist = () => {
                         <Button
                           variant="contained"
                           sx={{
-                            backgroundColor: video.status.viewed
-                              ? "#720361"
-                              : "#f8f8f8",
+                            backgroundColor: video.status.viewed ? "#720361" : "#f8f8f8",
                             color: video.status.viewed ? "white" : "black",
                             textTransform: "none",
                           }}
@@ -478,9 +458,7 @@ const UserPlaylist = () => {
                         <Button
                           variant="contained"
                           sx={{
-                            backgroundColor: video.status.rated
-                              ? "#720361"
-                              : "#f8f8f8",
+                            backgroundColor: video.status.rated ? "#720361" : "#f8f8f8",
                             color: video.status.rated ? "white" : "black",
                             textTransform: "none",
                           }}
@@ -490,9 +468,7 @@ const UserPlaylist = () => {
                         <Button
                           variant="contained"
                           sx={{
-                            backgroundColor: video.status.liked
-                              ? "#720361"
-                              : "#f8f8f8",
+                            backgroundColor: video.status.liked ? "#720361" : "#f8f8f8",
                             color: video.status.liked ? "white" : "black",
                             textTransform: "none",
                           }}
@@ -508,9 +484,7 @@ const UserPlaylist = () => {
                           right: "1rem",
                           color: "#FF4D4D",
                         }}
-                        onClick={() =>
-                          handleRemoveVideo(playlist._id, video._id)
-                        }
+                        onClick={() => handleRemoveVideo(playlist._id, video._id)}
                       >
                         <DeleteIcon />
                       </IconButton>

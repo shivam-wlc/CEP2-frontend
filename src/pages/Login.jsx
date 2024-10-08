@@ -348,27 +348,22 @@
 
 // export default Login;
 
+import { Box, Button, Checkbox, CircularProgress, Typography } from "@mui/material";
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  CircularProgress,
-  Typography,
-} from "@mui/material";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
 import { background, leftPannelAuth, Logo } from "../assets/assest.js";
 import AuthIcon1 from "../assets/icons/AuthIcon1.png";
 import AuthIcon2 from "../assets/icons/AuthIcon2.png";
 import AuthIcon3 from "../assets/icons/AuthIcon3.png";
 import FormField from "../components/FormField.jsx";
-import { fonts } from "../utility/fonts.js";
-import { colors } from "../utility/color.js";
-import { isValidEmail } from "../utility/validate.js";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { login } from "../redux/slices/authSlice.js";
 import { notify } from "../redux/slices/alertSlice.js";
+import { login } from "../redux/slices/authSlice.js";
 import { getUserProfile } from "../redux/slices/profileSlice.js";
+import { colors } from "../utility/color.js";
+import { fonts } from "../utility/fonts.js";
+import { isValidEmail } from "../utility/validate.js";
 
 const Login = () => {
   const dispatchToRedux = useDispatch();
@@ -392,15 +387,11 @@ const Login = () => {
     console.log("Hello ji");
 
     if (!formData.email || !formData.password) {
-      return dispatchToRedux(
-        notify({ type: "warning", message: "Please fill all the fields" })
-      );
+      return dispatchToRedux(notify({ type: "warning", message: "Please fill all the fields" }));
     }
 
     if (!isValidEmail(formData.email)) {
-      return dispatchToRedux(
-        notify({ type: "warning", message: "Please enter valid email" })
-      );
+      return dispatchToRedux(notify({ type: "warning", message: "Please enter valid email" }));
     }
 
     try {
@@ -411,13 +402,9 @@ const Login = () => {
       console.log(resultAction, "result");
 
       if (userId) {
-        const gettingProfile = await dispatchToRedux(
-          getUserProfile({ userId, token })
-        );
+        const gettingProfile = await dispatchToRedux(getUserProfile({ userId, token }));
         if (gettingProfile.meta.requestStatus === "fulfilled") {
-          dispatchToRedux(
-            notify({ type: "success", message: "Login Successful" })
-          );
+          dispatchToRedux(notify({ type: "success", message: "Login Successful" }));
           setIsButtonLoading(false);
           navigate(`/workspace/${userId}`);
         }
@@ -567,10 +554,7 @@ const Login = () => {
                   <Typography>
                     <Checkbox /> Keep me logged In
                   </Typography>
-                  <Link
-                    to="/forget-password"
-                    style={{ textDecoration: "none" }}
-                  >
+                  <Link to="/forget-password" style={{ textDecoration: "none" }}>
                     <Typography
                       // align="right"
                       sx={{
@@ -588,12 +572,10 @@ const Login = () => {
                     <Button
                       variant="contained"
                       sx={{
-                        backgroundImage:
-                          "linear-gradient(to top left, #720361, #BF2F75)",
+                        backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
                         width: "50%",
                         "&:hover": {
-                          backgroundImage:
-                            "linear-gradient(to top left, #740262, #d83b87)",
+                          backgroundImage: "linear-gradient(to top left, #740262, #d83b87)",
                         },
                         borderRadius: "2rem",
                         padding: "10px 0px",
@@ -608,12 +590,10 @@ const Login = () => {
                       variant="contained"
                       disabled={isButtonLoading}
                       sx={{
-                        backgroundImage:
-                          "linear-gradient(to top left, #720361, #BF2F75)",
+                        backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
                         width: "50%",
                         "&:hover": {
-                          backgroundImage:
-                            "linear-gradient(to top left, #740262, #d83b87)",
+                          backgroundImage: "linear-gradient(to top left, #740262, #d83b87)",
                         },
                         borderRadius: "2rem",
                         padding: "10px 0px",
@@ -633,9 +613,7 @@ const Login = () => {
                   }}
                 >
                   <Box sx={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
-                    <Typography sx={{ fontWeight: "bold" }}>
-                      Don&apos;t have an account?
-                    </Typography>
+                    <Typography sx={{ fontWeight: "bold" }}>Don&apos;t have an account?</Typography>
                     <Link to="/register" style={{ textDecoration: "none" }}>
                       <Typography
                         sx={{

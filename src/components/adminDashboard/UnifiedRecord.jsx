@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import PreviewIcon from "@mui/icons-material/Preview";
 import {
   Box,
   Button,
@@ -13,16 +13,17 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { fonts } from "../../utility/fonts.js";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { selectToken } from "../../redux/slices/authSlice.js";
 import {
   getAllUnifiedRecordData,
-  selectAllUnifiedData,
   getUnifiedRecordDataOfUser,
+  selectAllUnifiedData,
   selectUserUnified,
 } from "../../redux/slices/unifiedRecordSlice.js";
-import { useDispatch, useSelector } from "react-redux";
-import { selectToken } from "../../redux/slices/authSlice.js";
-import PreviewIcon from "@mui/icons-material/Preview";
+import { fonts } from "../../utility/fonts.js";
 import UserUnifiedModal from "./UserUnifiedModal.jsx";
 
 const UnifiedRecord = () => {
@@ -40,9 +41,7 @@ const UnifiedRecord = () => {
   const [modalData, setModalData] = useState(null);
 
   useEffect(() => {
-    dispatchToRedux(
-      getAllUnifiedRecordData({ token, page: page + 1, limit: rowsPerPage })
-    );
+    dispatchToRedux(getAllUnifiedRecordData({ token, page: page + 1, limit: rowsPerPage }));
   }, [page, rowsPerPage, dispatchToRedux, token]);
 
   console.log("allData", allData);
@@ -68,7 +67,7 @@ const UnifiedRecord = () => {
         page: 1,
         limit: rowsPerPage,
         search: searchQuery,
-      })
+      }),
     );
   };
 
@@ -77,9 +76,7 @@ const UnifiedRecord = () => {
   // };
 
   const handleViewClick = async (id) => {
-    const response = await dispatchToRedux(
-      getUnifiedRecordDataOfUser({ token, unifiedId: id })
-    );
+    const response = await dispatchToRedux(getUnifiedRecordDataOfUser({ token, unifiedId: id }));
     setModalData(response.payload);
     setOpenModal(true);
   };
@@ -100,11 +97,7 @@ const UnifiedRecord = () => {
     <>
       <Box>
         <Box sx={{ ml: 2, mt: 2 }}>
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ fontFamily: fonts.poppins }}
-          >
+          <Typography variant="h5" fontWeight="600" sx={{ fontFamily: fonts.poppins }}>
             Unified Student Record
           </Typography>
         </Box>
@@ -157,9 +150,7 @@ const UnifiedRecord = () => {
               {allData?.unifiedRecordData?.map((row, index) => (
                 <TableRow key={index}>
                   <TableCell>{row?.unique_id}</TableCell>
-                  <TableCell>
-                    {row.userId.firstName + " " + row.userId.lastName}
-                  </TableCell>
+                  <TableCell>{row.userId.firstName + " " + row.userId.lastName}</TableCell>
                   <TableCell
                     sx={{
                       color: row.interestProfile.isTaken ? "green" : "black",
@@ -219,11 +210,7 @@ const UnifiedRecord = () => {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      <UserUnifiedModal
-        open={openModal}
-        onClose={handleCloseModal}
-        data={modalData}
-      />
+      <UserUnifiedModal open={openModal} onClose={handleCloseModal} data={modalData} />
     </>
   );
 };

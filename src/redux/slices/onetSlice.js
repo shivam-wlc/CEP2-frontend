@@ -1,6 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { config } from "../../config/config";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import FetchApi from "../../client";
+import { config } from "../../config/config";
 
 const initialState = {
   counts: { activePage: 1, totalPage: null },
@@ -23,52 +24,37 @@ const getQuestions = createAsyncThunk("onet/getQuestions", async (payload) => {
   });
 });
 
-const getResultAndJob = createAsyncThunk(
-  "onet/getResultAndJob",
-  async ({ answers, token, userId }) => {
-    return FetchApi.fetch(`${config.api}/api/onet/resultmatchingcareers`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ answers, userId }),
-    });
-  }
-);
+const getResultAndJob = createAsyncThunk("onet/getResultAndJob", async ({ answers, token, userId }) => {
+  return FetchApi.fetch(`${config.api}/api/onet/resultmatchingcareers`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ answers, userId }),
+  });
+});
 
-const getCareerByPrepration = createAsyncThunk(
-  "onet/getCareerByPrepration",
-  async (payload) => {
-    return FetchApi.fetch(
-      `${config.api}/api/onet/browsecareersortedbyjobpreparation`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${payload.token}`,
-        },
-        body: JSON.stringify(payload),
-      }
-    );
-  }
-);
+const getCareerByPrepration = createAsyncThunk("onet/getCareerByPrepration", async (payload) => {
+  return FetchApi.fetch(`${config.api}/api/onet/browsecareersortedbyjobpreparation`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${payload.token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+});
 
-const getCareerInfo = createAsyncThunk(
-  "onet/getCareerInfo",
-  async (payload) => {
-    return FetchApi.fetch(
-      `${config.api}/api/onet/getcareerinfo/${payload.careercode}/${payload.topic}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${payload.token}`,
-        },
-      }
-    );
-  }
-);
+const getCareerInfo = createAsyncThunk("onet/getCareerInfo", async (payload) => {
+  return FetchApi.fetch(`${config.api}/api/onet/getcareerinfo/${payload.careercode}/${payload.topic}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${payload.token}`,
+    },
+  });
+});
 
 const generateDeatiledDataOfCareers = createAsyncThunk(
   "onet/generateDeatiledDataOfCareers",
@@ -81,7 +67,7 @@ const generateDeatiledDataOfCareers = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       },
     });
-  }
+  },
 );
 
 const onetSlice = createSlice({
@@ -111,13 +97,10 @@ const onetSlice = createSlice({
       state.careerInfo = payload;
     });
 
-    builder.addCase(
-      generateDeatiledDataOfCareers.fulfilled,
-      (state, { payload }) => {
-        console.log("payload", payload);
-        state.detailedCareerData = payload.totalData;
-      }
-    );
+    builder.addCase(generateDeatiledDataOfCareers.fulfilled, (state, { payload }) => {
+      console.log("payload", payload);
+      state.detailedCareerData = payload.totalData;
+    });
   },
 });
 

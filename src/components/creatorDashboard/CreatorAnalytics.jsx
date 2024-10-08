@@ -1,13 +1,6 @@
-import React from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  CssBaseline,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, CssBaseline, Grid, Typography } from "@mui/material";
 import ReactEcharts from "echarts-for-react";
+import React from "react";
 
 // Dummy data for charts
 const data = [

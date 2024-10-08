@@ -1,5 +1,6 @@
 // CreatorVideos.jsx
-import React, { useState, useEffect } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import {
   Box,
   IconButton,
@@ -14,24 +15,24 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { fonts } from "../../utility/fonts.js";
-import { colors } from "../../utility/color.js";
-import GeneralButton from "../general/GeneralButton.jsx";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { convertUTCDateToLocalDate } from "../../utility/convertTimeToUTC.js";
-import { selectUserId, selectToken } from "../../redux/slices/authSlice.js";
-import {
-  getAuthorVideos,
-  selectAuthorVideos,
-  deleteVideo,
-  updateVideo,
-  searchVideosByTitle,
-} from "../../redux/slices/creatorSlice.js";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+
 import DeleteModal from "../../models/DeleteModal.jsx";
-import { notify } from "../../redux/slices/alertSlice.js";
 import EditVideoModal from "../../models/EditVideoModal.jsx";
+import { notify } from "../../redux/slices/alertSlice.js";
+import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import {
+  deleteVideo,
+  getAuthorVideos,
+  searchVideosByTitle,
+  selectAuthorVideos,
+  updateVideo,
+} from "../../redux/slices/creatorSlice.js";
+import { colors } from "../../utility/color.js";
+import { convertUTCDateToLocalDate } from "../../utility/convertTimeToUTC.js";
+import { fonts } from "../../utility/fonts.js";
+import GeneralButton from "../general/GeneralButton.jsx";
 
 const CreatorVideos = () => {
   const dispatchToRedux = useDispatch();
@@ -66,9 +67,7 @@ const CreatorVideos = () => {
   };
 
   useEffect(() => {
-    dispatchToRedux(
-      getAuthorVideos({ userId, page: page + 1, limit: rowsPerPage })
-    );
+    dispatchToRedux(getAuthorVideos({ userId, page: page + 1, limit: rowsPerPage }));
   }, [page, rowsPerPage]);
 
   const handleSearchClick = () => {
@@ -79,7 +78,7 @@ const CreatorVideos = () => {
         page: 1,
         limit: rowsPerPage,
         search: searchValue,
-      })
+      }),
     );
   };
 
@@ -108,21 +107,19 @@ const CreatorVideos = () => {
           videoId: updatedVideo._id,
           formData: updatedVideo,
           token,
-        })
+        }),
       );
       setIsButtonLoading(false);
       setVideoToEdit(null);
       setEditModalOpen(false);
-      dispatchToRedux(
-        notify({ type: "success", message: "Video updated successfully" })
-      );
+      dispatchToRedux(notify({ type: "success", message: "Video updated successfully" }));
     } catch (error) {
       setIsButtonLoading(false);
       dispatchToRedux(
         notify({
           type: "error",
           message: "Something went wrong, please try again",
-        })
+        }),
       );
     }
   };
@@ -137,12 +134,8 @@ const CreatorVideos = () => {
   const handleConfirmDelete = async () => {
     try {
       setIsButtonLoading(true);
-      await dispatchToRedux(
-        deleteVideo({ userId, videoId: videoIdToDelete, token })
-      );
-      dispatchToRedux(
-        notify({ type: "success", message: "Video deleted successfully" })
-      );
+      await dispatchToRedux(deleteVideo({ userId, videoId: videoIdToDelete, token }));
+      dispatchToRedux(notify({ type: "success", message: "Video deleted successfully" }));
       setIsButtonLoading(false);
       setDeleteModalOpen(false);
       setVideoIdToDelete(null);
@@ -153,7 +146,7 @@ const CreatorVideos = () => {
         notify({
           type: "error",
           message: "Something went wrong, please try again",
-        })
+        }),
       );
     }
   };
@@ -175,10 +168,7 @@ const CreatorVideos = () => {
           alignItems: "center",
         }}
       >
-        <Typography
-          variant="h5"
-          sx={{ fontFamily: fonts.poppins, fontWeight: "600", padding: "1rem" }}
-        >
+        <Typography variant="h5" sx={{ fontFamily: fonts.poppins, fontWeight: "600", padding: "1rem" }}>
           Manage Your Videos
         </Typography>
         <Box
@@ -217,9 +207,7 @@ const CreatorVideos = () => {
               }}
             >
               <TableRow>
-                <TableCell sx={{ ...tableHead, textAlign: "center" }}>
-                  Video
-                </TableCell>
+                <TableCell sx={{ ...tableHead, textAlign: "center" }}>Video</TableCell>
                 <TableCell sx={tableHead}>Title</TableCell>
                 <TableCell sx={tableHead}>Likes</TableCell>
                 <TableCell sx={tableHead}>Comments</TableCell>
@@ -247,30 +235,18 @@ const CreatorVideos = () => {
                         />
                       </>
                     ) : (
-                      <img
-                        src={video.thumbnail}
-                        alt="thumbnail"
-                        style={{ width: "160px", height: "90px" }}
-                      />
+                      <img src={video.thumbnail} alt="thumbnail" style={{ width: "160px", height: "90px" }} />
                     )}
                   </TableCell>
                   <TableCell sx={tableData}>{video.title}</TableCell>
                   {/* <TableCell sx={tableData}>{video?.likes.length}</TableCell> */}
                   {/* <TableCell sx={tableData}>{video?.comments.length}</TableCell> */}
-                  <TableCell sx={tableData}>
-                    {convertUTCDateToLocalDate(video.createdAt)}
-                  </TableCell>
+                  <TableCell sx={tableData}>{convertUTCDateToLocalDate(video.createdAt)}</TableCell>
                   <TableCell>
-                    <IconButton
-                      aria-label="edit"
-                      onClick={() => handleVideoEdit(video)}
-                    >
+                    <IconButton aria-label="edit" onClick={() => handleVideoEdit(video)}>
                       <EditIcon />
                     </IconButton>
-                    <IconButton
-                      aria-label="delete"
-                      onClick={() => handleVideoDelete(video._id)}
-                    >
+                    <IconButton aria-label="delete" onClick={() => handleVideoDelete(video._id)}>
                       <DeleteIcon />
                     </IconButton>
                   </TableCell>

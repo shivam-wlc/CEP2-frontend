@@ -311,20 +311,21 @@
 // };
 
 // export default ForgetPassword;
-import React, { useState } from "react";
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
-import { Logo, background, leftPannelAuth } from "../assets/assest.js";
+import { margin } from "@mui/system";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { background, leftPannelAuth, Logo } from "../assets/assest.js";
 import AuthIcon1 from "../assets/icons/AuthIcon1.png";
 import AuthIcon2 from "../assets/icons/AuthIcon2.png";
 import AuthIcon3 from "../assets/icons/AuthIcon3.png";
 import FormField from "../components/FormField";
-import { Link } from "react-router-dom";
-import { isValidEmail } from "../utility/validate";
-import { useDispatch } from "react-redux";
-import { forgetPass } from "../redux/slices/authSlice";
 import { notify } from "../redux/slices/alertSlice.js";
+import { forgetPass } from "../redux/slices/authSlice";
 import { colors } from "../utility/color.js";
-import { margin } from "@mui/system";
+import { isValidEmail } from "../utility/validate";
 const ForgetPassword = () => {
   const dispatchToRedux = useDispatch();
   const [isButtonLoading, setIsButtonLoading] = useState(false);
@@ -345,15 +346,11 @@ const ForgetPassword = () => {
     e.preventDefault();
     try {
       if (!formData.email) {
-        dispatchToRedux(
-          notify({ type: "warning", message: "Please enter your email" })
-        );
+        dispatchToRedux(notify({ type: "warning", message: "Please enter your email" }));
         return;
       }
       if (!isValidEmail(formData.email)) {
-        dispatchToRedux(
-          notify({ type: "warning", message: "Please enter valid email" })
-        );
+        dispatchToRedux(notify({ type: "warning", message: "Please enter valid email" }));
         return;
       }
 
@@ -367,7 +364,7 @@ const ForgetPassword = () => {
         notify({
           type: "error",
           message: "Something went wrong, Please Try Again",
-        })
+        }),
       );
     }
   };
@@ -459,8 +456,8 @@ const ForgetPassword = () => {
                       textAlign: "center",
                     }}
                   >
-                    Please enter the email address you used to create your
-                    CareerExplorer account to reset your password.
+                    Please enter the email address you used to create your CareerExplorer account to reset
+                    your password.
                   </p>
                 </Box>
 
@@ -472,13 +469,7 @@ const ForgetPassword = () => {
                     padding: "2rem",
                   }}
                 >
-                  <FormField
-                    label="EMAIL"
-                    name="email"
-                    type="email"
-                    width="100%"
-                    onChange={handleChange}
-                  />
+                  <FormField label="EMAIL" name="email" type="email" width="100%" onChange={handleChange} />
 
                   <Box
                     sx={{

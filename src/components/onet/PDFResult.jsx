@@ -1,13 +1,7 @@
-import {
-  Document,
-  Image,
-  Page,
-  StyleSheet,
-  Text,
-  View,
-} from "@react-pdf/renderer";
+import { Document, Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import React from "react";
-import { Logo, pdfPhoto, GoldFish } from "../../assets/assest.js";
+
+import { GoldFish, Logo, pdfPhoto } from "../../assets/assest.js";
 
 const Styles = StyleSheet.create({
   page: {
@@ -342,53 +336,42 @@ const PDFResult = ({
         {/* cheart  */}
 
         <View style={Styles.secondPage}>
-          <Text style={{ ...Styles.heading, fontWeight: "bold" }}>
-            About This Report
+          <Text style={{ ...Styles.heading, fontWeight: "bold" }}>About This Report</Text>
+          <Text style={Styles.aboutReport}>
+            About this Report The Career Directions Report is derived from well tested and proven
+            methodologies that analyze an individuals’ interests using six domains – Realistic, Conventional,
+            Enterprising, Social, Artistic and Investigative. We call these Interest Spheres and a short
+            explanation of each one is shown later.
           </Text>
           <Text style={Styles.aboutReport}>
-            About this Report The Career Directions Report is derived from well
-            tested and proven methodologies that analyze an individuals’
-            interests using six domains – Realistic, Conventional, Enterprising,
-            Social, Artistic and Investigative. We call these Interest Spheres
-            and a short explanation of each one is shown later.
-          </Text>
-          <Text style={Styles.aboutReport}>
-            We all have unique personalities and interests that come together to
-            define who we are. The weight of influence of each of these Interest
-            Spheres is different for each one of us and how they combine gives
-            us insights on the career choices we can make.
+            We all have unique personalities and interests that come together to define who we are. The weight
+            of influence of each of these Interest Spheres is different for each one of us and how they
+            combine gives us insights on the career choices we can make.
           </Text>
 
           <Text style={Styles.aboutReport}>
-            Our predictive algorithms use the responses that you have given to
-            present to you different job profiles that you should investigate
-            further and consider for your future. Remember your future is in
-            your hands to craft as you choose. Initial choices will no doubt be
-            refined as you explore the opportunities that are right for you.
+            Our predictive algorithms use the responses that you have given to present to you different job
+            profiles that you should investigate further and consider for your future. Remember your future is
+            in your hands to craft as you choose. Initial choices will no doubt be refined as you explore the
+            opportunities that are right for you.
           </Text>
 
           <Text style={Styles.aboutReport}>
-            Share the findings of this report with your friends and family and
-            get them to help you assess and fine-tune your career ideas so you
-            can visualize the best future for you.
+            Share the findings of this report with your friends and family and get them to help you assess and
+            fine-tune your career ideas so you can visualize the best future for you.
           </Text>
           <Text style={Styles.aboutReport}>
-            The world of work is moving at a tremendous pace. We encourage you
-            to use the resources on the CareerExplorer.me platform to navigate
-            in the direction that is best for you.
+            The world of work is moving at a tremendous pace. We encourage you to use the resources on the
+            CareerExplorer.me platform to navigate in the direction that is best for you.
           </Text>
-          <Text style={Styles.aboutReport}>
-            “The future depends on what you do today.” —Mahatma Gandhi
-          </Text>
+          <Text style={Styles.aboutReport}>“The future depends on what you do today.” —Mahatma Gandhi</Text>
         </View>
         <View style={Styles.thirdPage}>
           <Text style={{ ...Styles.aboutReport, marginTop: "10px" }}>
-            {userName}, this is your Interests Profile Graph derived from your
-            responses from the Interest Profiler Assessment. Core elements that
-            make up who you are always remain, but as your experiences grow some
-            of your interests become more or less pronounced on the graph. Your
-            initial focus should be on the combination of your top 3 Interest
-            Spheres.
+            {userName}, this is your Interests Profile Graph derived from your responses from the Interest
+            Profiler Assessment. Core elements that make up who you are always remain, but as your experiences
+            grow some of your interests become more or less pronounced on the graph. Your initial focus should
+            be on the combination of your top 3 Interest Spheres.
           </Text>
 
           <Image style={Styles.graph} src={graph} />
@@ -413,9 +396,7 @@ const PDFResult = ({
           {result.map((r, i) => (
             <View key={i} style={Styles.resultCard}>
               <View style={Styles.descriptionContainer}>
-                <Text style={Styles.areaHeading}>
-                  Interest Sphere: {r.area}
-                </Text>
+                <Text style={Styles.areaHeading}>Interest Sphere: {r.area}</Text>
                 <Text style={Styles.descriptionText}>{r.description}</Text>
               </View>
               <View style={Styles.scoreContainer}>
@@ -427,19 +408,16 @@ const PDFResult = ({
         <View>
           <Text style={Styles.heading}> Which career? </Text>
           <Text style={Styles.aboutReport}>
-            {userName}, below you will see the different occupations that we
-            would recommend you consider. Where there is a ‘Best fit’ this
-            represents what most closely matches with your interests and your
+            {userName}, below you will see the different occupations that we would recommend you consider.
+            Where there is a ‘Best fit’ this represents what most closely matches with your interests and your
             educational plans.
           </Text>
           <Text style={Styles.aboutReport}>
-            You should not consider this as a closed or restricted list of
-            occupations. This is your starting point to use to investigate and
-            dig down to find the right space for you. As you progress your
-            education, experiences and the opportunities that become available
-            to you influence your career choices. Be open to change and seek
-            help and assistance form your counsellors and friends and family to
-            make your best choices.
+            You should not consider this as a closed or restricted list of occupations. This is your starting
+            point to use to investigate and dig down to find the right space for you. As you progress your
+            education, experiences and the opportunities that become available to you influence your career
+            choices. Be open to change and seek help and assistance form your counsellors and friends and
+            family to make your best choices.
           </Text>
         </View>
 
@@ -455,9 +433,8 @@ const PDFResult = ({
         <View style={Styles.fourthPage}>
           <Text style={Styles.heading}>What next?</Text>
           <Text style={Styles.aboutReport}>
-            Our analysis has identified the occupations and careers that you
-            should investigate further. To best understand what these careers
-            involve, we recommend a 3-step plan for you to work through:
+            Our analysis has identified the occupations and careers that you should investigate further. To
+            best understand what these careers involve, we recommend a 3-step plan for you to work through:
           </Text>
         </View>
 
@@ -468,49 +445,37 @@ const PDFResult = ({
             <View style={Styles.tableRow}>
               <Text style={Styles.tableCell}>Network</Text>
               <Text style={Styles.tableCell}>
-                Speak to people you know in those fields. Ask them about their
-                career journeys, what they studied and how they got to their
-                current job. What their aspirations are going forward. What
-                challenges they see on the horizon. Of course, ask for their
-                guidance on opportunities they can recommend in the field.
+                Speak to people you know in those fields. Ask them about their career journeys, what they
+                studied and how they got to their current job. What their aspirations are going forward. What
+                challenges they see on the horizon. Of course, ask for their guidance on opportunities they
+                can recommend in the field.
               </Text>
               <View style={{ ...Styles.tableCell, ...Styles.imageCell }}>
-                <Image
-                  src={GoldFish}
-                  style={{ width: "100%", height: "100%" }}
-                />
+                <Image src={GoldFish} style={{ width: "100%", height: "100%" }} />
               </View>
             </View>
             {/* Upskill */}
             <View style={Styles.tableRow}>
               <Text style={Styles.tableCell}>Upskill</Text>
               <Text style={Styles.tableCell}>
-                Register for and complete some micro-credential or certification
-                programmes online in the fields that interest you most and are
-                aligned to your selected career. CareerExporer.me has created
-                the ‘Opportunity’ section on its platform for you to see options
-                to build knowledge and skills.
+                Register for and complete some micro-credential or certification programmes online in the
+                fields that interest you most and are aligned to your selected career. CareerExporer.me has
+                created the ‘Opportunity’ section on its platform for you to see options to build knowledge
+                and skills.
               </Text>
               <View style={{ ...Styles.tableCell, ...Styles.imageCell }}>
-                <Image
-                  src={GoldFish}
-                  style={{ width: "100%", height: "100%" }}
-                />
+                <Image src={GoldFish} style={{ width: "100%", height: "100%" }} />
               </View>
             </View>
             {/* Build Experiences */}
             <View style={Styles.tableRow}>
               <Text style={Styles.tableCell}>Build Experiences</Text>
               <Text style={Styles.tableCell}>
-                Look into getting some work experience in your chosen fields.
-                This can come in the form of holiday jobs, remote work projects,
-                virtual internships or apprenticeships.
+                Look into getting some work experience in your chosen fields. This can come in the form of
+                holiday jobs, remote work projects, virtual internships or apprenticeships.
               </Text>
               <View style={{ ...Styles.tableCell, ...Styles.imageCell }}>
-                <Image
-                  src={GoldFish}
-                  style={{ width: "100%", height: "100%" }}
-                />
+                <Image src={GoldFish} style={{ width: "100%", height: "100%" }} />
               </View>
             </View>
           </View>
@@ -520,21 +485,18 @@ const PDFResult = ({
           <View style={Styles.pathwaysContainer}>
             <Text style={Styles.pathwaysHeading}>Career Pathways</Text>
             <Text style={Styles.pathwaysText}>
-              For each occupation that has been recommended for you there are 6
-              information sections that you should read and make notes on what
-              you like or don’t like:
+              For each occupation that has been recommended for you there are 6 information sections that you
+              should read and make notes on what you like or don’t like:
             </Text>
-            <Text style={Styles.pathwaysText}>
-              1) What people in these jobs do
-            </Text>
+            <Text style={Styles.pathwaysText}>1) What people in these jobs do</Text>
             <Text style={Styles.pathwaysText}>2) Knowledge required</Text>
             <Text style={Styles.pathwaysText}>3) Skills required</Text>
             <Text style={Styles.pathwaysText}>4) Abilities</Text>
             <Text style={Styles.pathwaysText}>5) Personality type</Text>
             <Text style={Styles.pathwaysText}>6) Technology competence</Text>
             <Text style={Styles.pathwaysText}>
-              {userName} please use this as the starting point on your career
-              discovery and planning process. Good luck!
+              {userName} please use this as the starting point on your career discovery and planning process.
+              Good luck!
             </Text>
           </View>
         </View>
@@ -544,42 +506,33 @@ const PDFResult = ({
           <Text style={Styles.title}>Detailed Report</Text>
           {data.map((career, i) => (
             <View key={i}>
-              <Text style={Styles.title}>
-                {career.careerDescription.career.title}
-              </Text>
+              <Text style={Styles.title}>{career.careerDescription.career.title}</Text>
               <Text style={Styles.alsoCalled}>
-                Also Called:{" "}
-                {career.careerDescription.career.also_called?.title.join(", ")}
+                Also Called: {career.careerDescription.career.also_called?.title.join(", ")}
               </Text>
               <Text style={Styles.whatTheyDo}>What They Do:</Text>
-              <Text style={Styles.text}>
-                {career.careerDescription.career.what_they_do}
-              </Text>
+              <Text style={Styles.text}>{career.careerDescription.career.what_they_do}</Text>
               <Text style={Styles.whatTheyDo}>On the job, you would</Text>
-              {career.careerDescription.career.on_the_job.task.map(
-                (task, index) => {
-                  return (
-                    <View style={Styles.bulletPoint} key={index}>
-                      <Text style={Styles.bullet}>•</Text>
-                      <Text style={Styles.bulletText}>{task}</Text>
-                    </View>
-                  );
-                }
-              )}
+              {career.careerDescription.career.on_the_job.task.map((task, index) => {
+                return (
+                  <View style={Styles.bulletPoint} key={index}>
+                    <Text style={Styles.bullet}>•</Text>
+                    <Text style={Styles.bulletText}>{task}</Text>
+                  </View>
+                );
+              })}
               {/* knowledge  */}
               <Text style={Styles.knowledge}>Knowledge</Text>
-              {career.careerDescription?.knowledge?.group?.map(
-                (group, index) => (
-                  <View key={index}>
-                    <Text style={Styles.groupTitle}>{group.title.name}</Text>
-                    {group.element.map((element, i) => (
-                      <Text key={i} style={Styles.text}>
-                        • {element.name}
-                      </Text>
-                    ))}
-                  </View>
-                )
-              )}
+              {career.careerDescription?.knowledge?.group?.map((group, index) => (
+                <View key={index}>
+                  <Text style={Styles.groupTitle}>{group.title.name}</Text>
+                  {group.element.map((element, i) => (
+                    <Text key={i} style={Styles.text}>
+                      • {element.name}
+                    </Text>
+                  ))}
+                </View>
+              ))}
               {/* skills  */}
               <Text style={Styles.knowledge}>Skills</Text>
               {career.careerDescription?.skills?.group?.map((group, index) => (
@@ -594,56 +547,43 @@ const PDFResult = ({
               ))}
               {/* abilities  */}
               <Text style={Styles.knowledge}>Abilities</Text>
-              {career.careerDescription?.abilities?.group?.map(
-                (group, index) => (
-                  <View key={index}>
-                    <Text style={Styles.groupTitle}>{group.title.name}</Text>
-                    {group.element.map((element, i) => (
-                      <Text key={i} style={Styles.text}>
-                        • {element.name}
-                      </Text>
-                    ))}
-                  </View>
-                )
-              )}
+              {career.careerDescription?.abilities?.group?.map((group, index) => (
+                <View key={index}>
+                  <Text style={Styles.groupTitle}>{group.title.name}</Text>
+                  {group.element.map((element, i) => (
+                    <Text key={i} style={Styles.text}>
+                      • {element.name}
+                    </Text>
+                  ))}
+                </View>
+              ))}
               {/* Personality type  */}
               <Text style={Styles.knowledge}>Personality</Text>
               <View>
                 <Text style={Styles.groupTitle}>
-                  {
-                    career.careerDescription.personality.top_interest
-                      .description
-                  }
+                  {career.careerDescription.personality.top_interest.description}
                 </Text>
-                {career.careerDescription?.personality?.work_styles?.element?.map(
-                  (element, i) => (
-                    <Text key={i} style={Styles.text}>
-                      • {element.name}
-                    </Text>
-                  )
-                )}
+                {career.careerDescription?.personality?.work_styles?.element?.map((element, i) => (
+                  <Text key={i} style={Styles.text}>
+                    • {element.name}
+                  </Text>
+                ))}
               </View>
               {/* Technology competence  */}
 
               <View style={Styles.section}>
                 <Text style={Styles.knowledge}>Technology Competence</Text>
-                {career.careerDescription.technology.category.map(
-                  (category, index) => (
-                    <View key={index}>
-                      <Text style={Styles.groupTitle}>
-                        {category.title.name}
+                {career.careerDescription.technology.category.map((category, index) => (
+                  <View key={index}>
+                    <Text style={Styles.groupTitle}>{category.title.name}</Text>
+                    {category.example.map((example, i) => (
+                      <Text key={i} style={Styles.text}>
+                        • {example.name}{" "}
+                        {example.hot_technology ? `(Hot Technology: ${example.hot_technology})` : ""}
                       </Text>
-                      {category.example.map((example, i) => (
-                        <Text key={i} style={Styles.text}>
-                          • {example.name}{" "}
-                          {example.hot_technology
-                            ? `(Hot Technology: ${example.hot_technology})`
-                            : ""}
-                        </Text>
-                      ))}
-                    </View>
-                  )
-                )}
+                    ))}
+                  </View>
+                ))}
               </View>
             </View>
           ))}
@@ -653,9 +593,7 @@ const PDFResult = ({
         <Text style={Styles.footer}>careerexplorer.com</Text>
         <Text
           style={Styles.pageNumber}
-          render={({ pageNumber, totalPages }) =>
-            `${pageNumber} / ${totalPages}`
-          }
+          render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`}
           fixed
         />
       </Page>

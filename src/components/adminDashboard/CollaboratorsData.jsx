@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import {
   Avatar,
   Box,
@@ -16,14 +16,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllCreators,
-  selectCreatorsData,
-  updateActiveStatus,
-} from "../../redux/slices/adminSlice.js";
+
 import StatusUpdateModal from "../../models/StatusUpdateModal.jsx";
+import { getAllCreators, selectCreatorsData, updateActiveStatus } from "../../redux/slices/adminSlice.js";
 import { notify } from "../../redux/slices/alertSlice.js";
 import { selectToken } from "../../redux/slices/authSlice.js";
 import { fonts } from "../../utility/fonts.js";
@@ -61,7 +58,7 @@ const CollaboratorsData = () => {
         page: 1,
         limit: rowsPerPage,
         search: searchQuery,
-      })
+      }),
     );
   };
 
@@ -86,25 +83,21 @@ const CollaboratorsData = () => {
         notify({
           type: "error",
           message: "Please select a valid status.",
-        })
+        }),
       );
       return;
     }
 
     try {
       setIsButtonLoading(true);
-      await dispatchToRedux(
-        updateActiveStatus({ userId: selectedUserId, status, token })
-      );
-      dispatchToRedux(
-        notify({ type: "success", message: "Status updated successfully" })
-      );
+      await dispatchToRedux(updateActiveStatus({ userId: selectedUserId, status, token }));
+      dispatchToRedux(notify({ type: "success", message: "Status updated successfully" }));
     } catch (error) {
       dispatchToRedux(
         notify({
           type: "error",
           message: "Something went wrong, Please try again",
-        })
+        }),
       );
     } finally {
       setIsButtonLoading(false);
@@ -117,11 +110,7 @@ const CollaboratorsData = () => {
     <div>
       {/* Search Box */}
       <Box sx={{ ml: 2, mt: 2 }}>
-        <Typography
-          variant="h5"
-          fontWeight="600"
-          sx={{ fontFamily: fonts.poppins }}
-        >
+        <Typography variant="h5" fontWeight="600" sx={{ fontFamily: fonts.poppins }}>
           Creators
         </Typography>
       </Box>
@@ -262,21 +251,9 @@ const CollaboratorsData = () => {
                   <IconButton aria-label="more" onClick={handleMenuClick}>
                     <MoreVertIcon />
                   </IconButton>
-                  <Menu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleMenuClose}
-                  >
-                    <MenuItem
-                      sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}
-                    >
-                      Edit
-                    </MenuItem>
-                    <MenuItem
-                      sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}
-                    >
-                      Delete
-                    </MenuItem>
+                  <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                    <MenuItem sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}>Edit</MenuItem>
+                    <MenuItem sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}>Delete</MenuItem>
                   </Menu>
                 </TableCell>
               </TableRow>

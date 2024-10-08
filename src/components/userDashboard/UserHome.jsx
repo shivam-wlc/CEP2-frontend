@@ -211,26 +211,27 @@
 
 // export default UserHome;
 
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import { Box, Typography, Grid } from "@mui/material";
+
 import {
-  india,
-  japan,
-  german,
   arab,
-  italian,
-  indonesia,
-  french,
-  koria,
-  england,
-  maleshia,
-  liked,
-  consumed,
-  followed,
-  shared,
   asstaken,
-  resumecreated,
+  consumed,
+  england,
   enrolled,
+  followed,
+  french,
+  german,
+  india,
+  indonesia,
+  italian,
+  japan,
+  koria,
+  liked,
+  maleshia,
+  resumecreated,
+  shared,
 } from "../../assets/assest";
 const languages = [
   { name: "Arabic", icon: arab },
@@ -264,8 +265,7 @@ const CareerSummary = () => {
           mb: 2,
           fontWeight: "bold",
           color: "#fff",
-          backgroundImage:
-            "linear-gradient(to right, white, #800080, #800080, white)",
+          backgroundImage: "linear-gradient(to right, white, #800080, #800080, white)",
           p: 2,
         }}
       >

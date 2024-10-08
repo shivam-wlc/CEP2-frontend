@@ -11,20 +11,20 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import authReducer from "./slices/authSlice.js";
-import alertReducer from "./slices/alertSlice.js";
 import adminReducer from "./slices/adminSlice.js";
-import inviteReducer from "./slices/inviteSlice";
-import profileReducer from "./slices/profileSlice.js";
+import alertReducer from "./slices/alertSlice.js";
+import authReducer from "./slices/authSlice.js";
 import creatorReducer from "./slices/creatorSlice.js";
+import discSlice from "./slices/discSlice.js";
+import inviteReducer from "./slices/inviteSlice";
 import onetSlice from "./slices/onetSlice.js";
-import userSlice from "./slices/userSlice.js";
-import zylaSlice from "./slices/zylaSlice.js";
+import profileReducer from "./slices/profileSlice.js";
+import resumeReducer from "./slices/resumeSlice.js";
 import surveySlice from "./slices/surveySlice.js";
 import unifiedRecordSlice from "./slices/unifiedRecordSlice.js";
 import userDetailsSlice from "./slices/userDetailsSlice.js";
-import resumeReducer from "./slices/resumeSlice.js";
-import discSlice from "./slices/discSlice.js";
+import userSlice from "./slices/userSlice.js";
+import zylaSlice from "./slices/zylaSlice.js";
 
 const persistConfig = {
   key: "user",

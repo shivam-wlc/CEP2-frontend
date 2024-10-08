@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import homeStyle from "../styles/Home.module.css";
-import commonStyles from "../styles/Common.module.css";
-import { MdArrowOutward } from "react-icons/md";
-import { careerReportImg, homeHero } from "../assets/assest";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { MdArrowOutward } from "react-icons/md";
+
+import { careerReportImg, homeHero } from "../assets/assest";
+import commonStyles from "../styles/Common.module.css";
+import homeStyle from "../styles/Home.module.css";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,10 +55,9 @@ const Home = () => {
           <div className={homeStyle["left"]}>
             <h3>Turning possibility to reality</h3>
             <p>
-              Your future is closer than you think! Start figuring out what
-              you're passionate about, build the skills you'll need, and plan
-              your next steps now. It's never too early to start shaping a
-              career that's exciting and right for you!
+              Your future is closer than you think! Start figuring out what you're passionate about, build the
+              skills you'll need, and plan your next steps now. It's never too early to start shaping a career
+              that's exciting and right for you!
             </p>
             <button className={commonStyles.navButton}>
               Your Career journey starts here{" "}
@@ -74,9 +74,8 @@ const Home = () => {
           <div className={homeStyle.left}>
             <h3>Explore</h3>
             <p>
-              Widen your horizons. Time to explore content from Career guidance
-              counsellors sharing their wisdom and experiences, so you can make
-              the best choices
+              Widen your horizons. Time to explore content from Career guidance counsellors sharing their
+              wisdom and experiences, so you can make the best choices
             </p>
             <button>
               Go To Explore
@@ -99,9 +98,7 @@ const Home = () => {
                 <button
                   disabled={currentPage == totalPages}
                   onClick={handleNextPage}
-                  className={
-                    currentPage == totalPages ? homeStyle.disabled : ""
-                  }
+                  className={currentPage == totalPages ? homeStyle.disabled : ""}
                 >
                   <FaArrowRight />
                 </button>
@@ -109,11 +106,7 @@ const Home = () => {
             </div>
             <div className={homeStyle["horizontal-scroll-page"]}>
               {visibleImages.map((image, index) => (
-                <div
-                  className={homeStyle.images}
-                  key={index}
-                  style={{ backgroundImage: `url(${image})` }}
-                />
+                <div className={homeStyle.images} key={index} style={{ backgroundImage: `url(${image})` }} />
               ))}
             </div>
           </div>
@@ -125,23 +118,16 @@ const Home = () => {
           <div className={homeStyle["right"]}>
             <h3>Understanding yourself</h3>
             <p>
-              Our AI refined Assessment is a great way to profile your real
-              interests, strengths and personality, to build a shortlist of
-              potential educational and career pathways. Its quick and easy and
-              should give you immediate insights into careers that you can
-              flourish and excel in.
+              Our AI refined Assessment is a great way to profile your real interests, strengths and
+              personality, to build a shortlist of potential educational and career pathways. Its quick and
+              easy and should give you immediate insights into careers that you can flourish and excel in.
             </p>
             <p>
-              You can do the whole Assessment and we will share 3 Career roles
-              identified for you to consider, for{" "}
-              <span className={homeStyle.yellowText}>FREE</span>. For the more
-              detailed analysis and the full 'Career Directions Report for you
-              to download and share, there is a charge of <b>$49.</b>
+              You can do the whole Assessment and we will share 3 Career roles identified for you to consider,
+              for <span className={homeStyle.yellowText}>FREE</span>. For the more detailed analysis and the
+              full 'Career Directions Report for you to download and share, there is a charge of <b>$49.</b>
             </p>
-            <button
-              className={commonStyles.navButton}
-              onClick={() => navigate("#")}
-            >
+            <button className={commonStyles.navButton} onClick={() => navigate("#")}>
               Go To Assessment Centre{" "}
               <span>
                 <MdArrowOutward />
@@ -156,11 +142,7 @@ const Home = () => {
               <li
                 key={index}
                 onClick={() => setActiveOportunityCard(index + 1)}
-                className={
-                  activeOportunityCard == index + 1
-                    ? homeStyle["activeOportunityCard"]
-                    : ""
-                }
+                className={activeOportunityCard == index + 1 ? homeStyle["activeOportunityCard"] : ""}
               >
                 {item}
               </li>
@@ -195,10 +177,7 @@ const Home = () => {
               </ul>
             )}
           </div>
-          <button
-            className={commonStyles.navButton}
-            onClick={() => navigate("#")}
-          >
+          <button className={commonStyles.navButton} onClick={() => navigate("#")}>
             Coming Soon...
           </button>
         </section>

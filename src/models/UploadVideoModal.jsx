@@ -1,37 +1,37 @@
-import React, { useState } from "react";
 import {
+  Autocomplete,
   Box,
   Button,
+  CircularProgress,
   Dialog,
+  FormControl,
+  FormHelperText,
+  InputLabel,
   MenuItem,
   Select,
   Tab,
   Tabs,
   TextField,
   Typography,
-  Autocomplete,
-  InputLabel,
-  FormControl,
-  FormHelperText,
-  CircularProgress,
 } from "@mui/material";
-import { categories, languages, tags } from "../utility/category";
-import { fonts } from "../utility/fonts";
-import { colors } from "../utility/color.js";
-import GeneralButton from "../components/general/GeneralButton.jsx";
-
+import React, { useState } from "react";
 // redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import GeneralButton from "../components/general/GeneralButton.jsx";
+import { notify } from "../redux/slices/alertSlice.js";
+import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import {
-  uploadVideo,
-  uploadThumbnail,
-  updateVideo,
-  selectVideoLink,
   selectThumbnailLink,
+  selectVideoLink,
+  updateVideo,
+  uploadThumbnail,
+  uploadVideo,
   uploadYoutubeVideo,
 } from "../redux/slices/creatorSlice.js";
-import { selectUserId, selectToken } from "../redux/slices/authSlice.js";
-import { notify } from "../redux/slices/alertSlice.js";
+import { categories, languages, tags } from "../utility/category";
+import { colors } from "../utility/color.js";
+import { fonts } from "../utility/fonts";
 
 const UploadVideoModal = ({ open, handleClose }) => {
   const dispatchToRedux = useDispatch();
@@ -50,8 +50,7 @@ const UploadVideoModal = ({ open, handleClose }) => {
   //loader
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [isVideoButtonLoading, setIsVideoButtonLoading] = useState(false);
-  const [isThumbnailButtonLoading, setIsThumbnailButtonLoading] =
-    useState(false);
+  const [isThumbnailButtonLoading, setIsThumbnailButtonLoading] = useState(false);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -79,19 +78,15 @@ const UploadVideoModal = ({ open, handleClose }) => {
         !formData.category ||
         !formData.youtubeLink
       ) {
-        dispatchToRedux(
-          notify({ type: "error", message: "All fields are required" })
-        );
+        dispatchToRedux(notify({ type: "error", message: "All fields are required" }));
         return;
       }
 
       try {
         setIsButtonLoading(true);
-        await dispatchToRedux(uploadYoutubeVideo({ userId, formData,token }));
+        await dispatchToRedux(uploadYoutubeVideo({ userId, formData, token }));
         setIsButtonLoading(false);
-        dispatchToRedux(
-          notify({ type: "success", message: "Video uploaded successfully" })
-        );
+        dispatchToRedux(notify({ type: "success", message: "Video uploaded successfully" }));
 
         // Reset Form
         setTitle("");
@@ -113,27 +108,26 @@ const UploadVideoModal = ({ open, handleClose }) => {
       formData["thumbnail"] = thumbnailLink;
 
       if (!title || !description || !language || !category) {
-        dispatchToRedux(
-          notify({ type: "error", message: "All fields are required" })
-        );
+        dispatchToRedux(notify({ type: "error", message: "All fields are required" }));
         return;
       }
 
       if (!thumbnailLink) {
-        dispatchToRedux(
-          notify({ type: "error", message: "Please upload thumbnail first" })
-        );
+        dispatchToRedux(notify({ type: "error", message: "Please upload thumbnail first" }));
         return;
       }
 
       try {
         setIsButtonLoading(true);
         await dispatchToRedux(
-          updateVideo({ userId, videoId: videoData?.video?._id, formData ,token})
+          updateVideo({
+            userId,
+            videoId: videoData?.video?._id,
+            formData,
+            token,
+          }),
         );
-        dispatchToRedux(
-          notify({ type: "success", message: "Video updated successfully" })
-        );
+        dispatchToRedux(notify({ type: "success", message: "Video updated successfully" }));
         setIsButtonLoading(false);
         // Reset Form
         setTitle("");
@@ -156,15 +150,13 @@ const UploadVideoModal = ({ open, handleClose }) => {
     formData.append("file", file);
 
     if (!file) {
-      dispatchToRedux(
-        notify({ type: "error", message: "Please upload video first" })
-      );
+      dispatchToRedux(notify({ type: "error", message: "Please upload video first" }));
       return;
     }
 
     try {
       setIsVideoButtonLoading(true);
-      await dispatchToRedux(uploadVideo({ userId, formData,token }));
+      await dispatchToRedux(uploadVideo({ userId, formData, token }));
       setIsVideoButtonLoading(false);
       setVideoFile(null);
     } catch (error) {
@@ -181,15 +173,13 @@ const UploadVideoModal = ({ open, handleClose }) => {
     formData.append("file", file);
 
     if (!file || !file.type.startsWith("image/")) {
-      dispatchToRedux(
-        notify({ type: "warning", message: "Please upload an image file" })
-      );
+      dispatchToRedux(notify({ type: "warning", message: "Please upload an image file" }));
       return;
     }
 
     try {
       setIsThumbnailButtonLoading(true);
-      await dispatchToRedux(uploadThumbnail({ userId, formData,token }));
+      await dispatchToRedux(uploadThumbnail({ userId, formData, token }));
       setIsThumbnailButtonLoading(false);
     } catch (error) {
       setIsThumbnailButtonLoading(false);
@@ -222,16 +212,12 @@ const UploadVideoModal = ({ open, handleClose }) => {
         </Typography>
         <ul>
           <li style={{ fontFamily: fonts.sans }}>
-            You can either upload a YouTube link or manually upload a video at a
-            time.
+            You can either upload a YouTube link or manually upload a video at a time.
           </li>
           <li style={{ fontFamily: fonts.sans }}>
-            Do not refresh the page or navigate away while the video is
-            uploading.
+            Do not refresh the page or navigate away while the video is uploading.
           </li>
-          <li style={{ fontFamily: fonts.sans }}>
-            Thumbnail is mandatory for video uploads.
-          </li>
+          <li style={{ fontFamily: fonts.sans }}>Thumbnail is mandatory for video uploads.</li>
         </ul>
 
         <Tabs
@@ -409,11 +395,7 @@ const UploadVideoModal = ({ open, handleClose }) => {
             options={tags.map((tag) => tag.option)}
             onChange={handleTagChange}
             renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Video Tags"
-                placeholder="Select Video tags"
-              />
+              <TextField {...params} label="Video Tags" placeholder="Select Video tags" />
             )}
             sx={{ marginBottom: "1rem" }}
           />
@@ -456,9 +438,7 @@ const UploadVideoModal = ({ open, handleClose }) => {
             </Select>
           </FormControl>
 
-          <Box
-            sx={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}
-          >
+          <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}>
             {/* <Button
               onClick={handleClick}
               variant="contained"

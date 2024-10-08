@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { config } from "../../config/config.js";
+
 import FetchApi from "../../client.js";
+import { config } from "../../config/config.js";
 
 const login = createAsyncThunk("auth/login", async (credentials) => {
   return FetchApi.fetch(`${config.api}/api/auth/login`, {
@@ -32,24 +33,21 @@ const forgetPass = createAsyncThunk("auth/forgetPass", async (payload) => {
   });
 });
 
-const forgetPassVerify = createAsyncThunk(
-  "auth/forgetPassVerify",
-  async (payload) => {
-    return FetchApi.fetch(
-      `${config.api}/api/auth/verifypassword?userId=${payload.userId}&token=${payload.token}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: {
-          password: payload.password,
-          confirmPassword: payload.confirmPassword,
-        },
-      }
-    );
-  }
-);
+const forgetPassVerify = createAsyncThunk("auth/forgetPassVerify", async (payload) => {
+  return FetchApi.fetch(
+    `${config.api}/api/auth/verifypassword?userId=${payload.userId}&token=${payload.token}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: {
+        password: payload.password,
+        confirmPassword: payload.confirmPassword,
+      },
+    },
+  );
+});
 
 // Define a slice of state for authentication
 const authSlice = createSlice({

@@ -1,35 +1,26 @@
-import React, { useEffect, useState, useRef } from "react";
-import {
-  Box,
-  Grid,
-  Pagination,
-  Button,
-  Typography,
-  CircularProgress,
-} from "@mui/material";
+import DownloadIcon from "@mui/icons-material/Download";
+import { Box, Button, CircularProgress, Grid, Pagination, Typography } from "@mui/material";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import ReactEcharts from "echarts-for-react";
-import { useSelector, useDispatch } from "react-redux";
+import html2canvas from "html2canvas";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-  getResultAndJob,
-  selectOnet,
-  getCareerByPrepration,
-  selectDetailedCareerData,
-  generateDeatiledDataOfCareers,
-} from "../../redux/slices/onetSlice.js";
-import { selectUserId, selectToken } from "../../redux/slices/authSlice.js";
-import { selectUserProfile } from "../../redux/slices/profileSlice.js";
+
 import Headers from "../../components/Headers.jsx";
+import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import {
+  generateDeatiledDataOfCareers,
+  getCareerByPrepration,
+  getResultAndJob,
+  selectDetailedCareerData,
+  selectOnet,
+} from "../../redux/slices/onetSlice.js";
+import { selectUserProfile } from "../../redux/slices/profileSlice.js";
+import { getUnifiedRecordData, selectUnifiedRecord } from "../../redux/slices/unifiedRecordSlice.js";
 import { fonts } from "../../utility/fonts.js";
 import HideResult from "./HideResult.jsx";
-import DownloadIcon from "@mui/icons-material/Download";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import PDFResult from "./PDFResult.jsx";
-import html2canvas from "html2canvas";
-import {
-  getUnifiedRecordData,
-  selectUnifiedRecord,
-} from "../../redux/slices/unifiedRecordSlice.js";
 
 const styles = {
   sectionHeading: {
@@ -119,7 +110,7 @@ export default function Result() {
             answers: answersParam,
             userId,
             token,
-          })
+          }),
         );
         setLoading({ result: false, jobZone: false });
       })();
@@ -169,7 +160,7 @@ export default function Result() {
         start: (page - 1) * resultsPerPage + 1,
         end: page * resultsPerPage,
         token,
-      })
+      }),
     );
     setLoading({ result: false, jobZone: false });
   };
@@ -255,8 +246,7 @@ export default function Result() {
                 padding: "1rem",
               }}
             >
-              Thank for for taking our assessement you are one step closer to
-              finding your ideal career.
+              Thank for for taking our assessement you are one step closer to finding your ideal career.
             </Typography>
           </Box>
 
@@ -281,12 +271,10 @@ export default function Result() {
                 margin: "auto",
               }}
             >
-              The Interest Profiler Test is designed to reveal your key areas of
-              interest based on the work activities that you find most
-              compelling and enjoyable. Using the personalized insights in this
-              report, you’ll gain a better understanding of what type of work
-              best aligns with your passions — and what doesn’t — so you can
-              make a better-informed career decision.
+              The Interest Profiler Test is designed to reveal your key areas of interest based on the work
+              activities that you find most compelling and enjoyable. Using the personalized insights in this
+              report, you’ll gain a better understanding of what type of work best aligns with your passions —
+              and what doesn’t — so you can make a better-informed career decision.
             </Typography>
 
             <Typography
@@ -436,20 +424,12 @@ export default function Result() {
                       {onet.result.map((element, i) => (
                         <Box key={i} sx={styles.card}>
                           <Typography sx={styles.heading}>
-                            Interest Sphere:{" "}
-                            <span style={styles.subHeading}>
-                              {element.area}
-                            </span>
+                            Interest Sphere: <span style={styles.subHeading}>{element.area}</span>
                           </Typography>
                           <Typography sx={styles.heading}>
-                            Score:{" "}
-                            <span style={styles.subHeading}>
-                              {element.score}
-                            </span>
+                            Score: <span style={styles.subHeading}>{element.score}</span>
                           </Typography>
-                          <Typography sx={styles.text}>
-                            {element.description}
-                          </Typography>
+                          <Typography sx={styles.text}>{element.description}</Typography>
                         </Box>
                       ))}
                     </Box>
@@ -464,10 +444,7 @@ export default function Result() {
                       height: "600px",
                     }}
                   >
-                    <ReactEcharts
-                      option={option}
-                      style={{ width: "100%", height: "100%" }}
-                    />
+                    <ReactEcharts option={option} style={{ width: "100%", height: "100%" }} />
                   </Box>
                 </Box>
               )}
@@ -478,18 +455,13 @@ export default function Result() {
                   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                 }}
               >
-                <Typography
-                  sx={{ ...styles.sectionSubHeading, fontSize: "30px" }}
-                >
-                  What's Next?
-                </Typography>
+                <Typography sx={{ ...styles.sectionSubHeading, fontSize: "30px" }}>What's Next?</Typography>
                 <Typography sx={{ fontFamily: fonts.ntr, fontSize: "20px" }}>
                   Think of your interests as work you like to do.
                 </Typography>
                 <Typography sx={{ fontFamily: fonts.ntr, fontSize: "20px" }}>
-                  Your interests can help you find careers you might like to
-                  explore. The more a career meets your interests, the more
-                  likely it will be satisfying and rewarding to you.
+                  Your interests can help you find careers you might like to explore. The more a career meets
+                  your interests, the more likely it will be satisfying and rewarding to you.
                 </Typography>
               </Box>
             </Box>
@@ -573,18 +545,10 @@ export default function Result() {
                               "rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px",
                           },
                         }}
-                        onClick={() =>
-                          navigate(`/career?careercode=${element.code}`)
-                        }
+                        onClick={() => navigate(`/career?careercode=${element.code}`)}
                       >
-                        <Typography sx={{ color: "#70798C" }}>
-                          {element.title}
-                        </Typography>
-                        {element.fit && (
-                          <Typography sx={{ color: "#A99985" }}>
-                            {element.fit} fit
-                          </Typography>
-                        )}
+                        <Typography sx={{ color: "#70798C" }}>{element.title}</Typography>
+                        {element.fit && <Typography sx={{ color: "#A99985" }}>{element.fit} fit</Typography>}
                       </Box>
                     </Grid>
                   ))

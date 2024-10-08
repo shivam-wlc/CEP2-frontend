@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import FetchApi from "../../client.js";
 import { config } from "../../config/config.js";
 
@@ -16,85 +17,73 @@ export const uploadVideo = createAsyncThunk(
   "creator/uploadVideo",
   async ({ userId, formData, token }, thunkAPI) => {
     try {
-      const response = await fetch(
-        `${config.api}/api/creator/uploadVideo/${userId}`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
+      const response = await fetch(`${config.api}/api/creator/uploadVideo/${userId}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
       return await response.json();
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const uploadThumbnail = createAsyncThunk(
   "creator/uploadThumbnail",
   async ({ userId, formData, token }, thunkAPI) => {
     try {
-      const response = await fetch(
-        `${config.api}/api/creator/uploadThumbnail/${userId}`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
+      const response = await fetch(`${config.api}/api/creator/uploadThumbnail/${userId}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
       return await response.json();
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const updateVideo = createAsyncThunk(
   "creator/updateVideo",
   async ({ userId, videoId, formData, token }, thunkAPI) => {
     try {
-      return FetchApi.fetch(
-        `${config.api}/api/creator/updateVideo/${userId}/${videoId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      return FetchApi.fetch(`${config.api}/api/creator/updateVideo/${userId}/${videoId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const uploadYoutubeVideo = createAsyncThunk(
   "creator/uploadYoutubeVideo",
   async ({ userId, formData, token }, thunkAPI) => {
     try {
-      return FetchApi.fetch(
-        `${config.api}/api/creator/uploadyoutube/${userId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      return FetchApi.fetch(`${config.api}/api/creator/uploadyoutube/${userId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const getAuthorVideos = createAsyncThunk(
@@ -106,40 +95,34 @@ export const getAuthorVideos = createAsyncThunk(
       limit: limit.toString(),
     });
     try {
-      return FetchApi.fetch(
-        `${config.api}/api/creator/getauthorvideos/${userId}?${queryParams}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      return FetchApi.fetch(`${config.api}/api/creator/getauthorvideos/${userId}?${queryParams}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const deleteVideo = createAsyncThunk(
   "creator/deleteVideo",
   async ({ userId, videoId, token }, thunkAPI) => {
     try {
-      FetchApi.fetch(
-        `${config.api}/api/creator/deleteVideo/${userId}/${videoId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      FetchApi.fetch(`${config.api}/api/creator/deleteVideo/${userId}/${videoId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return { videoId };
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const searchVideosByTitle = createAsyncThunk(
@@ -153,112 +136,88 @@ export const searchVideosByTitle = createAsyncThunk(
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       return response;
     } catch (error) {
       throw new Error(error.message);
     }
-  }
+  },
 );
 
 export const socialMediaLink = createAsyncThunk(
   "creator/socialMediaLink",
   async ({ userId, formData, token }, thunkAPI) => {
     try {
-      return FetchApi.fetch(
-        `${config.api}/api/creator/creatorsocialmedia/${userId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      return FetchApi.fetch(`${config.api}/api/creator/creatorsocialmedia/${userId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const getGeneralVideoData = createAsyncThunk(
   "creator/getGeneralVideoData",
   async ({ userId, token }) => {
     try {
-      return await FetchApi.fetch(
-        `${config.api}/api/creator/getGeneralVideoData/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      return await FetchApi.fetch(`${config.api}/api/creator/getGeneralVideoData/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
     } catch (error) {
       throw new Error(error.message);
     }
-  }
+  },
 );
 
-export const allvideos = createAsyncThunk(
-  "creator/allvideos",
-  async ({ page }) => {
-    try {
-      return await FetchApi.fetch(
-        `${config.api}/api/creator/allvideos?page=${page}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-    } catch (error) {
-      throw new Error(error.message);
-    }
+export const allvideos = createAsyncThunk("creator/allvideos", async ({ page }) => {
+  try {
+    return await FetchApi.fetch(`${config.api}/api/creator/allvideos?page=${page}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    throw new Error(error.message);
   }
-);
+});
 
-export const videoDetailById = createAsyncThunk(
-  "creator/videoDetailById",
-  async ({ videoId }) => {
-    try {
-      return await FetchApi.fetch(
-        `${config.api}/api/creator/video/${videoId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-    } catch (error) {
-      throw new Error(error.message);
-    }
+export const videoDetailById = createAsyncThunk("creator/videoDetailById", async ({ videoId }) => {
+  try {
+    return await FetchApi.fetch(`${config.api}/api/creator/video/${videoId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    throw new Error(error.message);
   }
-);
+});
 
-export const getCreatorProfile = createAsyncThunk(
-  "creator/getCreatorProfile",
-  async ({ userId }) => {
-    try {
-      return await FetchApi.fetch(
-        `${config.api}/api/creator/getCreatorProfile/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-    } catch (error) {
-      throw new Error(error.message);
-    }
+export const getCreatorProfile = createAsyncThunk("creator/getCreatorProfile", async ({ userId }) => {
+  try {
+    return await FetchApi.fetch(`${config.api}/api/creator/getCreatorProfile/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    throw new Error(error.message);
   }
-);
+});
 
 export const videoFilter = createAsyncThunk(
   "creator/videoFilter",
@@ -274,27 +233,21 @@ export const videoFilter = createAsyncThunk(
     } catch (error) {
       throw new Error(error.message);
     }
-  }
+  },
 );
 
-export const getAllComments = createAsyncThunk(
-  "creator/getAllComments",
-  async ({ videoId }) => {
-    try {
-      return await FetchApi.fetch(
-        `${config.api}/api/creator/getAllComments/${videoId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-    } catch (error) {
-      throw new Error(error.message);
-    }
+export const getAllComments = createAsyncThunk("creator/getAllComments", async ({ videoId }) => {
+  try {
+    return await FetchApi.fetch(`${config.api}/api/creator/getAllComments/${videoId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    throw new Error(error.message);
   }
-);
+});
 
 export const addComment = createAsyncThunk(
   "creator/addComment",
@@ -311,84 +264,66 @@ export const addComment = createAsyncThunk(
     } catch (error) {
       throw new Error(error.message);
     }
-  }
+  },
 );
 
-export const getLikeStatus = createAsyncThunk(
-  "creator/getLikeStatus",
-  async ({ videoId, userId }) => {
-    try {
-      return await FetchApi.fetch(
-        `${config.api}/api/creator/getLikeStatus/${videoId}/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-    } catch (error) {
-      throw new Error(error.message);
-    }
+export const getLikeStatus = createAsyncThunk("creator/getLikeStatus", async ({ videoId, userId }) => {
+  try {
+    return await FetchApi.fetch(`${config.api}/api/creator/getLikeStatus/${videoId}/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    throw new Error(error.message);
   }
-);
+});
 
-export const toggleLike = createAsyncThunk(
-  "creator/toggleLike",
-  async ({ videoId, userId, token }) => {
-    try {
-      return await FetchApi.fetch(`${config.api}/api/creator/like`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ video: videoId, user: userId }),
-      });
-    } catch (error) {
-      throw new Error(error.message);
-    }
+export const toggleLike = createAsyncThunk("creator/toggleLike", async ({ videoId, userId, token }) => {
+  try {
+    return await FetchApi.fetch(`${config.api}/api/creator/like`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ video: videoId, user: userId }),
+    });
+  } catch (error) {
+    throw new Error(error.message);
   }
-);
+});
 
-export const addRating = createAsyncThunk(
-  "creator/addRating",
-  async ({ videoId, userId, rating, token }) => {
-    try {
-      return await FetchApi.fetch(
-        `${config.api}/api/creator/postrating/${videoId}/${userId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ rating }),
-        }
-      );
-    } catch (error) {
-      throw new Error(error.message);
-    }
+export const addRating = createAsyncThunk("creator/addRating", async ({ videoId, userId, rating, token }) => {
+  try {
+    return await FetchApi.fetch(`${config.api}/api/creator/postrating/${videoId}/${userId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ rating }),
+    });
+  } catch (error) {
+    throw new Error(error.message);
   }
-);
+});
 
 export const getUserRatingOfVideo = createAsyncThunk(
   "creator/getUserRatingOfVideo",
   async ({ videoId, userId }) => {
     try {
-      return await FetchApi.fetch(
-        `${config.api}/api/creator/getrating/${videoId}/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      return await FetchApi.fetch(`${config.api}/api/creator/getrating/${videoId}/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } catch (error) {
       throw new Error(error.message);
     }
-  }
+  },
 );
 
 const creatorSlice = createSlice({
@@ -425,9 +360,7 @@ const creatorSlice = createSlice({
       state.authorVideos = payload;
     });
     builder.addCase(deleteVideo.fulfilled, (state, { payload }) => {
-      state.authorVideos.videos = state.authorVideos.videos.filter(
-        (video) => video._id !== payload.videoId
-      );
+      state.authorVideos.videos = state.authorVideos.videos.filter((video) => video._id !== payload.videoId);
     });
     builder.addCase(searchVideosByTitle.fulfilled, (state, { payload }) => {
       state.authorVideos = payload;
@@ -465,8 +398,7 @@ const creatorSlice = createSlice({
 export const { resetState } = creatorSlice.actions;
 
 export const selectVideoLink = (state) => state.creator.uploadingVideoData;
-export const selectThumbnailLink = (state) =>
-  state.creator.uploadingThumbnailData;
+export const selectThumbnailLink = (state) => state.creator.uploadingThumbnailData;
 export const selectAuthorVideos = (state) => state.creator.authorVideos;
 export const selectGeneralVideoData = (state) => state.creator.getGeneralStates;
 export const selectAllVideosData = (state) => state.creator.allVideos;

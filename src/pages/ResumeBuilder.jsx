@@ -1,10 +1,8 @@
-import { selectAuthenticated } from "../redux/slices/authSlice.js";
+import React from "react";
+import { MdArrowOutward } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import React from "react";
-import resumeBuilderStyles from "../styles/ResumeBuilder.module.css";
-import { MdArrowOutward } from "react-icons/md";
-import commonStyle from "../styles/Common.module.css";
+
 import {
   assessmentHeaderImg,
   resumeBulbImage,
@@ -14,6 +12,9 @@ import {
   resumeLSCard3,
   resumeTipsImage,
 } from "../assets/assest";
+import { selectAuthenticated } from "../redux/slices/authSlice.js";
+import commonStyle from "../styles/Common.module.css";
+import resumeBuilderStyles from "../styles/ResumeBuilder.module.css";
 
 const ResumeBuilder = () => {
   const isAuthenticated = useSelector(selectAuthenticated);
@@ -54,10 +55,7 @@ const ResumeBuilder = () => {
   ];
 
   return (
-    <div
-      className={resumeBuilderStyles["container"]}
-      style={{ backgroundColor: "#FAFAFA" }}
-    >
+    <div className={resumeBuilderStyles["container"]} style={{ backgroundColor: "#FAFAFA" }}>
       <section
         className={resumeBuilderStyles["header"]}
         style={{ backgroundImage: `url(${assessmentHeaderImg})` }}
@@ -72,10 +70,9 @@ const ResumeBuilder = () => {
         <div className={resumeBuilderStyles["content"]}>
           <h3>What is a Resume?</h3>
           <p>
-            A resume or a CV is a brief document that highlights your skills,
-            education, and experiences. It’s like your personal marketing tool
-            to show what you can do and why you’d be a great fit for a job or
-            opportunity.
+            A resume or a CV is a brief document that highlights your skills, education, and experiences. It’s
+            like your personal marketing tool to show what you can do and why you’d be a great fit for a job
+            or opportunity.
           </p>
         </div>
       </section>
@@ -106,9 +103,7 @@ const ResumeBuilder = () => {
                   alt={`Tip ${index + 1}`}
                   className={resumeBuilderStyles["tipImage"]}
                 />
-                <span className={resumeBuilderStyles["tipText"]}>
-                  Tip {index + 1}
-                </span>
+                <span className={resumeBuilderStyles["tipText"]}>Tip {index + 1}</span>
                 <div className={resumeBuilderStyles["back"]}></div>
               </div>
               <p>{text}</p>

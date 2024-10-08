@@ -1,9 +1,10 @@
+import { Box, Button, Modal, Typography } from "@mui/material";
 import React from "react";
-import { Modal, Button, Box, Typography } from "@mui/material";
-import { fonts } from "../utility/fonts.js";
-import { colors } from "../utility/color.js";
-import GeneralButton from "../components/general/GeneralButton";
 import { useNavigate } from "react-router-dom";
+
+import GeneralButton from "../components/general/GeneralButton";
+import { colors } from "../utility/color.js";
+import { fonts } from "../utility/fonts.js";
 
 const CheckYourMailBox = ({ isOpen, handleClose }) => {
   const navigate = useNavigate();
@@ -58,8 +59,8 @@ const CheckYourMailBox = ({ isOpen, handleClose }) => {
             fontFamily: fonts?.sans,
           }}
         >
-          We have sent you a link to confirm your email address. Please check
-          your mailbox and click the link to verify your email.
+          We have sent you a link to confirm your email address. Please check your mailbox and click the link
+          to verify your email.
         </Typography>
 
         <Box

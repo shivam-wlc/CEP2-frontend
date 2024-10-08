@@ -173,26 +173,17 @@
 
 // export default CreatorSocialMedia;
 
+import { Box, Button, CircularProgress, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  CircularProgress,
-  TextField,
-  Typography,
-  Button,
-} from "@mui/material";
-
-import { fonts } from "../../utility/fonts.js";
-import { colors } from "../../utility/color.js";
-import GeneralButton from "../general/GeneralButton.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserId, selectToken } from "../../redux/slices/authSlice.js";
-import { notify } from "../../redux/slices/alertSlice.js";
+
 import { socialMediaIcons } from "../../assets/assest.js";
-import {
-  socialMediaLink,
-  selectSocialMediaData,
-} from "../../redux/slices/userDetailsSlice.js";
+import { notify } from "../../redux/slices/alertSlice.js";
+import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import { selectSocialMediaData, socialMediaLink } from "../../redux/slices/userDetailsSlice.js";
+import { colors } from "../../utility/color.js";
+import { fonts } from "../../utility/fonts.js";
+import GeneralButton from "../general/GeneralButton.jsx";
 
 const CreatorSocialMedia = () => {
   const dispatchToRedux = useDispatch();
@@ -248,9 +239,7 @@ const CreatorSocialMedia = () => {
         return updatedLinks;
       });
 
-      dispatchToRedux(
-        notify({ type: "success", message: "Link Saved Successfully" })
-      );
+      dispatchToRedux(notify({ type: "success", message: "Link Saved Successfully" }));
     } catch (error) {
       setSocialMediaLinks((prevLinks) => {
         const updatedLinks = [...prevLinks];
@@ -258,9 +247,7 @@ const CreatorSocialMedia = () => {
         return updatedLinks;
       });
 
-      dispatchToRedux(
-        notify({ type: "error", message: "Something went wrong" })
-      );
+      dispatchToRedux(notify({ type: "error", message: "Something went wrong" }));
     }
   };
 
@@ -307,12 +294,7 @@ const CreatorSocialMedia = () => {
               marginBottom: "1rem",
             }}
           >
-            <img
-              src={socialMedia.icon}
-              alt="Social Link"
-              width="50px"
-              height="50px"
-            />
+            <img src={socialMedia.icon} alt="Social Link" width="50px" height="50px" />
             <TextField
               fullWidth
               placeholder={`https://www.${socialMedia.name.toLowerCase()}.com/username`}

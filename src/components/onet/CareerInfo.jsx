@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Box, Backdrop, CircularProgress, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getCareerInfo, selectOnet } from "../../redux/slices/onetSlice";
-import { fonts } from "../../utility/fonts";
-import { selectToken } from "../../redux/slices/authSlice";
+import { Backdrop, Box, CircularProgress, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+
 import Headers from "../../components/Headers";
+import { selectToken } from "../../redux/slices/authSlice";
+import { getCareerInfo, selectOnet } from "../../redux/slices/onetSlice";
 import { colors } from "../../utility/color";
+import { fonts } from "../../utility/fonts";
 
 const styles = {
   sectionHeading: {
@@ -66,9 +67,7 @@ export default function CareerInfo() {
     if (careerCode) {
       setLoading(true);
       (async () => {
-        await dispatchToRedux(
-          getCareerInfo({ careercode: careerCode, topic: "report", token })
-        );
+        await dispatchToRedux(getCareerInfo({ careercode: careerCode, topic: "report", token }));
         setLoading(false);
       })();
     }
@@ -79,10 +78,7 @@ export default function CareerInfo() {
       <Headers />
       <Container maxWidth="lg" sx={{ padding: "2rem" }}>
         <Box>
-          <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={loading}
-          >
+          <Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
             <CircularProgress color="inherit" />
           </Backdrop>
           <Box>
@@ -97,9 +93,7 @@ export default function CareerInfo() {
               {onet.careerInfo?.career.title}
             </Typography>
             <Typography sx={{ fontSize: "14px", textAlign: "center" }}>
-              <span style={{ color: "#0C6DFD", fontSize: "16px" }}>
-                Also Called:{" "}
-              </span>
+              <span style={{ color: "#0C6DFD", fontSize: "16px" }}>Also Called: </span>
               {onet.careerInfo?.career.also_called?.title.join(", ")}
             </Typography>
             {/*  */}
@@ -115,14 +109,9 @@ export default function CareerInfo() {
             >
               <Box sx={{ width: "100%" }}>
                 <Typography sx={styles.heading}>What they do:</Typography>
-                <Typography sx={styles.text}>
-                  {onet.careerInfo?.career.what_they_do}
-                </Typography>
+                <Typography sx={styles.text}>{onet.careerInfo?.career.what_they_do}</Typography>
 
-                <Typography sx={{ ...styles.heading, marginTop: "1rem" }}>
-                  {" "}
-                  On the job, you would:
-                </Typography>
+                <Typography sx={{ ...styles.heading, marginTop: "1rem" }}> On the job, you would:</Typography>
                 <ul style={{ lineHeight: "1.5rem" }}>
                   {onet.careerInfo?.career.on_the_job.task.map((el, i) => (
                     <li key={i}>{el}</li>
@@ -192,9 +181,7 @@ export default function CareerInfo() {
                   marginBottom: "2rem",
                 }}
               >
-                <Typography sx={{ ...styles.heading, color: "#B23800" }}>
-                  SKILLS
-                </Typography>
+                <Typography sx={{ ...styles.heading, color: "#B23800" }}>SKILLS</Typography>
                 {onet.careerInfo?.skills.group.map((el, i) => (
                   <ul key={i}>
                     <Typography
@@ -231,9 +218,7 @@ export default function CareerInfo() {
                   marginBottom: "2rem",
                 }}
               >
-                <Typography sx={{ ...styles.heading, color: "#074597" }}>
-                  ABILITIES
-                </Typography>
+                <Typography sx={{ ...styles.heading, color: "#074597" }}>ABILITIES</Typography>
                 {onet.careerInfo?.abilities.group.map((el, i) => (
                   <ul key={i}>
                     <Typography
@@ -270,9 +255,7 @@ export default function CareerInfo() {
                   marginBottom: "2rem",
                 }}
               >
-                <Typography sx={{ ...styles.heading, color: "#9D3781" }}>
-                  PERSONALITY
-                </Typography>
+                <Typography sx={{ ...styles.heading, color: "#9D3781" }}>PERSONALITY</Typography>
                 <Typography style={styles.text}>
                   {onet.careerInfo?.personality.top_interest.description}
                 </Typography>
@@ -280,20 +263,18 @@ export default function CareerInfo() {
                   <Typography sx={{ fontWeight: "600", ...styles.text }}>
                     They do well at jobs that need:
                   </Typography>
-                  {onet.careerInfo?.personality.work_styles.element.map(
-                    (el, i) => (
-                      <li
-                        key={i}
-                        style={{
-                          ...styles.text,
-                          marginLeft: "3rem",
-                          textTransform: "capitalize",
-                        }}
-                      >
-                        <span style={{ color: "#9D3781" }}>{el.name}</span>
-                      </li>
-                    )
-                  )}
+                  {onet.careerInfo?.personality.work_styles.element.map((el, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        ...styles.text,
+                        marginLeft: "3rem",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      <span style={{ color: "#9D3781" }}>{el.name}</span>
+                    </li>
+                  ))}
                 </ul>
               </Box>
 
@@ -305,13 +286,9 @@ export default function CareerInfo() {
                   marginBottom: "2rem",
                 }}
               >
-                <Typography sx={{ ...styles.heading, color: "#78AA68" }}>
-                  TECHNOLOGY
-                </Typography>
+                <Typography sx={{ ...styles.heading, color: "#78AA68" }}>TECHNOLOGY</Typography>
                 {/* Add text and list items for Technology box */}
-                <Typography style={styles.text}>
-                  You might use software like this on the job:
-                </Typography>
+                <Typography style={styles.text}>You might use software like this on the job:</Typography>
                 {onet.careerInfo?.technology.category.map((el, i) => (
                   <ul key={i}>
                     <Typography

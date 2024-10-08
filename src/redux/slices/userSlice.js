@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import FetchApi from "../../client.js";
 import { config } from "../../config/config.js";
 
@@ -12,60 +13,48 @@ export const addHistory = createAsyncThunk(
   "user/addHistory",
   async ({ userId, videoId, token }, thunkAPI) => {
     try {
-      return await FetchApi.fetch(
-        `${config.api}/api/user/history/${userId}/${videoId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      return await FetchApi.fetch(`${config.api}/api/user/history/${userId}/${videoId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
-export const getHistory = createAsyncThunk(
-  "user/getHistory",
-  async ({ userId, token }, thunkAPI) => {
-    try {
-      return await FetchApi.fetch(
-        `${config.api}/api/user/gethistory/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-    } catch (error) {
-      return thunkAPI.rejectWithValue({ error: error.message });
-    }
+export const getHistory = createAsyncThunk("user/getHistory", async ({ userId, token }, thunkAPI) => {
+  try {
+    return await FetchApi.fetch(`${config.api}/api/user/gethistory/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    return thunkAPI.rejectWithValue({ error: error.message });
   }
-);
+});
 
 export const getMyLikedVideos = createAsyncThunk(
   "user/getMyLikedVideos",
   async ({ userId, page, token }, thunkAPI) => {
     try {
-      return await FetchApi.fetch(
-        `${config.api}/api/user/getmylikedvideos/${userId}/?page=${page}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      return await FetchApi.fetch(`${config.api}/api/user/getmylikedvideos/${userId}/?page=${page}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 // Playlist
@@ -85,27 +74,24 @@ export const createPlaylist = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const getUserPlaylists = createAsyncThunk(
   "user/getUserPlaylists",
   async ({ userId, token }, thunkAPI) => {
     try {
-      return await FetchApi.fetch(
-        `${config.api}/api/user/getplaylists/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      return await FetchApi.fetch(`${config.api}/api/user/getplaylists/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const addVideoToPlaylist = createAsyncThunk(
@@ -123,7 +109,7 @@ export const addVideoToPlaylist = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const removeVideoFromPlaylist = createAsyncThunk(
@@ -142,28 +128,25 @@ export const removeVideoFromPlaylist = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 export const deletePlaylist = createAsyncThunk(
   "user/deletePlaylist",
   async ({ playlistId, userId, token }, thunkAPI) => {
     try {
-      await FetchApi.fetch(
-        `${config.api}/api/user/deleteplaylist/${userId}/${playlistId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await FetchApi.fetch(`${config.api}/api/user/deleteplaylist/${userId}/${playlistId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return playlistId;
     } catch (error) {
       return thunkAPI.rejectWithValue({ error: error.message });
     }
-  }
+  },
 );
 
 const userSlice = createSlice({

@@ -1,13 +1,12 @@
+import "../styles/Question.css";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserId, selectToken } from "../redux/slices/authSlice.js";
-import {
-  getDiscQuestions,
-  selectQuestions,
-} from "../redux/slices/discSlice.js";
+
+import { discHero, discLogo } from "../assets/assest.js";
 import QuestionCard from "../components/disc/QuestionCard.jsx";
-import "../styles/Question.css";
-import { discLogo, discHero } from "../assets/assest.js";
+import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
+import { getDiscQuestions, selectQuestions } from "../redux/slices/discSlice.js";
 
 const DiscAssessment = () => {
   const userId = useSelector(selectUserId);
@@ -22,9 +21,7 @@ const DiscAssessment = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const actionResult = await dispatchToRedux(
-          getDiscQuestions({ userId, token })
-        ).unwrap();
+        const actionResult = await dispatchToRedux(getDiscQuestions({ userId, token })).unwrap();
         setQuestions(actionResult.questions || []);
       } catch (error) {
         console.error("Failed to fetch questions: ", error);

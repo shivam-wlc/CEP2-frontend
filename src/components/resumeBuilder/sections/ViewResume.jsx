@@ -1,14 +1,5 @@
+import { Box, Button, Container, Divider, List, ListItem, Paper, Typography } from "@mui/material";
 import React from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Typography,
-  Paper,
-  List,
-  ListItem,
-  Divider,
-} from "@mui/material";
 
 // Utility function to format date
 const formatDate = (dateString) => {
@@ -76,8 +67,8 @@ const ViewResume = ({ resume, setIsGenerated }) => {
           {resume.education.map((edu, index) => (
             <Box key={index} sx={{ marginBottom: 2 }}>
               <Typography variant="body1" paragraph>
-                <strong>{edu.degree}</strong>, {edu.institution} (
-                {formatDate(edu.startDate)} - {formatDate(edu.endDate)})
+                <strong>{edu.degree}</strong>, {edu.institution} ({formatDate(edu.startDate)} -{" "}
+                {formatDate(edu.endDate)})
               </Typography>
               <Typography variant="body2" paragraph>
                 Grade: {edu.grade}
@@ -95,8 +86,8 @@ const ViewResume = ({ resume, setIsGenerated }) => {
           {resume.experience.map((exp, index) => (
             <Box key={index} sx={{ marginBottom: 2 }}>
               <Typography variant="body1" paragraph>
-                <strong>{exp.jobTitle}</strong> at {exp.company} (
-                {formatDate(exp.startDate)} - {formatDate(exp.endDate)})
+                <strong>{exp.jobTitle}</strong> at {exp.company} ({formatDate(exp.startDate)} -{" "}
+                {formatDate(exp.endDate)})
               </Typography>
               <Typography variant="body2" paragraph>
                 Location: {exp.location}
@@ -131,16 +122,11 @@ const ViewResume = ({ resume, setIsGenerated }) => {
                 Technologies: {project.technologies.join(", ")}
               </Typography>
               <Typography variant="body2" paragraph>
-                Duration: {formatDate(project.startDate)} -{" "}
-                {formatDate(project.endDate)}
+                Duration: {formatDate(project.startDate)} - {formatDate(project.endDate)}
               </Typography>
               {project.link && (
                 <Typography variant="body2" paragraph>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
                     Project Link
                   </a>
                 </Typography>
@@ -158,8 +144,7 @@ const ViewResume = ({ resume, setIsGenerated }) => {
           {resume.certifications.map((cert, index) => (
             <Box key={index} sx={{ marginBottom: 2 }}>
               <Typography variant="body1" paragraph>
-                <strong>{cert.name}</strong>, {cert.institution} (
-                {formatDate(cert.issueDate)})
+                <strong>{cert.name}</strong>, {cert.institution} ({formatDate(cert.issueDate)})
               </Typography>
               {cert.link && (
                 <Typography variant="body2" paragraph>
@@ -205,7 +190,7 @@ const ViewResume = ({ resume, setIsGenerated }) => {
           <Divider />
         </>
       )}
-    </Page>
+    </Page>,
   );
 
   // Add content to the second page if needed
@@ -237,16 +222,11 @@ const ViewResume = ({ resume, setIsGenerated }) => {
                   Technologies: {project.technologies.join(", ")}
                 </Typography>
                 <Typography variant="body2" paragraph>
-                  Duration: {formatDate(project.startDate)} -{" "}
-                  {formatDate(project.endDate)}
+                  Duration: {formatDate(project.startDate)} - {formatDate(project.endDate)}
                 </Typography>
                 {project.link && (
                   <Typography variant="body2" paragraph>
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
                       Project Link
                     </a>
                   </Typography>
@@ -264,16 +244,11 @@ const ViewResume = ({ resume, setIsGenerated }) => {
             {resume.certifications.map((cert, index) => (
               <Box key={index} sx={{ marginBottom: 2 }}>
                 <Typography variant="body1" paragraph>
-                  <strong>{cert.name}</strong>, {cert.institution} (
-                  {formatDate(cert.issueDate)})
+                  <strong>{cert.name}</strong>, {cert.institution} ({formatDate(cert.issueDate)})
                 </Typography>
                 {cert.link && (
                   <Typography variant="body2" paragraph>
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={cert.link} target="_blank" rel="noopener noreferrer">
                       Certification Link
                     </a>
                   </Typography>
@@ -315,7 +290,7 @@ const ViewResume = ({ resume, setIsGenerated }) => {
             <Divider />
           </>
         )}
-      </Page>
+      </Page>,
     );
   }
 

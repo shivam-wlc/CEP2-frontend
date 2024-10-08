@@ -1,42 +1,31 @@
+import { Box, Button, CircularProgress, Container, Modal, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createPlaylist } from "../redux/slices/userSlice.js";
-import {
-  Modal,
-  TextField,
-  Container,
-  Typography,
-  Box,
-  Button,
-  CircularProgress,
-} from "@mui/material";
+
 import GeneralButton from "../components/general/GeneralButton.jsx";
 import { notify } from "../redux/slices/alertSlice.js";
+import { createPlaylist } from "../redux/slices/userSlice.js";
 import { fonts } from "../utility/fonts.js";
 
-const CreatePlaylistModal = ({ open, onClose, userId,token }) => {
+const CreatePlaylistModal = ({ open, onClose, userId, token }) => {
   const dispatchToRedux = useDispatch();
   const [playlistName, setPlaylistName] = useState("");
   const [isButtonLoading, setIsButtonLoading] = useState(false);
 
   const handleCreatePlaylist = async () => {
     if (!playlistName) {
-      dispatchToRedux(
-        notify({ type: "error", message: "Playlist name is required" })
-      );
+      dispatchToRedux(notify({ type: "error", message: "Playlist name is required" }));
       return;
     }
 
     try {
       setIsButtonLoading(true);
-      await dispatchToRedux(createPlaylist({ name: playlistName, userId ,token}));
+      await dispatchToRedux(createPlaylist({ name: playlistName, userId, token }));
 
       setIsButtonLoading(false);
       setPlaylistName("");
       onClose();
-      dispatchToRedux(
-        notify({ type: "success", message: "Playlist created successfully" })
-      );
+      dispatchToRedux(notify({ type: "success", message: "Playlist created successfully" }));
     } catch (error) {
       setIsButtonLoading(false);
       setPlaylistName("");
