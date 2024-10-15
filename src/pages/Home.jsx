@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { MdArrowOutward } from "react-icons/md";
-
-import { careerReportImg, homeHero } from "../assets/assest";
-import commonStyles from "../styles/Common.module.css";
+import React, { useEffect, useState } from "react";
 import homeStyle from "../styles/Home.module.css";
+import commonStyles from "../styles/Common.module.css";
+import { MdArrowOutward } from "react-icons/md";
+import { careerReportImg, homeHero } from "../assets/assest";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +26,7 @@ const Home = () => {
     "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
     "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
   ];
-  const cardPerPage = 2;
+  const [cardPerPage, setCardPerPage] = useState(2);
   const lastIndex = currentPage * cardPerPage;
   const firstIndex = lastIndex - cardPerPage;
   const visibleImages = images.slice(firstIndex, lastIndex);
@@ -39,6 +38,21 @@ const Home = () => {
   const handleNextPage = () => {
     setCurrentPage(Math.min(totalPages, currentPage + 1));
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 480) {
+        setCardPerPage(1);
+      } else {
+        setCardPerPage(2);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <>

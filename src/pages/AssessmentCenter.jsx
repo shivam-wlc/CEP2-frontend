@@ -308,16 +308,14 @@
 //     </Card>
 //   );
 // }
-
 import React from "react";
-import { MdArrowOutward } from "react-icons/md";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-import { assessmentCardBg, assessmentHeaderImg, assessmentHeroImg } from "../assets/assest.js";
-import { selectAuthenticated } from "../redux/slices/authSlice.js";
 import assessmentStyle from "../styles/AssessmentCenter.module.css";
 import commonStyle from "../styles/Common.module.css";
+import { assessmentCardBg, assessmentHeaderImg, assessmentHeroImg } from "../assets/assest.js";
+import { MdArrowOutward } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectAuthenticated } from "../redux/slices/authSlice.js";
 
 const AssessmentCenter = () => {
   const navigate = useNavigate();

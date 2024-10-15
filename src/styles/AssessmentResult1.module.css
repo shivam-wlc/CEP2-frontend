@@ -1,0 +1,170 @@
+.container{
+    display: flex;
+    margin: 10rem 5rem 0;
+    gap: 2rem;
+}
+.left{
+    height: 12rem;
+    width: 15rem;
+    background-color: white;
+    box-shadow: 1px 1px 10px gray;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+.left p:last-child{
+    background-color: rgb(230, 226, 226);
+    padding: .5rem;
+    border-radius: 1rem;
+}
+.right{
+    width: 100%;
+}
+.aboutResults, .howYouScored, .graphResult, .bestMatch{
+    background-color: white;
+    box-shadow: 1px 1px 10px gray;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+.aboutResults{
+    margin: 0;
+}
+.aboutResults h6, .howYouScored h6, .graphResult h6, .bestMatch h6{
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+}
+.accordion-header h6{
+    margin-top: .5rem;
+}
+.aboutResults h6+p{
+    margin-bottom: .5rem;
+}
+.aboutResults p, .howYouScored p, .graphResult p, .bestMatch p{
+    color: rgb(120, 120, 120);
+}
+.howYouScored, .graphResult {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.graphResult ul{
+    width: 50%;
+}
+.accordion{
+    list-style: none;
+    padding: .5rem 0;
+    border-bottom: 1px solid rgb(169, 168, 168);
+}
+.graphResult{
+    display: flex;
+}
+.accordion-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.accordion-header div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.circle{
+    height: 1.2rem;
+    width: 1.2rem;
+    background-color: red;
+    border-radius: 50%;
+}
+.accordion-header .realisticPercent{
+    background-color: red;
+    color: white;
+    padding: .2rem .5rem;
+    border-radius: 1rem;
+}
+.accordion-button{
+    background-color: transparent;
+    border: 2px solid #bf2f75;
+    text-align: center;
+    line-height: .4rem;
+    padding: .2rem;
+    border-radius: 50%;
+    color: #bf2f75;
+    cursor: pointer;
+}
+.navButton {
+    background-image: linear-gradient(to top left, #720361, #bf2f75);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    font-size: 1.125rem;
+    gap: 0.875rem;
+    color: white;
+    cursor: pointer;
+  }
+.graph{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bestMatch > p{
+    font-size: 1.1rem;
+}
+.bestMatchCardsList{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.bestMatchCard{
+    list-style: none;
+    width: 100%;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: .5px .5px 10px gray;
+    padding: .4rem;
+    display: flex;
+    justify-content: space-between;
+}
+.bestMatchCard:active{
+    border: 2px solid #720361;
+}
+.bestMatchCard .title{
+    color: black;
+    font-size: 1.1rem;
+}
+.bestMatchCard .description{
+    font-size: .9rem;
+    margin-top: .3rem;
+
+}
+/* dummy */
+.bestMatch .logo{
+    background-color:#bf2f75;
+    height: 1.5rem;
+    width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+}
+.rating .star{
+    color: gold;
+    margin-top: .2rem;
+}
+.userAndRating{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}

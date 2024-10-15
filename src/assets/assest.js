@@ -87,6 +87,15 @@ import shared from "./userDashboard/shared.png";
 //backgroundImage
 import backgroundVector from "./Vector.png";
 
+//assessment result
+import assessmentResult from "../assets/AssessmentResult/assessmentResult.png";
+import assessmentResultbottom from "../assets/AssessmentResult/assessmentResultbottom.png";
+import graph1 from "../assets/AssessmentResult1/graph.png";
+import insideGraph from "./AssessmentResult1/InsideGraph.png";
+
+// hamburger icon
+import menu from "./icons/menu.png";
+
 const socialMediaIcons = [
   { icon: FacebookIcon, name: "Facebook" },
   { icon: InstagramIcon, name: "Instagram" },
@@ -186,4 +195,11 @@ export {
   C,
   D,
   E,
+  //assessement result
+  assessmentResult,
+  assessmentResultbottom,
+  graph1,
+  insideGraph,
+  // hamburger icon
+  menu,
 };

@@ -1,14 +1,16 @@
-.section {
-  border: 1px solid rgb(169, 167, 167);
-  margin-top: 0.8rem;
-  border-radius: 0.6rem;
-  color: black;
+.section{
+    border: 1px solid rgb(169, 167, 167);
+    margin-top: .8rem;
+    border-radius: .6rem;
+    color: black;
 }
-.active-section {
-  background-image: linear-gradient(to top left, #720361, #bf2f75);
-  color: rgb(255, 255, 255);
+.active-section{
+    background-image: linear-gradient(to top left, #720361, #BF2F75);
+    color: rgb(255, 255, 255);
 }
-.container {
-  /* padding: 0 50rem; */
-  margin-top: 10rem;
+.container{
+    /* padding: 0 50rem; */
+    margin-top: 10rem;
 }
+
+
