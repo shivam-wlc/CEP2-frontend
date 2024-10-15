@@ -191,15 +191,14 @@
 
 // export default Explore;
 
-import { Box, Button, Container, MenuItem, Pagination, TextField, Typography } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
+import { Box, Button, Container, MenuItem, Pagination, TextField, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-
-import GeneralButton from "../components/general/GeneralButton";
-import Headers from "../components/Headers";
+import exploreStyles from "../styles/Explore.module.css";
 import VideoCard from "../components/VideoCard";
-import { allvideos, resetState, selectAllVideosData, videoFilter } from "../redux/slices/creatorSlice";
 import { categories, tags } from "../utility/category";
+import { allvideos, selectAllVideosData, videoFilter, resetState } from "../redux/slices/creatorSlice";
+import GeneralButton from "../components/general/GeneralButton";
 import { fonts } from "../utility/fonts.js";
 
 const Explore = () => {
@@ -452,28 +451,41 @@ const Explore = () => {
             marginBottom: "1rem",
             padding: "1rem 0",
           }}
+          className={exploreStyles["filters"]}
         >
-          <TextField
-            label="Search"
-            variant="outlined"
-            sx={{ marginRight: "10px", flexGrow: 1 }}
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-          <TextField
-            select
-            label="Filtered By Tags"
-            variant="outlined"
-            sx={{ marginRight: "10px", width: "200px" }}
-            value={tag}
-            onChange={(e) => setTag(e.target.value)}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+              margin: "auto",
+              marginBottom: "1rem",
+              padding: "1rem 0",
+            }}
           >
-            {tags.map((tag) => (
-              <MenuItem key={tag.option} value={tag.option}>
-                {tag.option}
-              </MenuItem>
-            ))}
-          </TextField>
+            <TextField
+              label="Search"
+              variant="outlined"
+              sx={{ marginRight: "10px", flexGrow: 1 }}
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+            <TextField
+              select
+              label="Filtered By Tags"
+              variant="outlined"
+              sx={{ marginRight: "10px", width: "200px" }}
+              value={tag}
+              onChange={(e) => setTag(e.target.value)}
+            >
+              {tags.map((tag) => (
+                <MenuItem key={tag.option} value={tag.option}>
+                  {tag.option}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Box>
           <Box sx={{ display: "flex", gap: "10px" }}>
             <GeneralButton onClick={handleSearchClick} text="Apply" />
             <GeneralButton onClick={handleReset} text="Reset" />

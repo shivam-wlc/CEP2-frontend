@@ -1,8 +1,10 @@
-import React from "react";
-import { MdArrowOutward } from "react-icons/md";
+import { selectAuthenticated } from "../redux/slices/authSlice.js";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import React from "react";
+import resumeBuilderStyles from "../styles/ResumeBuilder.module.css";
+import { MdArrowOutward } from "react-icons/md";
+import commonStyle from "../styles/Common.module.css";
 import {
   assessmentHeaderImg,
   resumeBulbImage,
@@ -12,9 +14,6 @@ import {
   resumeLSCard3,
   resumeTipsImage,
 } from "../assets/assest";
-import { selectAuthenticated } from "../redux/slices/authSlice.js";
-import commonStyle from "../styles/Common.module.css";
-import resumeBuilderStyles from "../styles/ResumeBuilder.module.css";
 
 const ResumeBuilder = () => {
   const isAuthenticated = useSelector(selectAuthenticated);

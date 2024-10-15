@@ -1,0 +1,96 @@
+.container{
+    margin: 10rem 5rem 0;
+    
+}
+.result{
+    display: flex;   
+    gap: 5rem;
+}
+.result h3{
+    font-size: 3rem;
+    margin-top: 3rem;
+}
+.result p{
+    font-size: 1.3rem;
+    color: gray;
+}
+.result p:last-child{
+    margin-top: 2rem;
+}
+.career-paths{
+    margin-top: 5rem;
+}
+.career-paths div:first-child p{
+    font-size: 1.3rem;
+}
+.paths-list{
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+}
+.paths-list li{
+    list-style: none;
+    background-color: white;
+    width: 100%;
+    box-shadow: 1px 1px 10px gray;
+    border-radius: 10px;
+    margin: 2rem 0;
+    padding: 1rem;
+    cursor: pointer;
+}
+.paths-list li h6{
+    font-size: 1.2rem;
+}
+.paths-list li p{
+    font-size: 1rem;
+}
+.pathItemCardsList{
+    margin-bottom: 3rem;
+}
+.pathItemCard{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 1.3rem 0;
+    background-color: white;
+    width: 100%;
+    box-shadow: 1px 1px 10px gray;
+    border-radius: 10px;
+}
+
+.navButton {
+    background-image: linear-gradient(to top left, #720361, #bf2f75);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    font-size: 1.125rem;
+    gap: 0.875rem;
+    color: white;
+    cursor: pointer;
+  }
+
+.activePathCard{
+    border: 2px solid #d105b3;
+}
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    gap: 7rem;
+}
+.bottom > div{
+    margin-top: 5rem;
+    font-size: 1.2rem;
+}
+.bottom > div div{
+    color: gray;
+    margin-top: 1rem;
+}
+.bottom > div div p:nth-child(2){
+    margin: 1rem 0;
+}

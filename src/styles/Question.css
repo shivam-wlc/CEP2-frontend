@@ -97,7 +97,11 @@
   border-top-left-radius: 36px;
   border-top-right-radius: 36px;
   background: linear-gradient(to right, transparent, yellow, transparent);
-  mask-image: radial-gradient(farthest-side at bottom, transparent 75%, rgb(0, 0, 0));
+  mask-image: radial-gradient(
+    farthest-side at bottom,
+    transparent 75%,
+    rgb(0, 0, 0)
+  );
 }
 
 #bottomSubCard {

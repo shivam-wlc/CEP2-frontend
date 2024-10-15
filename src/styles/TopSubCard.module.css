@@ -1,74 +1,75 @@
-.top-subcard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  gap: 0.8rem;
-  background-image: linear-gradient(to top left, #720361, #bf2f75);
-  border-radius: 1.25rem;
-  color: white;
-  position: relative;
-  height: 8rem;
+.top-subcard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: .8rem;
+    background-image: linear-gradient(to top left, #720361, #BF2F75);
+    border-radius: 1.25rem;
+    color: white;
+    position: relative;
+    height: 8rem;
 }
 
 .cardTitle {
-  font-size: 2.4rem;
-  font-weight: bold;
+    font-size: 2.4rem;
+    font-weight: bold;
 }
 
 .questionContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  border-radius: 0.8rem;
-  background-color: #93257dae;
-  padding: 0.7rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.8rem;
+    background-color: #93257dae;
+    padding: .7rem;
 }
 
 .questionText {
-  font-size: 1.25rem;
-  text-align: center;
+    font-size: 1.25rem;
+    text-align: center;
 }
 
 .status {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 1.8rem;
-  position: absolute;
-  bottom: -1.45rem;
-  list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+    position: absolute;
+    bottom: -1.45rem;
+    list-style: none;
 }
 
 .statusCircle {
-  height: 3rem;
-  width: 3rem;
-  text-align: center;
-  border-radius: 50%;
-  border: 2.93px solid white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  line-height: 2.8rem;
+    height: 3rem;
+    width: 3rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 2.93px solid white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.8rem;
 }
 
 .statusCircleActive {
-  background-color: #ff8a00;
+    background-color: #FF8A00;
 }
 
 .statusCircleInactive {
-  background-color: #93257d5e;
-  backdrop-filter: blur(0.24rem);
+    background-color: #93257d5e;
+    backdrop-filter: blur(.24rem);
 }
 .selectContainer {
-  margin: 5% 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+    margin: 5% 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .selectControl {
-  background-color: #f8f4f4;
-  width: 100%;
+    background-color: #f8f4f4;
+    width: 100%;
 }
+

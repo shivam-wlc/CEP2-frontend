@@ -9,6 +9,7 @@
   gap: 5%;
 }
 
+
 .main .left {
   width: 50%;
 }
@@ -215,3 +216,94 @@
   cursor: pointer;
   background-color: #ffffff;
 }
+
+
+
+@media screen and (max-width: 480px) {
+  .main {
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 0rem;
+    padding: 1rem;
+
+  }
+  .main .left{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main .left h3{
+    font-size: 2.7rem;
+    text-align: center;
+  }
+  .main .left p{
+    font-size: 1rem;
+    text-align: center;
+  }
+  .main .right{
+    width: 100%;
+  }
+  .right img{
+    max-width: 100%;
+  }
+  .cards{
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: 4rem;
+  }
+  .pagination div:first-child {
+    display: none;
+  }
+  .cards .left{
+    width: 100%;
+    border-radius: 2rem;
+  }
+  .cards .right {
+    width: 100%;
+    margin-top: 2rem;
+    position: relative;
+  }
+  .pagination-buttons{
+    position: absolute;
+    bottom: -4rem;
+    left: 1rem;
+    right: 1rem;
+    justify-content: space-between;
+  }
+  .understand-your-self{
+    flex-direction: column;
+    margin: 1rem;
+    margin-top: 5rem;
+
+  }
+  .understand-your-self .left img{
+    max-width: 100%;
+  }
+  .understand-your-self .right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .understand-your-self h3{
+    text-align: center;
+  }
+  .understand-your-self p{
+    text-align: center;
+  }
+  .horizontal-scroll-page .images{
+    width: 90%;
+    margin: auto;
+  }
+  .oportunity{
+    margin: 0;
+  }
+  .oportunityItemCardsList{
+    padding: 1rem;
+  }
+  .oportunityItemCard{
+    width: 100%;
+  }
+  
+}
+

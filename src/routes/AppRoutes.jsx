@@ -34,6 +34,8 @@ const Pricing = React.lazy(() => import("../pages/Pricing.jsx"));
 const AboutUs = React.lazy(() => import("../pages/AboutUs.jsx"));
 const TermsAndConditons = React.lazy(() => import("../pages/TermsAndConditons.jsx"));
 const PrivacyAndPolicy = React.lazy(() => import("../pages/PrivacyAndPolicy.jsx"));
+const AssessmentResult = React.lazy(() => import("../pages/AssessmentResult.jsx"));
+const AssessmentResult1 = React.lazy(() => import("../pages/AssessmentResult1.jsx"));
 
 const AppRoutes = () => {
   const authenticated = useSelector(selectAuthenticated);
@@ -254,6 +256,22 @@ const AppRoutes = () => {
         element={
           <Suspense fallback={<InitialLoaders />}>
             <PrivacyAndPolicy />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/assessment-result"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <AssessmentResult />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/assessment-result1"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <AssessmentResult1 />
           </Suspense>
         }
       />

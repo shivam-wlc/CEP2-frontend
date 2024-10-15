@@ -1,151 +1,229 @@
 .header {
-  height: 15rem;
-  background-size: 100% 130%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #720361;
-  position: relative;
-  background-blend-mode: overlay;
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+    height: 15rem;
+    background-size: 100% 130%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #720361;
+    position: relative;
+    background-blend-mode: overlay;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
 }
 
 .header h2 {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 3rem;
-  color: white;
-  font-weight: 900;
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: white;
+    font-weight: 900;
 }
 
+
 .main {
-  display: flex;
-  margin: 5rem;
-  /* width: 100%; */
-  /* border: 1px solid black; */
+    display: flex;
+    margin: 5rem;
+    /* width: 100%; */
+    /* border: 1px solid black; */
 }
 
 .mainImage {
-  width: 50%;
-  height: 20rem;
-  /* border: 1px solid black; */
-  background-repeat: no-repeat;
-  background-size: contain;
+    width: 50%;
+    height: 20rem;
+    /* border: 1px solid black; */
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .main .content {
-  width: 50%;
+    width: 50%;
 }
 
 .main .content h3 {
-  font-size: 3rem;
+    font-size: 3rem;
 }
 
 .main .content p {
-  color: gray;
-  font-size: 1.2rem;
+    color: gray;
+    font-size: 1.2rem;
 }
 
 .letsStart {
-  /* border: 1px solid black; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 5rem;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem;
 }
 
 .letsStart .cardsList {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+
+
 }
-.letsStart .cardsList li {
-  list-style: none;
-  max-width: 25rem;
-  height: 27rem;
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  align-items: center;
-  padding: 1rem;
-  border-radius: 1rem;
-  box-shadow: 0.1rem 0rem 1rem 0.05rem gray;
-  background-color: #fff;
+.letsStart .cardsList li{
+    list-style: none;
+    max-width: 25rem;
+    height: 27rem;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items:center;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: .1rem 0rem 1rem .05rem gray;
+    background-color: #fff;
 }
-.letsStart .cardsList li img {
-  width: 100%;
-  height: 50%;
-  object-fit: contain;
+.letsStart .cardsList li img{
+    width: 100%;
+    height: 50%;
+    object-fit: contain;
 }
-.letsStart .cardsList h4 {
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 1rem 0 1.2rem;
+.letsStart .cardsList h4{
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 1rem 0 1.2rem;
 }
-.letsStart .cardsList p {
-  font-size: 1rem;
-  text-align: center;
+.letsStart .cardsList p{
+    font-size: 1rem;
+    text-align: center;
 }
 
 .tips {
-  display: flex;
-  /* width: 100%; */
-  margin: 5rem;
-  gap: 3rem;
+    display: flex;
+    /* width: 100%; */
+    margin: 5rem;
+    gap: 3rem;
+ 
 }
-.tipsList {
-  width: 60%;
-}
-
-.tips .tipsImage {
-  width: 40%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top;
+.tipsList{
+    width: 60%;
 }
 
-.tipsList li {
-  list-style: none;
-  border-radius: 1rem;
-  box-shadow: 0.1rem 0rem 1rem 0.01rem gray;
-  margin-top: 3rem;
-  padding: 0rem 1rem 1.5rem;
-  background-color: #fff;
+.tips .tipsImage{
+    width: 40%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+
+}
+
+.tipsList li{
+    list-style: none;
+    border-radius: 1rem;
+    box-shadow: .1rem 0rem 1rem .01rem gray;
+    margin-top: 3rem;
+    padding: 0rem 1rem 1.5rem;
+    background-color: #fff;
 }
 .tipBanner {
-  display: flex;
-  align-items: center;
-  background-image: linear-gradient(to top left, #720361, #bf2f75);
-  padding: 8px 16px;
-  height: 40px;
-  top: -15px;
-  left: 15px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  width: 100px;
-  color: #fff;
-  font-weight: bold;
-  position: relative;
-}
-.back {
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 0;
-  right: -15px;
-  border-top: 15px solid transparent;
-  border-left: 15px solid #bf2f75;
-}
-.tipImage {
-  width: 24px;
-  height: auto;
-  margin-right: 8px;
-}
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to top left, #720361, #BF2F75);
+    padding: 8px 16px;
+    height: 40px;
+    top: -15px;
+    left: 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 100px;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+  }
+  .back{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    right: -15px;
+    border-top: 15px solid transparent;
+    border-left: 15px solid #BF2F75;
+  }
+  .tipImage {
+    width: 24px;
+    height: auto;
+    margin-right: 8px;
+  }
 
 .tipText {
-  font-size: 1rem;
-}
+    font-size: 1rem;
+  }
+
+
+  @media screen and (max-width: 480px) {
+      .header {
+          width: 100%;
+      }
+
+      .header h2 {
+          font-size: 2rem;
+          text-align: center;
+          width: 100%;
+      }
+
+      .main {
+          flex-direction: column;
+          margin: 1rem;
+      }
+
+      .main .left {
+          width: 100%;
+      }
+
+      .mainImage {
+          width: 100%;
+      }
+
+      .main .content {
+          width: 100%;
+      }
+
+      .main .content>p {
+          text-align: center;
+      }
+
+      .main .content h3 {
+          font-size: 2.3rem;
+          text-align: center;
+          margin-bottom: 1rem;
+      }
+
+      .letsStart {
+          margin: 2rem 1rem;
+      }
+
+      .cardsList {
+          flex-direction: column;
+      }
+
+      .letsStart .cardsList li {
+          width: 100%;
+          max-width: 100%;
+      }
+
+      .tips {
+          flex-direction: column-reverse;
+          margin: 2rem 1rem;
+      }
+
+      .tips .tipsImage {
+          width: 90vw;
+          height: 90vw;
+          margin: auto;
+      }
+
+      .tips .tipsList {
+          flex-direction: column;
+          width: 100%;
+      }
+
+      .tips .tipsList li {
+          width: 100%;
+      }
+  }
