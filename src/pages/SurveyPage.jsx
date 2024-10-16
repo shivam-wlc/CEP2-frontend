@@ -169,8 +169,8 @@ const SurveyPage = () => {
     },
     {
       question: "At this point in your career journey, which Career Cluster most appeal to you?",
-      key: "mostappealCarrer",
-      isMutiple: false,
+      key: "mostAppealingField",
+      isMutiple: true,
       options: [
         {
           value: "Agriculture, Food & Natural Resources",
@@ -277,14 +277,48 @@ const SurveyPage = () => {
     dispatchToRedux(getSurveyQuestions({ token }));
     dispatchToRedux(getCareerClusterOptions({ token }));
   }, []);
+  const handleSubmit = (updatedOverallAnswer) => {
+    const answers = {};
+    updatedOverallAnswer.forEach((answer) => {
+      console.log(answer);
 
-  console.log("surveyQuestions ui", surveyQuestions);
-  // for most appeloing career and it's options choose this rest of 6 choose above
-  console.log("clusterData ui", clusterData);
+      for (let key in answer) {
+        answers[key] = answer[key];
+      }
+    });
 
-  const handleNext = () => {
+    dispatchToRedux(saveSurveyData({ token, formData: answers, userId  }))
+  }
+  const handleNext = (updatedOverallAnswer) => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+    if (currentQuestionIndex < questions.length - 1) {
+      if (currentQuestionIndex + 1 === 7) {
+        const optionSelected = updatedOverallAnswer[currentQuestionIndex].mostAppealingField;
+        const lastQuestion = {
+          question: "question name",
+          key: "selectedPathways",
+          isMutiple: true,
+          options: optionSelected.map((option) => {
+            console.log(clusterData.find((el) => el.CareerClusters === option));
+            return {
+              label: option,
+              options:
+                clusterData
+                  .find((el) => el.CareerClusters === option)
+                  ?.CareerPathways.map((pathway) => {
+                    return {
+                      value: pathway,
+                      label: pathway,
+                    };
+                  }) || "Null",
+            };
+          }),
+        };
+        questions.pop();
+        setQuestions([...questions, lastQuestion]);
+      }
     }
     console.log("Next");
   };
@@ -318,6 +352,7 @@ const SurveyPage = () => {
               isFirstQuestion={currentQuestionIndex === 0}
               overallAnswers={overallAnswers}
               setOverallAnswers={setOverallAnswers}
+              handleSubmit={handleSubmit}
             />
           )}
         </div>

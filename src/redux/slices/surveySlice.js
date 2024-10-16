@@ -18,7 +18,7 @@ export const saveSurveyData = createAsyncThunk(
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ ...formData }),
     });
   },
 );

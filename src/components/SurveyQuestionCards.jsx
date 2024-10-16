@@ -19,22 +19,21 @@ const SurveyQuestionCards = ({
   isFirstQuestion,
   overallAnswers,
   setOverallAnswers,
+  handleSubmit,
 }) => {
   const [optionValue, setOptionValue] = useState(null);
   const circleValues = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const handleNext = () => {
-    onNext();
-    console.log("vale", optionValue);
     let processedOptionValue;
     if (isMultiple) {
       processedOptionValue = optionValue.map((value) => value.value);
     } else processedOptionValue = optionValue.value;
     const updatedOverallAnswer = overallAnswers.filter((ans) => !ans.hasOwnProperty(answerKey));
     updatedOverallAnswer.push({ [answerKey]: processedOptionValue });
-    console.log(updatedOverallAnswer);
     setOverallAnswers(updatedOverallAnswer);
     setOptionValue(null);
+    isLastQuestion ? handleSubmit(updatedOverallAnswer) : onNext(updatedOverallAnswer);
   };
 
   const handlePrevious = () => {
