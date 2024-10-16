@@ -1,10 +1,36 @@
 import React, { useState } from "react";
 import assessmentStyles from "../styles/AssessmentResult.module.css";
+import { useSelector } from "react-redux";
 import commonStyles from "../styles/Common.module.css";
 import { assessmentResult, assessmentResultbottom } from "../assets/assest.js";
 import Footer from "../components/Footer.jsx";
 import Headers from "../components/Headers.jsx";
+import { config } from "../config/config.js";
+import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
+
 const AssessmentResult = () => {
+  const userId = useSelector(selectUserId);
+  const token = useSelector(selectToken);
+  const handleButtonClick = async () => {
+    const response = await fetch(`${config.api}/api/payment/createpayment/${userId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        price: 500,
+        productName: "Test product",
+      }),
+    });
+    if (response.ok) {
+      const redirectUrl = await response.json();
+      console.log(redirectUrl);
+      
+      window.location.href = redirectUrl.url;
+    }
+  };
+
   const pathListItems = [
     { heading: "Graphic Designer", subheading: "Great to fit" },
     { heading: "Actor", subheading: "Best to fit" },
@@ -99,7 +125,7 @@ const AssessmentResult = () => {
                   {graphicDesigner.map((item, index) => (
                     <li key={index} className={assessmentStyles["pathItemCard"]}>
                       <p>{item.statement}</p>
-                      <button className={assessmentStyles["navButton"]} onClick={() => navigate(item.slug)}>
+                      <button className={assessmentStyles["navButton"]} onClick={handleButtonClick}>
                         {item.button}
                       </button>
                     </li>
