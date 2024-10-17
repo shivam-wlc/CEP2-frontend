@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import assessmentStyles from "../styles/AssessmentResult.module.css";
 import { useSelector } from "react-redux";
 import commonStyles from "../styles/Common.module.css";
@@ -6,11 +6,23 @@ import { assessmentResult, assessmentResultbottom } from "../assets/assest.js";
 import Footer from "../components/Footer.jsx";
 import Headers from "../components/Headers.jsx";
 import { config } from "../config/config.js";
+import { useDispatch, useSelector } from "react-redux";
 import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
+import { getInterests, selectInterests } from "../redux/slices/interestSlice.js";
 
 const AssessmentResult = () => {
-  const userId = useSelector(selectUserId);
+  const dispatchToRedux = useDispatch();
   const token = useSelector(selectToken);
+  const userId = useSelector(selectUserId);
+
+  const interestsProfile = useSelector(selectInterests);
+  const [activePathCard, setActivePathCard] = useState(1);
+
+  useEffect(() => {
+    dispatchToRedux(getInterests({ userId, token }));
+  }, []);
+  
+  
   const handleButtonClick = async () => {
     const response = await fetch(`${config.api}/api/payment/createpayment/${userId}`, {
       method: "POST",
@@ -31,12 +43,15 @@ const AssessmentResult = () => {
     }
   };
 
+  console.log("interestsProfile", interestsProfile);
+
+
   const pathListItems = [
     { heading: "Graphic Designer", subheading: "Great to fit" },
     { heading: "Actor", subheading: "Best to fit" },
     { heading: "Interior designer", subheading: "Best to fit" },
   ];
-  const [activePathCard, setActivePathCard] = useState(1);
+
   const graphicDesigner = [
     {
       statement: "Pay $49 now to review and download the Full Career Directions Report",
@@ -79,6 +94,7 @@ const AssessmentResult = () => {
     },
     { statement: "saysa and our Schools team will contact your School", button: "Contact School", slug: "#" },
   ];
+
   return (
     <div>
       <Headers />
@@ -108,7 +124,7 @@ const AssessmentResult = () => {
 
           <div className={assessmentStyles.cards}>
             <ul className={assessmentStyles["paths-list"]}>
-              {pathListItems.map((item, index) => (
+              {/* {pathListItems.map((item, index) => (
                 <li
                   key={index}
                   onClick={() => setActivePathCard(index + 1)}
@@ -116,6 +132,16 @@ const AssessmentResult = () => {
                 >
                   <h6>{item.heading}</h6>
                   <p>{item.subheading}</p>
+                </li>
+              ))} */}
+              {interestsProfile?.careers?.career.map((item, index) => (
+                <li
+                  key={index}
+                  onClick={() => setActivePathCard(index + 1)}
+                  className={activePathCard == index + 1 ? assessmentStyles["activePathCard"] : ""}
+                >
+                  <h6>{item.title}</h6>
+                  <p>{item.fit}</p>
                 </li>
               ))}
             </ul>
