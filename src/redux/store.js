@@ -25,6 +25,7 @@ import unifiedRecordSlice from "./slices/unifiedRecordSlice.js";
 import userDetailsSlice from "./slices/userDetailsSlice.js";
 import userSlice from "./slices/userSlice.js";
 import zylaSlice from "./slices/zylaSlice.js";
+import interestSlice from "./slices/interestSlice.js";
 
 const persistConfig = {
   key: "user",
@@ -48,6 +49,7 @@ const rootReducer = combineReducers({
   userDetails: userDetailsSlice,
   resume: resumeReducer,
   disc: discSlice,
+  interest: interestSlice,
 });
 
 const store = configureStore({
