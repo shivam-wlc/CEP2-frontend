@@ -104,12 +104,17 @@ import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ShareIcon from "@mui/icons-material/Share";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
 
 import { fonts } from "../../utility/fonts.js";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../redux/slices/authSlice.js";
 
 const Sidebar = ({ userRole, handleMenuItemClick, currentPage }) => {
+  const dispatchToRedux = useDispatch();
+  const navigate = useNavigate();
   let sideBarMenues = [];
   switch (userRole) {
     case "user":
@@ -156,48 +161,84 @@ const Sidebar = ({ userRole, handleMenuItemClick, currentPage }) => {
       sideBarMenues = [];
   }
 
+  const handleLogout = () => {
+    try {
+      dispatchToRedux(logout());
+      navigate("/");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
   return (
-    <List>
-      {sideBarMenues.map((menuItem, index) => (
-        <ListItem
-          key={index}
-          sx={{
-            cursor: "pointer",
-            mt: "-0.5rem",
-            padding: "0.5rem 0.5rem",
-            borderRadius: "0.5rem",
-          }}
-        >
-          <ListItemButton
-            onClick={() => handleMenuItemClick(menuItem.name)}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "85vh",
+        justifyContent: "space-between",
+        border: "none",
+      }}
+    >
+      <List>
+        {sideBarMenues.map((menuItem, index) => (
+          <ListItem
+            key={index}
             sx={{
-              background:
-                currentPage === menuItem.name ? "linear-gradient(to top left, #720361, #BF2F75);" : "",
-              borderRadius: 1,
+              cursor: "pointer",
+              mt: "-0.5rem",
+              padding: "0.5rem 0.5rem",
+              borderRadius: "0.5rem",
             }}
           >
-            <ListItemIcon
+            <ListItemButton
+              onClick={() => handleMenuItemClick(menuItem.name)}
               sx={{
-                color: "#899499",
-                color: currentPage === menuItem.name ? "white" : "",
+                background:
+                  currentPage === menuItem.name ? "linear-gradient(to top left, #720361, #BF2F75);" : "",
+                borderRadius: 1,
               }}
             >
-              {menuItem.icon}
-            </ListItemIcon>
-            <ListItemText
-              primaryTypographyProps={{
-                fontFamily: fonts.sans,
-                fontWeight: "600",
-                color: "#717f8c",
-                fontSize: "0.9rem",
-                color: currentPage === menuItem.name ? "white" : "",
-              }}
-              primary={menuItem.name}
-            />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
+              <ListItemIcon
+                sx={{
+                  color: "#899499",
+                  color: currentPage === menuItem.name ? "white" : "",
+                }}
+              >
+                {menuItem.icon}
+              </ListItemIcon>
+              <ListItemText
+                primaryTypographyProps={{
+                  fontFamily: fonts.sans,
+                  fontWeight: "600",
+                  color: "#717f8c",
+                  fontSize: "0.9rem",
+                  color: currentPage === menuItem.name ? "white" : "",
+                }}
+                primary={menuItem.name}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <button
+        onClick={handleLogout}
+        style={{
+          width: "263px",
+          height: "45px",
+          borderRadius: "11px",
+          fontSize: "1rem",
+          color: "#777777",
+          margin: ".5rem",
+          border: "1px solid #00000033",
+          backgroundColor: "#FFFFFF",
+          boxShadow: "2px 2px 10px #a9a9a977",
+          cursor: "pointer",
+        }}
+      >
+        Logout
+      </button>
+    </Box>
   );
 };
 

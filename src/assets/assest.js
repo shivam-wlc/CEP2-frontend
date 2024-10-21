@@ -96,6 +96,23 @@ import insideGraph from "./AssessmentResult1/InsideGraph.png";
 // hamburger icon
 import menu from "./icons/menu.png";
 
+// creator
+import creator from "./CreatorHome/creator.png";
+import trash from "./icons/trash.png";
+import edit from "./icons/edit.png";
+import search from "./icons/search.png"
+// social media
+import linkedin from './creator/linkedin.png'
+import upload from "./creator/upload.png"
+
+// profile
+import profileOilPaint from "./Profile/profileOilPaint.png"
+import shareIcon from "./icons/share.png"
+import sms from "./icons/sms.svg"
+import eyeIcon from "./icons/eye.svg"
+import likeIcon from "./icons/like.svg"
+import infoCircleIcon from "./icons/info-circle.png"
+
 const socialMediaIcons = [
   { icon: FacebookIcon, name: "Facebook" },
   { icon: InstagramIcon, name: "Instagram" },
@@ -202,4 +219,18 @@ export {
   insideGraph,
   // hamburger icon
   menu,
+  // creator
+  creator,
+  edit,
+  trash,
+  search,
+  linkedin,
+  upload,
+  // profile
+  profileOilPaint,
+  shareIcon,
+  sms,
+  eyeIcon,
+  likeIcon,
+  infoCircleIcon
 };

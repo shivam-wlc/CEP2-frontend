@@ -52,6 +52,14 @@ const Headers = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleCloseUserMenu = (name) => {
+    setAnchorElUser(null);
+
+    if (name === "Dashboard") {
+      navigate(`/workspace/${userId}`);
+    }
+  };
+
   return (
     <nav className={navBar["navContainer"]}>
       <Link to={"/"} className={navBar["logo"]}>
@@ -109,7 +117,7 @@ const Headers = () => {
               </MenuItem>
               <Divider />
               {settings.map((setting) => (
-                <MenuItem key={setting.name} onClick={() => setAnchorElUser(null)}>
+                <MenuItem key={setting.name} onClick={() => handleCloseUserMenu(setting.name)}>
                   <Typography textAlign="center" sx={{ fontFamily: fonts.sans }}>
                     {setting.name}
                   </Typography>
