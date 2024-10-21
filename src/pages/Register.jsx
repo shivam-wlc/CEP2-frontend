@@ -184,7 +184,7 @@ const Register = () => {
           className={loginStyles.right}
         >
           <Link to="/">
-            <img src={Logo} alt="Logo" width={"300rem"} className={loginStyles.logo} />
+            <img src={Logo} alt="Logo" width={"200px"} paddingBottom={"1rem"} className={loginStyles.logo} />
           </Link>
           <Box
             sx={{
@@ -193,6 +193,8 @@ const Register = () => {
               borderRadius: "2rem",
               alignItems: "center",
               boxShadow: "1px 1px 10px gray",
+              paddingBottom: "2rem",
+              paddingTop: "1rem",
             }}
           >
             <Box>
@@ -385,7 +387,7 @@ const Register = () => {
                       }}
                     >
                       <MenuItem value="user">Student</MenuItem>
-                      <MenuItem value="creator">Creator</MenuItem>
+                      <MenuItem value="creator">Counsellor</MenuItem>
                     </Select>
                   </FormControl>
                 </Box>

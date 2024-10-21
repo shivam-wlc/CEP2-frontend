@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import assessmentStyles from "../styles/AssessmentResult.module.css";
-import { useSelector } from "react-redux";
 import commonStyles from "../styles/Common.module.css";
 import { assessmentResult, assessmentResultbottom } from "../assets/assest.js";
 import Footer from "../components/Footer.jsx";
@@ -21,8 +20,7 @@ const AssessmentResult = () => {
   useEffect(() => {
     dispatchToRedux(getInterests({ userId, token }));
   }, []);
-  
-  
+
   const handleButtonClick = async () => {
     const response = await fetch(`${config.api}/api/payment/createpayment/${userId}`, {
       method: "POST",
@@ -38,13 +36,12 @@ const AssessmentResult = () => {
     if (response.ok) {
       const redirectUrl = await response.json();
       console.log(redirectUrl);
-      
+
       window.location.href = redirectUrl.url;
     }
   };
 
   console.log("interestsProfile", interestsProfile);
-
 
   const pathListItems = [
     { heading: "Graphic Designer", subheading: "Great to fit" },
@@ -134,7 +131,7 @@ const AssessmentResult = () => {
                   <p>{item.subheading}</p>
                 </li>
               ))} */}
-              {interestsProfile?.careers?.career.map((item, index) => (
+              {interestsProfile?.careers?.career.slice(0, 3).map((item, index) => (
                 <li
                   key={index}
                   onClick={() => setActivePathCard(index + 1)}

@@ -7,7 +7,7 @@ import Headers from "./Headers.jsx";
 
 const Layout = () => {
   return (
-    <Box sx={{ backgroundColor: "#edeaeae01", border: 1 }}>
+    <Box sx={{ backgroundColor: "#edeaeae01" }}>
       <Headers />
       {/* pages */}
       <Outlet />

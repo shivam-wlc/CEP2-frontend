@@ -96,6 +96,14 @@ const AppRoutes = () => {
               <HowItWorks />
             </Suspense>
           }
+        />{" "}
+        <Route
+          path="/profile/:userId"
+          element={
+            <Suspense fallback={<InitialLoaders />}>
+              <CreatorProfile />
+            </Suspense>
+          }
         />
         <Route
           path="/pricing"
@@ -174,14 +182,6 @@ const AppRoutes = () => {
         element={
           <Suspense fallback={<InitialLoaders />}>
             <CareerInfo />
-          </Suspense>
-        }
-      />
-      <Route
-        path="/profile/:userId"
-        element={
-          <Suspense fallback={<InitialLoaders />}>
-            <CreatorProfile />
           </Suspense>
         }
       />

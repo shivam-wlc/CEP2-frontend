@@ -17,7 +17,7 @@ import {
 import React, { useState } from "react";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-
+import creatorStyle from "../styles/CreatorVideo.module.css";
 import GeneralButton from "../components/general/GeneralButton.jsx";
 import { notify } from "../redux/slices/alertSlice.js";
 import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
@@ -187,56 +187,96 @@ const UploadVideoModal = ({ open, handleClose }) => {
   };
 
   return (
-    <Dialog fullScreen open={open} onClose={handleClose}>
+    <Dialog
+      // fullScreen
+      open={open}
+      onClose={handleClose}
+      sx={{
+        backdropFilter: "blur(8px) !important",
+        backgroundColor: "rgba(0, 0, 0, 0.3) !important",
+      }}
+    >
       <Box
         sx={{
-          padding: "1rem",
-          maxWidth: "800px",
+          padding: "0rem 1.4rem 1.4rem",
+          maxWidth: "695px",
           margin: "auto",
+          // border: "1px solid",
+          height: "860px",
+          borderRadius: "1rem",
+          // overflow: "auto",
+          // border: "5px solid black",
+          width: "97%",
         }}
       >
+        <button
+          onClick={handleClose}
+          style={{
+            width: "100%",
+            height: "48px",
+            backgroundColor: "transparent",
+            color: "#b4b2b2",
+            fontWeight: "400",
+            fontSize: "2rem",
+            border: "none",
+            borderRadius: "1.5rem",
+            textAlign: "end",
+            margin: "0rem 0rem",
+          }}
+        >
+          x
+        </button>
         <Typography
           variant="h5"
           sx={{
-            marginBottom: "1rem",
+            marginBottom: "0rem",
             fontWeight: 600,
             textAlign: "center",
             fontFamily: fonts.sans,
-            padding: "1rem",
+            padding: "0rem 1rem 1rem",
           }}
         >
           Upload Your Video Here
         </Typography>
-        <Typography sx={{ marginBottom: "1rem", fontFamily: fonts.sans }}>
-          Please adhere to the following rules:
-        </Typography>
-        <ul>
-          <li style={{ fontFamily: fonts.sans }}>
-            You can either upload a YouTube link or manually upload a video at a time.
-          </li>
-          <li style={{ fontFamily: fonts.sans }}>
-            Do not refresh the page or navigate away while the video is uploading.
-          </li>
-          <li style={{ fontFamily: fonts.sans }}>Thumbnail is mandatory for video uploads.</li>
-        </ul>
+        <Box
+          sx={{
+            backgroundColor: "#F2F2F2",
+            padding: ".7rem",
+            borderRadius: ".5rem",
+            color: "#6c6c6c",
+          }}
+        >
+          <Typography sx={{ marginBottom: "1rem", fontFamily: fonts.sans }}>
+            Please adhere to the following rules:
+          </Typography>
+          <ul style={{ paddingLeft: "1rem" }}>
+            <li style={{ fontFamily: fonts.sans }}>
+              You can either upload a YouTube link or manually upload a video at a time.
+            </li>
+            <li style={{ fontFamily: fonts.sans }}>
+              Do not refresh the page or navigate away while the video is uploading.
+            </li>
+            <li style={{ fontFamily: fonts.sans }}>Thumbnail is mandatory for video uploads.</li>
+          </ul>
+        </Box>
 
         <Tabs
           value={tabValue}
           onChange={handleTabChange}
-          TabIndicatorProps={{ sx: { backgroundColor: colors.lightGray } }}
-          sx={{ mb: "40px", mt: "20px", borderBottom: "1px solid lightgray" }}
+          TabIndicatorProps={{ sx: { backgroundColor: "#BC2876" } }}
+          sx={{ mb: "10px", mt: "10px", borderBottom: "1px solid #a6a6a6" }}
         >
           <Tab
             label="Upload YouTube Link"
             sx={{
               fontFamily: fonts.sans,
-              color: "#5a5a5a",
+              color: "#5d5d5d",
               fontSize: "16px",
               textTransform: "capitalize",
               "&.Mui-selected": {
-                color: "#000",
-                borderLeft: "1px solid #eee",
-                borderRight: "1px solid #eee",
+                color: "#BC2876",
+                borderLeft: "none",
+                borderRight: "none",
               },
             }}
           />
@@ -244,13 +284,13 @@ const UploadVideoModal = ({ open, handleClose }) => {
             label="Upload Video Manually"
             sx={{
               fontFamily: fonts.sans,
-              color: "#5a5a5a",
+              color: "#5d5d5d",
               fontSize: "16px",
               textTransform: "capitalize",
               "&.Mui-selected": {
-                color: "#000",
-                borderLeft: "1px solid #eee",
-                borderRight: "1px solid #eee",
+                color: "#BC2876",
+                borderLeft: "none",
+                borderRight: "none",
               },
             }}
           />
@@ -263,18 +303,30 @@ const UploadVideoModal = ({ open, handleClose }) => {
                 sx={{
                   display: "flex",
                   gap: "1rem",
-                  marginBottom: "1rem",
-                  marginTop: "1rem",
+                  marginTop: "2rem",
                   justifyContent: "space-between",
                 }}
               >
                 <TextField
-                  label="YouTube Link"
+                  // label="YouTube Link"
+                  placeholder="YouTube Link"
                   name="youtubeLink"
-                  fullWidth
-                  sx={{ marginBottom: "1rem" }}
+                  variant="standard"
+                  sx={{
+                    marginBottom: "1rem",
+                    padding: ".66rem 1.4rem",
+                    borderRadius: "2rem",
+                    backgroundColor: "#F2F2F2",
+                    border: "none",
+                    outline: "none",
+                    height: "3.375rem",
+                    width: "39.6875rem",
+                  }}
                   value={youtubeLink}
                   onChange={(e) => setYoutubeLink(e.target.value)}
+                  InputProps={{
+                    disableUnderline: true,
+                  }}
                 />
               </Box>
             </>
@@ -373,18 +425,44 @@ const UploadVideoModal = ({ open, handleClose }) => {
             </>
           )}
           <TextField
-            label="Title"
             name="title"
-            fullWidth
-            sx={{ marginBottom: "1rem" }}
+            placeholder="Title"
+            variant="standard"
+            sx={{
+              marginBottom: "1rem",
+              padding: ".66rem 1.4rem",
+              borderRadius: "2rem",
+              backgroundColor: "#F2F2F2",
+              border: "none",
+              outline: "none",
+              height: "3.375rem",
+              // width: "39.6875rem",
+              width: "100%",
+            }}
+            InputProps={{
+              disableUnderline: true,
+            }}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextField
-            label="Description"
             name="description"
-            fullWidth
-            sx={{ marginBottom: "1rem" }}
+            placeholder="Description"
+            variant="standard"
+            sx={{
+              marginBottom: "1rem",
+              padding: ".66rem 1.4rem",
+              borderRadius: "2rem",
+              backgroundColor: "#F2F2F2",
+              border: "none",
+              outline: "none",
+              height: "6.575rem",
+              // width: "39.6875rem",
+              width: "100%",
+            }}
+            InputProps={{
+              disableUnderline: true,
+            }}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -395,22 +473,77 @@ const UploadVideoModal = ({ open, handleClose }) => {
             options={tags.map((tag) => tag.option)}
             onChange={handleTagChange}
             renderInput={(params) => (
-              <TextField {...params} label="Video Tags" placeholder="Select Video tags" />
+              <TextField
+                {...params}
+                placeholder="Video Tags"
+                variant="standard"
+                sx={{
+                  padding: ".66rem 1.4rem",
+                  borderRadius: "2rem",
+                  backgroundColor: "#F2F2F2",
+                  border: "none",
+                  outline: "none",
+                  height: "3.375rem",
+                  // width: "39.6875rem",
+                  width: "100%",
+                }}
+                InputProps={{
+                  ...params.InputProps,
+                  disableUnderline: true,
+                }}
+              />
             )}
-            sx={{ marginBottom: "1rem" }}
           />
+
           <FormControl fullWidth>
-            <InputLabel id="select_language">Select Language</InputLabel>
+            <InputLabel id="select_language" shrink={false} sx={{ display: "none" }}>
+              Select Language
+            </InputLabel>
 
             <Select
               labelId="select_language"
-              label="Select Language"
+              variant="standard"
+              displayEmpty // This makes the placeholder visible when nothing is selected
               name="language"
-              fullWidth
-              sx={{ marginBottom: "1rem" }}
-              value={language}
+              value={language} // This binds the value of the Select
               onChange={(e) => setLanguage(e.target.value)}
+              sx={{
+                marginBottom: "1rem",
+                padding: ".66rem 0rem", // Base padding
+                borderRadius: "2rem",
+                backgroundColor: "#F2F2F2",
+                border: "none", // No default border
+                outline: "none",
+                height: "3.375rem",
+                width: "33.6875rem",
+                "&:before": {
+                  borderBottom: "none", // Removes underline before focus
+                },
+                "&:after": {
+                  borderBottom: "none", // Removes underline after focus
+                },
+                "&:hover:before, &:hover:after": {
+                  borderBottom: "none", // No underline on hover
+                },
+                "&:focus:before, &:focus:after": {
+                  borderBottom: "none", // No underline when focused
+                },
+                "& .MuiSelect-select": {
+                  padding: ".66rem 2.4rem", // Adjust padding for the select input (increased right padding)
+                },
+                "& .MuiSelect-icon": {
+                  right: "1rem", // Adjust arrow icon position if necessary
+                },
+              }}
+              inputProps={{
+                disableUnderline: true, // Ensure underline is disabled
+              }}
             >
+              {/* Placeholder Item */}
+              <MenuItem value="" disabled>
+                Select Language
+              </MenuItem>
+
               {languages.map((language) => (
                 <MenuItem key={language.code} value={language.name}>
                   {language.name}
@@ -418,18 +551,49 @@ const UploadVideoModal = ({ open, handleClose }) => {
               ))}
             </Select>
           </FormControl>
-          <FormControl fullWidth>
-            <InputLabel id="select_category">Select Category</InputLabel>
 
+          <FormControl fullWidth>
             <Select
-              labelId="select_category"
-              label="Select Category"
+              variant="standard"
+              displayEmpty // This makes the placeholder visible when nothing is selected
               name="category"
               fullWidth
-              sx={{ marginBottom: "1rem" }}
-              value={category}
+              value={category} // This binds the value of the Select
               onChange={(e) => setCategory(e.target.value)}
+              sx={{
+                marginBottom: "1rem",
+                padding: ".66rem 0rem", // Base padding
+                borderRadius: "2rem",
+                backgroundColor: "#F2F2F2",
+                border: "none", // No default border
+                outline: "none",
+                height: "3.375rem",
+                width: "33.6875rem",
+                "&:before": {
+                  borderBottom: "none", // Removes underline before focus
+                },
+                "&:after": {
+                  borderBottom: "none", // Removes underline after focus
+                },
+                "&:hover:before, &:hover:after": {
+                  borderBottom: "none", // No underline on hover
+                },
+                "& .MuiSelect-select": {
+                  padding: ".66rem 2.4rem", // Adjust padding for the select input (increased right padding)
+                },
+                "& .MuiSelect-icon": {
+                  right: "1rem", // Adjust arrow icon position if necessary
+                },
+              }}
+              inputProps={{
+                "aria-label": "Select Category",
+              }}
             >
+              {/* Placeholder Item */}
+              <MenuItem value="" disabled>
+                Select Category
+              </MenuItem>
+
               {categories.map((category) => (
                 <MenuItem key={category} value={category}>
                   {category}
@@ -438,14 +602,22 @@ const UploadVideoModal = ({ open, handleClose }) => {
             </Select>
           </FormControl>
 
-          <Box sx={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}>
-            {/* <Button
-              onClick={handleClick}
-              variant="contained"
-              sx={{ marginRight: "1rem" }}
+          <Box sx={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+            <button
+              onClick={handleClose}
+              style={{
+                width: "86px",
+                height: "48px",
+                backgroundColor: "#787876",
+                color: "white",
+                fontWeight: "600",
+                fontSize: "1rem",
+                border: "none",
+                borderRadius: "1.5rem",
+              }}
             >
-              Submit
-            </Button> */}
+              Close
+            </button>
 
             {isButtonLoading ? (
               <>
@@ -470,9 +642,14 @@ const UploadVideoModal = ({ open, handleClose }) => {
                 </Button>
               </>
             ) : (
-              <GeneralButton onClick={handleClick} text="Submit Video" />
+              <button
+                onClick={handleClick}
+                className={creatorStyle["navButton"]}
+                style={{ fontWeight: "600", fontSize: "1rem" }}
+              >
+                Submit Video
+              </button>
             )}
-            <GeneralButton onClick={handleClose} text="Close" />
           </Box>
         </Box>
       </Box>
