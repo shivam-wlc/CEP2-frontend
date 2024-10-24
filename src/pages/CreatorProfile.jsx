@@ -223,11 +223,12 @@
 
 // export default CreatorProfile;
 
-import React, { useState } from "react";
-import { eyeIcon, infoCircleIcon, likeIcon, profileOilPaint, shareIcon, sms } from "../assets/assest";
 import { Avatar, colors, Divider, Rating } from "@mui/material";
-import creatorStyle from "../styles/Profile.module.css";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { eyeIcon, infoCircleIcon, likeIcon, profileOilPaint, shareIcon, sms } from "../assets/assest";
+import creatorStyle from "../styles/Profile.module.css";
 
 const Profile = () => {
   const navigate = useNavigate();

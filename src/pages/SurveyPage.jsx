@@ -537,10 +537,10 @@ const SurveyPage = () => {
       const answers = updatedOverallAnswer.reduce((acc, answer) => {
         return { ...acc, ...answer };
       }, {});
-  
+
       // Dispatch the answers to Redux
       await dispatchToRedux(saveSurveyData({ token, formData: answers, userId }));
-  
+
       // Navigate to the assessment result page
       navigate("/assessment-result");
     } catch (error) {
@@ -548,7 +548,6 @@ const SurveyPage = () => {
       // Handle any errors if needed
     }
   };
-  
 
   const handleNext = (updatedOverallAnswer) => {
     if (currentQuestionIndex < questions.length - 1) {

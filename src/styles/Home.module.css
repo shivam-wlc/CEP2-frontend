@@ -9,7 +9,6 @@
   gap: 5%;
 }
 
-
 .main .left {
   width: 50%;
 }
@@ -217,37 +216,34 @@
   background-color: #ffffff;
 }
 
-
-
 @media screen and (max-width: 480px) {
   .main {
     flex-direction: column-reverse;
     width: 100%;
     margin: 0rem;
     padding: 1rem;
-
   }
-  .main .left{
+  .main .left {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .main .left h3{
+  .main .left h3 {
     font-size: 2.7rem;
     text-align: center;
   }
-  .main .left p{
+  .main .left p {
     font-size: 1rem;
     text-align: center;
   }
-  .main .right{
+  .main .right {
     width: 100%;
   }
-  .right img{
+  .right img {
     max-width: 100%;
   }
-  .cards{
+  .cards {
     flex-direction: column;
     padding: 1rem;
     margin-top: 4rem;
@@ -255,7 +251,7 @@
   .pagination div:first-child {
     display: none;
   }
-  .cards .left{
+  .cards .left {
     width: 100%;
     border-radius: 2rem;
   }
@@ -264,46 +260,43 @@
     margin-top: 2rem;
     position: relative;
   }
-  .pagination-buttons{
+  .pagination-buttons {
     position: absolute;
     bottom: -4rem;
     left: 1rem;
     right: 1rem;
     justify-content: space-between;
   }
-  .understand-your-self{
+  .understand-your-self {
     flex-direction: column;
     margin: 1rem;
     margin-top: 5rem;
-
   }
-  .understand-your-self .left img{
+  .understand-your-self .left img {
     max-width: 100%;
   }
-  .understand-your-self .right{
+  .understand-your-self .right {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .understand-your-self h3{
+  .understand-your-self h3 {
     text-align: center;
   }
-  .understand-your-self p{
+  .understand-your-self p {
     text-align: center;
   }
-  .horizontal-scroll-page .images{
+  .horizontal-scroll-page .images {
     width: 90%;
     margin: auto;
   }
-  .oportunity{
+  .oportunity {
     margin: 0;
   }
-  .oportunityItemCardsList{
+  .oportunityItemCardsList {
     padding: 1rem;
   }
-  .oportunityItemCard{
+  .oportunityItemCard {
     width: 100%;
   }
-  
 }
-

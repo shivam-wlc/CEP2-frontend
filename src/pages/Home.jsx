@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import homeStyle from "../styles/Home.module.css";
-import commonStyles from "../styles/Common.module.css";
-import { MdArrowOutward } from "react-icons/md";
-import { careerReportImg, homeHero } from "../assets/assest";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { MdArrowOutward } from "react-icons/md";
+
+import { careerReportImg, homeHero } from "../assets/assest";
+import commonStyles from "../styles/Common.module.css";
+import homeStyle from "../styles/Home.module.css";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);

@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, CssBaseline, Grid, Typography } from "@mui/material";
 import ReactEcharts from "echarts-for-react";
 import React from "react";
+
 import { fonts } from "../../utility/fonts";
 
 const data = [

@@ -66,6 +66,7 @@ export const updateUserProfile = createAsyncThunk(
 export const uploadProfilePicture = createAsyncThunk(
   "profile/uploadProfilePicture",
   async ({ userId, formData, token }, thunkAPI) => {
+    console.log("formData", formData);
     try {
       const response = await fetch(`${config.api}/api/profile/uploadProfilePicture/${userId}`, {
         method: "POST",

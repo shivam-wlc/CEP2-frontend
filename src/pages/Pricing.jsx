@@ -33,7 +33,7 @@ const Pricing = () => {
           <CardContent>Assessment Centre – Top 3 Occupations</CardContent>
           <button className={pricingStyles["button"]}>
             <div>
-              <p>Full Career Directions Report</p>
+              <p style={{ textAlign: "start", marginRight: "3px" }}>Full Career Directions Report</p>
               <p>
                 <big>
                   <b>$49</b>

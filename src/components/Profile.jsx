@@ -739,15 +739,17 @@ const Profile = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
       setImageUploadingLoader(true);
 
+      const formData = new FormData();
+      formData.append("file", selectedFile);
       dispatchToRedux(
         uploadProfilePicture({
-          file: selectedFile,
+          formData,
           userId: userData?._id,
           token,
         }),
@@ -986,7 +988,7 @@ const Profile = () => {
                   label="Phone Number"
                   variant="outlined"
                   name="phoneNumber"
-                  value={formData.phoneNumber}
+                  value={formData.mobile}
                   onChange={handleInputChange}
                 />
               </Grid>

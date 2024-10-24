@@ -1,3 +1,5 @@
+import "./App.css";
+
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -5,7 +7,6 @@ import { backgroundVector } from "./assets/assest.js";
 import AlertMessage from "./components/AlertMessage.jsx";
 import { selectAlert } from "./redux/slices/alertSlice";
 import AppRoutes from "./routes/AppRoutes";
-// import "./App.css";
 
 function App() {
   const alert = useSelector(selectAlert);

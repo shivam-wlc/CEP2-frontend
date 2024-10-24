@@ -56,7 +56,7 @@ const HowItWorks = () => {
           </button>
         </div>
       </section>
-      <section className={worksStyles["steps"]}>
+      <section className={`${worksStyles["steps"]} ${worksStyles["self-assessment"]}`}>
         <div className={worksStyles["stepsContent"]}>
           <h4>Self Assessment and Interests</h4>
           <p>
@@ -95,7 +95,7 @@ const HowItWorks = () => {
           </button>
         </div>
       </section>
-      <section className={worksStyles["steps"]}>
+      <section className={`${worksStyles["steps"]} ${worksStyles["self-assessment"]}`}>
         <div className={worksStyles["stepsContent"]}>
           <h4>Building your Resume</h4>
           <p>

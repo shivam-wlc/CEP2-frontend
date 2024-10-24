@@ -1,16 +1,17 @@
-import React, { useState } from "react";
 import { Box, Button, Checkbox, CircularProgress, Typography } from "@mui/material";
-import { background, leftPannelAuth, Logo } from "../assets/assest.js";
-import loginStyles from "../styles/Login.module.css";
-import FormField from "../components/FormField.jsx";
-import { fonts } from "../utility/fonts.js";
-import { colors } from "../utility/color.js";
-import { isValidEmail } from "../utility/validate.js";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../redux/slices/authSlice.js";
+
+import { background, leftPannelAuth, Logo } from "../assets/assest.js";
+import FormField from "../components/FormField.jsx";
 import { notify } from "../redux/slices/alertSlice.js";
+import { login } from "../redux/slices/authSlice.js";
 import { getUserProfile } from "../redux/slices/profileSlice.js";
+import loginStyles from "../styles/Login.module.css";
+import { colors } from "../utility/color.js";
+import { fonts } from "../utility/fonts.js";
+import { isValidEmail } from "../utility/validate.js";
 
 const Login = () => {
   const dispatchToRedux = useDispatch();

@@ -83,14 +83,15 @@
 //   );
 // };
 
+import CloseIcon from "@mui/icons-material/Close";
+import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
-import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
+
 import { A, assessmentHeaderImg, B, C, D, E, Founder } from "../assets/assest.js";
 import Footer from "../components/Footer";
 import Headers from "../components/Headers";
 import aboutStyles from "../styles/About.module.css";
-import CloseIcon from "@mui/icons-material/Close";
 
 const AboutUs = () => {
   const [open, setOpen] = useState(false);
@@ -115,6 +116,10 @@ const AboutUs = () => {
       <div className={aboutStyles["container"]}>
         <section className={aboutStyles["hero"]}>
           <img src={Founder} alt="Founder" />
+          <div className={aboutStyles["founder-details-small-device"]}>
+            <p className={aboutStyles["hero-text-content-founder-name"]}>Mohamed Maladwala</p>
+            <p className={aboutStyles["hero-text-content-founder-position"]}>Founder, CareerExplorer.me</p>
+          </div>
           <div className={aboutStyles["hero-text"]}>
             <p className={aboutStyles["hero-text-about-us"]}>About Us</p>
             <h3>Get to Know Us</h3>
@@ -134,21 +139,25 @@ const AboutUs = () => {
                 We use AI and rich individual datasets to provide relevant and hyper-personalized information
                 that stays current with the changing demands of the job market and the educational and
                 training opportunities that will allow students to make well thought through choices, that
-                progress them along their career journeys. “We will always look at ways to provide the best
-                experience and greatest value to our community of students, counsellors and educational
-                partners”
+                progress them along their career journeys.
+              </p>
+              <p>
+                “We will always look at ways to provide the best experience and greatest value to our
+                community of students, counsellors and educational partners”
               </p>
             </div>
-            <p className={aboutStyles["hero-text-content-founder-name"]}>Mohamed Maladwala</p>
-            <p className={aboutStyles["hero-text-content-founder-position"]}>Founder, CareerExplorer.me</p>
+            <div className={aboutStyles["founder-details-large-device"]}>
+              <p className={aboutStyles["hero-text-content-founder-name"]}>Mohamed Maladwala</p>
+              <p className={aboutStyles["hero-text-content-founder-position"]}>Founder, CareerExplorer.me</p>
+            </div>
           </div>
         </section>
 
         <section className={aboutStyles["bottom-container"]}>
           <h3>Advisory Board</h3>
           <p>
-            To set the direction of our corporate compass we have our Advisory Board whose members bring their
-            expert knowledge...
+            To set the direction of our corporate compass we have our Advisory Board whose members  bring
+            their expert knowledge to shape the current and future offering of CareerExplorer.me.
           </p>
           <div className={`${aboutStyles["cards-container"]}`}>
             <div>
@@ -234,21 +243,27 @@ const AboutUs = () => {
 
       {/* Modal */}
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-        <DialogTitle>
+        <DialogTitle
+          style={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between" }}
+        >
+          <h3 style={{ fontSize: "1.8125rem" }}>Advisory Board Member</h3>
           <IconButton
             aria-label="close"
             onClick={handleClose}
-            style={{ position: "absolute", right: 8, top: 8 }}
+            // style={{ position: "absolute", right: 8, top: 8 }}
           >
             <CloseIcon />
           </IconButton>
         </DialogTitle>
-        <DialogContent style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-          <img src={selectedCard.image} alt={selectedCard.name} width="200px" height="200px" />
-          <div style={{ marginLeft: "20px" }}>
+        <DialogContent style={{ display: "flex", gap: "1rem" }} className={aboutStyles["dialogContent"]}>
+          <div>
+            <img src={selectedCard.image} alt={selectedCard.name} width="200px" height="230px" />
             <h3>{selectedCard.name}</h3>
             <p>{selectedCard.designation}</p>
-            <p>{selectedCard.about}</p>
+          </div>
+          <div style={{ backgroundColor: "#F2F2F2", padding: "1rem", borderRadius: ".6rem", width: "100%" }}>
+            <p style={{ fontWeight: "700", fontSize: "15px", textWrap: "nowrap" }}>About me</p>
+            <p style={{ color: "#777777", fontSize: "14px" }}>{selectedCard.about}</p>
           </div>
         </DialogContent>
       </Dialog>
@@ -260,11 +275,11 @@ export default AboutUs;
 
 const Card = ({ image, name, designation }) => {
   return (
-    <div style={{ cursor: "pointer" }}>
-      <img src={image} alt={name} width="200px" height="200px" />
+    <div style={{ cursor: "pointer" }} className={aboutStyles["card"]}>
+      <img src={image} alt={name} />
       <div>
-        <p>{name}</p>
-        <p>{designation}</p>
+        <p style={{ marginBottom: ".8rem" }}>{name}</p>
+        <p style={{ color: "#7e7e7e" }}>{designation}</p>
       </div>
     </div>
   );
