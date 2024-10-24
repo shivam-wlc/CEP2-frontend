@@ -1,10 +1,8 @@
-import { selectAuthenticated } from "../redux/slices/authSlice.js";
+import React from "react";
+import { MdArrowOutward } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import React from "react";
-import resumeBuilderStyles from "../styles/ResumeBuilder.module.css";
-import { MdArrowOutward } from "react-icons/md";
-import commonStyle from "../styles/Common.module.css";
+
 import {
   assessmentHeaderImg,
   resumeBulbImage,
@@ -14,6 +12,9 @@ import {
   resumeLSCard3,
   resumeTipsImage,
 } from "../assets/assest";
+import { selectAuthenticated } from "../redux/slices/authSlice.js";
+import commonStyle from "../styles/Common.module.css";
+import resumeBuilderStyles from "../styles/ResumeBuilder.module.css";
 
 const ResumeBuilder = () => {
   const isAuthenticated = useSelector(selectAuthenticated);
@@ -30,19 +31,19 @@ const ResumeBuilder = () => {
   const letsStartcardsList = [
     {
       image: resumeLSCard1,
-      heading: "For a High School Student:",
+      heading: "For a High School Student",
       content:
         "You can use a resume to apply for part-time jobs, volunteer positions, or even scholarships. Highlight your school activities, any volunteer work, and skills you’ve gained, even if you don't have much work experience yet.",
     },
     {
       image: resumeLSCard2,
-      heading: "For a College Student Looking for an Internship:",
+      heading: "For a College Student Looking for an Internship",
       content:
         "A resume helps you showcase your education, any relevant courses, projects and skills to potential employers. It shows them that you’re ready to apply what you’ve learned in school to real-world situations.",
     },
     {
       image: resumeLSCard3,
-      heading: "For someone applying for a First Job:",
+      heading: "For someone applying for a First Job",
       content:
         "A resume helps you present your qualifications, even if you haven’t worked extensively before. You can include your education, any training, skills acquired and volunteer work with evidence of initiative and leadership to show that you’re ready to learn and contribute ina team",
     },

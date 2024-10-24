@@ -1,9 +1,9 @@
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchIcon from "@mui/icons-material/Search";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
   AppBar,
   Avatar,
@@ -91,6 +91,7 @@ const Workspace = (props) => {
     }
   };
 
+  console.log("data shivam", userData);
   const inputBoxStyle = {
     "& .MuiFilledInput-root": {
       borderRadius: "25px", // Adjust the value as per your needs
@@ -167,7 +168,7 @@ const Workspace = (props) => {
                 whiteSpace: "nowrap",
               }}
             >
-              {"Hi " + userData?.firstName + " " + userData?.lastName + "," || "Hi User Name,"}
+              {"Hi " + userData?.firstName + "," || "Hi User,"}
             </Typography>
             <Typography
               variant="h7"
@@ -175,11 +176,15 @@ const Workspace = (props) => {
                 fontFamily: fonts.sans,
                 whiteSpace: "nowrap",
                 display: "block",
-                fontWeight: "900",
+                fontWeight: "700",
                 fontSize: "1.2rem",
               }}
             >
-              Welcome Back
+              {userData?.activeDashboard === "creator"
+                ? "Counsellor Hub"
+                : userData?.activeDashboard === "admin"
+                  ? "Admin Panel"
+                  : "Welcome Back"}
             </Typography>
           </Box>
           <IconButton
@@ -216,8 +221,8 @@ const Workspace = (props) => {
               sx={inputBoxStyle}
             />
           </Box>      */}
-          
-               <Box sx={{ flexGrow: 1 }} />
+
+          <Box sx={{ flexGrow: 1 }} />
           <IconButton size="large" aria-label="show new messages" color="gray">
             {/* <Badge badgeContent={5} color="error">
               <MailIcon />
@@ -234,14 +239,16 @@ const Workspace = (props) => {
               sx={{
                 backgroundColor: "white",
                 height: "3.25rem",
-                width: "11.8125rem",
+                width: "content-fit",
                 display: "flex",
                 fontSize: "1rem",
                 padding: ".4rem",
                 borderRadius: "2rem",
                 alignItems: "center",
                 justifyContent: "space-between",
+                cursor: "pointer",
               }}
+              onClick={handleOpenUserMenu}
             >
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box>
@@ -272,10 +279,11 @@ const Workspace = (props) => {
                   </button>
                 </Box>
               </Box>
-              <KeyboardArrowDownIcon
-                sx={{ paddingRight: ".4rem", pr: "1", color: "black", cursor: "pointer" }}
-                onClick={handleOpenUserMenu}
-              />
+              <Box sx={{ display: "flex", alignItems: "center", marginLeft: "1rem" }}>
+                <KeyboardArrowDownIcon
+                  sx={{ paddingRight: ".4rem", pr: "1", color: "black", cursor: "pointer" }}
+                />
+              </Box>
             </Box>
             {/* </IconButton> */}
           </Box>

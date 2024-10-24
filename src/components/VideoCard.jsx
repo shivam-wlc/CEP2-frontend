@@ -129,15 +129,17 @@
 
 // export default VideoCard;
 
+import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Rating from "@mui/material/Rating";
+
 import SharingVideoModal from "../models/SharingVideoModal.jsx";
 import { selectAuthenticated, selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import { addHistory } from "../redux/slices/userSlice.js";
+import videoCardStyles from "../styles/VideoCard.module.css";
 
 const VideoCard = ({ video }) => {
   console.log(video);
@@ -170,12 +172,13 @@ const VideoCard = ({ video }) => {
         padding: "15px",
         border: "1px solid #cecece",
         height: "14.125rem",
+        minHeight: "fit-content",
         backgroundColor: "white",
-        width: "18.59375rem",
         cursor: "pointer",
         boxShadow: "2px 2px 10px #a7a7a764",
       }}
       onClick={() => handleVideoClick(video._id)}
+      className={videoCardStyles["card"]}
     >
       <img
         src={
@@ -185,7 +188,7 @@ const VideoCard = ({ video }) => {
         }
         alt="thumbnail"
         style={{
-          width: "16.71875rem",
+          width: "100%",
           height: "7.6875rem",
           borderRadius: "8px",
           margin: "auto",

@@ -1,49 +1,49 @@
-.yellowText{
-    color:#FF8A00;
-    font-weight: bold;
+.yellowText {
+  color: #ff8a00;
+  font-weight: bold;
 }
-.footer{
-    margin: 2rem 5rem;
+.footer {
+  margin: 2rem 5rem;
 }
 .card {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem;
-    gap: 2rem; 
-    background-color:#380030;  
-    border-radius: 1rem; 
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: #380030;
+  border-radius: 1rem;
 }
-.card > div:first-child{
-    width: 40%;
-    color: #a98fa4;
+.card > div:first-child {
+  width: 40%;
+  color: #a98fa4;
 }
-.card > div:first-child ~ div > h3{
-    color: #FF8A00;
-    list-style: none;
+.card > div:first-child ~ div > h3 {
+  color: #ff8a00;
+  list-style: none;
 }
-.line{
-    background-color: #FF8A00;
-    height: 1px;
-    width: 40%;
-    margin: .6rem 0;
+.line {
+  background-color: #ff8a00;
+  height: 1px;
+  width: 40%;
+  margin: 0.6rem 0;
 }
-.line + ul{
-    list-style: none;
-    color: #a98fa4;
+.line + ul {
+  list-style: none;
+  color: #a98fa4;
 }
-.line + ul li{
-    cursor: pointer;
+.line + ul li {
+  cursor: pointer;
 }
-.footer > p{
-    margin-top: 1rem;
-    text-align: center;
+.footer > p {
+  margin-top: 1rem;
+  text-align: center;
 }
 
 @media screen and (max-width: 480px) {
-    .card{
-        flex-direction: column;
-    }
-    .footer{
-        margin: 2rem 1rem;
-    }
+  .card {
+    flex-direction: column;
   }
+  .footer {
+    margin: 2rem 1rem;
+  }
+}

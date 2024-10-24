@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import Footer from "../components/Footer";
-import Headers from "../components/Headers";
-import { graph1 as Graph, india, insideGraph } from "../assets/assest";
-import assessmentResult1 from "../styles/AssessmentResult1.module.css";
+import ReactECharts from "echarts-for-react";
+import React, { useEffect, useState } from "react";
 import { BsDownload } from "react-icons/bs";
 import { FaChevronUp } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
-import ReactECharts from "echarts-for-react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { graph1 as Graph, india, insideGraph } from "../assets/assest";
+import Footer from "../components/Footer";
+import Headers from "../components/Headers";
 import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import { getInterests, selectInterests } from "../redux/slices/interestSlice.js";
 import { getUserProfile, selectUserProfile } from "../redux/slices/profileSlice.js";
+import assessmentResult1 from "../styles/AssessmentResult1.module.css";
 
 const AssessmentResult1 = () => {
   const dispatchToRedux = useDispatch();

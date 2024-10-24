@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import assessmentStyles from "../styles/AssessmentResult.module.css";
-import commonStyles from "../styles/Common.module.css";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { assessmentResult, assessmentResultbottom } from "../assets/assest.js";
 import Footer from "../components/Footer.jsx";
 import Headers from "../components/Headers.jsx";
 import { config } from "../config/config.js";
-import { useDispatch, useSelector } from "react-redux";
 import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import { getInterests, selectInterests } from "../redux/slices/interestSlice.js";
+import assessmentStyles from "../styles/AssessmentResult.module.css";
+import commonStyles from "../styles/Common.module.css";
 
 const AssessmentResult = () => {
   const dispatchToRedux = useDispatch();

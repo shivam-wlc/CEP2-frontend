@@ -1,31 +1,31 @@
 @media screen and (max-width: 480px) {
-  .left{
+  .left {
     display: none;
   }
-  .right{
+  .right {
     width: 100%;
   }
-  .keepMeLoginSection{
+  .keepMeLoginSection {
     flex-direction: column;
   }
-  .keepMeLoginText{
+  .keepMeLoginText {
     width: 100%;
     text-align: start;
   }
-  .formPadding{
+  .formPadding {
     padding: 1rem;
   }
-  .logo{
+  .logo {
     width: 50%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 1rem;
   }
-  .container{
+  .container {
     margin: 0 0rem;
   }
-  .nameSignup{
+  .nameSignup {
     flex-direction: column;
   }
 }

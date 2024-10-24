@@ -16,6 +16,8 @@ import alertReducer from "./slices/alertSlice.js";
 import authReducer from "./slices/authSlice.js";
 import creatorReducer from "./slices/creatorSlice.js";
 import discSlice from "./slices/discSlice.js";
+import exploreSlice from "./slices/exploreSlice.js";
+import interestSlice from "./slices/interestSlice.js";
 import inviteReducer from "./slices/inviteSlice";
 import onetSlice from "./slices/onetSlice.js";
 import profileReducer from "./slices/profileSlice.js";
@@ -25,7 +27,6 @@ import unifiedRecordSlice from "./slices/unifiedRecordSlice.js";
 import userDetailsSlice from "./slices/userDetailsSlice.js";
 import userSlice from "./slices/userSlice.js";
 import zylaSlice from "./slices/zylaSlice.js";
-import interestSlice from "./slices/interestSlice.js";
 
 const persistConfig = {
   key: "user",
@@ -50,6 +51,7 @@ const rootReducer = combineReducers({
   resume: resumeReducer,
   disc: discSlice,
   interest: interestSlice,
+  explore: exploreSlice,
 });
 
 const store = configureStore({

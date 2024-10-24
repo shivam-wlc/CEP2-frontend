@@ -306,7 +306,6 @@
 // CreatorVideos.jsx
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import creatorStyles from "../../styles/CreatorVideo.module.css";
 import {
   Box,
   IconButton,
@@ -325,6 +324,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { edit, search, trash } from "../../assets/assest.js";
 import DeleteModal from "../../models/DeleteModal.jsx";
 import EditVideoModal from "../../models/EditVideoModal.jsx";
 import { notify } from "../../redux/slices/alertSlice.js";
@@ -336,16 +336,17 @@ import {
   selectAuthorVideos,
   updateVideo,
 } from "../../redux/slices/creatorSlice.js";
+import creatorStyles from "../../styles/CreatorVideo.module.css";
 import { colors } from "../../utility/color.js";
 import { convertUTCDateToLocalDate } from "../../utility/convertTimeToUTC.js";
 import { fonts } from "../../utility/fonts.js";
 import GeneralButton from "../general/GeneralButton.jsx";
-import { edit, search, trash } from "../../assets/assest.js";
 
 const CreatorVideos = () => {
   const dispatchToRedux = useDispatch();
   const userId = useSelector(selectUserId);
   const token = useSelector(selectToken);
+  const authorVideos = useSelector(selectAuthorVideos);
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [videoIdToDelete, setVideoIdToDelete] = useState(null);
@@ -363,6 +364,7 @@ const CreatorVideos = () => {
     fontWeight: "bold",
     fontSize: "16px",
     color: colors.white,
+    textAlign: "center",
   };
 
   const tableData = {
@@ -466,129 +468,131 @@ const CreatorVideos = () => {
   // Note check functions I am taken them as example
   // const authorVideos = useSelector(selectAuthorVideos);
 
-  const authorVideos = [
-    {
-      _id: "123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "12323",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "123321",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "123312",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "132123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "13123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "131223",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "1232143",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "14123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "14123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-    {
-      _id: "1412423",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      shares: "233",
-      rating: 4,
-      action: { edit: (id) => {}, delete: (id) => {} },
-    },
-  ];
+  // const authorVideos = [
+  //   {
+  //     _id: "123",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "12323",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "123321",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "123312",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "132123",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "13123",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "131223",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "1232143",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "14123",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "14123",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  //   {
+  //     _id: "1412423",
+  //     date: "16/08/2024",
+  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+  //     title: "Create your own",
+  //     views: "120",
+  //     likes: "212",
+  //     shares: "233",
+  //     rating: 4,
+  //     action: { edit: (id) => {}, delete: (id) => {} },
+  //   },
+  // ];
+
+  console.log("authorVideos", authorVideos);
 
   const [activeTab, setActiveTab] = useState(1);
 
@@ -741,18 +745,18 @@ const CreatorVideos = () => {
                 }}
               >
                 <TableRow sx={{ backgroundColor: "#720361" }}>
-                  <TableCell sx={tableHead}>Date published</TableCell>
-                  <TableCell sx={tableHead}>Thumbnail</TableCell>
-                  <TableCell sx={tableHead}>Title</TableCell>
-                  <TableCell sx={tableHead}>Views</TableCell>
-                  <TableCell sx={tableHead}>Likes</TableCell>
-                  <TableCell sx={tableHead}>Shares</TableCell>
-                  <TableCell sx={tableHead}>Rating</TableCell>
-                  <TableCell sx={tableHead}>Action</TableCell>
+                  <TableCell sx={{ ...tableHead, width: "15%" }}>Date published</TableCell>
+                  <TableCell sx={{ ...tableHead, width: "20%" }}>Thumbnail</TableCell>
+                  <TableCell sx={{ ...tableHead, width: "25%" }}>Title</TableCell>
+                  <TableCell sx={{ ...tableHead, width: "8%" }}>Views</TableCell>
+                  <TableCell sx={{ ...tableHead, width: "8%" }}>Likes</TableCell>
+                  <TableCell sx={{ ...tableHead, width: "8%" }}>Shares</TableCell>
+                  <TableCell sx={{ ...tableHead, width: "10%" }}>Rating</TableCell>
+                  <TableCell sx={{ ...tableHead, width: "10%" }}>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {authorVideos?.map((video) => (
+                {authorVideos?.videos?.map((video) => (
                   <TableRow
                     key={video._id}
                     sx={{
@@ -761,7 +765,9 @@ const CreatorVideos = () => {
                       "& .MuiTableCell-root": { padding: "10px 0px" },
                     }}
                   >
-                    <TableCell sx={{ ...tableData, marginLeft: "10px !important"  }}>{video.date}</TableCell>
+                    <TableCell sx={{ ...tableData, textAlign: "center" }}>
+                      {convertUTCDateToLocalDate(video?.createdAt)}
+                    </TableCell>
                     <TableCell sx={{ ...tableData, textAlign: "center" }}>
                       {video?.youtubeLink ? (
                         <>
@@ -779,10 +785,20 @@ const CreatorVideos = () => {
                         />
                       )}
                     </TableCell>
-                    <TableCell sx={tableData}>{video.title}</TableCell>
-                    <TableCell sx={tableData}>{video.views}</TableCell>
-                    <TableCell sx={tableData}>{video.likes}</TableCell>
-                    <TableCell sx={tableData}>{video.shares}</TableCell>
+                    <TableCell
+                      sx={{
+                        ...tableData,
+                        paddingLeft: "1rem",
+                        paddingRight: "1rem",
+                      }}
+                    >
+                      {video?.title}
+                    </TableCell>
+                    <TableCell sx={{ ...tableData, textAlign: "center" }}>{video?.totalViews || 0}</TableCell>
+                    <TableCell sx={{ ...tableData, textAlign: "center" }}>{video?.totalLikes}</TableCell>
+                    <TableCell sx={{ ...tableData, textAlign: "center" }}>
+                      {video?.totalShares || 0}
+                    </TableCell>
                     {/* <TableCell sx={tableData}>{video?.likes.length}</TableCell> */}
                     {/* <TableCell sx={tableData}>{video?.comments.length}</TableCell> */}
                     <TableCell sx={{ ...tableData, border: "1px solid #ddd" }}>
@@ -794,24 +810,49 @@ const CreatorVideos = () => {
                         }}
                       >
                         <Rating value={video.rating} readOnly />
-                        <p style={{ color: "#a1a1a1", fontSize: "1rem" }}>&nbsp;({video.rating})</p>
+                        <p style={{ color: "#a1a1a1", fontSize: "1rem" }}>&nbsp;({video?.averageRating})</p>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <div
+                      {/* <div
                         style={{
                           display: "flex",
                           gap: "1rem",
-                          justifyContent: "center",
+
+                          alignItems: "center",
+                          justifyContent: "space-evenly",
                         }}
                       >
                         <div onClick={() => handleVideoEdit(video)}>
-                          <img src={edit} alt="edit" />
+                          <img src={edit} alt="edit" width={"30rem"} height={"30rem"} />
                         </div>
                         <div onClick={() => handleVideoDelete(video._id)}>
-                          <img src={trash} alt="delete" />
+                          <img src={trash} alt="delete" width={"30rem"} height={"30rem"} />
                         </div>
-                      </div>
+                      </div> */}
+                      <TableCell
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          height: "100%",
+                          // This ensures higher specificity using '&&'
+                          "&&": {
+                            border: "none", // Removes the border
+                            borderBottom: "none", // Removes any bottom border
+                          },
+                        }}
+                      >
+                        {" "}
+                        <IconButton aria-label="edit" onClick={() => handleVideoEdit(video)}>
+                          {/* //                       <EditIcon /> */}{" "}
+                          <img src={edit} alt="edit" width={"30rem"} height={"30rem"} />
+                        </IconButton>
+                        <IconButton aria-label="delete" onClick={() => handleVideoDelete(video._id)}>
+                          <img src={trash} alt="delete" width={"30rem"} height={"30rem"} />
+                          {/* <DeleteIcon /> */}
+                        </IconButton>
+                      </TableCell>
                     </TableCell>
                   </TableRow>
                 ))}

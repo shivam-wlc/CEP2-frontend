@@ -17,7 +17,7 @@ import {
 import React, { useState } from "react";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import creatorStyle from "../styles/CreatorVideo.module.css";
+
 import GeneralButton from "../components/general/GeneralButton.jsx";
 import { notify } from "../redux/slices/alertSlice.js";
 import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
@@ -29,6 +29,7 @@ import {
   uploadVideo,
   uploadYoutubeVideo,
 } from "../redux/slices/creatorSlice.js";
+import creatorStyle from "../styles/CreatorVideo.module.css";
 import { categories, languages, tags } from "../utility/category";
 import { colors } from "../utility/color.js";
 import { fonts } from "../utility/fonts";
@@ -194,6 +195,7 @@ const UploadVideoModal = ({ open, handleClose }) => {
       sx={{
         backdropFilter: "blur(8px) !important",
         backgroundColor: "rgba(0, 0, 0, 0.3) !important",
+        paddingBottom: "2rem",
       }}
     >
       <Box
@@ -602,7 +604,7 @@ const UploadVideoModal = ({ open, handleClose }) => {
             </Select>
           </FormControl>
 
-          <Box sx={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+          <Box sx={{ display: "flex", justifyContent: "center", gap: "1rem", paddingBottom: "1rem" }}>
             <button
               onClick={handleClose}
               style={{

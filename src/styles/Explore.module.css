@@ -1,7 +1,8 @@
-@media screen and (max-width: 480px) {
-  .filters {
-    flex-direction: column;
-  }
+.select-and-buttons {
+  display: flex;
+}
+.buttons button:last-child {
+  margin-right: 30px;
 }
 
 .applyBtn {
@@ -32,4 +33,26 @@
   gap: 0.875rem;
   color: white;
   cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .applyBtn,
+  .resetBtn {
+    font-size: 1rem;
+    padding: 1px 10px;
+    gap: 10px;
+  }
+  .filters {
+    flex-direction: column;
+  }
+  .select-and-buttons {
+    margin-bottom: 1rem;
+    justify-content: space-between;
+  }
+  .buttons {
+    justify-content: space-between;
+  }
+  .buttons button:last-child {
+    margin-right: 0;
+  }
 }

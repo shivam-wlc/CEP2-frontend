@@ -542,212 +542,213 @@
 
 // export default Explore;
 
-import React, { useCallback, useEffect, useState } from "react";
-import { Box, Button, Container, MenuItem, Pagination, TextField, Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import exploreStyles from "../styles/Explore.module.css";
-import VideoCard from "../components/VideoCard";
-import { categories, tags } from "../utility/category";
-import { allvideos, selectAllVideosData, videoFilter, resetState } from "../redux/slices/creatorSlice";
-import GeneralButton from "../components/general/GeneralButton";
-import { fonts } from "../utility/fonts.js";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Box, Button, Container, MenuItem, Pagination, TextField, Typography } from "@mui/material";
+import React, { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import GeneralButton from "../components/general/GeneralButton";
+import VideoCard from "../components/VideoCard";
+import { allvideos, resetState, selectAllVideosData, videoFilter } from "../redux/slices/creatorSlice";
+import { getAllVideos, selectAllVideos } from "../redux/slices/exploreSlice.js";
+import exploreStyles from "../styles/Explore.module.css";
+import { categories, tags } from "../utility/category";
+import { fonts } from "../utility/fonts.js";
 
 const Explore = () => {
   const dispatchToRedux = useDispatch();
-  let allVideosData = useSelector(selectAllVideosData);
-  allVideosData = [
-    {
-      _id: "66b37c7c6f15606f4047729e",
-      creatorId: "66b0bbec7034f8bd5fe19f04",
-      videoLink: "https://youtu.be/F4Zu5ZZAG7I?si=kYqWC4iKZSdyiOjN",
-      title: "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
-      description: "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
-      tags: ["literature"],
-      language: "Aymara",
-      youtubeLink: true,
-      youtubeVideoId: "F4Zu5ZZAG7I",
-      category: "Career Planning",
-      averageRating: 2,
-      createdAt: new Date("2024-08-07T13:54:04.020Z"),
-      updatedAt: new Date("2024-08-07T13:54:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f4047729f",
-      creatorId: "66b0bbec7034f8bd5fe19f05",
-      videoLink: "https://youtu.be/abc123",
-      title: "The Power of Positive Thinking",
-      description: "A talk on how positive thinking can change your life.",
-      tags: ["self-help"],
-      language: "English",
-      youtubeLink: true,
-      youtubeVideoId: "abc123",
-      category: "Personal Development",
-      averageRating: 4.5,
-      createdAt: new Date("2024-08-01T10:24:04.020Z"),
-      updatedAt: new Date("2024-08-01T10:24:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f404772a0",
-      creatorId: "66b0bbec7034f8bd5fe19f06",
-      videoLink: "https://youtu.be/xyz456",
-      title: "Understanding Quantum Physics",
-      description: "An introductory lecture on quantum physics.",
-      tags: ["science", "physics"],
-      language: "Spanish",
-      youtubeLink: true,
-      youtubeVideoId: "xyz456",
-      category: "Education",
-      averageRating: 4.8,
-      createdAt: new Date("2024-08-10T15:14:04.020Z"),
-      updatedAt: new Date("2024-08-10T15:14:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f404772a1",
-      creatorId: "66b0bbec7034f8bd5fe19f07",
-      videoLink: "https://youtu.be/pqr789",
-      title: "Healthy Eating Habits",
-      description: "Tips and tricks for a balanced diet.",
-      tags: ["health", "nutrition"],
-      language: "French",
-      youtubeLink: true,
-      youtubeVideoId: "pqr789",
-      category: "Health & Wellness",
-      averageRating: 4.2,
-      createdAt: new Date("2024-08-15T09:34:04.020Z"),
-      updatedAt: new Date("2024-08-15T09:34:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f404772a2",
-      creatorId: "66b0bbec7034f8bd5fe19f08",
-      videoLink: "https://youtu.be/mno012",
-      title: "Mastering Public Speaking",
-      description: "How to become a confident public speaker.",
-      tags: ["communication", "public speaking"],
-      language: "German",
-      youtubeLink: true,
-      youtubeVideoId: "mno012",
-      category: "Career Development",
-      averageRating: 4.9,
-      createdAt: new Date("2024-08-18T11:04:04.020Z"),
-      updatedAt: new Date("2024-08-18T11:04:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f404772a3",
-      creatorId: "66b0bbec7034f8bd5fe19f09",
-      videoLink: "https://youtu.be/ghi345",
-      title: "The Art of Minimalism",
-      description: "Living more with less.",
-      tags: ["lifestyle", "minimalism"],
-      language: "Japanese",
-      youtubeLink: true,
-      youtubeVideoId: "ghi345",
-      category: "Lifestyle",
-      averageRating: 4.3,
-      createdAt: new Date("2024-08-20T13:24:04.020Z"),
-      updatedAt: new Date("2024-08-20T13:24:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f404772a4",
-      creatorId: "66b0bbec7034f8bd5fe19f10",
-      videoLink: "https://youtu.be/def678",
-      title: "Yoga for Beginners",
-      description: "A beginner’s guide to yoga.",
-      tags: ["fitness", "yoga"],
-      language: "Hindi",
-      youtubeLink: true,
-      youtubeVideoId: "def678",
-      category: "Health & Wellness",
-      averageRating: 4.7,
-      createdAt: new Date("2024-08-22T16:34:04.020Z"),
-      updatedAt: new Date("2024-08-22T16:34:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f404772a5",
-      creatorId: "66b0bbec7034f8bd5fe19f11",
-      videoLink: "https://youtu.be/jkl901",
-      title: "Introduction to Meditation",
-      description: "Basic meditation techniques for relaxation.",
-      tags: ["mindfulness", "meditation"],
-      language: "Mandarin",
-      youtubeLink: true,
-      youtubeVideoId: "jkl901",
-      category: "Spirituality",
-      averageRating: 4.6,
-      createdAt: new Date("2024-08-25T08:14:04.020Z"),
-      updatedAt: new Date("2024-08-25T08:14:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f404772a6",
-      creatorId: "66b0bbec7034f8bd5fe19f12",
-      videoLink: "https://youtu.be/nop234",
-      title: "The Future of Technology",
-      description: "An insight into upcoming technological trends.",
-      tags: ["technology", "innovation"],
-      language: "Korean",
-      youtubeLink: true,
-      youtubeVideoId: "nop234",
-      category: "Technology",
-      averageRating: 4.8,
-      createdAt: new Date("2024-08-28T18:44:04.020Z"),
-      updatedAt: new Date("2024-08-28T18:44:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-    {
-      _id: "66b37c7c6f15606f404772a7",
-      creatorId: "66b0bbec7034f8bd5fe19f13",
-      videoLink: "https://youtu.be/qrs567",
-      title: "Creative Writing Tips",
-      description: "How to enhance your creative writing skills.",
-      tags: ["writing", "creativity"],
-      language: "Russian",
-      youtubeLink: true,
-      youtubeVideoId: "qrs567",
-      category: "Education",
-      averageRating: 4.4,
-      createdAt: new Date("2024-08-30T12:24:04.020Z"),
-      updatedAt: new Date("2024-08-30T12:24:04.020Z"),
-      creatorName: "Shivam Chaudhary",
-      views: "10",
-      rating: "4",
-    },
-  ];
-
-  console.log("MAi kha kaise hai aap log", allVideosData);
+  let allVideosData = useSelector(selectAllVideos);
+  // allVideosData = [
+  //   {
+  //     _id: "66b37c7c6f15606f4047729e",
+  //     creatorId: "66b0bbec7034f8bd5fe19f04",
+  //     videoLink: "https://youtu.be/F4Zu5ZZAG7I?si=kYqWC4iKZSdyiOjN",
+  //     title: "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
+  //     description: "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
+  //     tags: ["literature"],
+  //     language: "Aymara",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "F4Zu5ZZAG7I",
+  //     category: "Career Planning",
+  //     averageRating: 2,
+  //     createdAt: new Date("2024-08-07T13:54:04.020Z"),
+  //     updatedAt: new Date("2024-08-07T13:54:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f4047729f",
+  //     creatorId: "66b0bbec7034f8bd5fe19f05",
+  //     videoLink: "https://youtu.be/abc123",
+  //     title: "The Power of Positive Thinking",
+  //     description: "A talk on how positive thinking can change your life.",
+  //     tags: ["self-help"],
+  //     language: "English",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "abc123",
+  //     category: "Personal Development",
+  //     averageRating: 4.5,
+  //     createdAt: new Date("2024-08-01T10:24:04.020Z"),
+  //     updatedAt: new Date("2024-08-01T10:24:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f404772a0",
+  //     creatorId: "66b0bbec7034f8bd5fe19f06",
+  //     videoLink: "https://youtu.be/xyz456",
+  //     title: "Understanding Quantum Physics",
+  //     description: "An introductory lecture on quantum physics.",
+  //     tags: ["science", "physics"],
+  //     language: "Spanish",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "xyz456",
+  //     category: "Education",
+  //     averageRating: 4.8,
+  //     createdAt: new Date("2024-08-10T15:14:04.020Z"),
+  //     updatedAt: new Date("2024-08-10T15:14:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f404772a1",
+  //     creatorId: "66b0bbec7034f8bd5fe19f07",
+  //     videoLink: "https://youtu.be/pqr789",
+  //     title: "Healthy Eating Habits",
+  //     description: "Tips and tricks for a balanced diet.",
+  //     tags: ["health", "nutrition"],
+  //     language: "French",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "pqr789",
+  //     category: "Health & Wellness",
+  //     averageRating: 4.2,
+  //     createdAt: new Date("2024-08-15T09:34:04.020Z"),
+  //     updatedAt: new Date("2024-08-15T09:34:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f404772a2",
+  //     creatorId: "66b0bbec7034f8bd5fe19f08",
+  //     videoLink: "https://youtu.be/mno012",
+  //     title: "Mastering Public Speaking",
+  //     description: "How to become a confident public speaker.",
+  //     tags: ["communication", "public speaking"],
+  //     language: "German",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "mno012",
+  //     category: "Career Development",
+  //     averageRating: 4.9,
+  //     createdAt: new Date("2024-08-18T11:04:04.020Z"),
+  //     updatedAt: new Date("2024-08-18T11:04:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f404772a3",
+  //     creatorId: "66b0bbec7034f8bd5fe19f09",
+  //     videoLink: "https://youtu.be/ghi345",
+  //     title: "The Art of Minimalism",
+  //     description: "Living more with less.",
+  //     tags: ["lifestyle", "minimalism"],
+  //     language: "Japanese",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "ghi345",
+  //     category: "Lifestyle",
+  //     averageRating: 4.3,
+  //     createdAt: new Date("2024-08-20T13:24:04.020Z"),
+  //     updatedAt: new Date("2024-08-20T13:24:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f404772a4",
+  //     creatorId: "66b0bbec7034f8bd5fe19f10",
+  //     videoLink: "https://youtu.be/def678",
+  //     title: "Yoga for Beginners",
+  //     description: "A beginner’s guide to yoga.",
+  //     tags: ["fitness", "yoga"],
+  //     language: "Hindi",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "def678",
+  //     category: "Health & Wellness",
+  //     averageRating: 4.7,
+  //     createdAt: new Date("2024-08-22T16:34:04.020Z"),
+  //     updatedAt: new Date("2024-08-22T16:34:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f404772a5",
+  //     creatorId: "66b0bbec7034f8bd5fe19f11",
+  //     videoLink: "https://youtu.be/jkl901",
+  //     title: "Introduction to Meditation",
+  //     description: "Basic meditation techniques for relaxation.",
+  //     tags: ["mindfulness", "meditation"],
+  //     language: "Mandarin",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "jkl901",
+  //     category: "Spirituality",
+  //     averageRating: 4.6,
+  //     createdAt: new Date("2024-08-25T08:14:04.020Z"),
+  //     updatedAt: new Date("2024-08-25T08:14:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f404772a6",
+  //     creatorId: "66b0bbec7034f8bd5fe19f12",
+  //     videoLink: "https://youtu.be/nop234",
+  //     title: "The Future of Technology",
+  //     description: "An insight into upcoming technological trends.",
+  //     tags: ["technology", "innovation"],
+  //     language: "Korean",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "nop234",
+  //     category: "Technology",
+  //     averageRating: 4.8,
+  //     createdAt: new Date("2024-08-28T18:44:04.020Z"),
+  //     updatedAt: new Date("2024-08-28T18:44:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  //   {
+  //     _id: "66b37c7c6f15606f404772a7",
+  //     creatorId: "66b0bbec7034f8bd5fe19f13",
+  //     videoLink: "https://youtu.be/qrs567",
+  //     title: "Creative Writing Tips",
+  //     description: "How to enhance your creative writing skills.",
+  //     tags: ["writing", "creativity"],
+  //     language: "Russian",
+  //     youtubeLink: true,
+  //     youtubeVideoId: "qrs567",
+  //     category: "Education",
+  //     averageRating: 4.4,
+  //     createdAt: new Date("2024-08-30T12:24:04.020Z"),
+  //     updatedAt: new Date("2024-08-30T12:24:04.020Z"),
+  //     creatorName: "Shivam Chaudhary",
+  //     views: "10",
+  //     rating: "4",
+  //   },
+  // ];
 
   const [searchValue, setSearchValue] = useState("");
   const [tag, setTag] = useState("");
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatchToRedux(allvideos({ page }));
+    dispatchToRedux(getAllVideos({ page }));
   }, [page]);
+
   const [selectedCatagory, setSelectedCatagory] = useState("");
   const handleCategorySelection = useCallback(
     (category) => {
@@ -783,6 +784,7 @@ const Explore = () => {
             backgroundColor: "#ffffff",
             boxShadow: "2px 2px 10px #a7a7a764",
             width: "80rem",
+            maxWidth: "100%",
             margin: "auto",
             borderRadius: "19px",
           }}
@@ -872,60 +874,64 @@ const Explore = () => {
                 onChange={(e) => setSearchValue(e.target.value)}
               />
             </Box>
-            <TextField
-              select
-              variant="outlined"
-              value={tag}
-              onChange={(e) => setTag(e.target.value)}
-              displayEmpty
-              sx={{
-                marginRight: "10px",
-                width: "169px",
-                height: "48px",
-                backgroundColor: "#F6F6F6",
-                color: "#545454",
-                borderRadius: "90px",
-                "& .MuiOutlinedInput-notchedOutline": {
-                  border: "none",
-                },
-                "& .MuiSelect-icon": {
-                  color: "#720361",
-                },
-                "& .MuiSelect-select": {
-                  display: "flex",
-                  alignItems: "center", // Center content vertically
-                  height: "100%", // Ensure full height for alignment
-                },
-              }}
-              SelectProps={{
-                IconComponent: KeyboardArrowDownIcon,
-              }}
-              renderValue={(value) => (value === "" ? "Filtered By Tags" : value)}
-            >
-              <MenuItem disabled value="">
-                <em>Filtered By Tags</em>
-              </MenuItem>
-
-              {tags.map((tag) => (
-                <MenuItem key={tag.option} value={tag.option}>
-                  {tag.option}
-                </MenuItem>
-              ))}
-            </TextField>
-            <Box sx={{ display: "flex", gap: "10px" }}>
-              {/* <GeneralButton  text="Apply" /> */}
-              <button onClick={handleSearchClick} className={exploreStyles["applyBtn"]}>
-                Apply
-              </button>
-              {/* <GeneralButton onClick={handleReset} text="Reset" /> */}
-              <button
-                style={{ marginRight: "30px" }}
-                onClick={handleReset}
-                className={exploreStyles["resetBtn"]}
+            <div className={exploreStyles["select-and-buttons"]}>
+              <TextField
+                select
+                variant="outlined"
+                value={tag}
+                onChange={(e) => setTag(e.target.value)}
+                className={exploreStyles["select"]}
+                displayEmpty
+                sx={{
+                  marginRight: "10px",
+                  width: "169px",
+                  maxWidth: "100%",
+                  height: "48px",
+                  backgroundColor: "#F6F6F6",
+                  color: "#545454",
+                  borderRadius: "90px",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    border: "none",
+                  },
+                  "& .MuiSelect-icon": {
+                    color: "#720361",
+                  },
+                  "& .MuiSelect-select": {
+                    display: "flex",
+                    alignItems: "center", // Center content vertically
+                    height: "100%", // Ensure full height for alignment
+                  },
+                }}
+                SelectProps={{
+                  IconComponent: KeyboardArrowDownIcon,
+                }}
+                renderValue={(value) => (value === "" ? "Filtered By Tags" : value)}
               >
-                Reset
-              </button>
-            </Box>
+                <MenuItem disabled value="">
+                  <em>Filtered By Tags</em>
+                </MenuItem>
+
+                {tags.map((tag) => (
+                  <MenuItem key={tag.option} value={tag.option}>
+                    {tag.option}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <Box sx={{ display: "flex", gap: "10px" }} className={exploreStyles["buttons"]}>
+                {/* <GeneralButton  text="Apply" /> */}
+                <button onClick={handleSearchClick} className={exploreStyles["applyBtn"]}>
+                  Apply
+                </button>
+                {/* <GeneralButton onClick={handleReset} text="Reset" /> */}
+                <button
+                  // style={{ marginRight: "30px" }}
+                  onClick={handleReset}
+                  className={exploreStyles["resetBtn"]}
+                >
+                  Reset
+                </button>
+              </Box>
+            </div>
           </Box>
         </Box>
 
@@ -942,10 +948,11 @@ const Explore = () => {
             marginTop: "30px",
             // border: "1px solid",
             width: "1280px",
+            maxWidth: "100%",
             // height: '12rem'
           }}
         >
-          {allVideosData?.length === 0 ? (
+          {allVideosData?.videos?.length === 0 ? (
             <Box
               sx={{
                 display: "flex",
@@ -960,7 +967,7 @@ const Explore = () => {
               </Typography>
             </Box>
           ) : (
-            allVideosData?.map((video) => <VideoCard key={video._id} video={video} />)
+            allVideosData?.videos?.map((video) => <VideoCard key={video._id} video={video} />)
           )}
         </Box>
 

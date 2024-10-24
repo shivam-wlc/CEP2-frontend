@@ -29,8 +29,8 @@
   font-size: 3.1rem;
 }
 .right p {
-  font-size: 1.1rem;
-  font-weight: 900;
+  font-size: 0.9375rem;
+  /* font-weight: 100; */
 }
 .right h3 + p {
   color: gray;
@@ -107,56 +107,56 @@
   text-align: center;
 }
 
-
 @media screen and (max-width: 480px) {
-  .header{
+  .header {
     width: 100%;
   }
-  .header h2{
-      font-size: 2rem;
-      text-align: center;
-      width: 100%;
+  .header h2 {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
   }
-  .main{
+  .main {
     flex-direction: column;
     margin: 1rem;
   }
-  .main .left{
+  .main .left {
     width: 100%;
   }
-  .main .left img{
+  .main .left img {
     width: 100%;
   }
-  .main .right{
+  .main .right {
     width: 100%;
   }
-  .main .right > p{
+  .main .right > p {
     text-align: center;
   }
-  .main .right h3, .assessment-format h3{
+  .main .right h3,
+  .assessment-format h3 {
     font-size: 2.3rem;
     text-align: center;
   }
-  .right button{
+  .right button {
     margin: auto;
   }
-  .assessment-format{
+  .assessment-format {
     margin: 4rem 1rem;
   }
-  .assessment-format p{
+  .assessment-format p {
     margin: 2rem 0;
   }
-  .good-to-know{
+  .good-to-know {
     width: 100%;
   }
-  .good-to-know h4{
+  .good-to-know h4 {
     font-size: 1.5rem;
     text-wrap: nowrap;
   }
-  .cardsList{
+  .cardsList {
     flex-direction: column;
   }
-  .cardsList li{
+  .cardsList li {
     width: 100%;
   }
 }

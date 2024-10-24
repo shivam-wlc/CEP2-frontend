@@ -100,17 +100,18 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HistoryIcon from "@mui/icons-material/History";
+import LogoutIcon from "@mui/icons-material/Logout";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ShareIcon from "@mui/icons-material/Share";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
-
-import { fonts } from "../../utility/fonts.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { logout } from "../../redux/slices/authSlice.js";
+import { fonts } from "../../utility/fonts.js";
 
 const Sidebar = ({ userRole, handleMenuItemClick, currentPage }) => {
   const dispatchToRedux = useDispatch();
@@ -221,7 +222,7 @@ const Sidebar = ({ userRole, handleMenuItemClick, currentPage }) => {
           </ListItem>
         ))}
       </List>
-      <button
+      {/* <button
         onClick={handleLogout}
         style={{
           width: "263px",
@@ -236,6 +237,28 @@ const Sidebar = ({ userRole, handleMenuItemClick, currentPage }) => {
           cursor: "pointer",
         }}
       >
+        <LogoutIcon color="red" /> Logout
+      </button> */}
+      <button
+        onClick={handleLogout}
+        style={{
+          width: "263px",
+          height: "45px",
+          borderRadius: "11px",
+          fontSize: "1rem",
+          color: "#777777",
+          margin: ".5rem",
+          border: "1px solid #00000033",
+          backgroundColor: "#FFFFFF",
+          boxShadow: "2px 2px 10px #a9a9a977",
+          cursor: "pointer",
+          display: "flex", // Use flexbox
+          justifyContent: "center", // Center items horizontally
+          alignItems: "center", // Center items vertically
+          gap: "8px", // Space between the icon and text
+        }}
+      >
+        <LogoutIcon style={{ color: "red" }} /> {/* Set icon color to red */}
         Logout
       </button>
     </Box>

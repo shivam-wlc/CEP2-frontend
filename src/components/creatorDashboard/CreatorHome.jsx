@@ -2,15 +2,42 @@ import { Box, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { CommentIcon, creator, LikeIcon, RatingIcon, upload, VideoIcon } from "../../assets/assest.js";
+import {
+  CommentIcon,
+  creator,
+  //Podcast
+  GHome,
+  GLikes,
+  GRating,
+  GShared,
+  GViews,
+  LikeIcon,
+  //videos
+  OHome,
+  OLikes,
+  ORating,
+  OShared,
+  OViews,
+  //Articles
+  PHome,
+  PLikes,
+  PRating,
+  PShared,
+  PViews,
+  RatingIcon,
+  upload,
+  //Counsellors Dashboard Icons
+  uploadIcon,
+  VideoIcon,
+} from "../../assets/assest.js";
 import GeneralButton from "../../components/general/GeneralButton.jsx";
 import UploadVideoModal from "../../models/UploadVideoModal.jsx";
 import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
 import { getGeneralVideoData, selectGeneralVideoData } from "../../redux/slices/creatorSlice.js";
+import creatorStyle from "../../styles/CreatorVideo.module.css";
 import { colors } from "../../utility/color.js";
 import { fonts } from "../../utility/fonts.js";
 import FirstView from "../FirstView.jsx";
-import creatorStyle from "../../styles/CreatorVideo.module.css";
 
 const CreatorHome = () => {
   const dispatchToRedux = useDispatch();
@@ -33,7 +60,21 @@ const CreatorHome = () => {
     setOpenUploadModal(false);
   };
 
-  const sampleData = {
+  const Videos = {
+    totalContent: 56,
+    contentLikes: 32,
+    contentShares: 32,
+    contentAvgRating: 32,
+    contentViews: 32,
+  };
+  const Podcast = {
+    totalContent: 56,
+    contentLikes: 32,
+    contentShares: 32,
+    contentAvgRating: 32,
+    contentViews: 32,
+  };
+  const Articles = {
     totalContent: 56,
     contentLikes: 32,
     contentShares: 32,
@@ -51,40 +92,41 @@ const CreatorHome = () => {
         </Typography>
 
         <button onClick={handleUpload} className={creatorStyle["navButton"]} style={{ height: "2.rem" }}>
-          <img src={upload} alt="upload" />
+          <img src={uploadIcon} alt="upload" style={{ width: "2rem" }} />
           Upload Content
         </button>
-
-        {/* <Grid container spacing={2}>
-          <Grid item xs={6} sm={3}>
-            <FirstView icon={VideoIcon} numbers={generalVideoData?.totalVideos || 0} title={"Total Videos"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <FirstView icon={LikeIcon} numbers={generalVideoData?.totalLikes || 0} title={"Likes"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <FirstView icon={CommentIcon} numbers={generalVideoData?.totalVideos || 0} title={"Comments"} />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <FirstView icon={RatingIcon} numbers={generalVideoData?.averageRating || 0} title={"Rating"} />
-          </Grid>
-        </Grid> */}
       </Box>
-      {/* <Box
-        sx={{
-          marginTop: "1rem",
-          backgroundColor: colors.white,
-          padding: "1rem",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <GeneralButton onClick={handleUpload} text="Upload Video" />
-      </Box> */}
 
-      <Card sampleData={sampleData} titleImage={creator} title={"Reels"} themeColor={"#FF8A0033"} />
-      <Card sampleData={sampleData} titleImage={creator} title={"Articles"} themeColor={"#C028AE"} />
-      <Card sampleData={sampleData} titleImage={creator} title={"Podcasts"} themeColor={"#21A9B1"} />
+      <Card
+        sampleData={Videos}
+        titleImage={OHome}
+        img1={OLikes}
+        img2={ORating}
+        img3={OShared}
+        img4={OViews}
+        title={"Videos"}
+        themeColor={"#FF8A00"}
+      />
+      <Card
+        sampleData={Articles}
+        titleImage={PHome}
+        img1={PLikes}
+        img2={PRating}
+        img3={PShared}
+        img4={PViews}
+        title={"Articles"}
+        themeColor={"#C028AE"}
+      />
+      <Card
+        sampleData={Podcast}
+        titleImage={GHome}
+        img1={GLikes}
+        img2={GRating}
+        img3={GShared}
+        img4={GViews}
+        title={"Podcasts"}
+        themeColor={"#21A9B1"}
+      />
 
       <UploadVideoModal open={openUploadModal} handleClose={handleCloseUploadModal} />
     </>
@@ -108,7 +150,7 @@ const ChildCard = ({ image = creator, name, count, themeColor }) => (
     }}
   >
     <div>
-      <img src={image} alt={name} />
+      <img src={image} alt={name} style={{ width: "4.5rem", height: "4.5rem" }} />
     </div>
     <div
       style={{
@@ -120,12 +162,14 @@ const ChildCard = ({ image = creator, name, count, themeColor }) => (
       }}
     >
       <p style={{ fontWeight: "800", fontSize: "1.3rem" }}>{count}</p>
-      <p style={{ fontWeight: "lighter", color: "#3e3e3e", fontSize: ".9rem" }}>{name}</p>
+      <p style={{ color: "#3e3e3e", fontSize: "16px", fontWeight: 400, lineHeight: "24px ", opacity: "0.6" }}>
+        {name}
+      </p>
     </div>
   </div>
 );
 
-const Card = ({ sampleData, titleImage, title, themeColor }) => (
+const Card = ({ sampleData, titleImage, img1, img2, img3, img4, title, themeColor }) => (
   <div style={{ marginBottom: "1.5rem" }}>
     <div
       style={{
@@ -136,35 +180,25 @@ const Card = ({ sampleData, titleImage, title, themeColor }) => (
         marginLeft: "1rem",
       }}
     >
-      <img src={titleImage} alt={title} height={"20rem"} width={"20rem"} />
-      <p style={{ color: themeColor, fontWeight: "600", fontSize: "1rem" }}>{sampleData.totalContent}</p>
-      <p style={{ color: "#464545cd", fontSize: "1rem" }}>{title}</p>
+      <img src={titleImage} alt={title} style={{ width: "2.5rem" }} />
+      <p style={{ color: themeColor, fontWeight: "bold", fontSize: "1rem" }}>{sampleData.totalContent}</p>
+      <p style={{ color: "#464545cd", fontSize: "1rem", fontWeight: "600" }}>{title}</p>
     </div>
     <div style={{ display: "flex", gap: "1.1rem", alignItems: "center", justifyContent: "center" }}>
-      <ChildCard
-        count={sampleData.contentLikes}
-        name={"Total Likes"}
-        image={creator}
-        themeColor={themeColor}
-      />
+      <ChildCard count={sampleData.contentLikes} name={"Total Likes"} image={img1} themeColor={themeColor} />
       <ChildCard
         count={sampleData.contentShares}
         name={"Total Shared"}
         themeColor={themeColor}
-        image={creator}
+        image={img2}
       />
       <ChildCard
         count={sampleData.contentAvgRating}
         name={"Average Rating"}
         themeColor={themeColor}
-        image={creator}
+        image={img3}
       />
-      <ChildCard
-        count={sampleData.contentViews}
-        name={"Total Views"}
-        themeColor={themeColor}
-        image={creator}
-      />
+      <ChildCard count={sampleData.contentViews} name={"Total Views"} themeColor={themeColor} image={img4} />
     </div>
   </div>
 );

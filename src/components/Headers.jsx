@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from "react";
-import navBar from "../styles/Headers.module.css";
-import commonStyles from "../styles/Common.module.css";
+import { Divider } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { Link, useNavigate } from "react-router-dom";
-import { pages, settings } from "../utility/paths.js";
-import { interestLogo, menu } from "../assets/assest.js";
-import { fonts } from "../utility/fonts.js";
-import { colors } from "../utility/color.js";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectAuthenticated, selectUserId, selectToken } from "../redux/slices/authSlice.js";
-import { getUserProfile, selectUserProfile } from "../redux/slices/profileSlice.js";
-import { Divider } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import React, { useEffect, useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
+import { interestLogo, menu } from "../assets/assest.js";
+import { logout, selectAuthenticated, selectToken, selectUserId } from "../redux/slices/authSlice.js";
+import { getUserProfile, selectUserProfile } from "../redux/slices/profileSlice.js";
+import commonStyles from "../styles/Common.module.css";
+import navBar from "../styles/Headers.module.css";
+import { colors } from "../utility/color.js";
+import { fonts } from "../utility/fonts.js";
+import { pages, settings } from "../utility/paths.js";
 
 const Headers = () => {
   const navigate = useNavigate();
@@ -133,7 +134,7 @@ const Headers = () => {
           </Box>
         ) : (
           <button className={commonStyles.navButton} onClick={() => navigate("/register")}>
-            Sign up
+            <p style={{ textWrap: "noWrap" }}>Sign up</p>
             <span>
               <MdArrowOutward />
             </span>

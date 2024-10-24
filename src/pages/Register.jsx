@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -9,22 +8,24 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import FormField from "../components/FormField.jsx";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
 import { background, leftPannelAuth, Logo } from "../assets/assest.js";
 import AuthIcon1 from "../assets/icons/AuthIcon1.png";
 import AuthIcon2 from "../assets/icons/AuthIcon2.png";
 import AuthIcon3 from "../assets/icons/AuthIcon3.png";
-import { fonts } from "../utility/fonts.js";
-import { countryList } from "../utility/countryList.js";
-import { notify } from "../redux/slices/alertSlice.js";
-import loginStyles from "../styles/Login.module.css";
-import { useDispatch } from "react-redux";
-import { isValidEmail, checkPassStrength } from "../utility/validate.js";
-import { convertToUTC } from "../utility/convertTimeToUTC.js";
-import { signup } from "../redux/slices/authSlice.js";
-import { Link, useNavigate } from "react-router-dom";
-import { colors } from "../utility/color.js";
+import FormField from "../components/FormField.jsx";
 import CheckYourMailBox from "../models/CheckYourMailBox.jsx";
+import { notify } from "../redux/slices/alertSlice.js";
+import { signup } from "../redux/slices/authSlice.js";
+import loginStyles from "../styles/Login.module.css";
+import { colors } from "../utility/color.js";
+import { convertToUTC } from "../utility/convertTimeToUTC.js";
+import { countryList } from "../utility/countryList.js";
+import { fonts } from "../utility/fonts.js";
+import { checkPassStrength, isValidEmail } from "../utility/validate.js";
 
 const Register = () => {
   const dispatchToRedux = useDispatch();
