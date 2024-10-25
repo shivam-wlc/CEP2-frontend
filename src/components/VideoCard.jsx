@@ -177,7 +177,6 @@ const VideoCard = ({ video }) => {
         cursor: "pointer",
         boxShadow: "2px 2px 10px #a7a7a764",
       }}
-      onClick={() => handleVideoClick(video._id)}
       className={videoCardStyles["card"]}
     >
       <img
@@ -193,6 +192,7 @@ const VideoCard = ({ video }) => {
           borderRadius: "8px",
           margin: "auto",
         }}
+        onClick={() => handleVideoClick(video._id)}
       />
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end" }}>
         <div>
@@ -201,17 +201,17 @@ const VideoCard = ({ video }) => {
           </p>
           <div style={{ marginTop: ".2rem", display: "flex", alignItems: "center" }}>
             <Rating value={video?.averageRating} readOnly size="small" />
-            <p style={{ color: "#898989" }}>{`(${video?.rating || "0"})`}</p>
+            <p style={{ color: "#898989" }}>{`(${video?.totalRatings || "0"})`}</p>
           </div>
           <p style={{ marginTop: ".3rem", color: "#898989" }}>
             by{" "}
             <span style={{ color: "#BC2876" }} onClick={() => navigate(`/profile/${video.creatorId._id}`)}>
-              {video.creatorName}
+              {video?.creatorId?.firstName + " " + video?.creatorId?.lastName}
             </span>
           </p>
         </div>
         <div>
-          <p style={{ textWrap: "nowrap", color: "#737373" }}>{video?.views || 0} views</p>
+          <p style={{ textWrap: "nowrap", color: "#737373" }}>{video?.totalViews || 0} views</p>
         </div>
       </div>
       {/* <div style={{ backgroundColor: "#F2F2F2", display: "flex", marginTop: "1rem", padding: "15px 23px", flexWrap: "nowrap", alignItems: "center", borderRadius: "90px" }}>
