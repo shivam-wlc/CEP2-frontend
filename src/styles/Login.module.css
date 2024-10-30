@@ -2,9 +2,7 @@
   .left {
     display: none;
   }
-  .right {
-    width: 100%;
-  }
+
   .keepMeLoginSection {
     flex-direction: column;
   }
@@ -20,7 +18,8 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
+    margin-top: 1.6rem;
   }
   .container {
     margin: 0 0rem;

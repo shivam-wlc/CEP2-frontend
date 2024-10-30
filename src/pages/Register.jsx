@@ -1,3 +1,8 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { notify } from "../redux/slices/alertSlice.js";
+import { signup } from "../redux/slices/authSlice.js";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -8,24 +13,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-
 import { background, leftPannelAuth, Logo } from "../assets/assest.js";
-import AuthIcon1 from "../assets/icons/AuthIcon1.png";
-import AuthIcon2 from "../assets/icons/AuthIcon2.png";
-import AuthIcon3 from "../assets/icons/AuthIcon3.png";
 import FormField from "../components/FormField.jsx";
+import { checkPassStrength, isValidEmail } from "../utility/validate.js";
 import CheckYourMailBox from "../models/CheckYourMailBox.jsx";
-import { notify } from "../redux/slices/alertSlice.js";
-import { signup } from "../redux/slices/authSlice.js";
-import loginStyles from "../styles/Login.module.css";
-import { colors } from "../utility/color.js";
-import { convertToUTC } from "../utility/convertTimeToUTC.js";
 import { countryList } from "../utility/countryList.js";
 import { fonts } from "../utility/fonts.js";
-import { checkPassStrength, isValidEmail } from "../utility/validate.js";
+import loginStyles from "../styles/Login.module.css";
+
 
 const Register = () => {
   const dispatchToRedux = useDispatch();
@@ -36,7 +31,6 @@ const Register = () => {
     email: "",
     mobile: "",
     gender: "",
-    // dateOfBirth: "",
     password: "",
     countryCode: "",
     role: "",
@@ -44,6 +38,8 @@ const Register = () => {
 
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [isEmailSent, setIsEmailSent] = useState(false);
+ 
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -61,7 +57,6 @@ const Register = () => {
       !formData.email ||
       !formData.mobile ||
       !formData.gender ||
-      // !formData.dateOfBirth ||
       !formData.password ||
       !formData.countryCode ||
       !formData.role
@@ -93,16 +88,11 @@ const Register = () => {
       );
       return;
     }
-
-    // const name = `${formData.firstName} ${formData.lastName}`;
     const mobile = `${formData.countryCode} ${formData.mobile}`;
-    // const dateOfBirthUTC = convertToUTC(formData.dateOfBirth);
 
     const newData = {
       ...formData,
-      // name,
       mobile,
-      // dateOfBirth: dateOfBirthUTC,
     };
 
     try {
@@ -122,7 +112,6 @@ const Register = () => {
           email: "",
           mobile: "",
           gender: "",
-          // dateOfBirth: "",
           password: "",
           countryCode: "",
           role: "",
@@ -165,35 +154,47 @@ const Register = () => {
           sx={{
             height: "100vh",
             width: "50%",
-            marginRight: "5rem",
-            marginLeft: "2rem",
+            marginLeft: "5rem",
+            display: { xs: "none", md: "block" },
           }}
           className={loginStyles.left}
         >
-          <img src={leftPannelAuth} alt="" height={"100%"} width={"100%"} />
+          <img src={leftPannelAuth} alt="Register Hero Image" height={"100%"} />
         </Box>
         {/* Right */}
 
         <Box
           sx={{
-            width: "45%",
+            // display: { xs: 'none', md: 'block' },
+            width: { xs: "100%", md: "476px" },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            margin: "0 auto", // Center the box horizontally
+            boxSizing: "border-box",
+            marginBottom: { xs: "3rem", md: "0" },
           }}
           className={loginStyles.right}
         >
           <Link to="/">
-            <img src={Logo} alt="Logo" width={"200px"} paddingBottom={"1rem"} className={loginStyles.logo} />
+            <img
+              src={Logo}
+              alt="Logo"
+              width={"200px"}
+              paddingBottom={"1.5rem"}
+              className={loginStyles.logo}
+            />
           </Link>
           <Box
             sx={{
-              backgroundColor: "#EDEDED",
-              width: "75%",
-              borderRadius: "2rem",
+              backgroundColor: "#ffffff",
+              // width: "476px",
+              width: { xs: "90%", md: "476px" },
+              // height: "auto",
+              borderRadius: "29px",
               alignItems: "center",
-              boxShadow: "1px 1px 10px gray",
+              boxShadow: "0px 14px 44px 0px #0000001A",
               paddingBottom: "2rem",
               paddingTop: "1rem",
             }}
@@ -209,6 +210,17 @@ const Register = () => {
               >
                 Sign Up
               </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  textAlign: "center",
+                  color: "#787878",
+                  fontSize: "16px",
+                  fontFamily: fonts.poppins,
+                }}
+              >
+                Please create your account!
+              </Typography>
               <Box
                 sx={{
                   display: "flex",
@@ -216,6 +228,7 @@ const Register = () => {
                   gap: "0.4rem",
                   padding: "2rem",
                   paddingBottom: "0",
+                  width: "100%",
                 }}
                 className={loginStyles.formPadding}
               >
@@ -224,22 +237,24 @@ const Register = () => {
                     display: "flex",
                     width: "100%",
                     justifyContent: "space-between",
+                    gap: "11px",
                   }}
                   className={loginStyles.nameSignup}
                 >
-                  <FormField label="FIRST NAME" name="firstName" width="100%" onChange={handleChange} />
-                  <FormField label="LAST NAME" name="lastName" width="100%" onChange={handleChange} />
+                  <FormField label="First Name" name="firstName" width="100%" onChange={handleChange} />
+                  <FormField label="Last Name" name="lastName" width="100%" onChange={handleChange} />
                 </Box>
-                <FormField label="EMAIL" name="email" type="email" width="100%" onChange={handleChange} />
+                <FormField label="Email" name="email" type="email" width="100%" onChange={handleChange} />
 
                 <Typography
                   variant="body1"
                   sx={{
                     // marginLeft: "10%",
-                    fontSize: "0.8rem",
+                    fontSize: "16px",
+                    fontFamily: fonts.poppins,
                   }}
                 >
-                  MOBILE NO.
+                  Mobile No
                 </Typography>
                 <Box
                   sx={{
@@ -252,11 +267,11 @@ const Register = () => {
                   <TextField
                     variant="standard"
                     sx={{
-                      width: "50%",
-                      borderRadius: 10,
+                      width: "40%",
+                      borderRadius: "10px",
                       borderTopRightRadius: 0,
                       borderBottomRightRadius: 0,
-                      backgroundColor: "#BEBEBE",
+                      backgroundColor: "#F6F6F6",
                       padding: 1.3,
                     }}
                     select
@@ -268,37 +283,55 @@ const Register = () => {
                       MenuProps: {
                         PaperProps: {
                           style: {
-                            borderRadius: 10,
-                            backgroundColor: "#BEBEBE",
+                            borderRadius: "10px",
+                            backgroundColor: "#F6F6F6",
                           },
                         },
                       },
                     }}
+                    InputProps={{
+                      disableUnderline: true,
+                    }}
                   >
+                    {" "}
+                    <MenuItem value="" disabled>
+                      +1
+                    </MenuItem>
                     {countryList.map((code) => (
-                      <MenuItem key={code.name} value={code.dial_code}>
+                      <MenuItem
+                        key={code.name}
+                        value={code.dial_code}
+                        sx={{ fontFamily: fonts.poppins, backgroundColor: "#fff" }}
+                      >
                         {`${code.name} (${code.dial_code})`}
                       </MenuItem>
                     ))}
                   </TextField>
                   <TextField
                     variant="standard"
+                    placeholder="Enter mobile number"
                     sx={{
                       width: "80%",
-                      borderRadius: 10,
+                      borderRadius: "10px",
                       borderTopLeftRadius: 0,
                       borderBottomLeftRadius: 0,
-                      backgroundColor: "#BEBEBE",
+                      backgroundColor: "#F6F6F6",
                       padding: 1.3,
                       paddingLeft: "4%",
-
+                      fontFamily: fonts.poppins,
                       marginTop: "0.5rem",
                     }}
                     inputlabelprops={{
                       shrink: false,
                     }}
-                    inputprops={{
+                    InputProps={{
                       disableUnderline: true,
+                      sx: {
+                        fontFamily: fonts.poppins, // Apply Poppins font to user-typed text
+                        "&::placeholder": {
+                          fontFamily: fonts.poppins, // Apply Poppins font to placeholder
+                        },
+                      },
                     }}
                     fullWidth
                     margin="normal"
@@ -308,12 +341,6 @@ const Register = () => {
                   />
                 </Box>
 
-                {/* <FormField
-                    label="DATE OF BIRTH"
-                    name="dateOfBirth"
-                    type="date"
-                    onChange={handleChange}
-                  /> */}
                 <Box
                   sx={{
                     display: "flex",
@@ -328,24 +355,43 @@ const Register = () => {
                     <Typography
                       variant="body1"
                       sx={{
-                        // marginLeft: "10%",
-                        fontSize: "0.8rem",
+                        fontSize: "16px",
+                        fontFamily: fonts.poppins,
                       }}
                     >
-                      GENDER
+                      Gender
                     </Typography>
                     <Select
                       name="gender"
                       value={formData.gender}
                       onChange={handleChange}
+                      displayEmpty
                       sx={{
-                        borderRadius: 10,
-                        backgroundColor: "#BEBEBE",
+                        borderRadius: "10px",
+                        backgroundColor: "#F6F6F6",
                         "& .MuiOutlinedInput-notchedOutline": {
                           border: "none",
                         },
+                        "& .MuiSelect-placeholder": {
+                          color: "#999999", // Make the placeholder gray
+                        },
+                        "&.Mui-focused .MuiSelect-placeholder": {
+                          color: "#000", // Optional: Make it default when focused
+                        },
                       }}
-                      displayEmpty
+                      renderValue={(selected) => {
+                        if (selected === "") {
+                          return <span style={{ color: "#999999" }}>Select Gender</span>;
+                        }
+
+                        const genderOptions = {
+                          male: "Male",
+                          female: "Female",
+                          other: "Other",
+                        };
+
+                        return genderOptions[selected] || selected;
+                      }}
                       inputlabelprops={{
                         shrink: true,
                       }}
@@ -353,6 +399,9 @@ const Register = () => {
                         disableUnderline: true,
                       }}
                     >
+                      <MenuItem value="" disabled>
+                        Select Gender
+                      </MenuItem>
                       <MenuItem value="male">Male</MenuItem>
                       <MenuItem value="female">Female</MenuItem>
                       <MenuItem value="other">Other</MenuItem>
@@ -362,24 +411,42 @@ const Register = () => {
                     <Typography
                       variant="body1"
                       sx={{
-                        // marginLeft: "10%",
-                        fontSize: "0.8rem",
+                        fontSize: "16px",
+                        fontFamily: fonts.poppins,
                       }}
                     >
-                      ROLE
+                      Role
                     </Typography>
                     <Select
                       name="role"
                       value={formData.role}
                       onChange={handleChange}
+                      displayEmpty
                       sx={{
-                        borderRadius: 10,
-                        backgroundColor: "#BEBEBE",
+                        borderRadius: "10px",
+                        backgroundColor: "#F6F6F6",
                         "& .MuiOutlinedInput-notchedOutline": {
                           border: "none",
                         },
+                        "& .MuiSelect-placeholder": {
+                          color: "#999999", // Make the placeholder gray
+                        },
+                        "&.Mui-focused .MuiSelect-placeholder": {
+                          color: "#000", // Optional: Make it default when focused
+                        },
                       }}
-                      displayEmpty
+                      renderValue={(selected) => {
+                        if (selected === "") {
+                          return <span style={{ color: "#999999" }}>Select Role</span>;
+                        }
+
+                        const roleOptions = {
+                          user: "Student",
+                          creator: "Counsellor",
+                        };
+
+                        return roleOptions[selected] || selected;
+                      }}
                       inputlabelprops={{
                         shrink: true,
                       }}
@@ -387,6 +454,9 @@ const Register = () => {
                         disableUnderline: true,
                       }}
                     >
+                      <MenuItem value="" disabled>
+                        Select Role
+                      </MenuItem>
                       <MenuItem value="user">Student</MenuItem>
                       <MenuItem value="creator">Counsellor</MenuItem>
                     </Select>
@@ -394,11 +464,12 @@ const Register = () => {
                 </Box>
 
                 <FormField
-                  label="PASSWORD"
+                  label="Password"
                   name="password"
                   type="password"
                   onChange={handleChange}
                   width="100%"
+                  
                 />
                 <Box
                   sx={{
@@ -411,10 +482,10 @@ const Register = () => {
                     <Button
                       variant="contained"
                       sx={{
-                        backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
+                        background: "linear-gradient(124.89deg, #BF2F75 -3.87%, #720361 63.8%)",
                         width: "50%",
                         "&:hover": {
-                          backgroundImage: "linear-gradient(to top left, #740262, #d83b87)",
+                          background: "linear-gradient(124.89deg, #BF2F75 -3.87%, #720361 63.8%)",
                         },
                         borderRadius: "2rem",
                         padding: "10px 0px",
@@ -429,10 +500,10 @@ const Register = () => {
                       variant="contained"
                       disabled={isButtonLoading}
                       sx={{
-                        backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
+                        background: "linear-gradient(124.89deg, #BF2F75 -3.87%, #720361 63.8%)",
                         width: "50%",
                         "&:hover": {
-                          backgroundImage: "linear-gradient(to top left, #740262, #d83b87)",
+                          background: "linear-gradient(124.89deg, #BF2F75 -3.87%, #720361 63.8%)",
                         },
                         borderRadius: "2rem",
                         padding: "10px 0px",
@@ -453,16 +524,18 @@ const Register = () => {
                 justifyContent: "center",
               }}
             >
-              <Typography sx={{ fontWeight: "bold" }}>Already Register?</Typography>
+              <Typography sx={{ fontFamily: fonts.poppins, color: "#787878" }}>
+                Already have an account?
+              </Typography>
               <Link to="/login" style={{ textDecoration: "none" }}>
                 <Typography
                   sx={{
-                    fontWeight: "bold",
-                    color: colors.links,
-                    fontFamily: fonts.authPage,
+                    fontWeight: "600",
+                    color: "#FF8A00",
+                    fontFamily: fonts.poppins,
                   }}
                 >
-                  Login
+                  Sign In
                 </Typography>
               </Link>
             </Box>

@@ -31,10 +31,11 @@
   margin: 1rem;
   display: flex;
   align-items: center;
+  border: "1px solid black";
 }
 
 .left img {
-  width: 100%;
+  width: 50%;
   height: auto;
 }
 

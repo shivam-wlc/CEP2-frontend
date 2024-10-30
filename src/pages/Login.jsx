@@ -2,14 +2,12 @@ import { Box, Button, Checkbox, CircularProgress, Typography } from "@mui/materi
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
 import { background, leftPannelAuth, Logo } from "../assets/assest.js";
 import FormField from "../components/FormField.jsx";
 import { notify } from "../redux/slices/alertSlice.js";
 import { login } from "../redux/slices/authSlice.js";
 import { getUserProfile } from "../redux/slices/profileSlice.js";
 import loginStyles from "../styles/Login.module.css";
-import { colors } from "../utility/color.js";
 import { fonts } from "../utility/fonts.js";
 import { isValidEmail } from "../utility/validate.js";
 
@@ -32,7 +30,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     // Your form submission logic here
     e.preventDefault();
-    console.log("Hello ji");
 
     if (!formData.email || !formData.password) {
       return dispatchToRedux(notify({ type: "warning", message: "Please fill all the fields" }));
@@ -67,10 +64,9 @@ const Login = () => {
     <>
       <Box
         sx={{
-          //   border: "1px solid black",
           display: "flex",
           flexDirection: "column",
-          height: "100vh",
+          height: { xs: "90vh", md: "100vh" },
           backgroundImage: `url(${background})`,
         }}
       >
@@ -78,36 +74,43 @@ const Login = () => {
         <Box sx={{ display: "flex", width: "100%", height: "100%" }} className={loginStyles.container}>
           <Box
             sx={{
-              height: "100%",
+              height: "100vh",
               width: "50%",
-              marginRight: "5rem",
-              marginLeft: "2rem",
+              marginLeft: "5rem",
+              display: { xs: "none", md: "block" },
             }}
             className={loginStyles.left}
           >
-            <img src={leftPannelAuth} alt="" height={"100%"} width={"100%"} />
+            <img src={leftPannelAuth} alt="Login Hero Image" height={"100%"} />
           </Box>
           {/* Right */}
           <Box
             sx={{
-              width: "45%",
+              width: { xs: "100%", md: "476px" },
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              margin: "0 auto", // Center the box horizontally
+              boxSizing: "border-box",
+              marginBottom: { xs: "3rem", md: "0" },
             }}
             className={loginStyles.right}
           >
             <Link to="/">
-              <img src={Logo} alt="Logo" width={"300rem"} className={loginStyles.logo} />
+              <Box marginBottom={"1rem"}>
+                <img src={Logo} alt="Logo" width={"210px"} className={loginStyles.logo} />
+              </Box>
             </Link>
             <Box
               sx={{
-                backgroundColor: "#EDEDED",
-                width: "75%",
-                borderRadius: "2rem",
+                backgroundColor: "#ffffff",
+                width: { xs: "90%", md: "476px" },
+                borderRadius: "29px",
                 alignItems: "center",
-                boxShadow: "1px 1px 10px gray",
+                boxShadow: "0px 14px 44px 0px #0000001A",
+                paddingBottom: "2rem",
+                paddingTop: "1rem",
               }}
             >
               <Typography
@@ -116,6 +119,7 @@ const Login = () => {
                   fontWeight: "bold",
                   textAlign: "center",
                   paddingTop: "2rem",
+                  fontFamily: fonts.poppins,
                 }}
               >
                 Welcome back!
@@ -127,6 +131,9 @@ const Login = () => {
                   display: "flex",
                   justifyContent: "center",
                   textAlign: "center",
+                  color: "#787878",
+                  fontSize: "16px",
+                  fontFamily: fonts.poppins,
                 }}
               >
                 Please login to your account.
@@ -149,7 +156,7 @@ const Login = () => {
                   style={{ color: "#720361", background: "red" }}
                 />
                 <FormField
-                  label="Passsword"
+                  label="Password"
                   name="password"
                   type="password"
                   width="100%"
@@ -165,19 +172,17 @@ const Login = () => {
                   }}
                   className={loginStyles.keepMeLoginSection}
                 >
-                  <Typography className={loginStyles.keepMeLoginText}>
+                  <Typography className={loginStyles.keepMeLoginText} sx={{ color: "#787878" }}>
                     <Checkbox /> Keep me logged In
                   </Typography>
                   <Link to="/forget-password" style={{ textDecoration: "none" }}>
                     <Typography
-                      // align="right"
                       sx={{
-                        // padding: 3,
                         color: "#FF8A00",
-                        // marginRight: "25px",
+                        fontWeight: 400,
                       }}
                     >
-                      Forgot your password?
+                      Forgot password?
                     </Typography>
                   </Link>
                 </Box>
@@ -186,10 +191,10 @@ const Login = () => {
                     <Button
                       variant="contained"
                       sx={{
-                        backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
+                        background: "linear-gradient(124.89deg, #BF2F75 -3.87%, #720361 63.8%)",
                         width: "50%",
                         "&:hover": {
-                          backgroundImage: "linear-gradient(to top left, #740262, #d83b87)",
+                          background: "linear-gradient(124.89deg, #BF2F75 -3.87%, #720361 63.8%)",
                         },
                         borderRadius: "2rem",
                         padding: "10px 0px",
@@ -205,10 +210,10 @@ const Login = () => {
                       variant="contained"
                       disabled={isButtonLoading}
                       sx={{
-                        backgroundImage: "linear-gradient(to top left, #720361, #BF2F75)",
+                        background: "linear-gradient(124.89deg, #BF2F75 -3.87%, #720361 63.8%)",
                         width: "50%",
                         "&:hover": {
-                          backgroundImage: "linear-gradient(to top left, #740262, #d83b87)",
+                          background: "linear-gradient(124.89deg, #BF2F75 -3.87%, #720361 63.8%)",
                         },
                         borderRadius: "2rem",
                         padding: "10px 0px",
@@ -216,7 +221,7 @@ const Login = () => {
                         marginTop: "1rem",
                       }}
                     >
-                      Login
+                      Log in
                     </Button>
                   )}
                 </Box>
@@ -224,18 +229,19 @@ const Login = () => {
                   sx={{
                     display: "flex",
                     justifyContent: "center",
-                    // width: "100%",
                     marginTop: "1rem",
                   }}
                 >
                   <Box sx={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
-                    <Typography sx={{ fontWeight: "bold" }}>Don&apos;t have an account?</Typography>
+                    <Typography sx={{ fontFamily: fonts.poppins, color: "#787878" }}>
+                      Don&apos;t have an account?
+                    </Typography>
                     <Link to="/register" style={{ textDecoration: "none" }}>
                       <Typography
                         sx={{
-                          fontWeight: "bold",
+                          fontWeight: "600",
                           color: "#FF8A00",
-                          fontFamily: fonts.authPage,
+                          fontFamily: fonts.poppins,
                         }}
                       >
                         Sign Up
@@ -246,7 +252,6 @@ const Login = () => {
               </Box>
             </Box>
           </Box>
-          {/* Icons */}
         </Box>
       </Box>
     </>
