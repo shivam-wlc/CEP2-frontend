@@ -958,12 +958,17 @@ const Explore = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                // height: "30vh",
-                width: "100vw",
+                height: "40vh",
+                width: "90vw",
+                margin: "auto",
+                // border: "1px solid black",
               }}
             >
-              <Typography variant="h5" sx={{ fontFamily: fonts.sans, fontWeight: "600" }}>
-                No Video Found
+              <Typography
+                variant="h5"
+                sx={{ fontFamily: fonts.sans, fontWeight: "600", textAlign: "center" }}
+              >
+                No Videos Found
               </Typography>
             </Box>
           ) : (

@@ -224,15 +224,24 @@
 // export default CreatorProfile;
 
 import { Avatar, colors, Divider, Rating } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { getCreatorProfile, selectCreatorProfile } from "../redux/slices/creatorSlice.js";
+import { useDispatch, useSelector } from "react-redux";
 import { eyeIcon, infoCircleIcon, likeIcon, profileOilPaint, shareIcon, sms } from "../assets/assest";
 import creatorStyle from "../styles/Profile.module.css";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(1);
+  const dispatchToRedux = useDispatch();
+  const creatorProfile = useSelector(selectCreatorProfile);
+  const { userId } = useParams();
+
+  useEffect(() => {
+    dispatchToRedux(getCreatorProfile({ userId }));
+  }, []);
 
   const sampleVideos = [
     {
@@ -611,7 +620,8 @@ const Card = ({ id, title, rating, author, likes, views, insights, thumbnail }) 
       borderRadius: "15px",
       padding: "15px",
       border: "1px solid #cecece",
-      height: "31.4375rem",
+      // height: "31.4375rem",
+      height: "auto",
       backgroundColor: "white",
       width: "38.125rem",
     }}
@@ -660,8 +670,8 @@ const Card = ({ id, title, rating, author, likes, views, insights, thumbnail }) 
         borderRadius: "90px",
       }}
     >
-      <p style={{ textWrap: "nowrap", fontSize: "1.2rem" }}>Insights :</p>
-      <p style={{ textWrap: "nowrap", fontSize: "1.2rem", color: "#888888" }}>
+      <p style={{ textWrap: "nowrap", fontSize: "1rem" }}>Insights :</p>
+      <p style={{ textWrap: "nowrap", fontSize: "1rem", color: "#888888" }}>
         {" "}
         &nbsp; {insights.length > 47 ? insights.slice(0, 48) + "..." : insights} &nbsp;
       </p>

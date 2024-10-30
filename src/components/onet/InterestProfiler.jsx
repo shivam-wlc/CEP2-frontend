@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { interestHero, interestLogo } from "../../assets/assest.js";
+import { interestHero, interestLogo, background } from "../../assets/assest.js";
 import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
 import { getQuestions, getResultAndJob, selectOnet } from "../../redux/slices/onetSlice.js";
 import globalStyle from "./Common.module.css";
@@ -67,26 +67,36 @@ export default function InterestProfiler() {
   };
 
   return (
-    <div className={globalStyle["container"]}>
-      <div className={globalStyle["left"]}>
-        <img src={interestHero} alt="heroImage" />
-      </div>
-      <div className={globalStyle["right"]}>
-        <img src={interestLogo} alt="logo" width={250} />
-        {onet?.questions?.length > 0 && (
-          <InterestQuestionCard
-            questionNumber={currentQuestionIndex + 1}
-            questionStatment={onet?.questions[currentQuestionIndex]["text"]}
-            totalQuestions={onet?.questions?.length}
-            onNext={handleNext}
-            onPrevious={handlePrevious}
-            isLastQuestion={currentQuestionIndex === onet?.questions?.length - 1}
-            isFirstQuestion={currentQuestionIndex === 0}
-            overallAnswers={overallAnswers}
-            setOverallAnswers={setOverallAnswers}
-            handleSubmitButton={handleSubmitButton}
-          />
-        )}
+    <div style={{ backgroundImage: `url(${background})` }}>
+      <div className={globalStyle["container"]}>
+        <div className={globalStyle["left"]}>
+          <div
+            style={{
+              // border: "1px solid #cecece",
+              padding: "20px",
+              borderRadius: "10px",
+            }}
+          >
+            <img src={interestHero} alt="heroImage" />
+          </div>
+        </div>
+        <div className={globalStyle["right"]}>
+          <img src={interestLogo} alt="logo" width={250} />
+          {onet?.questions?.length > 0 && (
+            <InterestQuestionCard
+              questionNumber={currentQuestionIndex + 1}
+              questionStatment={onet?.questions[currentQuestionIndex]["text"]}
+              totalQuestions={onet?.questions?.length}
+              onNext={handleNext}
+              onPrevious={handlePrevious}
+              isLastQuestion={currentQuestionIndex === onet?.questions?.length - 1}
+              isFirstQuestion={currentQuestionIndex === 0}
+              overallAnswers={overallAnswers}
+              setOverallAnswers={setOverallAnswers}
+              handleSubmitButton={handleSubmitButton}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
