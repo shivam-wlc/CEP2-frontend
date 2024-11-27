@@ -223,153 +223,125 @@
 
 // export default CreatorProfile;
 
-import { Avatar, colors, Divider, Rating } from "@mui/material";
+import { Avatar, Box, CircularProgress, colors, Divider, Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCreatorProfile, selectCreatorProfile } from "../redux/slices/creatorSlice.js";
+import {
+  getCreatorProfile,
+  selectCreatorProfile,
+  creatorFollowToggle,
+  selectIsFollowing,
+  checkFollowStatus,
+  selectFollowerCount,
+} from "../redux/slices/creatorSlice.js";
 import { useDispatch, useSelector } from "react-redux";
-import { eyeIcon, infoCircleIcon, likeIcon, profileOilPaint, shareIcon, sms } from "../assets/assest";
+import {
+  eyeIcon,
+  infoCircleIcon,
+  likeIcon,
+  profileOilPaint,
+  shareIcon,
+  sms,
+  creatorIconWhatsaap,
+  creatorIconLocation,
+  creatorIconMobile,
+  creatorIconMail,
+} from "../assets/assest";
 import creatorStyle from "../styles/Profile.module.css";
 import { useParams } from "react-router-dom";
+import { getAuthorVideos, selectAuthorVideos } from "../redux/slices/creatorSlice.js";
+import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
+import SharingVideoModal from "../models/SharingVideoModal.jsx";
+import { notify } from "../redux/slices/alertSlice.js";
+import { height } from "@mui/system";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState(1);
   const dispatchToRedux = useDispatch();
-  const creatorProfile = useSelector(selectCreatorProfile);
-  const { userId } = useParams();
+  const { userId } = useParams(); //targetUserId for creator profile
+
+  const studentUserId = useSelector(selectUserId);
+  const token = useSelector(selectToken);
+  const creatorProfileWithFollowersCount = useSelector(selectCreatorProfile);
+  const creatorVideos = useSelector(selectAuthorVideos);
+  const isFollowing = useSelector(selectIsFollowing);
+  const followerCount = useSelector(selectFollowerCount);
+
+  const [activeTab, setActiveTab] = useState(1);
+  const [page, setPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
+
+  const videoUrl = "https://example.com/your-video-url";
+
+  const creatorProfile = creatorProfileWithFollowersCount?.user;
+  console.log("creatorProfileWithFollowersCount", creatorProfileWithFollowersCount);
 
   useEffect(() => {
     dispatchToRedux(getCreatorProfile({ userId }));
   }, []);
 
-  const sampleVideos = [
-    {
-      _id: "123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "12323",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "123321",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "123312",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "132123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "13123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "131223",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "1232143",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "14123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "14123",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-      _id: "1412423",
-      date: "16/08/2024",
-      thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-      title: "Create your own",
-      views: "120",
-      likes: "212",
-      rating: 4,
-      author: "Shivam Chaudhary",
-      insights: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-  ];
+  useEffect(() => {
+    dispatchToRedux(getAuthorVideos({ page, userId }));
+  }, [page]);
+
+  const handleShareClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFollow = async () => {
+    if (!studentUserId) {
+      dispatchToRedux(notify({ message: "You need to login/signup first to follow", type: "error" }));
+      return;
+    }
+
+    if (studentUserId === userId) {
+      dispatchToRedux(notify({ message: "You can't follow yourself", type: "error" }));
+      return;
+    }
+
+    try {
+      setIsButtonLoading(true);
+      await dispatchToRedux(
+        creatorFollowToggle({
+          userId: studentUserId,
+          targetUserId: userId,
+          token: token,
+        }),
+      );
+      setIsButtonLoading(false);
+      dispatchToRedux(notify({ message: "Successfully performed action", type: "success" }));
+    } catch (error) {
+      setIsButtonLoading(false);
+    }
+  };
+
+  //Already following
+  useEffect(() => {
+    if (studentUserId) {
+      dispatchToRedux(checkFollowStatus({ userId: studentUserId, targetUserId: userId, token: token }));
+    }
+  }, []);
 
   return (
     <div style={{ marginTop: "10rem" }}>
       {/* top */}
+      {/* <div style={{ width: "95%" }}>
+        <div
+          style={{
+            height: "100px",
+            width: "30%",
+            backgroundColor: "#FF8A00",
+            marginLeft: "auto",
+            marginTop: "-50px",
+            zIndex: "100",
+          }}
+        ></div>
+      </div> */}
       <div
         style={{
           margin: "auto",
@@ -386,13 +358,24 @@ const Profile = () => {
           alt="oilPaint"
           style={{ borderTopLeftRadius: "1rem", borderTopRightRadius: "1rem" }}
         />
+
         <div style={{ position: "absolute", top: "50px", left: "46px" }}>
-          <Avatar sx={{ height: "97px", width: "97px" }} />
+          <Avatar
+            src={creatorProfile?.profilePicture || ""}
+            alt="profile"
+            sx={{ height: "97px", width: "97px" }}
+          />
           {/* <img src="" alt="" style={{position: "absolute", top: "50px", left: "46px", height: "97px", width: "97px"}}/> */}
-          <p style={{ fontWeight: "600", color: "#5e5e5e", marginTop: ".5rem" }}>1.5k Followers</p>{" "}
+          <p style={{ fontWeight: "600", color: "#5e5e5e", marginTop: ".5rem" }}>{followerCount} Followers</p>
           {/* change */}
-          <button className={creatorStyle["navButton"]} style={{ marginTop: ".5rem" }}>
-            Follow
+          <button className={creatorStyle["navButton"]} style={{ marginTop: ".5rem" }} onClick={handleFollow}>
+            {isButtonLoading ? (
+              <CircularProgress size={20} color="inherit" />
+            ) : isFollowing?.isFollowing ? (
+              "Following"
+            ) : (
+              "Follow"
+            )}
           </button>
         </div>
 
@@ -406,12 +389,16 @@ const Profile = () => {
         >
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ display: "flex", gap: ".5rem" }}>
-              <p style={{ fontWeight: "600", fontSize: "1.1rem" }}>Ronald Valadez</p> {/* change */}
-              <p style={{ color: "#818181" }}>(Lorem Ipsum is simply dummy text)</p> {/* change */}
+              <p style={{ fontWeight: "600", fontSize: "1.1rem" }}>
+                {creatorProfile?.firstName + " " + creatorProfile?.lastName}
+              </p>{" "}
+              {/* change */}
+              {/* <p style={{ color: "#818181" }}>(Lorem Ipsum is simply dummy text)</p>  */}
             </div>
+
             <div
               style={{ display: "flex", gap: ".5rem", alignItems: "center" }}
-              onClick={() => navigate("#")}
+              onClick={() => handleShareClick()}
             >
               {" "}
               {/* change */}
@@ -437,7 +424,7 @@ const Profile = () => {
                 borderRadius: "90px",
               }}
             >
-              Accounting
+              {creatorProfile?.specialization}
             </p>
             <p
               style={{
@@ -467,7 +454,7 @@ const Profile = () => {
                 borderRadius: "90px",
               }}
             >
-              4 years
+              {creatorProfile?.experience + " Years" || ""}
             </p>{" "}
             {/* change */}
           </div>
@@ -479,13 +466,13 @@ const Profile = () => {
               marginTop: ".5rem",
             }}
           >
-            <Information icon={sms} info={"India"} />
+            <Information icon={creatorIconLocation} info={creatorProfile?.nationality} />
             <Dot />
-            <Information icon={sms} info={"+1 000 0000 000"} />
+            <Information icon={creatorIconMobile} info={creatorProfile?.mobile} />
             <Dot />
-            <Information icon={sms} info={"+1 000 0000 000"} />
+            <Information icon={creatorIconWhatsaap} info={creatorProfile?.telephone} />
             <Dot />
-            <Information icon={sms} info={"ronaldjvaladez@dayrep.com"} />
+            <Information icon={creatorIconMail} info={creatorProfile?.email} />
           </div>
           <div
             style={{
@@ -498,11 +485,7 @@ const Profile = () => {
           >
             <p style={{ fontWeight: "600", marginBottom: ".5rem" }}>About me</p>
             <Divider />
-            <p style={{ marginTop: ".5rem" }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-              the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book.
-            </p>
+            <p style={{ marginTop: ".5rem" }}>{creatorProfile?.introBio}</p>
           </div>
         </div>
       </div>
@@ -539,7 +522,7 @@ const Profile = () => {
               cursor: "pointer",
             }}
           >
-            Reels
+            Videos
           </p>
           <p
             onClick={() => {
@@ -572,24 +555,40 @@ const Profile = () => {
         </div>
         <div style={{ marginTop: "1.5rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
           {activeTab === 1 &&
-            sampleVideos.map(({ _id, title, rating, author, likes, views, insights, thumbnail }) => (
-              <Card
-                key={_id}
-                title={title}
-                rating={rating}
-                author={author}
-                likes={likes}
-                views={views}
-                insights={insights}
-                thumbnail={thumbnail}
-                id={_id}
-              />
-            ))}
+            creatorVideos?.videos?.map(
+              ({
+                _id,
+                title,
+                rating,
+                author,
+                likes,
+                views,
+                insights,
+                thumbnail,
+                youtubeLink,
+                youtubeVideoId,
+              }) => (
+                <Card
+                  key={_id}
+                  title={title}
+                  rating={rating}
+                  author={author}
+                  likes={likes}
+                  views={views}
+                  insights={insights}
+                  thumbnail={thumbnail}
+                  youtubeLink={youtubeLink}
+                  youtubeVideoId={youtubeVideoId}
+                  id={_id}
+                />
+              ),
+            )}
 
           {activeTab === 2 && <p>Comming Soon</p>}
           {activeTab === 3 && <p>Comming Soon</p>}
         </div>
       </div>
+      <SharingVideoModal open={isModalOpen} handleClose={handleModalClose} videoUrl={videoUrl} />
     </div>
   );
 };
@@ -598,7 +597,7 @@ export default Profile;
 
 const Information = ({ icon = { sms }, info }) => (
   <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
-    <img src={icon} alt="" />
+    <img src={icon} alt="Profile Icon Images" width={"30px"} />
     <p>{info}</p>
   </div>
 );
@@ -614,7 +613,18 @@ const Dot = () => (
   ></div>
 );
 
-const Card = ({ id, title, rating, author, likes, views, insights, thumbnail }) => (
+const Card = ({
+  id,
+  title,
+  rating,
+  author,
+  likes,
+  views,
+  insights,
+  thumbnail,
+  youtubeLink,
+  youtubeVideoId,
+}) => (
   <div
     style={{
       borderRadius: "15px",
@@ -628,7 +638,8 @@ const Card = ({ id, title, rating, author, likes, views, insights, thumbnail }) 
     onClick={() => navigate(`/video/${id}`)}
   >
     <img
-      src={thumbnail}
+      // src={thumbnail}
+      src={youtubeLink ? `https://img.youtube.com/vi/${youtubeVideoId}/maxresdefault.jpg` : thumbnail}
       alt="thumbnail"
       style={{
         width: "36.25rem",
@@ -673,7 +684,7 @@ const Card = ({ id, title, rating, author, likes, views, insights, thumbnail }) 
       <p style={{ textWrap: "nowrap", fontSize: "1rem" }}>Insights :</p>
       <p style={{ textWrap: "nowrap", fontSize: "1rem", color: "#888888" }}>
         {" "}
-        &nbsp; {insights.length > 47 ? insights.slice(0, 48) + "..." : insights} &nbsp;
+        {/* &nbsp; {insights.length > 47 ? insights.slice(0, 48) + "..." : insights} &nbsp; */}
       </p>
       <img src={infoCircleIcon} alt="" width={"24px"} height={"24px"} />
     </div>

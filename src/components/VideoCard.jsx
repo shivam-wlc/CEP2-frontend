@@ -160,9 +160,9 @@ const VideoCard = ({ video }) => {
   };
 
   const handleVideoClick = (videoId) => {
-    if (authenticated) {
-      dispatchToRedux(addHistory({ userId, videoId, token }));
-    }
+    // if (authenticated) {
+    //   dispatchToRedux(addHistory({ userId, videoId, token }));
+    // }
     navigate(`/video/${videoId}`);
   };
   return (

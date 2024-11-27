@@ -264,19 +264,6 @@ const Workspace = (props) => {
                   <Typography sx={{ fontWeight: "600", color: "#696969", fontSize: "1.1rem" }}>
                     {userData?.firstName + " " + userData?.lastName || "User Name"}
                   </Typography>
-                  <button
-                    onClick={handleLogout}
-                    style={{
-                      color: "red",
-                      fontFamily: fonts.sans,
-                      fontSize: "0.8rem",
-                      border: "none",
-                      backgroundColor: "transparent",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Logout
-                  </button>
                 </Box>
               </Box>
               <Box sx={{ display: "flex", alignItems: "center", marginLeft: "1rem" }}>
@@ -355,9 +342,39 @@ const Workspace = (props) => {
                 </Typography>
               </Box>
             </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Box
+                component={Link}
+                to="/"
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 1,
+                  textDecoration: "none",
+                }}
+                onClick={handleLogout}
+              >
+                <Typography textAlign="center" sx={{ fontFamily: fonts.sans, color: "red" }}>
+                  Logout
+                </Typography>
+              </Box>
+            </MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
+      {/* <button
+                    onClick={handleLogout}
+                    style={{
+                      color: "red",
+                      fontFamily: fonts.sans,
+                      fontSize: "0.8rem",
+                      border: "none",
+                      backgroundColor: "transparent",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Logout
+                  </button> */}
 
       {/* Side bar */}
       <Box

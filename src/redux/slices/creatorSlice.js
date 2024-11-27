@@ -11,6 +11,8 @@ const initialState = {
   allVideos: [],
   creatorProfile: null,
   comments: [],
+  isFollowing: false,
+  followerCount: 0,
 };
 
 export const uploadVideo = createAsyncThunk(
@@ -326,6 +328,44 @@ export const getUserRatingOfVideo = createAsyncThunk(
   },
 );
 
+//handle follow
+export const creatorFollowToggle = createAsyncThunk(
+  "creator/creatorFollowToggle",
+  async ({ userId, targetUserId, token }) => {
+    try {
+      return await FetchApi.fetch(`${config.api}/api/followers/follow/${targetUserId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ userId }),
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+);
+
+//cehck follow
+export const checkFollowStatus = createAsyncThunk(
+  "creator/checkFollowStatus",
+  async ({ targetUserId, token, userId }) => {
+    console.log(targetUserId, token, userId);
+    try {
+      return await FetchApi.fetch(`${config.api}/api/followers/check-follow/${targetUserId}/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+);
+
 const creatorSlice = createSlice({
   name: "creator",
   initialState,
@@ -378,7 +418,8 @@ const creatorSlice = createSlice({
       console.log("videoDetailById", payload);
     });
     builder.addCase(getCreatorProfile.fulfilled, (state, { payload }) => {
-      state.creatorProfile = payload.user;
+      state.creatorProfile = payload;
+      state.followerCount = payload.followerCount;
     });
     builder.addCase(videoFilter.fulfilled, (state, { payload }) => {
       state.allVideos = payload.data;
@@ -392,6 +433,20 @@ const creatorSlice = createSlice({
     builder.addCase(toggleLike.fulfilled, (state, { payload }) => {});
     builder.addCase(addRating.fulfilled, (state, { payload }) => {});
     builder.addCase(getUserRatingOfVideo.fulfilled, (state, { payload }) => {});
+    // toggle creator follow
+    builder.addCase(creatorFollowToggle.fulfilled, (state, { payload }) => {
+      if (state.isFollowing) {
+        state.isFollowing = false;
+        state.followerCount -= 1;
+      } else {
+        state.isFollowing = true;
+        state.followerCount += 1;
+      }
+    });
+    //check if folllowing
+    builder.addCase(checkFollowStatus.fulfilled, (state, { payload }) => {
+      state.isFollowing = payload;
+    });
   },
 });
 
@@ -404,5 +459,7 @@ export const selectGeneralVideoData = (state) => state.creator.getGeneralStates;
 export const selectAllVideosData = (state) => state.creator.allVideos;
 export const selectCreatorProfile = (state) => state.creator.creatorProfile;
 export const selectAllComments = (state) => state.creator.comments;
+export const selectIsFollowing = (state) => state.creator.isFollowing;
+export const selectFollowerCount = (state) => state.creator.followerCount;
 
 export default creatorSlice.reducer;

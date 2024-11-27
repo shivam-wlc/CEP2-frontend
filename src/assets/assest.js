@@ -130,6 +130,20 @@ import resumecreated from "./userDashboard/resume.png";
 import shared from "./userDashboard/shared.png";
 //backgroundImage
 import backgroundVector from "./Vector.png";
+//founder image
+import mohamedPhoto from "./mohamedPhoto/0S5A9846.jpg";
+//creator Profile Icon
+import creatorIconWhatsaap from "./profileIcon/ph_whatsapp-logo-thin.png";
+import creatorIconLocation from "./profileIcon/Pin_light.png";
+import creatorIconMobile from "./profileIcon/Phone_light.png";
+import creatorIconMail from "./profileIcon/sms.png";
+
+//single Video Playing Icons
+import videoLikeIcon from "./singleVideoPlayIcon/like.png";
+import videoLikeIconFilled from "./singleVideoPlayIcon/likeFilled.png";
+import videoShareIcon from "./singleVideoPlayIcon/shareIcon.png";
+import videoViewsIcon from "./singleVideoPlayIcon/viewsIcon.png";
+import videoPlaylistIcon from "./singleVideoPlayIcon/playListIcon.png";
 
 // const socialMediaIcons = [
 //   { icon: FacebookIcon, name: "Facebook" },
@@ -273,4 +287,17 @@ export {
   GRating,
   GShared,
   GViews,
+  //mohamed photo
+  mohamedPhoto,
+  //creator Profile Icon
+  creatorIconWhatsaap,
+  creatorIconLocation,
+  creatorIconMobile,
+  creatorIconMail,
+  //single Video Playing Icons
+  videoLikeIcon,
+  videoLikeIconFilled,
+  videoShareIcon,
+  videoViewsIcon,
+  videoPlaylistIcon,
 };

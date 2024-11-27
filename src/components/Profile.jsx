@@ -586,6 +586,9 @@ const Profile = () => {
   const [file, setFile] = useState(null);
   const [imageUploadingLoader, setImageUploadingLoader] = useState(false);
 
+  console.log("userData", userData);
+  // userData.activeDashboard === "activeDashboard";
+
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
@@ -598,7 +601,9 @@ const Profile = () => {
     nationality: "",
     country: "",
     phoneExtension: "",
-    phoneNumber: "",
+    // Mobile Number
+    mobile: "",
+    //Whatsaap Number
     telephone: "",
     introBio: "",
     personalWebsite: "",
@@ -643,6 +648,8 @@ const Profile = () => {
       country: userData?.country,
       introBio: userData?.introBio,
       personalWebsite: userData?.personalWebsite,
+      experience: userData?.experience,
+      specialization: userData?.specialization,
       dateOfBirth: convertUTCDateToLocalDate(userData?.dateOfBirth),
     });
   }, [userData]);
@@ -845,30 +852,34 @@ const Profile = () => {
             },
           }}
         />
-        <Tab
-          label="Social Accounts"
-          sx={{
-            "&.Mui-selected": {
-              color: "black",
-              backgroundColor: "#e5e5e5",
-              borderRadius: "1rem",
-              fontFamily: fonts.poppins,
-              fontWeight: "500",
-            },
-          }}
-        />
-        <Tab
-          label="Education"
-          sx={{
-            "&.Mui-selected": {
-              color: "black",
-              backgroundColor: "#e5e5e5",
-              borderRadius: "1rem",
-              fontFamily: fonts.poppins,
-              fontWeight: "500",
-            },
-          }}
-        />
+        {userData?.activeDashboard !== "creator" && (
+          <>
+            <Tab
+              label="Social Accounts"
+              sx={{
+                "&.Mui-selected": {
+                  color: "black",
+                  backgroundColor: "#e5e5e5",
+                  borderRadius: "1rem",
+                  fontFamily: fonts.poppins,
+                  fontWeight: "500",
+                },
+              }}
+            />
+            <Tab
+              label="Education"
+              sx={{
+                "&.Mui-selected": {
+                  color: "black",
+                  backgroundColor: "#e5e5e5",
+                  borderRadius: "1rem",
+                  fontFamily: fonts.poppins,
+                  fontWeight: "500",
+                },
+              }}
+            />
+          </>
+        )}
       </Tabs>
 
       <Box mt={4} flex={1}>
@@ -885,16 +896,18 @@ const Profile = () => {
                   onChange={handleInputChange}
                 />
               </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  fullWidth
-                  label="Middle Name"
-                  variant="outlined"
-                  name="middleName"
-                  value={formData.middleName}
-                  onChange={handleInputChange}
-                />
-              </Grid>
+              {userData?.activeDashboard !== "creator" && (
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    fullWidth
+                    label="Middle Name"
+                    variant="outlined"
+                    name="middleName"
+                    value={formData.middleName}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+              )}
               <Grid item xs={12} sm={4}>
                 <TextField
                   fullWidth
@@ -905,45 +918,51 @@ const Profile = () => {
                   onChange={handleInputChange}
                 />
               </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  fullWidth
-                  label="Username"
-                  variant="outlined"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  select
-                  fullWidth
-                  label="Gender"
-                  variant="outlined"
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleInputChange}
-                >
-                  <MenuItem value="male">Male</MenuItem>
-                  <MenuItem value="female">Female</MenuItem>
-                  <MenuItem value="other">Other</MenuItem>
-                </TextField>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  fullWidth
-                  label="Date of Birth"
-                  variant="outlined"
-                  name="dateOfBirth"
-                  type="date"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  value={formData.dateOfBirth}
-                  onChange={handleInputChange}
-                />
-              </Grid>
+              {userData?.activeDashboard !== "creator" && (
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    fullWidth
+                    label="Username"
+                    variant="outlined"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+              )}
+              {
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    select
+                    fullWidth
+                    label="Gender"
+                    variant="outlined"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleInputChange}
+                  >
+                    <MenuItem value="male">Male</MenuItem>
+                    <MenuItem value="female">Female</MenuItem>
+                    <MenuItem value="other">Other</MenuItem>
+                  </TextField>
+                </Grid>
+              }
+              {userData?.activeDashboard !== "creator" && (
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    fullWidth
+                    label="Date of Birth"
+                    variant="outlined"
+                    name="dateOfBirth"
+                    type="date"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    value={formData.dateOfBirth}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+              )}
               <Grid item xs={12} sm={6}>
                 <TextField
                   select
@@ -985,9 +1004,9 @@ const Profile = () => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Phone Number"
+                  label="Mobile Number"
                   variant="outlined"
-                  name="phoneNumber"
+                  name="mobile"
                   value={formData.mobile}
                   onChange={handleInputChange}
                 />
@@ -995,23 +1014,64 @@ const Profile = () => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Telephone Number"
+                  label="Whatsapp Number"
                   variant="outlined"
                   name="telephone"
                   value={formData.telephone}
                   onChange={handleInputChange}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  label="Personal Website"
-                  variant="outlined"
-                  name="personalWebsite"
-                  value={formData.personalWebsite}
-                  onChange={handleInputChange}
-                />
-              </Grid>
+
+              {userData?.activeDashboard === "creator" && (
+                <>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      label="Specialization"
+                      variant="outlined"
+                      name="specialization"
+                      value={formData.specialization}
+                      onChange={handleInputChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      label="Years Of Experience"
+                      variant="outlined"
+                      name="experience"
+                      value={formData.experience}
+                      onChange={handleInputChange}
+                    />
+                  </Grid>
+                </>
+              )}
+
+              {userData?.activeDashboard !== "creator" && (
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Personal Website"
+                    variant="outlined"
+                    name="personalWebsite"
+                    value={formData.personalWebsite}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+              )}
+
+              {userData?.activeDashboard === "creator" && (
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Short Description"
+                    variant="outlined"
+                    name="introBio"
+                    value={formData.introBio}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+              )}
             </Grid>
             <Button
               // variant="contained"

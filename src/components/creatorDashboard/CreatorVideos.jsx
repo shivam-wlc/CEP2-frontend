@@ -463,135 +463,6 @@ const CreatorVideos = () => {
     setPage(0);
   };
 
-  // console.log("authorVideos", authorVideos);
-
-  // Note check functions I am taken them as example
-  // const authorVideos = useSelector(selectAuthorVideos);
-
-  // const authorVideos = [
-  //   {
-  //     _id: "123",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "12323",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "123321",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "123312",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "132123",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "13123",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "131223",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "1232143",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "14123",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "14123",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  //   {
-  //     _id: "1412423",
-  //     date: "16/08/2024",
-  //     thumbnail: "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  //     title: "Create your own",
-  //     views: "120",
-  //     likes: "212",
-  //     shares: "233",
-  //     rating: 4,
-  //     action: { edit: (id) => {}, delete: (id) => {} },
-  //   },
-  // ];
-
   console.log("authorVideos", authorVideos);
 
   const [activeTab, setActiveTab] = useState(1);
@@ -694,7 +565,7 @@ const CreatorVideos = () => {
               cursor: "pointer",
             }}
           >
-            Reels
+            Videos
           </p>
           <p
             onClick={() => {

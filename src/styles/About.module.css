@@ -27,6 +27,7 @@
 }
 .hero img {
   height: 30.1875rem;
+  border-radius: 20px;
 }
 .hero-text-about-us {
   margin-top: 0rem;
