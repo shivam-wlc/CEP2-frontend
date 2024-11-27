@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { notify } from "../redux/slices/alertSlice.js";
 import { signup } from "../redux/slices/authSlice.js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Box,
   Button,
@@ -20,11 +20,10 @@ import CheckYourMailBox from "../models/CheckYourMailBox.jsx";
 import { countryList } from "../utility/countryList.js";
 import { fonts } from "../utility/fonts.js";
 import loginStyles from "../styles/Login.module.css";
-
+import TermsAndConditionsModal from "../models/TermsAndConditionsModal.jsx";
 
 const Register = () => {
   const dispatchToRedux = useDispatch();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -38,7 +37,21 @@ const Register = () => {
 
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [isEmailSent, setIsEmailSent] = useState(false);
- 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleSignUpClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleAgree = (isChecked) => {
+    if (isChecked) {
+      handleSubmit();
+      handleModalClose();
+    }
+  };
 
   const handleChange = (event) => {
     setFormData({
@@ -47,8 +60,12 @@ const Register = () => {
     });
   };
 
+  // const handleSubmit = async () => {
+  //   console.log("Submit");
+  // };
+
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     console.log("Namaste ji");
 
     if (
@@ -165,13 +182,12 @@ const Register = () => {
 
         <Box
           sx={{
-            // display: { xs: 'none', md: 'block' },
             width: { xs: "100%", md: "476px" },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            margin: "0 auto", // Center the box horizontally
+            margin: "0 auto",
             boxSizing: "border-box",
             marginBottom: { xs: "3rem", md: "0" },
           }}
@@ -189,9 +205,7 @@ const Register = () => {
           <Box
             sx={{
               backgroundColor: "#ffffff",
-              // width: "476px",
               width: { xs: "90%", md: "476px" },
-              // height: "auto",
               borderRadius: "29px",
               alignItems: "center",
               boxShadow: "0px 14px 44px 0px #0000001A",
@@ -249,7 +263,6 @@ const Register = () => {
                 <Typography
                   variant="body1"
                   sx={{
-                    // marginLeft: "10%",
                     fontSize: "16px",
                     fontFamily: fonts.poppins,
                   }}
@@ -327,9 +340,9 @@ const Register = () => {
                     InputProps={{
                       disableUnderline: true,
                       sx: {
-                        fontFamily: fonts.poppins, // Apply Poppins font to user-typed text
+                        fontFamily: fonts.poppins,
                         "&::placeholder": {
-                          fontFamily: fonts.poppins, // Apply Poppins font to placeholder
+                          fontFamily: fonts.poppins,
                         },
                       },
                     }}
@@ -373,10 +386,10 @@ const Register = () => {
                           border: "none",
                         },
                         "& .MuiSelect-placeholder": {
-                          color: "#999999", // Make the placeholder gray
+                          color: "#999999",
                         },
                         "&.Mui-focused .MuiSelect-placeholder": {
-                          color: "#000", // Optional: Make it default when focused
+                          color: "#000",
                         },
                       }}
                       renderValue={(selected) => {
@@ -469,7 +482,6 @@ const Register = () => {
                   type="password"
                   onChange={handleChange}
                   width="100%"
-                  
                 />
                 <Box
                   sx={{
@@ -496,7 +508,8 @@ const Register = () => {
                     </Button>
                   ) : (
                     <Button
-                      onClick={handleSubmit}
+                      // onClick={handleSubmit}
+                      onClick={handleSignUpClick}
                       variant="contained"
                       disabled={isButtonLoading}
                       sx={{
@@ -548,6 +561,7 @@ const Register = () => {
           }}
         />
       </Box>
+      <TermsAndConditionsModal open={isModalOpen} handleClose={handleModalClose} handleAgree={handleAgree} />
     </Box>
   );
 };

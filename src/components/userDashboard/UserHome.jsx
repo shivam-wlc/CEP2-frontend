@@ -247,9 +247,9 @@ const languages = [
 ];
 
 const stats = [
-  { label: "Reels consumed", value: 32, img: consumed },
-  { label: "Reels liked", value: 32, img: liked },
-  { label: "Reels shared", value: 32, img: shared },
+  { label: "Videos consumed", value: 32, img: consumed },
+  { label: "Videos liked", value: 32, img: liked },
+  { label: "Videos shared", value: 32, img: shared },
   { label: "Career counsellors followed", value: 32, img: followed },
   { label: "Assessments taken", value: 32, img: asstaken },
   { label: "Resumes created", value: 32, img: resumecreated },

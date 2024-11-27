@@ -11,6 +11,7 @@ import {
 } from "../assets/assest.js";
 import GeneralButton from "../components/general/GeneralButton.jsx";
 import { fonts } from "../utility/fonts";
+import creatorStyle from "../styles/Profile.module.css";
 
 const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
   const [copySuccess, setCopySuccess] = useState(false);
@@ -104,8 +105,14 @@ const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
               },
             }}
           />
-
-          <GeneralButton onClick={() => copyToClipboard(videoUrl)} text={copySuccess ? "Copied!" : "Copy"} />
+          <button
+            className={creatorStyle["navButton"]}
+            style={{ marginTop: ".5rem" }}
+            onClick={() => copyToClipboard(videoUrl)}
+          >
+            {copySuccess ? "Copied!" : "Copy"}
+          </button>
+          {/* <GeneralButton onClick={() => copyToClipboard(videoUrl)} text={copySuccess ? "Copied!" : "Copy"} /> */}
         </Box>
         <Box
           sx={{
