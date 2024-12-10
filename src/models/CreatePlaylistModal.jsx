@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 
 import GeneralButton from "../components/general/GeneralButton.jsx";
 import { notify } from "../redux/slices/alertSlice.js";
-import { createPlaylist } from "../redux/slices/userSlice.js";
+// import { createPlaylist } from "../redux/slices/userSlice.js";
+import { createPlaylist } from "../redux/slices/playlistSlice.js";
 import { fonts } from "../utility/fonts.js";
 
 const CreatePlaylistModal = ({ open, onClose, userId, token }) => {
@@ -20,7 +21,7 @@ const CreatePlaylistModal = ({ open, onClose, userId, token }) => {
 
     try {
       setIsButtonLoading(true);
-      await dispatchToRedux(createPlaylist({ name: playlistName, userId, token }));
+      await dispatchToRedux(createPlaylist({ playlistName, userId, token }));
 
       setIsButtonLoading(false);
       setPlaylistName("");
@@ -35,66 +36,120 @@ const CreatePlaylistModal = ({ open, onClose, userId, token }) => {
 
   return (
     <Modal open={open} onClose={onClose}>
-      <Container
-        maxWidth="sm"
+      <Box
         sx={{
-          marginTop: "10vh",
-          padding: "1rem",
-          backgroundColor: "white",
-          borderRadius: "8px",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: 500,
+          bgcolor: "#F9FAFB", // Light gray background for better contrast
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow
+          borderRadius: "20px",
         }}
       >
-        <Typography
-          variant="h6"
+        <Container
+          maxWidth="sm"
           sx={{
-            marginBottom: "1rem",
-            fontFamily: fonts.sans,
-            fontWeight: "bold",
-            textAlign: "center",
+            padding: "2rem",
+            backgroundColor: "white",
+            borderRadius: "20px",
           }}
         >
-          Create Playlist
-        </Typography>
-        <TextField
-          label="Playlist Name"
-          variant="outlined"
-          fullWidth
-          value={playlistName}
-          onChange={(e) => setPlaylistName(e.target.value)}
-          sx={{ marginBottom: "1rem", fontFamily: fonts.sans }}
-        />
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            gap: "1rem",
-          }}
-        >
-          {isButtonLoading ? (
-            <>
+          <Typography
+            variant="h6"
+            sx={{
+              marginBottom: "1.5rem",
+              fontFamily: fonts.sans,
+              fontWeight: "bold",
+              textAlign: "center",
+              color: "#333", // Darker text for readability
+            }}
+          >
+            CREATE PLAYLIST
+          </Typography>
+          <TextField
+            label="Playlist Name"
+            variant="outlined"
+            fullWidth
+            value={playlistName}
+            onChange={(e) => setPlaylistName(e.target.value)}
+            sx={{
+              marginBottom: "1.5rem",
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#bf2f75", // Default border color
+                },
+                "&:hover fieldset": {
+                  borderColor: "#720361", // Hover effect
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#720361", // Focused state
+                },
+              },
+            }}
+          />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: "1.5rem",
+            }}
+          >
+            {isButtonLoading ? (
               <Button
                 sx={{
                   fontFamily: "Poppins, sans-serif",
-                  marginTop: "1rem",
-                  backgroundColor: "black",
+                  backgroundColor: "#720361",
                   color: "white",
-                  padding: "0.5rem 1.5rem",
-                  borderRadius: "0.5rem",
+                  padding: "0.7rem 1.5rem",
+                  borderRadius: "20px",
                   "&:hover": {
-                    backgroundColor: "black",
+                    backgroundColor: "#bf2f75",
                   },
                 }}
               >
                 <CircularProgress color="inherit" size={25} />
               </Button>
-            </>
-          ) : (
-            <GeneralButton onClick={handleCreatePlaylist} text="Create" />
-          )}
-          <GeneralButton onClick={onClose} text="Close" />
-        </Box>
-      </Container>
+            ) : (
+              <Button
+                onClick={handleCreatePlaylist}
+                sx={{
+                  background: "linear-gradient(to right, #720361, #bf2f75)",
+                  color: "white",
+                  padding: "0.7rem 2rem",
+                  borderRadius: "20px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  fontSize: "1rem",
+                  "&:hover": {
+                    background: "linear-gradient(to right, #bf2f75, #720361)",
+                  },
+                }}
+              >
+                Create
+              </Button>
+            )}
+            <Button
+              onClick={onClose}
+              sx={{
+                background: "linear-gradient(to right, #720361, #bf2f75)",
+                color: "white",
+                padding: "0.7rem 2rem",
+                borderRadius: "20px",
+                fontWeight: "bold",
+                fontSize: "1rem",
+                "&:hover": {
+                  background: "linear-gradient(to right, #bf2f75, #720361)",
+                },
+              }}
+            >
+              Close
+            </Button>
+          </Box>
+        </Container>
+      </Box>
     </Modal>
   );
 };

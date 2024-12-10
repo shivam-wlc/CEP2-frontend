@@ -105,13 +105,22 @@ const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
               },
             }}
           />
-          <button
-            className={creatorStyle["navButton"]}
-            style={{ marginTop: ".5rem" }}
+          <Button
+            sx={{
+              fontFamily: "Poppins, sans-serif",
+              padding: "10px",
+              background: "linear-gradient(to right, #720361, #bf2f75)",
+              color: "white",
+              padding: "0.5rem 1.5rem",
+              borderRadius: "0.5rem",
+              "&:hover": {
+                background: "linear-gradient(to right, #720361, #bf2f75)",
+              },
+            }}
             onClick={() => copyToClipboard(videoUrl)}
           >
             {copySuccess ? "Copied!" : "Copy"}
-          </button>
+          </Button>
           {/* <GeneralButton onClick={() => copyToClipboard(videoUrl)} text={copySuccess ? "Copied!" : "Copy"} /> */}
         </Box>
         <Box
@@ -132,7 +141,21 @@ const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
           ))}
         </Box>
         <Box sx={{ textAlign: "right", cursor: "pointer" }}>
-          <GeneralButton onClick={handleClose} text="Close" />
+          <Button
+            onClick={handleClose}
+            sx={{
+              fontFamily: "Poppins, sans-serif",
+              background: "linear-gradient(to right, #720361, #bf2f75)",
+              color: "white",
+              padding: "0.5rem 1.5rem",
+              borderRadius: "0.5rem",
+              "&:hover": {
+                background: "linear-gradient(to right, #720361, #bf2f75)",
+              },
+            }}
+          >
+            Close
+          </Button>
         </Box>
       </div>
     </Modal>

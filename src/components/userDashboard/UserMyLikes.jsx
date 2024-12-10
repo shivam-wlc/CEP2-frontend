@@ -99,12 +99,34 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
-import { getMyLikedVideos, selectMyLikedVideos } from "../../redux/slices/userSlice.js";
+import { getUserHistory } from "../../redux/slices/userHistory.js";
 
 function UserMyLikes() {
   const dispatchToRedux = useDispatch();
   const userId = useSelector(selectUserId);
   const token = useSelector(selectToken);
+  const [userHistory, setUserHistory] = useState({});
+  const [userLikedVideos, setUserLikedVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchUserHistory = async () => {
+      try {
+        const response = await dispatchToRedux(getUserHistory({ userId, token }));
+        if (response.payload) {
+          console.log("response.payload", response.payload.userHistory);
+          setUserHistory(response.payload.userHistory);
+          setUserLikedVideos(response.payload.userHistory.likedVideos);
+        }
+      } catch (error) {
+        console.error("Error fetching user history:", error);
+      }
+    };
+
+    fetchUserHistory();
+  }, []);
+
+  console.log("userHistory", userHistory);
+  console.log("userLikedVideos", userLikedVideos);
 
   const dummyLikedVideos = {
     likedVideos: [
@@ -150,15 +172,15 @@ function UserMyLikes() {
     totalPages: 1,
   };
 
-  let likedVideoData = useSelector(selectMyLikedVideos);
+  // let likedVideoData = useSelector(selectMyLikedVideos);
 
-  likedVideoData = dummyLikedVideos;
+  let likedVideoData = dummyLikedVideos;
 
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    dispatchToRedux(getMyLikedVideos({ userId, page, token }));
-  }, [dispatchToRedux, userId, page, token]);
+  // useEffect(() => {
+  //   dispatchToRedux(getMyLikedVideos({ userId, page, token }));
+  // }, [dispatchToRedux, userId, page, token]);
 
   const handlePageChange = (event, value) => {
     setPage(value);

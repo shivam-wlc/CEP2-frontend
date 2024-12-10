@@ -100,7 +100,7 @@ const CreatorAnalytics = () => {
                             itemStyle: { color: "#FF5B8F" },
                           },
                           {
-                            name: "Comments",
+                            name: "Followers",
                             icon: "circle",
                             itemStyle: { color: "#FD8C0C" },
                           },
@@ -133,7 +133,7 @@ const CreatorAnalytics = () => {
                           },
                         },
                         {
-                          name: "Comments",
+                          name: "Followers",
                           type: "line",
                           data: data.map((item) => item.comments),
                           smooth: true,
