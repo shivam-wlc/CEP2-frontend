@@ -11,6 +11,7 @@ import { getLikeStatus, toggleLike, selectUserLiked, increaseViewsCount } from "
 import { notify } from "../redux/slices/alertSlice.js";
 import { getRatingStatus, rateVideo } from "../redux/slices/ratingSlice";
 import { videoDetailById } from "../redux/slices/creatorSlice.js";
+import { getUserPlaylist, addVideoToPlaylist, selectAllPlaylistName } from "../redux/slices/playlistSlice.js";
 import { fonts } from "../utility/fonts.js";
 import {
   videoLikeIcon,
@@ -19,6 +20,8 @@ import {
   videoViewsIcon,
   videoPlaylistIcon,
 } from "../assets/assest.js";
+import AddVideoToPlaylistModal from "../models/AddVideoToPlaylistModal.jsx";
+import SharingVideoModal from "../models/SharingVideoModal.jsx";
 
 const ExploreVideoPlay = () => {
   const navigate = useNavigate();
@@ -29,12 +32,26 @@ const ExploreVideoPlay = () => {
   const token = useSelector(selectToken);
   const userId = useSelector(selectUserId);
   const userLiked = useSelector(selectUserLiked);
+  // const playlistNames = useSelector(selectAllPlaylistName);
 
   const [videoData, setVideoData] = useState(null);
   const [averageRatingValue, setAverageRatingValue] = useState(0);
-  const [userRatingValue, setUserRatingValue] = useState(15);
+  const [userRatingValue, setUserRatingValue] = useState(0);
   const [creatorData, setCreatorData] = useState(null);
   const [viewsIncremented, setViewsIncremented] = useState(false);
+
+  //playlist
+  const [openAddVideoToPlaylistModal, setOpenAddVideoToPlaylistModal] = useState(false);
+  const [selectedVideoId, setSelectedVideoId] = useState("");
+
+  //sharing
+  const [openSharingModal, setOpenSharingModal] = useState(false);
+
+  // console.log("playlistNames", playlistNames);
+
+  const handleCloseAddVideoToPlaylistModal = () => {
+    setOpenAddVideoToPlaylistModal(false);
+  };
 
   useEffect(() => {
     const fetchVideoDetails = async () => {
@@ -60,21 +77,62 @@ const ExploreVideoPlay = () => {
   }, [dispatchToRedux, userId, videoData, token, authenticated]);
 
   const handleLikeToggle = () => {
+    if (!authenticated) {
+      dispatchToRedux(notify({ message: "Please login to like the video", type: "warning" }));
+      return;
+    }
     if (authenticated && videoData) {
       dispatchToRedux(toggleLike({ userId, videoId: videoData._id, token }));
     }
   };
 
   useEffect(() => {
-    if (!viewsIncremented && videoData) {
-      dispatchToRedux(increaseViewsCount({ videoId: videoData._id }));
-      setViewsIncremented(true);
+    if (!userId) {
+      // Check if the watchedVideos data has expired
+      const storedData = JSON.parse(localStorage.getItem("viewedVideosWithTimestamp"));
+
+      if (storedData) {
+        const { viewedVideos, timestamp } = storedData;
+        const oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
+        const currentTime = Date.now();
+
+        if (currentTime - timestamp > oneHour) {
+          // Delete the data if it has expired
+          localStorage.removeItem("viewedVideosWithTimestamp");
+        }
+      }
     }
-  }, [viewsIncremented, videoData, dispatchToRedux]);
+  }, [userId]);
+
+  // useEffect(() => {
+  //   if (userId && videoData) {
+  //     dispatchToRedux(getUserPlaylist({ userId }));
+  //   }
+  // }, [dispatchToRedux, userId, videoData]);
 
   useEffect(() => {
-    handleLikeToggle();
-  }, []);
+    if (videoData) {
+      const storedData = JSON.parse(localStorage.getItem("viewedVideosWithTimestamp")) || {
+        viewedVideos: {},
+        timestamp: Date.now(),
+      };
+
+      const { viewedVideos } = storedData;
+
+      // Check if the video has already been viewed
+      if (!viewedVideos[videoData._id]) {
+        dispatchToRedux(increaseViewsCount({ videoId: videoData._id, userId }));
+        setViewsIncremented(true);
+
+        // Mark the video as viewed and update the timestamp
+        viewedVideos[videoData._id] = true;
+        localStorage.setItem(
+          "viewedVideosWithTimestamp",
+          JSON.stringify({ viewedVideos, timestamp: Date.now() }),
+        );
+      }
+    }
+  }, [viewsIncremented, videoData, dispatchToRedux]);
 
   useEffect(() => {
     const fetchRatingStatus = async () => {
@@ -124,6 +182,14 @@ const ExploreVideoPlay = () => {
     }
   };
 
+  const handleAddToPlaylist = () => {
+    console.log("Add to playlist");
+    setSelectedVideoId(videoData._id);
+    setOpenAddVideoToPlaylistModal(true);
+  };
+
+  console.log("selectedVideoId", selectedVideoId);
+
   function renderVideo() {
     if (!videoData) return null;
 
@@ -154,6 +220,14 @@ const ExploreVideoPlay = () => {
       );
     }
   }
+
+  const handleSharingModal = () => {
+    setOpenSharingModal(true);
+  };
+
+  const handleSharingCloseModal = () => {
+    setOpenSharingModal(false);
+  };
 
   return (
     <Box sx={{ height: "170vh", margin: 1 }}>
@@ -302,6 +376,15 @@ const ExploreVideoPlay = () => {
 
             <IconButton>
               <Rating sx={{ fontSize: "1rem" }} name="read-only" readOnly value={averageRatingValue} />
+              <Typography
+                sx={{
+                  color: "gray",
+                  mx: 0.25,
+                  fontSize: "1rem",
+                }}
+              >
+                ({videoData?.totalRatings})
+              </Typography>
             </IconButton>
           </Box>
         </Box>
@@ -382,11 +465,11 @@ const ExploreVideoPlay = () => {
           </Box>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <Box sx={{ cursor: "pointer" }}>
+            <Box sx={{ cursor: "pointer" }} onClick={handleSharingModal}>
               <img src={videoShareIcon} alt="Video Share" style={{ width: "40px" }} />
             </Box>
 
-            <Box sx={{ cursor: "pointer" }}>
+            <Box sx={{ cursor: "pointer" }} onClick={handleAddToPlaylist}>
               <img src={videoPlaylistIcon} alt="video Playlist" style={{ width: "40px" }} />
             </Box>
           </Box>
@@ -440,6 +523,19 @@ const ExploreVideoPlay = () => {
           </Box>
         </Box>
       </Container>
+      <AddVideoToPlaylistModal
+        open={openAddVideoToPlaylistModal}
+        userId={userId}
+        authenticated={authenticated}
+        token={token}
+        onClose={handleCloseAddVideoToPlaylistModal}
+        videoId={selectedVideoId}
+      />
+      <SharingVideoModal
+        open={openSharingModal}
+        handleClose={handleSharingCloseModal}
+        videoUrl={`https://example.com/video/${videoId}`} // Replace with your actual video URL
+      />
     </Box>
   );
 };

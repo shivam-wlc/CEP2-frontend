@@ -188,7 +188,9 @@ const VideoCard = ({ video }) => {
         alt="thumbnail"
         style={{
           width: "100%",
-          height: "7.6875rem",
+          height: "9.6875rem",
+          // height: "calc(100% *   9/16)",
+          // objectFit: "cover",
           borderRadius: "8px",
           margin: "auto",
         }}

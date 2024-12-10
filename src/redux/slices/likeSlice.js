@@ -29,24 +29,28 @@ export const toggleLike = createAsyncThunk("like/toggleLike", async ({ videoId, 
   });
 });
 
-export const increaseViewsCount = createAsyncThunk("like/increaseViewsCount", async ({ videoId }) => {
-  console.log("videoCOunt", videoId);
+export const increaseViewsCount = createAsyncThunk("like/increaseViewsCount", async ({ videoId, userId }) => {
   return FetchApi.fetch(`${config.api}/api/viewsAndShares/increaseviewscount/${videoId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({ userId }),
   });
 });
 
-export const increaseSharesCount = createAsyncThunk("like/increaseSharesCount", async ({ videoId }) => {
-  return FetchApi.fetch(`${config.api}/api/viewsAndShares/increasesharescount/${videoId}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-});
+export const increaseSharesCount = createAsyncThunk(
+  "like/increaseSharesCount",
+  async ({ videoId, userId }) => {
+    return FetchApi.fetch(`${config.api}/api/viewsAndShares/increasesharescount/${videoId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId }),
+    });
+  },
+);
 
 const likeSlice = createSlice({
   name: "like",

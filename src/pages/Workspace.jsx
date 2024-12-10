@@ -91,7 +91,6 @@ const Workspace = (props) => {
     }
   };
 
-  console.log("data shivam", userData);
   const inputBoxStyle = {
     "& .MuiFilledInput-root": {
       borderRadius: "25px", // Adjust the value as per your needs

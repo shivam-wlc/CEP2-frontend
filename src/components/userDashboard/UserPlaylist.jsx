@@ -238,6 +238,11 @@ import {
   Grid,
   IconButton,
   Typography,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  FormHelperText,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -246,71 +251,41 @@ import { useNavigate } from "react-router-dom";
 import CreatePlaylistModal from "../../models/CreatePlaylistModal.jsx";
 import { notify } from "../../redux/slices/alertSlice.js";
 import { selectAuthenticated, selectToken, selectUserId } from "../../redux/slices/authSlice.js";
-import {
-  deletePlaylist,
-  getUserPlaylists,
-  removeVideoFromPlaylist,
-  selectPlaylist,
-} from "../../redux/slices/userSlice.js";
+
 import { fonts } from "../../utility/fonts.js";
 import GeneralButton from "../general/GeneralButton.jsx";
-
+import {
+  getUserPlaylist,
+  selectAllPlaylistName,
+  selectPlayListData,
+  removeVideoFromPlaylist,
+} from "../../redux/slices/playlistSlice.js";
 const UserPlaylist = () => {
   const navigate = useNavigate();
   const dispatchToRedux = useDispatch();
   const userId = useSelector(selectUserId);
   const token = useSelector(selectToken);
-  let playlist = useSelector(selectPlaylist);
-  const dummyData = [
-    {
-      _id: "1",
-      thumbnailUrl:
-        "https://marketplace.canva.com/EAFW7JwIojo/2/0/1600w/canva-red-colorful-tips-youtube-thumbnail-FxVVsqyawqY.jpg",
-      title: "MBA/ PGDM Review 2024",
-      rating: 4,
-      ratedby: 10,
-      sharedWith: 152,
-      status: { viewed: true, rated: true, liked: true },
-    },
-    {
-      _id: "2",
-      thumbnailUrl: "https://miro.medium.com/v2/resize:fit:1200/1*60RQyL8WeifCvfJX8dQCcQ.jpeg",
-      title: "How to Become a Lawyer",
-      rating: 5,
-      ratedby: 10,
-      sharedWith: 152,
-      status: { viewed: false, rated: true, liked: true },
-    },
-    {
-      _id: "3",
-      thumbnailUrl:
-        "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/boost-your-finances-youtube-thumbnail-design-template-6bd3aef9baa293adb41b026f3a2a452e_screen.jpg?ts=1694788258",
-      title: "Taxes, Job Scope & PR",
-      rating: 3,
-      ratedby: 10,
-      sharedWith: 152,
-      status: { viewed: true, rated: true, liked: true },
-    },
-    {
-      _id: "4",
-      thumbnailUrl:
-        "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/boost-your-finances-youtube-thumbnail-design-template-6bd3aef9baa293adb41b026f3a2a452e_screen.jpg?ts=1694788258",
-      title: "IIT Bombay Campus Tour",
-      rating: 4,
-      ratedby: 10,
-      sharedWith: 152,
-      status: { viewed: true, rated: true, liked: true },
-    },
-  ];
-  playlist = dummyData;
+  const playlistData = useSelector(selectPlayListData);
+  const [selectedPlaylist, setSelectedPlaylist] = useState("");
+  const [selectedPlaylistVideos, setSelectedPlaylistVideos] = useState([]);
+
+  const handleChange = (event) => {
+    setSelectedPlaylist(event.target.value);
+
+    for (let i = 0; i < playlistData.length; i++) {
+      if (playlistData[i]._id === event.target.value) {
+        setSelectedPlaylistVideos(playlistData[i].videoId);
+      }
+    }
+  };
+
   const [openCreatePlaylistModal, setOpenCreatePlaylistModal] = useState(false);
 
   useEffect(() => {
-    if (!playlist?.length) {
-      dispatchToRedux(getUserPlaylists({ userId, token }));
-    }
+    dispatchToRedux(getUserPlaylist({ userId, token }));
   }, [userId, dispatchToRedux]);
 
+  console.log("playlistData", playlistData);
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -331,18 +306,21 @@ const UserPlaylist = () => {
   };
 
   const handleDeletePlaylist = async (playlistId) => {
-    try {
-      await dispatchToRedux(deletePlaylist({ userId, playlistId, token }));
-      dispatchToRedux(notify({ type: "success", message: "Playlist deleted" }));
-    } catch (error) {
-      console.error("Error deleting playlist:", error);
-    }
+    // try {
+    //   await dispatchToRedux(deletePlaylist({ userId, playlistId, token }));
+    //   dispatchToRedux(notify({ type: "success", message: "Playlist deleted" }));
+    // } catch (error) {
+    //   console.error("Error deleting playlist:", error);
+    // }
   };
 
-  const handleRemoveVideo = async (playlistId, videoId) => {
+  const handleRemoveVideo = async (videoId) => {
+    console.log("playlistId", selectedPlaylist, "videoId", videoId);
     try {
-      await dispatchToRedux(removeVideoFromPlaylist({ userId, playlistId, videoId, token }));
-      dispatchToRedux(notify({ type: "success", message: "Video removed" }));
+      await dispatchToRedux(
+        removeVideoFromPlaylist({ userId, playlistId: selectedPlaylist, videoId, token }),
+      );
+      dispatchToRedux(notify({ type: "success", message: "Video removed from playlist" }));
     } catch (error) {
       console.error("Error removing video from playlist:", error);
     }
@@ -371,9 +349,82 @@ const UserPlaylist = () => {
               fontFamily: fonts.sans,
             }}
           >
-            My Playlist
+            All Playlists
           </Typography>
-          <GeneralButton onClick={handleCreatePlaylist} text="Create Playlist" />
+          {/* <GeneralButton onClick={handleCreatePlaylist} text="Create Playlist" />
+           */}
+          <button
+            style={{
+              backgroundImage: "linear-gradient(to top left, #720361, #bf2f75)", // Fix: Use camelCase and string for gradient
+              border: "none", // Fix: Add quotes around values
+              padding: "0.6rem 1rem",
+              borderRadius: "90px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "fit-content",
+              fontSize: "1.125rem",
+              gap: "0.875rem",
+              color: "white",
+              cursor: "pointer",
+            }}
+            onClick={handleCreatePlaylist}
+          >
+            Create Playlist
+          </button>
+        </Box>
+
+        <Box sx={{ width: "100%", padding: 2 }}>
+          <FormControl fullWidth>
+            <InputLabel id="playlist-select-label">Select Playlist</InputLabel>
+            <Select
+              labelId="playlist-select-label"
+              id="playlist-select"
+              value={selectedPlaylist}
+              onChange={handleChange}
+              label="Select Playlist"
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "gray", // Default border color
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "pink", // Border color on hover
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "pink", // Border color when focused
+                  },
+                },
+                "& .MuiSelect-icon": {
+                  color: "pink", // Pink icon color
+                },
+                "&:hover .MuiSelect-icon": {
+                  color: "darkpink", // Darker pink icon color on hover
+                },
+                "& .MuiFormHelperText-root": {
+                  color: "pink", // Helper text color
+                },
+              }}
+            >
+              {playlistData?.map((playlist) => (
+                <MenuItem
+                  key={playlist._id}
+                  // value={playlist.videoId}
+                  value={playlist._id}
+                  // value={playlist.videoId.length > 0 ? playlist.videoId : null}
+                  sx={{
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 182, 193, 0.5)", // Light pink hover effect
+                    },
+                  }}
+                >
+                  {playlist.playlistName}
+                </MenuItem>
+              ))}
+            </Select>
+            {/* Optional: You can display a helper text or error message */}
+            <FormHelperText>Select a playlist from the list</FormHelperText>
+          </FormControl>
         </Box>
 
         <Box
@@ -383,7 +434,7 @@ const UserPlaylist = () => {
             marginTop: "1rem",
           }}
         >
-          {playlist?.length === 0 ? (
+          {selectedPlaylistVideos?.length === 0 ? (
             <Box
               sx={{
                 display: "flex",
@@ -394,13 +445,13 @@ const UserPlaylist = () => {
               }}
             >
               <Typography variant="h5" sx={{ fontFamily: fonts.sans, fontWeight: "600" }}>
-                No Playlist Found
+                No Video Found in selected playlist
               </Typography>
             </Box>
           ) : (
             <Box sx={{ padding: "2rem" }}>
               <Grid container spacing={3}>
-                {playlist?.map((video) => (
+                {selectedPlaylistVideos?.map((video) => (
                   <Grid item xs={12} sm={6} md={4} key={video._id}>
                     <Box
                       sx={{
@@ -413,7 +464,12 @@ const UserPlaylist = () => {
                       }}
                     >
                       <img
-                        src={video.thumbnailUrl}
+                        // src={video.thumbnailUrl}
+                        src={
+                          video.youtubeLink
+                            ? `https://img.youtube.com/vi/${video.youtubeVideoId}/maxresdefault.jpg`
+                            : video.thumbnail
+                        }
                         alt={video.title}
                         style={{
                           width: "100%",
@@ -424,18 +480,20 @@ const UserPlaylist = () => {
                       />
 
                       <Typography variant="h6" sx={{ marginTop: "1rem" }}>
-                        {video.title}
+                        {/* {video.title}
+                         */}
+                        {video.title.length > 17 ? video.title.slice(0, 17) + "..." : video.title}
                       </Typography>
 
                       <Box sx={{ display: "flex", alignItems: "center" }}>
-                        {renderStars(video.rating)}
+                        {renderStars(video.averageRating)}
                         <Typography variant="body2" sx={{ marginLeft: "0.5rem" }}>
-                          ({video.ratedby})
+                          ({video.totalRatings})
                         </Typography>
                       </Box>
 
                       <Typography variant="body2" sx={{ color: "#777", marginTop: "0.5rem" }}>
-                        Shared with: {video.sharedWith} users
+                        Shared with: {video.totalShares} users
                       </Typography>
 
                       <Box
@@ -448,18 +506,18 @@ const UserPlaylist = () => {
                         <Button
                           variant="contained"
                           sx={{
-                            backgroundColor: video.status.viewed ? "#720361" : "#f8f8f8",
-                            color: video.status.viewed ? "white" : "black",
+                            backgroundColor: video.watched ? "#720361" : "#f8f8f8",
+                            color: video.watched ? "white" : "black",
                             textTransform: "none",
                           }}
                         >
-                          {video.status.viewed ? "Viewed" : "Not Viewed"}
+                          {video.watched ? "Viewed" : "Not Viewed"}
                         </Button>
                         <Button
                           variant="contained"
                           sx={{
-                            backgroundColor: video.status.rated ? "#720361" : "#f8f8f8",
-                            color: video.status.rated ? "white" : "black",
+                            backgroundColor: video.rated ? "#720361" : "#f8f8f8",
+                            color: video.rated ? "white" : "black",
                             textTransform: "none",
                           }}
                         >
@@ -468,8 +526,8 @@ const UserPlaylist = () => {
                         <Button
                           variant="contained"
                           sx={{
-                            backgroundColor: video.status.liked ? "#720361" : "#f8f8f8",
-                            color: video.status.liked ? "white" : "black",
+                            backgroundColor: video.liked ? "#720361" : "#f8f8f8",
+                            color: video.liked ? "white" : "black",
                             textTransform: "none",
                           }}
                         >
@@ -484,7 +542,7 @@ const UserPlaylist = () => {
                           right: "1rem",
                           color: "#FF4D4D",
                         }}
-                        onClick={() => handleRemoveVideo(playlist._id, video._id)}
+                        onClick={() => handleRemoveVideo(video._id)}
                       >
                         <DeleteIcon />
                       </IconButton>

@@ -63,6 +63,8 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.token = "";
       state.userId = "";
+      // Clear video data from localStorage
+      localStorage.removeItem("viewedVideosWithTimestamp");
     },
     setIsAuthenticated(state, { payload }) {
       state.isAuthenticated = payload.isAuthenticated;
