@@ -36,9 +36,10 @@ const AssessmentResult = () => {
     });
     if (response.ok) {
       const redirectUrl = await response.json();
-      console.log(redirectUrl);
+      console.log("redirectUrl", redirectUrl);
 
-      window.location.href = redirectUrl.url;
+      // window.location.href = redirectUrl.url;
+      // window.location.href = "http://localhost:5173/assessment-result1";
     }
   };
 

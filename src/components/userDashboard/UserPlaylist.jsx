@@ -228,6 +228,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
 import {
   Accordion,
   AccordionDetails,
@@ -259,6 +260,7 @@ import {
   selectAllPlaylistName,
   selectPlayListData,
   removeVideoFromPlaylist,
+  moveVideoToDifferentPlaylist,
 } from "../../redux/slices/playlistSlice.js";
 const UserPlaylist = () => {
   const navigate = useNavigate();
@@ -268,6 +270,10 @@ const UserPlaylist = () => {
   const playlistData = useSelector(selectPlayListData);
   const [selectedPlaylist, setSelectedPlaylist] = useState("");
   const [selectedPlaylistVideos, setSelectedPlaylistVideos] = useState([]);
+  //for moving video to another playlist
+  const [openMoveModal, setOpenMoveModal] = useState(false);
+  const [currentVideoId, setCurrentVideoId] = useState("");
+  const [targetPlaylistId, setTargetPlaylistId] = useState("");
 
   const handleChange = (event) => {
     setSelectedPlaylist(event.target.value);
@@ -285,7 +291,6 @@ const UserPlaylist = () => {
     dispatchToRedux(getUserPlaylist({ userId, token }));
   }, [userId, dispatchToRedux]);
 
-  console.log("playlistData", playlistData);
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -315,7 +320,6 @@ const UserPlaylist = () => {
   };
 
   const handleRemoveVideo = async (videoId) => {
-    console.log("playlistId", selectedPlaylist, "videoId", videoId);
     try {
       await dispatchToRedux(
         removeVideoFromPlaylist({ userId, playlistId: selectedPlaylist, videoId, token }),
@@ -323,6 +327,37 @@ const UserPlaylist = () => {
       dispatchToRedux(notify({ type: "success", message: "Video removed from playlist" }));
     } catch (error) {
       console.error("Error removing video from playlist:", error);
+    }
+  };
+
+  // Open the modal and set the video ID
+  const handleOpenMoveModal = (videoId) => {
+    setCurrentVideoId(videoId);
+    setOpenMoveModal(true);
+  };
+
+  // Close the modal
+  const handleCloseMoveModal = () => {
+    setOpenMoveModal(false);
+    setCurrentVideoId("");
+    setTargetPlaylistId("");
+  };
+
+  const handleMoveVideo = async () => {
+    setOpenMoveModal(false);
+
+    try {
+      await dispatchToRedux(
+        moveVideoToDifferentPlaylist({
+          sourcePlaylistId: selectedPlaylist,
+          targetPlaylistId,
+          videoId: currentVideoId,
+          token,
+        }),
+      );
+      dispatchToRedux(notify({ type: "success", message: "Video moved to another playlist" }));
+    } catch (error) {
+      console.error("Error moving video to another playlist:", error);
     }
   };
 
@@ -546,6 +581,18 @@ const UserPlaylist = () => {
                       >
                         <DeleteIcon />
                       </IconButton>
+
+                      <IconButton
+                        sx={{
+                          position: "absolute",
+                          bottom: "8rem",
+                          right: "3.5rem",
+                          color: "#FF4D4D",
+                        }}
+                        onClick={() => handleOpenMoveModal(video._id)}
+                      >
+                        <DriveFileMoveIcon />
+                      </IconButton>
                     </Box>
                   </Grid>
                 ))}
@@ -554,6 +601,103 @@ const UserPlaylist = () => {
           )}
         </Box>
       </Container>
+      {openMoveModal && (
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 500,
+            bgcolor: "#F9FAFB", // Light gray background for better contrast
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            borderRadius: "20px",
+            border: "1px solid #ddd",
+          }}
+        >
+          <Container
+            maxWidth="sm"
+            sx={{
+              padding: "2rem",
+              backgroundColor: "white",
+              borderRadius: "20px",
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                marginBottom: "1.5rem",
+                fontFamily: fonts.sans,
+                fontWeight: "bold",
+                textAlign: "center",
+                color: "#333", // Darker text for readability
+              }}
+            >
+              Move Video to Another Playlist
+            </Typography>
+            <FormControl fullWidth sx={{ marginTop: "1rem" }}>
+              <InputLabel id="target-playlist-select-label">Select Playlist</InputLabel>
+              <Select
+                labelId="target-playlist-select-label"
+                value={targetPlaylistId}
+                onChange={(e) => setTargetPlaylistId(e.target.value)}
+              >
+                {playlistData.map((playlist) => (
+                  <MenuItem key={playlist._id} value={playlist._id}>
+                    {playlist.playlistName}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "1.5rem",
+              }}
+            >
+              <Button
+                sx={{
+                  background: "linear-gradient(to right, #720361, #bf2f75)",
+                  color: "white",
+                  padding: "0.7rem 2rem",
+                  borderRadius: "20px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  fontSize: "1rem",
+                  "&:hover": {
+                    background: "linear-gradient(to right, #bf2f75, #720361)",
+                  },
+                }}
+                onClick={handleCloseMoveModal}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                disabled={!targetPlaylistId}
+                onClick={handleMoveVideo}
+                sx={{
+                  background: "linear-gradient(to right, #720361, #bf2f75)",
+                  color: "white",
+                  padding: "0.7rem 2rem",
+                  borderRadius: "20px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  fontSize: "1rem",
+                  "&:hover": {
+                    background: "linear-gradient(to right, #bf2f75, #720361)",
+                  },
+                }}
+              >
+                Move
+              </Button>
+            </Box>
+          </Container>
+        </Box>
+      )}
       <CreatePlaylistModal
         open={openCreatePlaylistModal}
         onClose={handleCloseModal}

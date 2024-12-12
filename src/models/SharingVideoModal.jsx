@@ -8,6 +8,9 @@ import {
   TelegramIcon,
   TwitterIcon,
   WhatsappIcon,
+  snapchat,
+  lineMedia,
+  wechat,
 } from "../assets/assest.js";
 import GeneralButton from "../components/general/GeneralButton.jsx";
 import { fonts } from "../utility/fonts";
@@ -55,6 +58,21 @@ const SharingVideoModal = ({ open, handleClose, videoUrl }) => {
       icon: WhatsappIcon,
       name: "WhatsApp",
       url: "whatsapp://send",
+    },
+    {
+      icon: snapchat,
+      name: "Snapchat",
+      url: "https://snapchat.com/add",
+    },
+    {
+      icon: lineMedia,
+      name: "Line",
+      url: "https://line.me/R/msg/text/?",
+    },
+    {
+      icon: wechat,
+      name: "WeChat",
+      url: "https://wechat.com",
     },
   ];
 

@@ -69,6 +69,20 @@ export const removeVideoFromPlaylist = createAsyncThunk(
   },
 );
 
+export const moveVideoToDifferentPlaylist = createAsyncThunk(
+  "playlist/moveVideoToDifferentPlaylist",
+  async ({ sourcePlaylistId, targetPlaylistId, videoId, token }) => {
+    return FetchApi.fetch(`${config.api}/api/playlist/movevideo`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ sourcePlaylistId, targetPlaylistId, videoId }),
+    });
+  },
+);
+
 const playlistSlice = createSlice({
   name: "playlist",
   initialState,
@@ -92,6 +106,10 @@ const playlistSlice = createSlice({
       //   state.playListData = payload.playlistsData;
     });
     builder.addCase(removeVideoFromPlaylist.fulfilled, (state, { payload }) => {
+      //   state.AllPlaylistName = payload.playlistNamesAll;
+      //   state.playListData = payload.playlistsData;
+    });
+    builder.addCase(moveVideoToDifferentPlaylist.fulfilled, (state, { payload }) => {
       //   state.AllPlaylistName = payload.playlistNamesAll;
       //   state.playListData = payload.playlistsData;
     });

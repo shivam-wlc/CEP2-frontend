@@ -13,6 +13,9 @@ import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import { getInterests, selectInterests } from "../redux/slices/interestSlice.js";
 import { getUserProfile, selectUserProfile } from "../redux/slices/profileSlice.js";
 import assessmentResult1 from "../styles/AssessmentResult1.module.css";
+import CareerDetailsFromOnet from "../models/CareerDetailsFromOnet.jsx";
+import { getCareerInfo } from "../redux/slices/onetSlice.js";
+import { Avatar, Divider, IconButton, Rating, Typography } from "@mui/material";
 
 const AssessmentResult1 = () => {
   const dispatchToRedux = useDispatch();
@@ -20,6 +23,11 @@ const AssessmentResult1 = () => {
   const userId = useSelector(selectUserId);
   const interestsProfile = useSelector(selectInterests);
   const userProfile = useSelector(selectUserProfile);
+  const [careerRating, setCareerRating] = useState(3);
+
+  //modal
+  const [openModal, setOpenModal] = useState(false);
+  const [careerData, setCareerData] = useState(null);
 
   useEffect(() => {
     dispatchToRedux(getInterests({ userId, token }));
@@ -104,6 +112,27 @@ const AssessmentResult1 = () => {
 
   console.log("interestsProfile", interestsProfile);
 
+  const careerDetails = async (item) => {
+    await dispatchToRedux(getCareerInfo({ careercode: item.code, topic: "report", token }));
+  };
+
+  const handleOpenModal = async (item) => {
+    const response = await dispatchToRedux(getCareerInfo({ careercode: item.code, topic: "report", token }));
+    if (response.error) {
+      console.error("Error fetching career info:", response.error);
+      return;
+    }
+
+    // setCareerData(item);
+    setCareerData(response.payload);
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setCareerData(null);
+  };
+
   return (
     <div>
       <Headers />
@@ -172,17 +201,33 @@ const AssessmentResult1 = () => {
               {interestsProfile?.careers?.career.map((item, index) => {
                 return (
                   <li key={index} className={assessmentResult1.bestMatchCard}>
-                    <div>
-                      <p className={assessmentResult1.title}>{item.title}</p>
+                    {/* <div onClick={(item) => careerDetails(item)}> */}
+                    {/* <div onClick={() => careerDetails(item)}> */}
+                    <div onClick={() => handleOpenModal(item)}>
+                      {/* <p className={assessmentResult1.title}>{item.title}</p> */}
+                      <p style={{ fontWeight: "bold", color: "black" }}>{item.title}</p>
+
                       <p className={assessmentResult1.description}>{item.fit}</p>
                     </div>
                     <div className={assessmentResult1.userAndRating}>
                       {/* <img src="#" alt="logo" className="image" /> */}
                       {/* dummy */}
                       <div className={assessmentResult1.logo}>P</div>
-                      <p className={assessmentResult1.rating}>
+                      {/* <p className={assessmentResult1.rating}>
                         <FaStar className={assessmentResult1.star} />5
-                      </p>
+                      </p> */}
+                      <IconButton sx={{ marginTop: "0.5rem" }}>
+                        <Rating sx={{ fontSize: "1rem" }} name="read-only" readOnly value={careerRating} />
+                        <Typography
+                          sx={{
+                            color: "gray",
+                            mx: 0.25,
+                            fontSize: "1rem",
+                          }}
+                        >
+                          3
+                        </Typography>
+                      </IconButton>
                     </div>
                   </li>
                 );
@@ -192,6 +237,7 @@ const AssessmentResult1 = () => {
         </div>
       </div>
       <Footer />
+      <CareerDetailsFromOnet open={openModal} onClose={handleCloseModal} careerData={careerData} />
     </div>
   );
 };
