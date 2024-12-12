@@ -109,6 +109,9 @@ import TikTokIcon from "./socialMedia/tik-tok.png";
 import TwitterIcon from "./socialMedia/twitter.png";
 import WhatsappIcon from "./socialMedia/whatsapp.png";
 import YoutubeIcon from "./socialMedia/youtube.png";
+import snapchat from "./socialMedia/snapchat.png";
+import lineMedia from "./socialMedia/line.png";
+import wechat from "./socialMedia/wechat.png";
 //socialmedia
 import arab from "./userDashboard/Arab.png";
 import asstaken from "./userDashboard/asstaken.png";
@@ -169,7 +172,9 @@ export {
   TikTokIcon,
   TwitterIcon,
   YoutubeIcon,
-
+  snapchat,
+  lineMedia,
+  wechat,
   // socialMediaIcons,
   CreatorIcon,
   MaleFemaleIcon,
