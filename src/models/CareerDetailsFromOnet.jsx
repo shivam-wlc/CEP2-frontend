@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, Container, LinearProgress, Modal, Typography } from "@mui/material";
 import { fonts } from "../utility/fonts.js";
+import { lowIndicator, mediumIndicator, highIndicator } from "../assets/assest.js";
 
 const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
   if (!careerData) return null; // Ensure data is available before rendering
@@ -96,9 +97,9 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
             </Typography>
           ))}
 
-          <Typography variant="h6" sx={{ marginTop: "2rem" }}>
+          {/* <Typography variant="h6" sx={{ marginTop: "2rem" }}>
             Resources:
-          </Typography>
+          </Typography> */}
           {/* Add resources rendering if needed */}
           <Box
             sx={{
@@ -119,21 +120,28 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
                 marginBottom: "2rem",
               }}
             >
-              <Typography
+              <Button
                 sx={{
+                  fontSize: "16px",
                   fontFamily: fonts.sans,
-                  fontSize: "21px",
-                  fontWeight: 600,
-                  color: "#570088",
-                  marginBottom: "5px",
+                  background: "#FD8C0C",
+                  color: "white",
+                  marginBottom: "1rem",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#FD8C0C", 
+                    boxShadow: "none", 
+                  },
                 }}
               >
                 KNOWLEDGE
-              </Typography>
+              </Button>
+
               {careerData?.knowledge.group.map((el, i) => (
                 <Box key={i}>
                   <Typography
-                    sx={{ fontFamily: fonts.sans, fontSize: "18px", color: "#570088", marginLeft: "1rem" }}
+                    sx={{ fontFamily: fonts.sans, fontSize: "18px", color: "#720361", marginLeft: "1rem" }}
                   >
                     {el.title.name}
                   </Typography>
@@ -165,21 +173,27 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
                 marginBottom: "2rem",
               }}
             >
-              <Typography
+              <Button
                 sx={{
+                  fontSize: "16px",
                   fontFamily: fonts.sans,
-                  fontSize: "21px",
-                  fontWeight: 600,
-                  color: "#B23800",
-                  marginBottom: "5px",
+                  background: "#FD8C0C",
+                  color: "white",
+                  marginBottom: "1rem",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#FD8C0C", // Keeps the background the same on hover
+                    boxShadow: "none", // Disables any shadow effect on hover
+                  },
                 }}
               >
                 SKILLS
-              </Typography>
+              </Button>
               {careerData?.skills.group.map((el, i) => (
                 <Box key={i}>
                   <Typography
-                    sx={{ fontFamily: fonts.sans, fontSize: "18px", color: "#B23800", marginLeft: "1rem" }}
+                    sx={{ fontFamily: fonts.sans, fontSize: "18px", color: "#720361", marginLeft: "1rem" }}
                   >
                     {el.title.name}
                   </Typography>
@@ -211,21 +225,27 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
                 marginBottom: "2rem",
               }}
             >
-              <Typography
+              <Button
                 sx={{
+                  fontSize: "16px",
                   fontFamily: fonts.sans,
-                  fontSize: "21px",
-                  fontWeight: 600,
-                  color: "#074597",
-                  marginBottom: "5px",
+                  background: "#FD8C0C",
+                  color: "white",
+                  marginBottom: "1rem",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#FD8C0C", // Keeps the background the same on hover
+                    boxShadow: "none", // Disables any shadow effect on hover
+                  },
                 }}
               >
                 ABILITIES
-              </Typography>
+              </Button>
               {careerData?.abilities.group.map((el, i) => (
                 <Box key={i}>
                   <Typography
-                    sx={{ fontFamily: fonts.sans, fontSize: "18px", color: "#074597", marginLeft: "1rem" }}
+                    sx={{ fontFamily: fonts.sans, fontSize: "18px", color: "#720361", marginLeft: "1rem" }}
                   >
                     {el.title.name}
                   </Typography>
@@ -256,15 +276,27 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
                 marginBottom: "2rem",
               }}
             >
-              <Typography
-                sx={{ fontFamily: fonts.sans, fontSize: "21px", fontWeight: 600, color: "#0F6393" }}
+              <Button
+                sx={{
+                  fontSize: "16px",
+                  fontFamily: fonts.sans,
+                  background: "#FD8C0C",
+                  color: "white",
+                  marginBottom: "1rem",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#FD8C0C", // Keeps the background the same on hover
+                    boxShadow: "none", // Disables any shadow effect on hover
+                  },
+                }}
               >
-                Technology
-              </Typography>
+                TECHNOLOGY
+              </Button>
               {careerData?.technology.category.map((el, i) => (
                 <Box key={i}>
                   <Typography
-                    sx={{ fontFamily: fonts.sans, fontSize: "18px", color: "#0F6393", marginLeft: "1rem" }}
+                    sx={{ fontFamily: fonts.sans, fontSize: "18px", color: "#720361", marginLeft: "1rem" }}
                   >
                     {el.title.name}
                   </Typography>
@@ -296,11 +328,28 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
                 marginBottom: "2rem",
               }}
             >
-              <Typography
-                sx={{ fontFamily: fonts.sans, fontSize: "21px", fontWeight: 600, color: "#9D3781" }}
+              {/* <Typography
+                sx={{ fontFamily: fonts.sans, fontSize: "21px", fontWeight: 600, color: "#FD8C0C" }}
               >
                 PERSONALITY
-              </Typography>
+              </Typography> */}
+              <Button
+                sx={{
+                  fontSize: "16px",
+                  fontFamily: fonts.sans,
+                  background: "#FD8C0C",
+                  color: "white",
+                  marginBottom: "1rem",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#FD8C0C", // Keeps the background the same on hover
+                    boxShadow: "none", // Disables any shadow effect on hover
+                  },
+                }}
+              >
+                PERSONALITY
+              </Button>
               <Typography sx={{ fontFamily: fonts.sans, fontSize: "16px", color: "gray" }}>
                 {careerData?.personality.top_interest.description}
               </Typography>
@@ -310,7 +359,7 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
               {careerData?.personality.work_styles.element.map((el, i) => (
                 <Typography
                   key={i}
-                  sx={{ paddingLeft: "3rem", textTransform: "capitalize", color: "#9D3781" }}
+                  sx={{ paddingLeft: "3rem", textTransform: "capitalize", color: "#720361" }}
                 >
                   {el.name}
                 </Typography>
@@ -328,11 +377,24 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
                 marginBottom: "2rem",
               }}
             >
-              <Typography
-                sx={{ fontFamily: fonts.sans, fontSize: "21px", fontWeight: 600, color: "#78AA68" }}
+              <Button
+                sx={{
+                  fontSize: "16px",
+                  fontFamily: fonts.sans,
+                  background: "#FD8C0C",
+                  color: "white",
+                  marginBottom: "1rem",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#FD8C0C", // Keeps the background the same on hover
+                    boxShadow: "none", // Disables any shadow effect on hover
+                  },
+                }}
               >
-                Education Needed
-              </Typography>
+                EDUCATION REQUIRED
+              </Button>
+
               <Typography sx={{ fontFamily: fonts.sans, fontSize: "16px", color: "gray" }}>
                 Education Usually Needed:
               </Typography>
@@ -357,26 +419,69 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
                 marginBottom: "2rem",
               }}
             >
-              <Typography
-                sx={{ fontFamily: fonts.sans, fontSize: "21px", fontWeight: 600, color: "#78AA68" }}
+              <Button
+                sx={{
+                  fontSize: "16px",
+                  fontFamily: fonts.sans,
+                  background: "#FD8C0C",
+                  color: "white",
+                  marginBottom: "1rem",
+                  borderRadius: "5px",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#FD8C0C", // Keeps the background the same on hover
+                    boxShadow: "none", // Disables any shadow effect on hover
+                  },
+                }}
               >
                 JOB OUTLOOK
-              </Typography>
+              </Button>
               <Typography sx={{ fontFamily: fonts.sans, fontSize: "16px", color: "gray" }}>
                 {careerData?.job_outlook.outlook.description}
               </Typography>
 
-              <Typography sx={{ fontFamily: fonts.sans, fontSize: "16px", color: "gray" }}>
-                Category : {careerData?.job_outlook.outlook.category}
+              <img
+                src={
+                  careerData?.job_outlook.outlook.category === "Below Average"
+                    ? lowIndicator
+                    : careerData?.job_outlook.outlook.category === "Bright"
+                      ? highIndicator
+                      : mediumIndicator
+                }
+                width={"50%"}
+                alt="Indicator"
+                textAlign="center"
+              />
+
+              {/* <Typography sx={{ fontFamily: fonts.sans, fontSize: "16px", color: "gray" }}>
+                Category :
               </Typography>
+              <Typography sx={{ color: "#720361" }}> {careerData?.job_outlook.outlook.category}</Typography> */}
 
               <Box sx={{ marginTop: "1rem", width: "100%" }}>
-                <Typography
-                  sx={{ fontFamily: fonts.sans, fontSize: "21px", fontWeight: 600, color: "#78AA68" }}
+                {/* <Typography
+                  sx={{ fontFamily: fonts.sans, fontSize: "21px", fontWeight: 600, color: "#FD8C0C" }}
                 >
-                  Salary Information
-                </Typography>
-                <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "1rem" }}>
+                  SALARY GUIDE
+                </Typography> */}
+                <Button
+                  sx={{
+                    fontSize: "16px",
+                    fontFamily: fonts.sans,
+                    background: "#FD8C0C",
+                    color: "white",
+                    marginBottom: "1rem",
+                    borderRadius: "5px",
+                    fontWeight: "bold",
+                    "&:hover": {
+                      backgroundColor: "#FD8C0C", // Keeps the background the same on hover
+                      boxShadow: "none", // Disables any shadow effect on hover
+                    },
+                  }}
+                >
+                  ANNUAL EARNINGS
+                </Button>
+                {/* <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "1rem" }}>
                   <Box sx={{ width: "45%" }}>
                     <Typography sx={{ color: "#78AA68" }}>Median Salary</Typography>
                     <LinearProgress
@@ -415,6 +520,73 @@ const CareerDetailsFromOnet = ({ open, onClose, careerData }) => {
                     />
                     <Typography sx={{ textAlign: "center", marginTop: "0.5rem" }}>
                       ${careerData?.job_outlook.salary.annual_10th_percentile.toLocaleString()}
+                    </Typography>
+                  </Box>
+                </Box> */}
+                <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "1rem" }}>
+                  {/* Low Salary (10th Percentile) */}
+                  <Box sx={{ width: "30%" }}>
+                    <Typography sx={{ color: "#720361" }}>Low</Typography>
+                    <LinearProgress
+                      variant="determinate"
+                      value={
+                        (careerData?.job_outlook.salary.annual_10th_percentile /
+                          careerData?.job_outlook.salary.annual_90th_percentile) *
+                        100
+                      }
+                      sx={{
+                        height: "20px",
+                        borderRadius: "10px",
+                        backgroundColor: "#ddd",
+                        marginTop: "0.5rem",
+                      }}
+                    />
+                    <Typography sx={{ textAlign: "center", marginTop: "0.5rem" }}>
+                      ${careerData?.job_outlook.salary.annual_10th_percentile.toLocaleString()}
+                    </Typography>
+                  </Box>
+
+                  {/* Medium Salary (Median) */}
+                  <Box sx={{ width: "30%" }}>
+                    <Typography sx={{ color: "#720361" }}>Median</Typography>
+                    <LinearProgress
+                      variant="determinate"
+                      value={
+                        (careerData?.job_outlook.salary.annual_median /
+                          careerData?.job_outlook.salary.annual_90th_percentile) *
+                        100
+                      }
+                      sx={{
+                        height: "20px",
+                        borderRadius: "10px",
+                        backgroundColor: "#ddd",
+                        marginTop: "0.5rem",
+                      }}
+                    />
+                    <Typography sx={{ textAlign: "center", marginTop: "0.5rem" }}>
+                      ${careerData?.job_outlook.salary.annual_median.toLocaleString()}
+                    </Typography>
+                  </Box>
+
+                  {/* High Salary (90th Percentile) */}
+                  <Box sx={{ width: "30%" }}>
+                    <Typography sx={{ color: "#720361" }}>High</Typography>
+                    <LinearProgress
+                      variant="determinate"
+                      value={
+                        (careerData?.job_outlook.salary.annual_90th_percentile /
+                          careerData?.job_outlook.salary.annual_90th_percentile) *
+                        100
+                      }
+                      sx={{
+                        height: "20px",
+                        borderRadius: "10px",
+                        backgroundColor: "#ddd",
+                        marginTop: "0.5rem",
+                      }}
+                    />
+                    <Typography sx={{ textAlign: "center", marginTop: "0.5rem" }}>
+                      ${careerData?.job_outlook.salary.annual_90th_percentile.toLocaleString()}
                     </Typography>
                   </Box>
                 </Box>

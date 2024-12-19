@@ -158,6 +158,14 @@ import videoPlaylistIcon from "./singleVideoPlayIcon/playListIcon.png";
 //   { icon: YoutubeIcon, name: "Youtube" },
 // ];
 
+// result page icons
+
+import orageMove from "./resultPageIcons/transferOrange.png";
+import purpleMove from "./resultPageIcons/transferPurple.png";
+import lowIndicator from "./resultPageIcons/lowIndicator.png";
+import mediumIndicator from "./resultPageIcons/mediumIndicator.png";
+import highIndicator from "./resultPageIcons/highIndicator.png";
+
 export {
   PageNotFound,
   Logo,
@@ -305,4 +313,10 @@ export {
   videoShareIcon,
   videoViewsIcon,
   videoPlaylistIcon,
+  // result page icons
+  orageMove,
+  purpleMove,
+  lowIndicator,
+  mediumIndicator,
+  highIndicator,
 };

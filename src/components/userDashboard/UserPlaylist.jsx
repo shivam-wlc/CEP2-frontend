@@ -252,6 +252,7 @@ import { useNavigate } from "react-router-dom";
 import CreatePlaylistModal from "../../models/CreatePlaylistModal.jsx";
 import { notify } from "../../redux/slices/alertSlice.js";
 import { selectAuthenticated, selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+import { orageMove, purpleMove } from "../../assets/assest.js";
 
 import { fonts } from "../../utility/fonts.js";
 import GeneralButton from "../general/GeneralButton.jsx";
@@ -288,7 +289,9 @@ const UserPlaylist = () => {
   const [openCreatePlaylistModal, setOpenCreatePlaylistModal] = useState(false);
 
   useEffect(() => {
-    dispatchToRedux(getUserPlaylist({ userId, token }));
+    if (!playlistData.length) {
+      dispatchToRedux(getUserPlaylist({ userId, token }));
+    }
   }, [userId, dispatchToRedux]);
 
   const renderStars = (rating) => {
@@ -591,7 +594,7 @@ const UserPlaylist = () => {
                         }}
                         onClick={() => handleOpenMoveModal(video._id)}
                       >
-                        <DriveFileMoveIcon />
+                        <img src={purpleMove} alt="Move" width={"25px"} />
                       </IconButton>
                     </Box>
                   </Grid>
