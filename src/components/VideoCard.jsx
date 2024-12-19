@@ -140,31 +140,33 @@ import SharingVideoModal from "../models/SharingVideoModal.jsx";
 import { selectAuthenticated, selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import { addHistory } from "../redux/slices/userSlice.js";
 import videoCardStyles from "../styles/VideoCard.module.css";
+import ExploreVideoPlayPopup from "../models/ExploreVideoPlayPopup.jsx";
 
 const VideoCard = ({ video }) => {
   console.log(video);
 
-  const authenticated = useSelector(selectAuthenticated);
+  const isAuthenticated = useSelector(selectAuthenticated);
   const userId = useSelector(selectUserId);
   const token = useSelector(selectToken);
   const dispatchToRedux = useDispatch();
   const navigate = useNavigate();
-  const [openModal, setOpenModal] = React.useState(false);
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
+  const [videoPlayPopup, setVideoPlayPopup] = React.useState(false);
+  const [videoId, setVideoId] = React.useState("");
 
   const handleVideoClick = (videoId) => {
-    // if (authenticated) {
-    //   dispatchToRedux(addHistory({ userId, videoId, token }));
-    // }
-    navigate(`/video/${videoId}`);
+    if (!isAuthenticated && !userId) {
+      setVideoPlayPopup(true);
+      setVideoId(videoId);
+    } else {
+      navigate(`/video/${videoId}`);
+    }
   };
+
+  const handleClosePopup = () => {
+    setVideoPlayPopup(false);
+    setVideoId("");
+  };
+
   return (
     <div
       style={{
@@ -221,6 +223,7 @@ const VideoCard = ({ video }) => {
       <p style={{textWrap: "nowrap", fontSize: "1.2rem", color: "#888888"}}> &nbsp; {insights.length > 47 ? insights.slice(0, 48)+ "..." : insights} &nbsp;</p>
       <img src={infoCircleIcon} alt=""  width={"24px"} height={"24px"}/>
     </div> */}
+      <ExploreVideoPlayPopup open={videoPlayPopup} onClose={handleClosePopup} videoId={videoId} />
     </div>
   );
 };

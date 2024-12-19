@@ -547,203 +547,26 @@ import { Box, Button, Container, MenuItem, Pagination, TextField, Typography } f
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import GeneralButton from "../components/general/GeneralButton";
 import VideoCard from "../components/VideoCard";
 import { allvideos, resetState, selectAllVideosData, videoFilter } from "../redux/slices/creatorSlice";
 import { getAllVideos, selectAllVideos } from "../redux/slices/exploreSlice.js";
 import exploreStyles from "../styles/Explore.module.css";
 import { categories, tags } from "../utility/category";
 import { fonts } from "../utility/fonts.js";
+// import ExploreVideoPlayPopup from "../models/ExploreVideoPlayPopup.jsx";
+import { selectAuthenticated, selectToken, selectUserId } from "../redux/slices/authSlice";
 
 const Explore = () => {
   const dispatchToRedux = useDispatch();
   let allVideosData = useSelector(selectAllVideos);
-  // allVideosData = [
-  //   {
-  //     _id: "66b37c7c6f15606f4047729e",
-  //     creatorId: "66b0bbec7034f8bd5fe19f04",
-  //     videoLink: "https://youtu.be/F4Zu5ZZAG7I?si=kYqWC4iKZSdyiOjN",
-  //     title: "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
-  //     description: "7 Ways to Make a Conversation With Anyone | Malavika Varadan | TEDxBITSPilaniDubai",
-  //     tags: ["literature"],
-  //     language: "Aymara",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "F4Zu5ZZAG7I",
-  //     category: "Career Planning",
-  //     averageRating: 2,
-  //     createdAt: new Date("2024-08-07T13:54:04.020Z"),
-  //     updatedAt: new Date("2024-08-07T13:54:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f4047729f",
-  //     creatorId: "66b0bbec7034f8bd5fe19f05",
-  //     videoLink: "https://youtu.be/abc123",
-  //     title: "The Power of Positive Thinking",
-  //     description: "A talk on how positive thinking can change your life.",
-  //     tags: ["self-help"],
-  //     language: "English",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "abc123",
-  //     category: "Personal Development",
-  //     averageRating: 4.5,
-  //     createdAt: new Date("2024-08-01T10:24:04.020Z"),
-  //     updatedAt: new Date("2024-08-01T10:24:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f404772a0",
-  //     creatorId: "66b0bbec7034f8bd5fe19f06",
-  //     videoLink: "https://youtu.be/xyz456",
-  //     title: "Understanding Quantum Physics",
-  //     description: "An introductory lecture on quantum physics.",
-  //     tags: ["science", "physics"],
-  //     language: "Spanish",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "xyz456",
-  //     category: "Education",
-  //     averageRating: 4.8,
-  //     createdAt: new Date("2024-08-10T15:14:04.020Z"),
-  //     updatedAt: new Date("2024-08-10T15:14:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f404772a1",
-  //     creatorId: "66b0bbec7034f8bd5fe19f07",
-  //     videoLink: "https://youtu.be/pqr789",
-  //     title: "Healthy Eating Habits",
-  //     description: "Tips and tricks for a balanced diet.",
-  //     tags: ["health", "nutrition"],
-  //     language: "French",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "pqr789",
-  //     category: "Health & Wellness",
-  //     averageRating: 4.2,
-  //     createdAt: new Date("2024-08-15T09:34:04.020Z"),
-  //     updatedAt: new Date("2024-08-15T09:34:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f404772a2",
-  //     creatorId: "66b0bbec7034f8bd5fe19f08",
-  //     videoLink: "https://youtu.be/mno012",
-  //     title: "Mastering Public Speaking",
-  //     description: "How to become a confident public speaker.",
-  //     tags: ["communication", "public speaking"],
-  //     language: "German",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "mno012",
-  //     category: "Career Development",
-  //     averageRating: 4.9,
-  //     createdAt: new Date("2024-08-18T11:04:04.020Z"),
-  //     updatedAt: new Date("2024-08-18T11:04:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f404772a3",
-  //     creatorId: "66b0bbec7034f8bd5fe19f09",
-  //     videoLink: "https://youtu.be/ghi345",
-  //     title: "The Art of Minimalism",
-  //     description: "Living more with less.",
-  //     tags: ["lifestyle", "minimalism"],
-  //     language: "Japanese",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "ghi345",
-  //     category: "Lifestyle",
-  //     averageRating: 4.3,
-  //     createdAt: new Date("2024-08-20T13:24:04.020Z"),
-  //     updatedAt: new Date("2024-08-20T13:24:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f404772a4",
-  //     creatorId: "66b0bbec7034f8bd5fe19f10",
-  //     videoLink: "https://youtu.be/def678",
-  //     title: "Yoga for Beginners",
-  //     description: "A beginner’s guide to yoga.",
-  //     tags: ["fitness", "yoga"],
-  //     language: "Hindi",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "def678",
-  //     category: "Health & Wellness",
-  //     averageRating: 4.7,
-  //     createdAt: new Date("2024-08-22T16:34:04.020Z"),
-  //     updatedAt: new Date("2024-08-22T16:34:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f404772a5",
-  //     creatorId: "66b0bbec7034f8bd5fe19f11",
-  //     videoLink: "https://youtu.be/jkl901",
-  //     title: "Introduction to Meditation",
-  //     description: "Basic meditation techniques for relaxation.",
-  //     tags: ["mindfulness", "meditation"],
-  //     language: "Mandarin",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "jkl901",
-  //     category: "Spirituality",
-  //     averageRating: 4.6,
-  //     createdAt: new Date("2024-08-25T08:14:04.020Z"),
-  //     updatedAt: new Date("2024-08-25T08:14:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f404772a6",
-  //     creatorId: "66b0bbec7034f8bd5fe19f12",
-  //     videoLink: "https://youtu.be/nop234",
-  //     title: "The Future of Technology",
-  //     description: "An insight into upcoming technological trends.",
-  //     tags: ["technology", "innovation"],
-  //     language: "Korean",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "nop234",
-  //     category: "Technology",
-  //     averageRating: 4.8,
-  //     createdAt: new Date("2024-08-28T18:44:04.020Z"),
-  //     updatedAt: new Date("2024-08-28T18:44:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  //   {
-  //     _id: "66b37c7c6f15606f404772a7",
-  //     creatorId: "66b0bbec7034f8bd5fe19f13",
-  //     videoLink: "https://youtu.be/qrs567",
-  //     title: "Creative Writing Tips",
-  //     description: "How to enhance your creative writing skills.",
-  //     tags: ["writing", "creativity"],
-  //     language: "Russian",
-  //     youtubeLink: true,
-  //     youtubeVideoId: "qrs567",
-  //     category: "Education",
-  //     averageRating: 4.4,
-  //     createdAt: new Date("2024-08-30T12:24:04.020Z"),
-  //     updatedAt: new Date("2024-08-30T12:24:04.020Z"),
-  //     creatorName: "Shivam Chaudhary",
-  //     views: "10",
-  //     rating: "4",
-  //   },
-  // ];
+  const userId = useSelector(selectUserId);
+  const isAuthenticated = useSelector(selectAuthenticated);
 
   const [searchValue, setSearchValue] = useState("");
   const [tag, setTag] = useState("");
   const [page, setPage] = useState(1);
+  // const [videoPlayPopup, setVideoPlayPopup] = useState(true);
+  // const [videoUrl, setVideoUrl] = useState("");
 
   useEffect(() => {
     dispatchToRedux(getAllVideos({ page }));
@@ -776,6 +599,18 @@ const Explore = () => {
     dispatchToRedux(resetState());
     dispatchToRedux(allvideos({ page }));
   };
+
+  // const handleOpenPopup = () => {
+  //   if (!isAuthenticated && !userId) {
+  //   }
+  //   setVideoUrl("https://www.example.com/sample-video.mp4");
+  //   setPopupOpen(true);
+  // };
+
+  // const handleClosePopup = () => {
+  //   setVideoPlayPopup(false);
+  // };
+
   return (
     <Box sx={{ mt: "8.5rem" }}>
       <Container maxWidth="xl" sx={{ marginTop: "2rem" }}>
@@ -986,6 +821,7 @@ const Explore = () => {
         >
           <Pagination count={allVideosData?.totalPages} size="large" onChange={handlePageChange} />
         </Box>
+        {/* <ExploreVideoPlayPopup open={videoPlayPopup} onClose={handleClosePopup} videoUrl={videoUrl} /> */}
       </Container>
     </Box>
   );
