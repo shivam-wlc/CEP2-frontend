@@ -253,6 +253,7 @@ import CreatePlaylistModal from "../../models/CreatePlaylistModal.jsx";
 import { notify } from "../../redux/slices/alertSlice.js";
 import { selectAuthenticated, selectToken, selectUserId } from "../../redux/slices/authSlice.js";
 import { orageMove, purpleMove } from "../../assets/assest.js";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
 import { fonts } from "../../utility/fonts.js";
 import GeneralButton from "../general/GeneralButton.jsx";
@@ -480,6 +481,7 @@ const UserPlaylist = () => {
                 alignItems: "center",
                 height: "100%",
                 width: "100%",
+                borderRadius: "20px",
               }}
             >
               <Typography variant="h5" sx={{ fontFamily: fonts.sans, fontWeight: "600" }}>
@@ -494,7 +496,7 @@ const UserPlaylist = () => {
                     <Box
                       sx={{
                         backgroundColor: "#fff",
-                        borderRadius: "8px",
+                        borderRadius: "15px",
                         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                         padding: "1rem",
                         position: "relative",
@@ -531,7 +533,7 @@ const UserPlaylist = () => {
                       </Box>
 
                       <Typography variant="body2" sx={{ color: "#777", marginTop: "0.5rem" }}>
-                        Shared with: {video.totalShares} users
+                        Shared with: <span style={{ fontWeight: "bold" }}>{video.totalShares} users</span>
                       </Typography>
 
                       <Box
@@ -547,6 +549,12 @@ const UserPlaylist = () => {
                             backgroundColor: video.watched ? "#720361" : "#f8f8f8",
                             color: video.watched ? "white" : "black",
                             textTransform: "none",
+                            borderRadius: "42px",
+                            width: "95px",
+                            "&:hover": {
+                              backgroundColor: video.watched ? "#720361" : "#f8f8f8", // Keep the same background color on hover
+                              color: video.watched ? "white" : "black", // Keep the same color on hover
+                            },
                           }}
                         >
                           {video.watched ? "Viewed" : "Not Viewed"}
@@ -557,6 +565,12 @@ const UserPlaylist = () => {
                             backgroundColor: video.rated ? "#720361" : "#f8f8f8",
                             color: video.rated ? "white" : "black",
                             textTransform: "none",
+                            borderRadius: "42px",
+                            width: "95px",
+                            "&:hover": {
+                              backgroundColor: video.watched ? "#720361" : "#f8f8f8", // Keep the same background color on hover
+                              color: video.watched ? "white" : "black", // Keep the same color on hover
+                            },
                           }}
                         >
                           Rated
@@ -567,6 +581,12 @@ const UserPlaylist = () => {
                             backgroundColor: video.liked ? "#720361" : "#f8f8f8",
                             color: video.liked ? "white" : "black",
                             textTransform: "none",
+                            borderRadius: "42px",
+                            width: "95px",
+                            "&:hover": {
+                              backgroundColor: video.watched ? "#720361" : "#f8f8f8", // Keep the same background color on hover
+                              color: video.watched ? "white" : "black", // Keep the same color on hover
+                            },
                           }}
                         >
                           Liked

@@ -23,7 +23,7 @@ const AssessmentResult1 = () => {
   const userId = useSelector(selectUserId);
   const interestsProfile = useSelector(selectInterests);
   const userProfile = useSelector(selectUserProfile);
-  const [careerRating, setCareerRating] = useState(3);
+  const [careerRating, setCareerRating] = useState(4);
 
   //modal
   const [openModal, setOpenModal] = useState(false);
@@ -201,22 +201,13 @@ const AssessmentResult1 = () => {
               {interestsProfile?.careers?.career.map((item, index) => {
                 return (
                   <li key={index} className={assessmentResult1.bestMatchCard}>
-                    {/* <div onClick={(item) => careerDetails(item)}> */}
-                    {/* <div onClick={() => careerDetails(item)}> */}
                     <div onClick={() => handleOpenModal(item)}>
-                      {/* <p className={assessmentResult1.title}>{item.title}</p> */}
                       <p style={{ fontWeight: "bold", color: "black" }}>{item.title}</p>
-
                       <p className={assessmentResult1.description}>{item.fit}</p>
                     </div>
                     <div className={assessmentResult1.userAndRating}>
-                      {/* <img src="#" alt="logo" className="image" /> */}
-                      {/* dummy */}
                       <div className={assessmentResult1.logo}>P</div>
-                      {/* <p className={assessmentResult1.rating}>
-                        <FaStar className={assessmentResult1.star} />5
-                      </p> */}
-                      <IconButton sx={{ marginTop: "0.5rem" }}>
+                      <IconButton sx={{ marginTop: "-0.2rem" }}>
                         <Rating sx={{ fontSize: "1rem" }} name="read-only" readOnly value={careerRating} />
                         <Typography
                           sx={{
@@ -225,7 +216,7 @@ const AssessmentResult1 = () => {
                             fontSize: "1rem",
                           }}
                         >
-                          3
+                          {/* {Math.floor(Math.random() * 5) + 1} */}4
                         </Typography>
                       </IconButton>
                     </div>

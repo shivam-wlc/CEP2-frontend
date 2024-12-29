@@ -18,7 +18,7 @@ const Footer = () => {
           </p>
         </div>
         <div className={footerStyles["usefull-links"]}>
-          <h3>Usefull Links</h3>
+          <h3>Our Policy</h3>
           <div className={footerStyles["line"]}></div>
           <ul>
             <Link to="/about-us" style={{ textDecoration: "none" }}>
@@ -34,21 +34,27 @@ const Footer = () => {
           </ul>
         </div>
         <div className={footerStyles["usefull-links"]}>
-          <h3>Usefull Links</h3>
+          <h3>Quick Links</h3>
           <div className={footerStyles["line"]}></div>
           <ul>
-            <li>Link 1</li>
-            <li>Link 2</li>
-            <li>Link 3</li>
+            <Link to="/explore" style={{ textDecoration: "none" }}>
+              <li style={{ color: "#a98fa4" }}>Explore</li>
+            </Link>
+            <Link to="/assessment" style={{ textDecoration: "none" }}>
+              <li style={{ color: "#a98fa4" }}>Assessment Center</li>
+            </Link>
+            <Link to="/resume-builder" style={{ textDecoration: "none" }}>
+              <li style={{ color: "#a98fa4" }}>Resume Builder</li>
+            </Link>
           </ul>
         </div>
         <div className={footerStyles["usefull-links"]}>
-          <h3>Usefull Links</h3>
+          <h3>Contact & Support</h3>
           <div className={footerStyles["line"]}></div>
           <ul>
-            <li>Link 1</li>
-            <li>Link 2</li>
-            <li>Link 3</li>
+            <li style={{ color: "#a98fa4" }}>Contact Us</li>
+            <li style={{ color: "#a98fa4" }}>Student Support</li>
+            <li style={{ color: "#a98fa4" }}>Technical Support</li>
           </ul>
         </div>
       </div>

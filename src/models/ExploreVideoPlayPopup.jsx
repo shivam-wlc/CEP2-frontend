@@ -42,7 +42,7 @@ const ExploreVideoPlayPopup = ({ open, onClose, videoId }) => {
 
   useEffect(() => {
     if (open) {
-      const timer = setTimeout(() => setShowRegisterScreen(true), 15000); // 15 seconds
+      const timer = setTimeout(() => setShowRegisterScreen(true), 1000); // 15 seconds
       return () => clearTimeout(timer); // Cleanup on unmount or close
     }
   }, [open]);
@@ -97,6 +97,90 @@ const ExploreVideoPlayPopup = ({ open, onClose, videoId }) => {
       {/* this is for video play  */}
 
       {showRegisterScreen ? (
+        // <Box
+        //   sx={{
+        //     maxWidth: "500px",
+        //     margin: "auto",
+        //     p: "2rem",
+        //     borderRadius: "10px",
+        //     textAlign: "center",
+        //     backgroundColor: "#fff",
+        //     fontFamily: fonts.poppins,
+        //   }}
+        // >
+        //   <Typography
+        //     variant="h6"
+        //     sx={{
+        //       mb: "1.5rem",
+        //       fontFamily: "Poppins",
+        //       fontWeight: "500",
+        //       textAlign: "center",
+        //       color: "text.primary",
+        //       fontFamily: fonts.poppins,
+        //     }}
+        //   >
+        //     You need to <strong>Register</strong> or <strong>Login</strong> to view the full video!
+        //   </Typography>
+        //   <Typography
+        //     variant="h5"
+        //     sx={{ mb: "1rem", fontFamily: "Poppins", fontWeight: "600", fontFamily: fonts.poppins }}
+        //   >
+        //     Why Register?
+        //   </Typography>
+
+        //   <Box sx={{ textAlign: "left", mb: "1.5rem" }}>
+        //     {[
+        //       { text: "Access Assessment Results", icon: "📊" },
+        //       { text: "Career Guidance", icon: "💼" },
+        //       { text: "Talk to Counselors", icon: "🧑‍💼" },
+        //       { text: "Create and Manage Resumes", icon: "📄" },
+        //     ].map((item, index) => (
+        //       <Box key={index} sx={{ display: "flex", alignItems: "center", mb: "0.5rem" }}>
+        //         <Typography variant="h6" sx={{ mr: "0.5rem" }}>
+        //           {item.icon}
+        //         </Typography>
+        //         <Typography variant="body1" sx={{ fontFamily: "Poppins", color: "gray" }}>
+        //           {item.text}
+        //         </Typography>
+        //       </Box>
+        //     ))}
+        //   </Box>
+
+        //   <Box sx={{ display: "flex", gap: "1rem", justifyContent: "space-between" }}>
+        //     <Button
+        //       sx={{
+        //         background: "linear-gradient(to right, #720361, #bf2f75)",
+        //         color: "white",
+        //         padding: "0.5rem 1.5rem",
+        //         borderRadius: "15px",
+        //         // fontWeight: "bold",
+        //         fontSize: "1rem",
+        //         "&:hover": {
+        //           background: "linear-gradient(to right, #720361, #bf2f75)",
+        //         },
+        //       }}
+        //       onClick={handleCancelShowRegisterScreen}
+        //     >
+        //       Cancel
+        //     </Button>
+        //     <Button
+        //       sx={{
+        //         background: "linear-gradient(to right, #720361, #bf2f75)",
+        //         color: "white",
+        //         padding: "0.5rem 1.5rem",
+        //         borderRadius: "15px",
+        //         // fontWeight: "bold",
+        //         fontSize: "1rem",
+        //         "&:hover": {
+        //           background: "linear-gradient(to right, #720361, #bf2f75)",
+        //         },
+        //       }}
+        //       onClick={handleRedirectToRegister}
+        //     >
+        //       Register
+        //     </Button>
+        //   </Box>
+        // </Box>
         <Box
           sx={{
             maxWidth: "500px",
@@ -106,54 +190,60 @@ const ExploreVideoPlayPopup = ({ open, onClose, videoId }) => {
             textAlign: "center",
             backgroundColor: "#fff",
             fontFamily: fonts.poppins,
+            // boxShadow: 3,
           }}
         >
+          <Typography
+            variant="h4"
+            sx={{
+              mb: "1.5rem",
+              fontFamily: fonts.poppins,
+              fontWeight: "600",
+              color: "text.primary",
+            }}
+          >
+            Hey, Career Explorer
+          </Typography>
+
           <Typography
             variant="h6"
             sx={{
               mb: "1.5rem",
-              fontFamily: "Poppins",
-              fontWeight: "500",
-              textAlign: "center",
-              color: "text.primary",
               fontFamily: fonts.poppins,
+              fontWeight: "500",
+              color: "text.primary",
             }}
           >
-            You need to <strong>Register</strong> or <strong>Login</strong> to view the full video!
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{ mb: "1rem", fontFamily: "Poppins", fontWeight: "600", fontFamily: fonts.poppins }}
-          >
-            Why Register?
+            We would love for you to join our community. All FREE when you register as a Student!
           </Typography>
 
           <Box sx={{ textAlign: "left", mb: "1.5rem" }}>
             {[
-              { text: "Access Assessment Results", icon: "📊" },
-              { text: "Career Guidance", icon: "💼" },
-              { text: "Talk to Counselors", icon: "🧑‍💼" },
-              { text: "Create and Manage Resumes", icon: "📄" },
-            ].map((item, index) => (
-              <Box key={index} sx={{ display: "flex", alignItems: "center", mb: "0.5rem" }}>
-                <Typography variant="h6" sx={{ mr: "0.5rem" }}>
-                  {item.icon}
+              "Your personal Career Planning Dashboard to track career decisions and progress",
+              "Resume Builder to create and update your Resume or CV",
+              "3 identified Career Pathways when you complete our 30-minute Career Assessment",
+              "Create and sort playlists of Career guidance content, rate and share on your favorite social channels",
+              "Stay updated on open days and events that we are hosting",
+            ].map((text, index) => (
+              <Box key={index} sx={{ display: "flex", alignItems: "center", mb: "0.75rem" }}>
+                <Typography variant="h6" sx={{ mr: "0.5rem", fontSize: "1.5rem" }}>
+                  📌
                 </Typography>
                 <Typography variant="body1" sx={{ fontFamily: "Poppins", color: "gray" }}>
-                  {item.text}
+                  {text}
                 </Typography>
               </Box>
             ))}
           </Box>
 
-          <Box sx={{ display: "flex", gap: "1rem", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
             <Button
               sx={{
                 background: "linear-gradient(to right, #720361, #bf2f75)",
                 color: "white",
-                padding: "0.5rem 1.5rem",
+                padding: "0.75rem 2rem",
                 borderRadius: "15px",
-                // fontWeight: "bold",
+                fontWeight: "bold",
                 fontSize: "1rem",
                 "&:hover": {
                   background: "linear-gradient(to right, #720361, #bf2f75)",
@@ -167,9 +257,9 @@ const ExploreVideoPlayPopup = ({ open, onClose, videoId }) => {
               sx={{
                 background: "linear-gradient(to right, #720361, #bf2f75)",
                 color: "white",
-                padding: "0.5rem 1.5rem",
+                padding: "0.75rem 2rem",
                 borderRadius: "15px",
-                // fontWeight: "bold",
+                fontWeight: "bold",
                 fontSize: "1rem",
                 "&:hover": {
                   background: "linear-gradient(to right, #720361, #bf2f75)",
@@ -177,7 +267,7 @@ const ExploreVideoPlayPopup = ({ open, onClose, videoId }) => {
               }}
               onClick={handleRedirectToRegister}
             >
-              Register
+              Register Now
             </Button>
           </Box>
         </Box>
