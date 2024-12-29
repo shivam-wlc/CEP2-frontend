@@ -131,7 +131,8 @@
 .images {
   margin-top: 1rem;
   width: 45%;
-  height: 15rem;
+  height: 17rem;
+  aspect-ratio: 16 / 9;
   background-size: cover;
   background-repeat: no-repeat;
   resize: both;
@@ -139,6 +140,17 @@
   border-radius: 2rem;
   box-shadow: 1rem 1rem 2rem gray;
 }
+/* .images {
+  margin-top: 1rem;
+  width: 75%;
+  height: 20rem;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 2rem;
+  box-shadow: 1rem 1rem 2rem gray;
+} */
 .yellowText {
   color: #ff8a00;
 }

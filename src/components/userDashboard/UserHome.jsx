@@ -212,7 +212,7 @@
 // export default UserHome;
 
 import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   arab,
@@ -233,30 +233,68 @@ import {
   resumecreated,
   shared,
 } from "../../assets/assest";
-const languages = [
-  { name: "Arabic", icon: arab },
-  { name: "Indonesian", icon: indonesia },
-  { name: "Malaysian", icon: maleshia },
-  { name: "English", icon: england },
-  { name: "French", icon: french },
-  { name: "German", icon: german },
-  { name: "Hindi", icon: india },
-  { name: "Italian", icon: italian },
-  { name: "Japanese", icon: japan },
-  { name: "Korean", icon: koria },
-];
 
-const stats = [
-  { label: "Videos consumed", value: 32, img: consumed },
-  { label: "Videos liked", value: 32, img: liked },
-  { label: "Videos shared", value: 32, img: shared },
-  { label: "Career counsellors followed", value: 32, img: followed },
-  { label: "Assessments taken", value: 32, img: asstaken },
-  { label: "Resumes created", value: 32, img: resumecreated },
-  { label: "Short Courses enrolled for", value: 0, img: enrolled },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getUserAnalytics } from "../../redux/slices/userHistory.js";
+import { selectAuthenticated, selectToken, selectUserId } from "../../redux/slices/authSlice.js";
+
+// const languages = [
+//   { name: "Arabic", icon: arab },
+//   { name: "Indonesian", icon: indonesia },
+//   { name: "Malaysian", icon: maleshia },
+//   { name: "English", icon: england },
+//   { name: "French", icon: french },
+//   { name: "German", icon: german },
+//   { name: "Hindi", icon: india },
+//   { name: "Italian", icon: italian },
+//   { name: "Japanese", icon: japan },
+//   { name: "Korean", icon: koria },
+// ];
+
+// const stats = [
+//   { label: "Videos consumed", value: 32, img: consumed },
+//   { label: "Videos liked", value: 32, img: liked },
+//   { label: "Videos shared", value: 32, img: shared },
+//   { label: "Career counsellors followed", value: 32, img: followed },
+//   { label: "Assessments taken", value: 32, img: asstaken },
+//   { label: "Resumes created", value: 32, img: resumecreated },
+//   { label: "Short Courses enrolled for", value: 0, img: enrolled },
+// ];
 
 const CareerSummary = () => {
+  const dispatchToRedux = useDispatch();
+  const userId = useSelector(selectUserId);
+  const token = useSelector(selectToken);
+  const authenticated = useSelector(selectAuthenticated);
+
+  const [analytics, setAnalytics] = useState(null);
+
+  useEffect(() => {
+    const fetchAnalytics = async () => {
+      if (authenticated && userId && token) {
+        // Dispatch action to fetch user analytics
+        const response = await dispatchToRedux(getUserAnalytics({ userId, token }));
+
+        // Set analytics if the response payload is available
+        if (response.payload) {
+          setAnalytics(response.payload.analytics);
+        }
+      }
+    };
+
+    fetchAnalytics();
+  }, [authenticated, userId, token]);
+
+  let stats = [
+    { label: "Videos consumed", value: analytics?.watchedCount || 0, img: consumed },
+    { label: "Videos liked", value: analytics?.likesCount || 0, img: liked },
+    { label: "Videos shared", value: analytics?.sharesCount || 0, img: shared },
+    { label: "Career counsellors followed", value: 32, img: followed },
+    { label: "Assessments taken", value: 32, img: asstaken },
+    { label: "Resumes created", value: 32, img: resumecreated },
+    { label: "Short Courses enrolled for", value: 0, img: enrolled },
+  ];
+
   return (
     <Box sx={{ textAlign: "center", p: 2 }}>
       <Typography
@@ -285,15 +323,32 @@ const CareerSummary = () => {
           padding: ".5rem",
         }}
       >
-        {languages.map((language, index) => (
+        {analytics?.watchedFlags?.map((language, index) => (
           <Box key={index}>
             <Box sx={{ textAlign: "center" }}>
-              <img
-                src={language.icon}
+              {/* <img
+                src={language.flag}
                 alt={language.name}
                 style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-              />
-              <Typography variant="subtitle1">{language.name}</Typography>
+              /> */}
+
+              <Box
+                sx={{
+                  width: "50px",
+                  height: "50px",
+                  borderRadius: "50%",
+                  backgroundColor: "#800080",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  overflow: "hidden",
+                }}
+              >
+                <Typography variant="h6" sx={{ fontSize: "100px", marginTop: 1 }}>
+                  {language.flag}
+                </Typography>
+              </Box>
+              <Typography variant="subtitle1">{language.language}</Typography>
             </Box>
           </Box>
         ))}

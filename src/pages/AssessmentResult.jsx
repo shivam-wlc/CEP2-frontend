@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { assessmentResult, assessmentResultbottom } from "../assets/assest.js";
+import { assessmentResult, assessmentResultbottom, sampleCDR } from "../assets/assest.js";
 import Footer from "../components/Footer.jsx";
 import Headers from "../components/Headers.jsx";
 import { config } from "../config/config.js";
@@ -9,6 +9,10 @@ import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import { getInterests, selectInterests } from "../redux/slices/interestSlice.js";
 import assessmentStyles from "../styles/AssessmentResult.module.css";
 import commonStyles from "../styles/Common.module.css";
+import { Box, Button, Typography } from "@mui/material";
+import { BsDownload } from "react-icons/bs";
+import assessmentResult1 from "../styles/AssessmentResult1.module.css";
+import PayNowModal from "../models/PayNowModal.jsx";
 
 const AssessmentResult = () => {
   const dispatchToRedux = useDispatch();
@@ -17,33 +21,35 @@ const AssessmentResult = () => {
 
   const interestsProfile = useSelector(selectInterests);
   const [activePathCard, setActivePathCard] = useState(1);
+  const [payNowModalOpen, setPayNowModalOpen] = useState(false);
 
   useEffect(() => {
     dispatchToRedux(getInterests({ userId, token }));
   }, []);
 
   const handleButtonClick = async () => {
-    const response = await fetch(`${config.api}/api/payment/createpayment/${userId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        price: 500,
-        productName: "Test product",
-      }),
-    });
-    if (response.ok) {
-      const redirectUrl = await response.json();
-      console.log("redirectUrl", redirectUrl);
+    // const response = await fetch(`${config.api}/api/payment/createpayment/${userId}`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    //   body: JSON.stringify({
+    //     price: 500,
+    //     productName: "Test product",
+    //   }),
+    // });
+    // if (response.ok) {
+    //   const redirectUrl = await response.json();
+    //   console.log("redirectUrl", redirectUrl);
 
-      // window.location.href = redirectUrl.url;
-      // window.location.href = "http://localhost:5173/assessment-result1";
-    }
+    //   // window.location.href = redirectUrl.url;
+    //   // window.location.href = "http://localhost:5173/assessment-result1";
+
+    // }
+
+    setPayNowModalOpen(true);
   };
-
-  console.log("interestsProfile", interestsProfile);
 
   const pathListItems = [
     { heading: "Graphic Designer", subheading: "Great to fit" },
@@ -94,6 +100,13 @@ const AssessmentResult = () => {
     { statement: "saysa and our Schools team will contact your School", button: "Contact School", slug: "#" },
   ];
 
+  // modal
+
+  // Function to close the modal
+  const handleClosePayModal = () => {
+    setPayNowModalOpen(false);
+  };
+
   return (
     <div>
       <Headers />
@@ -133,6 +146,7 @@ const AssessmentResult = () => {
                   <p>{item.subheading}</p>
                 </li>
               ))} */}
+
               {interestsProfile?.careers?.career.slice(0, 3).map((item, index) => (
                 <li
                   key={index}
@@ -144,6 +158,97 @@ const AssessmentResult = () => {
                 </li>
               ))}
             </ul>
+
+            <Box
+              sx={{
+                height: "50vh",
+                width: "100%",
+                marginTop: "1rem",
+                // border: "1px solid black",
+                backgroundColor: "white",
+                display: "flex",
+                borderRadius: "1rem",
+                marginBottom: "3rem",
+              }}
+            >
+              <Box sx={{ height: "100%", width: "70%" }}>
+                <Typography
+                  sx={{
+                    padding: "1rem",
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                    textAlign: "center",
+                    color: "gray",
+                    font: "Poppins",
+                  }}
+                >
+                  Top 6 reasons to get the full Career Directions Report
+                </Typography>
+
+                {/* <Box sx={{ display: "flex", justifyContent: "space-between", padding: "1rem", gap: "1rem" }}>
+                  <Box sx={{ border: "1px solid green", height: "100%", width: "50%" }}>
+
+                  </Box>
+                  <Box sx={{ border: "1px solid green", height: "100%", width: "50%" }}></Box>
+                </Box> */}
+
+                <Box sx={{ display: "flex", justifyContent: "space-between", padding: "1rem", gap: "1rem" }}>
+                  <Box sx={{ height: "100%", width: "47%", padding: 2 }}>
+                    <ol>
+                      <li style={{ fontSize: "18px", padding: 2 }}>
+                        <span style={{ fontWeight: "bold", color: "#720361" }}>Hyper-personalized</span>{" "}
+                        analysis and recommendations
+                      </li>
+                      <li style={{ fontSize: "18px", padding: 2 }}>
+                        <span style={{ fontWeight: "bold", color: "#720361" }}>20 Career Pathways</span> to
+                        choose from
+                      </li>
+                      <li style={{ fontSize: "18px", padding: 2 }}>
+                        Your <span style={{ fontWeight: "bold", color: "#720361" }}>‘Perfect’ fit</span>{" "}
+                        careers that you can excel in
+                      </li>
+                      <li style={{ fontSize: "18px", padding: 2 }}>
+                        Recommended{" "}
+                        <span style={{ fontWeight: "bold", color: "#720361" }}>academic courses</span> for
+                        each career pathway
+                      </li>
+                    </ol>
+                  </Box>
+                  <Box sx={{ height: "100%", width: "47%" }}>
+                    <ol start={5}>
+                      <li style={{ fontSize: "18px", padding: 2 }}>
+                        <span style={{ fontWeight: "bold", color: "#720361" }}>University options</span> for
+                        your career pathway, in your chosen countries
+                      </li>
+                      <li style={{ fontSize: "18px", padding: 2 }}>
+                        Detailed Personality analysis to help you connect your{" "}
+                        <span style={{ fontWeight: "bold", color: "#720361" }}>strengths and passions</span>{" "}
+                        to your career
+                      </li>
+                    </ol>
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  // border: "1px solid green",
+                  height: "100%",
+                  width: "30%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "3rem",
+                }}
+              >
+                <button className={assessmentResult1.navButton}>
+                  <BsDownload /> Download Report
+                </button>
+
+                <img src={sampleCDR} alt="Downlaod CDR" width={"50%"} border={"1px solid black"} />
+              </Box>
+            </Box>
+
             <div>
               {
                 <ul className={assessmentStyles["pathItemCardsList"]}>
@@ -157,6 +262,7 @@ const AssessmentResult = () => {
                   ))}
                 </ul>
               }
+
               {/* {activePathCard == 2 && (
                 <ul className={assessmentStyles["pathItemCardsList"]}>
                   {actor.map((item, index) => (
@@ -205,6 +311,7 @@ const AssessmentResult = () => {
           </div>
           <img src={assessmentResultbottom} alt="" />
         </section>
+        <PayNowModal open={payNowModalOpen} onClose={handleClosePayModal} />
       </div>
       <Footer />
     </div>

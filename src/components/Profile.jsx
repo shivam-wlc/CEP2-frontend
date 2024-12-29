@@ -967,7 +967,7 @@ const Profile = () => {
                 <TextField
                   select
                   fullWidth
-                  label="Nationality"
+                  label="Location"
                   variant="outlined"
                   name="nationality"
                   value={formData.nationality}

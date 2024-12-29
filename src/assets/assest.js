@@ -166,6 +166,10 @@ import lowIndicator from "./resultPageIcons/lowIndicator.png";
 import mediumIndicator from "./resultPageIcons/mediumIndicator.png";
 import highIndicator from "./resultPageIcons/highIndicator.png";
 
+// sample result front page  CDR
+
+import sampleCDR from "./AssessmentResult1/assesmentResultSample.jpg";
+
 export {
   PageNotFound,
   Logo,
@@ -319,4 +323,7 @@ export {
   lowIndicator,
   mediumIndicator,
   highIndicator,
+
+  // sample cdr
+  sampleCDR,
 };

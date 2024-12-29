@@ -21,13 +21,20 @@ const Home = () => {
   const serve = ["W", "F", "CA", "DW", "EA"];
   const opotunityListItems = ["To Work", "To Upskill", "To Serve"];
   const images = [
-    "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-    "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-    "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-    "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+    // "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+    // "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+    // "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+    // "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
+
+    "https://img.youtube.com/vi/laM9Jxmzs9E/hqdefault.jpg",
+    "https://img.youtube.com/vi/EmvKi7ftyPs/hqdefault.jpg",
+    "https://img.youtube.com/vi/N_gdjZmatu0/hqdefault.jpg",
+    "https://img.youtube.com/vi/CPAhCOMhJds/hqdefault.jpg",
+    // "https://img.youtube.com/vi/qi4sgAVPAyc/hqdefault.jpg",
     "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
   ];
   const [cardPerPage, setCardPerPage] = useState(2);
+
   const lastIndex = currentPage * cardPerPage;
   const firstIndex = lastIndex - cardPerPage;
   const visibleImages = images.slice(firstIndex, lastIndex);
@@ -123,6 +130,9 @@ const Home = () => {
               {visibleImages.map((image, index) => (
                 <div className={homeStyle.images} key={index} style={{ backgroundImage: `url(${image})` }} />
               ))}
+              {/* {thumbnail?.map((image, index) => (
+                <div className={homeStyle.images} key={index} style={{ backgroundImage: `url(${image})` }} />
+              ))} */}
             </div>
           </div>
         </section>
