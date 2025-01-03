@@ -1,12 +1,13 @@
-import { Box, Button, CircularProgress, Modal, Typography } from "@mui/material";
 import React, { useState } from "react";
+
+import { Box, Button, CircularProgress, Modal, Typography } from "@mui/material";
+
 import { fonts } from "../utility/fonts.js";
 
-const PayNowModal = ({ open, onClose }) => {
+const SchoolCodeModal = ({ open, onClose }) => {
   const [isButtonLoading, setIsButtonLoading] = useState(false);
 
   const handleProceed = () => {
-    // Add your logic for Proceed button here
     console.log("Proceeding to payment...");
   };
 
@@ -38,7 +39,8 @@ const PayNowModal = ({ open, onClose }) => {
             textAlign: "center",
           }}
         >
-          Please click below to be directed to the Payment page.
+          If you have a School Code please enter it in the COUPON box and the Payment due will be adjusted on
+          Checkout.
         </Typography>
 
         <Box sx={{ display: "flex", gap: 2 }}>
@@ -83,4 +85,4 @@ const PayNowModal = ({ open, onClose }) => {
   );
 };
 
-export default PayNowModal;
+export default SchoolCodeModal;

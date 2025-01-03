@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
-
 import { careerReportImg, homeHero } from "../assets/assest";
 import commonStyles from "../styles/Common.module.css";
 import homeStyle from "../styles/Home.module.css";
+import { getMostViewedThumbnails, selectMostViewedThumbnails } from "../redux/slices/exploreSlice.js";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
+  const dispatchToRedux = useDispatch();
+  const mostViewedThumbnails = useSelector(selectMostViewedThumbnails);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeOportunityCard, setActiveOportunityCard] = useState(1);
   const work = [
@@ -17,28 +20,27 @@ const Home = () => {
     "Virtual Internships",
     "Graduate Training",
   ];
-  const upskill = ["A", "B", "C", "D", "E"];
-  const serve = ["W", "F", "CA", "DW", "EA"];
+  const upskill = ["Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon"];
+  const serve = ["Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon"];
   const opotunityListItems = ["To Work", "To Upskill", "To Serve"];
-  const images = [
-    // "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-    // "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-    // "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-    // "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-
-    "https://img.youtube.com/vi/laM9Jxmzs9E/hqdefault.jpg",
-    "https://img.youtube.com/vi/EmvKi7ftyPs/hqdefault.jpg",
-    "https://img.youtube.com/vi/N_gdjZmatu0/hqdefault.jpg",
-    "https://img.youtube.com/vi/CPAhCOMhJds/hqdefault.jpg",
-    // "https://img.youtube.com/vi/qi4sgAVPAyc/hqdefault.jpg",
-    "https://static-cse.canva.com/blob/1684710/1600w-wK95f3XNRaM.jpg",
-  ];
   const [cardPerPage, setCardPerPage] = useState(2);
 
   const lastIndex = currentPage * cardPerPage;
   const firstIndex = lastIndex - cardPerPage;
-  const visibleImages = images.slice(firstIndex, lastIndex);
-  const totalPages = Math.ceil(images.length / cardPerPage);
+  // const visibleImages = images.slice(firstIndex, lastIndex);
+  // const totalPages = Math.ceil(images.length / cardPerPage);
+
+  const visibleImages = mostViewedThumbnails?.slice(firstIndex, lastIndex);
+  const totalPages = Math.ceil(mostViewedThumbnails?.length / cardPerPage);
+
+  console.log("visibleImages", visibleImages);
+  console.log("mostViewedThumbnails", mostViewedThumbnails);
+
+  useEffect(() => {
+    if (!mostViewedThumbnails.length) {
+      dispatchToRedux(getMostViewedThumbnails());
+    }
+  }, [dispatchToRedux, mostViewedThumbnails]);
 
   const handlePreviousPage = () => {
     setCurrentPage(Math.max(1, currentPage - 1));
@@ -128,7 +130,11 @@ const Home = () => {
             </div>
             <div className={homeStyle["horizontal-scroll-page"]}>
               {visibleImages.map((image, index) => (
-                <div className={homeStyle.images} key={index} style={{ backgroundImage: `url(${image})` }} />
+                <div
+                  className={homeStyle.images}
+                  key={index}
+                  style={{ backgroundImage: `url(${image.thumbnail})` }}
+                />
               ))}
               {/* {thumbnail?.map((image, index) => (
                 <div className={homeStyle.images} key={index} style={{ backgroundImage: `url(${image})` }} />

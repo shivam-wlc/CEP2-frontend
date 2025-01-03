@@ -31,6 +31,7 @@ import likeSlice from "./slices/likeSlice.js";
 import ratingSlice from "./slices/ratingSlice.js";
 import userHistorySlice from "./slices/userHistory.js";
 import playlistSlice from "./slices/playlistSlice.js";
+import schoolContactSlice from "./slices/schoolContactSlice.js";
 
 const persistConfig = {
   key: "user",
@@ -60,6 +61,7 @@ const rootReducer = combineReducers({
   rating: ratingSlice,
   history: userHistorySlice,
   playlist: playlistSlice,
+  schoolContact: schoolContactSlice,
 });
 
 const store = configureStore({

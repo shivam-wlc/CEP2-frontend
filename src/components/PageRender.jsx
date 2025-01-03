@@ -12,6 +12,7 @@ import AdminHome from "./adminDashboard/AdminHome.jsx";
 import CollaboratorsData from "./adminDashboard/CollaboratorsData.jsx";
 import UnifiedRecord from "./adminDashboard/UnifiedRecord.jsx";
 import UsersData from "./adminDashboard/UsersData.jsx";
+import SchoolDirectory from "./adminDashboard/SchoolDirectory.jsx";
 import Profile from "./Profile.jsx";
 
 const renderCurrentPage = (currentPage, userData) => {
@@ -25,6 +26,8 @@ const renderCurrentPage = (currentPage, userData) => {
         return <CollaboratorsData />;
       case "Records":
         return <UnifiedRecord />;
+      case "School Directory":
+        return <SchoolDirectory />;
       case "Profile":
         return <Profile />;
       default:

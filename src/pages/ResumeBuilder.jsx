@@ -2,7 +2,6 @@ import React from "react";
 import { MdArrowOutward } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import {
   assessmentHeaderImg,
   resumeBulbImage,

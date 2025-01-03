@@ -66,7 +66,6 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     // event.preventDefault();
-    console.log("Namaste ji");
 
     if (
       !formData.firstName ||

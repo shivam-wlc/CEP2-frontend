@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { GrLinkNext } from "react-icons/gr";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -6,6 +5,8 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { mayConsider, NotInterested, okay, veryInterested, worthTrying } from "../../assets/assest.js";
 import styles from "./QuestionCard.module.css";
 import globalStyle from "./Questions.module.css";
+import { Box, Button, CircularProgress } from "@mui/material";
+import { buttonStyle } from "../../utility/commonStyle.js";
 
 const InterestQuestionCard = ({
   questionNumber,
@@ -18,6 +19,7 @@ const InterestQuestionCard = ({
   overallAnswers,
   setOverallAnswers,
   handleSubmitButton,
+  isButtonLoading,
 }) => {
   const [selectedValue, setSelectedValue] = useState(null);
   const [circleValues, setCircleValues] = useState([]);
@@ -82,7 +84,7 @@ const InterestQuestionCard = ({
 
   return (
     <>
-      <div className={globalStyle["questions-container"]}>
+      <div className={globalStyle["questions-container"]} style={{ backgroundColor: "white" }}>
         <div className={styles["top-subCard"]}>
           <div className={styles.title}>Part A</div>
           <div className={styles.subtitle}>Please select one response to show your level of interest</div>
@@ -123,7 +125,7 @@ const InterestQuestionCard = ({
             <p
               className={`${styles.optionText} ${selectedValue === "2" ? styles.optionActive : styles.optionInactive}`}
             >
-              May Consider
+              Uncertain
             </p>
           </div>
           <div
@@ -168,12 +170,20 @@ const InterestQuestionCard = ({
           </span>
           Previous
         </button>
-        <button className={globalStyle["navButton"]} onClick={handleNext} disabled={!selectedValue}>
-          {isLastQuestion ? "Save and move on to Part B" : "Next"}
-          <span>
-            <GrLinkNext />
-          </span>
-        </button>
+        {isButtonLoading ? (
+          <Box sx={{}}>
+            <Button variant="contained" sx={{ ...buttonStyle, width: "120px" }}>
+              <CircularProgress color="inherit" size={30} />
+            </Button>
+          </Box>
+        ) : (
+          <button className={globalStyle["navButton"]} onClick={handleNext} disabled={!selectedValue}>
+            {isLastQuestion ? "Save and move on to Part B" : "Next"}
+            <span>
+              <GrLinkNext />
+            </span>
+          </button>
+        )}
       </div>
     </>
   );

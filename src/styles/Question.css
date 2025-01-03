@@ -2,18 +2,20 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 #mainContainer {
   display: flex;
   justify-content: space-around;
-  /* height: 100vh; */
+  height: 100vh;
   align-items: center;
+  /* border: 1px solid black; */
 }
 #right {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 37px;
+  gap: 30px;
 }
 #cardContainer {
   box-shadow: 5px 10px 50px gray;
@@ -23,22 +25,26 @@
 }
 #topSubCard {
   background-color: #bc2876;
+  /* background-color: #93257d5e; */
+  /* background-color: #720361; */
   border-top-left-radius: 29px;
   border-top-right-radius: 29px;
   color: white;
   position: relative;
-  padding: 40px 30px 0;
+  padding: 10px 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 #topSubCard > p {
   font-size: 40px;
+  font-weight: 700;
 }
 #topSubCard > h3 {
   font-size: 16px;
   margin: 15px 35px;
-  font-weight: 100;
+  font-weight: 500;
 }
 #status {
   display: flex;
@@ -65,6 +71,7 @@
 #qustionStatus span:first-child {
   color: #bc2876;
   font-size: 21px;
+  font-weight: 500;
 }
 #qustionStatus span:nth-child(2) {
   color: #787876;
@@ -78,13 +85,14 @@
 .half-circle {
   background-color: #bc2876;
   position: absolute;
-  height: 36px;
-  width: 72px;
-  bottom: -36px;
+  height: 30px;
+  width: 60px;
+  bottom: -18px;
   left: 45%;
   border-bottom-left-radius: 36px;
   border-bottom-right-radius: 36px;
   overflow: hidden;
+  /* border: 1px solid black; */
 }
 
 .inner-line {
@@ -102,8 +110,12 @@
 
 #bottomSubCard {
   padding: 59px 33px 10px;
+  /* border: 1px solid black; */
+  background-color: white;
+  border-radius: 0px 0px 29px 29px;
 }
 #bottomSubCard > div {
+  /* border: 1px solid black; */
   display: flex;
   margin-bottom: 12px;
   justify-content: space-between;
@@ -111,6 +123,10 @@
   padding: 8px 13px 8px 23px;
   border-radius: 90px;
   background-image: linear-gradient(to right, #f2f2f2, #f2f2f247);
+}
+.statement {
+  font-weight: 400;
+  font-size: 16px;
 }
 .statementOptions {
   display: flex;
@@ -174,6 +190,9 @@
   border-radius: 90px;
 }
 
+#left {
+  /* border: #720361 2px solid; */
+}
 #heroImage {
   width: 80%;
 }

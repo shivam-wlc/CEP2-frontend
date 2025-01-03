@@ -24,6 +24,7 @@ import { getAllUsers, selectUsersData, updateActiveStatus } from "../../redux/sl
 import { notify } from "../../redux/slices/alertSlice.js";
 import { selectToken } from "../../redux/slices/authSlice.js";
 import { fonts } from "../../utility/fonts.js";
+import { inputFieldStyle, tableHeadStyle, tableBodyStyle, buttonStyle } from "../../utility/commonStyle.js";
 
 const UsersData = () => {
   const dispatchToRedux = useDispatch();
@@ -35,7 +36,7 @@ const UsersData = () => {
   const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10); // Default rows per page
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchQuery, setSearchQuery] = useState("");
 
   let users = usersInfo?.users || [];
@@ -49,6 +50,10 @@ const UsersData = () => {
   };
 
   const handleSearchClick = () => {
+    if (searchQuery === "") {
+      dispatchToRedux(notify({ type: "warning", message: "Please enter a search query" }));
+      return;
+    }
     setPage(0);
     dispatchToRedux(getAllUsers({ token, page: 1, limit: rowsPerPage, search: searchQuery }));
   };
@@ -63,17 +68,6 @@ const UsersData = () => {
   };
 
   //TableHead
-
-  const tableHeadStyle = {
-    fontWeight: "600",
-    fontFamily: fonts.poppins,
-    color: "#717f8c",
-  };
-
-  const tableBodyStyle = {
-    fontFamily: fonts.poppins,
-    color: "#717f8c",
-  };
 
   // Function to handle menu click
   const handleClick = (event) => {
@@ -155,11 +149,11 @@ const UsersData = () => {
             fullWidth
             label="Search"
             variant="outlined"
-            sx={{ flex: 1 }}
             value={searchQuery}
             onChange={handleSearchInputChange}
+            sx={{ ...inputFieldStyle, flex: 1 }}
           />
-          <Button variant="contained" onClick={handleSearchClick}>
+          <Button sx={buttonStyle} onClick={handleSearchClick}>
             Search
           </Button>
         </Box>
@@ -264,7 +258,7 @@ const UsersData = () => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={usersInfo?.totalUsers}
+        count={Number.isInteger(usersInfo?.totalUsers) ? usersInfo?.totalUsers : 0}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

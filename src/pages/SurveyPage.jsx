@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { interestLogo, surevyHero } from "../assets/assest.js";
+import { interestLogo, surevyHero, background } from "../assets/assest.js";
 import SurveyQuestionCards from "../components/SurveyQuestionCards.jsx";
 import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import {
@@ -13,6 +13,7 @@ import {
   selectSurveyQuestions,
 } from "../redux/slices/surveySlice.js";
 import globalStyle from "../styles/Questions.module.css";
+import { Link } from "react-router-dom";
 
 const SurveyPage = () => {
   const dispatchToRedux = useDispatch();
@@ -591,13 +592,15 @@ const SurveyPage = () => {
   };
 
   return (
-    <div>
+    <div style={{ backgroundImage: `url(${background})`, zIndex: "-1" }}>
       <div className={globalStyle["container"]}>
         <div className={globalStyle["left"]}>
           <img src={surevyHero} alt="heroImage" />
         </div>
         <div className={globalStyle["right"]}>
-          <img src={interestLogo} alt="logo" width={250} />
+          <Link to="/">
+            <img src={interestLogo} alt="logo" width={"248px"} height={"76.67px"} />
+          </Link>
           {questions.length > 0 && (
             <SurveyQuestionCards
               questionNumber={currentQuestionIndex + 1}

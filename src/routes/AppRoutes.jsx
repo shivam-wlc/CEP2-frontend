@@ -36,6 +36,9 @@ const TermsAndConditons = React.lazy(() => import("../pages/TermsAndConditons.js
 const PrivacyAndPolicy = React.lazy(() => import("../pages/PrivacyAndPolicy.jsx"));
 const AssessmentResult = React.lazy(() => import("../pages/AssessmentResult.jsx"));
 const AssessmentResult1 = React.lazy(() => import("../pages/AssessmentResult1.jsx"));
+const ContactUs = React.lazy(() => import("../components/contactUs/ContactUs.jsx"));
+const StudentSupport = React.lazy(() => import("../components/contactUs/StudentSupport.jsx"));
+const TechSupport = React.lazy(() => import("../components/contactUs/TechSupport.jsx"));
 
 const AppRoutes = () => {
   const authenticated = useSelector(selectAuthenticated);
@@ -272,6 +275,30 @@ const AppRoutes = () => {
         element={
           <Suspense fallback={<InitialLoaders />}>
             <AssessmentResult1 />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/contact-us"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <ContactUs />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/student-support"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <StudentSupport />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/tech-support"
+        element={
+          <Suspense fallback={<InitialLoaders />}>
+            <TechSupport />
           </Suspense>
         }
       />
