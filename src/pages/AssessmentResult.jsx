@@ -13,15 +13,18 @@ import { Box, Button, Typography } from "@mui/material";
 import { BsDownload } from "react-icons/bs";
 import assessmentResult1 from "../styles/AssessmentResult1.module.css";
 import PayNowModal from "../models/PayNowModal.jsx";
+import SchoolContactFormModal from "../models/SchoolContactFormModal.jsx";
+import SchoolCodeModal from "../models/SchoolCodeModal.jsx";
 
 const AssessmentResult = () => {
   const dispatchToRedux = useDispatch();
   const token = useSelector(selectToken);
   const userId = useSelector(selectUserId);
-
   const interestsProfile = useSelector(selectInterests);
   const [activePathCard, setActivePathCard] = useState(1);
   const [payNowModalOpen, setPayNowModalOpen] = useState(false);
+  const [schoolContactFormModalOpen, setSchoolContactFormModalOpen] = useState(false);
+  const [schoolCodeModalOpen, setSchoolCodeModalOpen] = useState(false);
 
   useEffect(() => {
     dispatchToRedux(getInterests({ userId, token }));
@@ -105,6 +108,24 @@ const AssessmentResult = () => {
   // Function to close the modal
   const handleClosePayModal = () => {
     setPayNowModalOpen(false);
+  };
+
+  const handleSchoolContactForm = () => {
+    setSchoolContactFormModalOpen(true);
+  };
+
+  const handleCloseSchoolContactFormModal = () => {
+    setSchoolContactFormModalOpen(false);
+  };
+
+  //schol code modal
+
+  const handleSchoolCode = () => {
+    setSchoolCodeModalOpen(true);
+  };
+
+  const handleCloseSchoolCodeModal = () => {
+    setSchoolCodeModalOpen(false);
   };
 
   return (
@@ -250,7 +271,7 @@ const AssessmentResult = () => {
             </Box>
 
             <div>
-              {
+              {/* {
                 <ul className={assessmentStyles["pathItemCardsList"]}>
                   {graphicDesigner.map((item, index) => (
                     <li key={index} className={assessmentStyles["pathItemCard"]}>
@@ -261,7 +282,34 @@ const AssessmentResult = () => {
                     </li>
                   ))}
                 </ul>
-              }
+              } */}
+
+              <ul className={assessmentStyles["pathItemCardsList"]}>
+                <li className={assessmentStyles["pathItemCard"]}>
+                  <p>Pay $49 now to review and download the Full Career Directions Report</p>
+                  <button className={assessmentStyles["navButton"]} onClick={handleButtonClick}>
+                    Pay Now
+                  </button>
+                </li>
+                <li className={assessmentStyles["pathItemCard"]}>
+                  <p>
+                    If your School has paid on your behalf, please input your School Access Code here to get
+                    your Career Directions Report
+                  </p>
+                  <button className={assessmentStyles["navButton"]} onClick={handleSchoolCode}>
+                    School Code
+                  </button>
+                </li>
+                <li className={assessmentStyles["pathItemCard"]}>
+                  <p>
+                    If you want your School to pay on your behalf please provide School details here and our
+                    Schools team will contact your School
+                  </p>
+                  <button className={assessmentStyles["navButton"]} onClick={handleSchoolContactForm}>
+                    Contact School
+                  </button>
+                </li>
+              </ul>
 
               {/* {activePathCard == 2 && (
                 <ul className={assessmentStyles["pathItemCardsList"]}>
@@ -311,7 +359,12 @@ const AssessmentResult = () => {
           </div>
           <img src={assessmentResultbottom} alt="" />
         </section>
+        <SchoolCodeModal open={schoolCodeModalOpen} onClose={handleCloseSchoolCodeModal} />
         <PayNowModal open={payNowModalOpen} onClose={handleClosePayModal} />
+        <SchoolContactFormModal
+          open={schoolContactFormModalOpen}
+          onClose={handleCloseSchoolContactFormModal}
+        />
       </div>
       <Footer />
     </div>

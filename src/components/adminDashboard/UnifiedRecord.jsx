@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { selectToken } from "../../redux/slices/authSlice.js";
 import {
   getAllUnifiedRecordData,
@@ -25,6 +24,8 @@ import {
 } from "../../redux/slices/unifiedRecordSlice.js";
 import { fonts } from "../../utility/fonts.js";
 import UserUnifiedModal from "./UserUnifiedModal.jsx";
+import { inputFieldStyle, tableHeadStyle, tableBodyStyle, buttonStyle } from "../../utility/commonStyle.js";
+import { notify } from "../../redux/slices/alertSlice.js";
 
 const UnifiedRecord = () => {
   // State for pagination and search query
@@ -44,8 +45,6 @@ const UnifiedRecord = () => {
     dispatchToRedux(getAllUnifiedRecordData({ token, page: page + 1, limit: rowsPerPage }));
   }, [page, rowsPerPage, dispatchToRedux, token]);
 
-  console.log("allData", allData);
-
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -60,6 +59,10 @@ const UnifiedRecord = () => {
   };
 
   const handleSearchClick = () => {
+    if (searchQuery === "") {
+      dispatchToRedux(notify({ type: "warning", message: "Please enter a search query" }));
+      return;
+    }
     setPage(0);
     dispatchToRedux(
       getAllUnifiedRecordData({
@@ -81,12 +84,12 @@ const UnifiedRecord = () => {
     setOpenModal(true);
   };
 
-  // TableHead styling
-  const tableHeadStyle = {
-    fontWeight: "600",
-    fontFamily: fonts.poppins,
-    color: "#717f8c",
-  };
+  // // TableHead styling
+  // const tableHeadStyle = {
+  //   fontWeight: "600",
+  //   fontFamily: fonts.poppins,
+  //   color: "#717f8c",
+  // };
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -117,11 +120,11 @@ const UnifiedRecord = () => {
             fullWidth
             label="Search"
             variant="outlined"
-            sx={{ flex: 1 }}
+            sx={{ ...inputFieldStyle, flex: 1 }}
             value={searchQuery}
             onChange={handleSearchInputChange}
           />
-          <Button variant="contained" onClick={handleSearchClick}>
+          <Button variant="contained" sx={buttonStyle} onClick={handleSearchClick}>
             Search
           </Button>
         </Box>
@@ -148,11 +151,23 @@ const UnifiedRecord = () => {
             </TableHead>
             <TableBody>
               {allData?.unifiedRecordData?.map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell>{row?.unique_id}</TableCell>
-                  <TableCell>{row.userId.firstName + " " + row.userId.lastName}</TableCell>
+                <TableRow
+                  key={index}
+                  sx={{
+                    backgroundColor: "white",
+                    "&:hover": {
+                      backgroundColor: "#f5f5f5",
+                    },
+                    cursor: "pointer",
+                  }}
+                >
+                  <TableCell sx={{ ...tableBodyStyle, color: "black" }}>{row?.unique_id}</TableCell>
+                  <TableCell sx={{ ...tableBodyStyle, fontWeight: "500", color: "black" }}>
+                    {row.userId.firstName + " " + row.userId.lastName}
+                  </TableCell>
                   <TableCell
                     sx={{
+                      ...tableBodyStyle,
                       color: row.interestProfile.isTaken ? "green" : "black",
                       fontWeight: "bold",
                     }}
@@ -161,6 +176,7 @@ const UnifiedRecord = () => {
                   </TableCell>
                   <TableCell
                     sx={{
+                      ...tableBodyStyle,
                       color: row.discProfile.isTaken ? "green" : "black",
                       fontWeight: "bold",
                     }}
@@ -169,6 +185,7 @@ const UnifiedRecord = () => {
                   </TableCell>
                   <TableCell
                     sx={{
+                      ...tableBodyStyle,
                       color: row.survey.isTaken ? "green" : "black",
                       fontWeight: "bold",
                     }}
@@ -177,6 +194,7 @@ const UnifiedRecord = () => {
                   </TableCell>
                   <TableCell
                     sx={{
+                      ...tableBodyStyle,
                       color: row.resume?.isCompleted ? "green" : "black",
                       fontWeight: "bold",
                     }}
@@ -187,8 +205,10 @@ const UnifiedRecord = () => {
                     <Button
                       onClick={() => handleViewClick(row._id)}
                       // variant="contained"
-                      color="primary"
-                      startIcon={<PreviewIcon />}
+                      // color="#720361"
+                      // startIcon={<PreviewIcon />}
+                      startIcon={<PreviewIcon sx={{ color: "#720361" }} />}
+                      sx={{ color: "#720361", fontWeight: "bold" }}
                     >
                       View
                     </Button>
@@ -204,7 +224,7 @@ const UnifiedRecord = () => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={allData?.totalRecords} // Set total number of rows
+        count={Number.isInteger(allData?.totalRecords) ? allData?.totalRecords : 0} // Set total number of rows
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

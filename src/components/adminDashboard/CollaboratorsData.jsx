@@ -24,6 +24,7 @@ import { getAllCreators, selectCreatorsData, updateActiveStatus } from "../../re
 import { notify } from "../../redux/slices/alertSlice.js";
 import { selectToken } from "../../redux/slices/authSlice.js";
 import { fonts } from "../../utility/fonts.js";
+import { inputFieldStyle, tableHeadStyle, tableBodyStyle, buttonStyle } from "../../utility/commonStyle.js";
 
 const CollaboratorsData = () => {
   const dispatchToRedux = useDispatch();
@@ -51,6 +52,11 @@ const CollaboratorsData = () => {
   };
 
   const handleSearchClick = () => {
+    if (searchQuery === "") {
+      dispatchToRedux(notify({ type: "warning", message: "Please enter a search query" }));
+      return;
+    }
+
     setPage(0);
     dispatchToRedux(
       getAllCreators({
@@ -106,6 +112,8 @@ const CollaboratorsData = () => {
     }
   };
 
+  console.log("creatorsInfo", creatorsInfo);
+
   return (
     <div>
       {/* Search Box */}
@@ -130,11 +138,11 @@ const CollaboratorsData = () => {
           fullWidth
           label="Search"
           variant="outlined"
-          sx={{ flex: 1 }}
+          sx={{ ...inputFieldStyle, flex: 1 }}
           value={searchQuery}
           onChange={handleSearchInputChange}
         />
-        <Button variant="contained" onClick={handleSearchClick}>
+        <Button sx={buttonStyle} onClick={handleSearchClick}>
           Search
         </Button>
       </Box>
@@ -149,58 +157,18 @@ const CollaboratorsData = () => {
         <Table size="medium" aria-label="collaborators table">
           <TableHead sx={{ backgroundColor: "transparent" }}>
             <TableRow>
-              <TableCell
-                sx={{
-                  fontWeight: "600",
-                  fontFamily: fonts.poppins,
-                  color: "#717f8c",
-                }}
-              >
-                Name
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontWeight: "600",
-                  fontFamily: fonts.poppins,
-                  color: "#717f8c",
-                }}
-              >
-                Email
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontWeight: "600",
-                  fontFamily: fonts.poppins,
-                  color: "#717f8c",
-                }}
-              >
-                Mobile No.
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontWeight: "600",
-                  fontFamily: fonts.poppins,
-                  color: "#717f8c",
-                }}
-              >
-                Gender
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontWeight: "600",
-                  fontFamily: fonts.poppins,
-                  color: "#717f8c",
-                }}
-              >
-                Status
-              </TableCell>
+              <TableCell sx={tableHeadStyle}>Name</TableCell>
+              <TableCell sx={tableHeadStyle}>Email</TableCell>
+              <TableCell sx={tableHeadStyle}>Mobile No.</TableCell>
+              <TableCell sx={tableHeadStyle}>Gender</TableCell>
+              <TableCell sx={tableHeadStyle}>Status</TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {creatorsInfo?.creators?.map((collaborator) => (
               <TableRow
-                key={collaborator.id}
+                key={collaborator._id}
                 sx={{
                   backgroundColor: "white",
                   "&:hover": {
@@ -211,25 +179,19 @@ const CollaboratorsData = () => {
               >
                 <TableCell
                   sx={{
+                    ...tableBodyStyle,
                     display: "flex",
                     alignItems: "center",
                     gap: "0.5rem",
-                    fontFamily: fonts.poppins,
                     fontWeight: "600",
                   }}
                 >
                   <Avatar src={collaborator.profilePicture} alt="Profile" />{" "}
                   {collaborator.firstName + " " + collaborator.lastName}
                 </TableCell>
-                <TableCell sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}>
-                  {collaborator.email}
-                </TableCell>
-                <TableCell sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}>
-                  {collaborator.mobile}
-                </TableCell>
-                <TableCell sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}>
-                  {collaborator.gender}
-                </TableCell>
+                <TableCell sx={tableBodyStyle}>{collaborator.email}</TableCell>
+                <TableCell sx={tableBodyStyle}>{collaborator.mobile}</TableCell>
+                <TableCell sx={tableBodyStyle}>{collaborator.gender}</TableCell>
                 <TableCell
                   onClick={() => handleStatusClick(collaborator._id)}
                   sx={{
@@ -252,8 +214,8 @@ const CollaboratorsData = () => {
                     <MoreVertIcon />
                   </IconButton>
                   <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                    <MenuItem sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}>Edit</MenuItem>
-                    <MenuItem sx={{ fontFamily: fonts.poppins, color: "#717f8c" }}>Delete</MenuItem>
+                    <MenuItem sx={tableBodyStyle}>Edit</MenuItem>
+                    <MenuItem sx={tableBodyStyle}>Delete</MenuItem>
                   </Menu>
                 </TableCell>
               </TableRow>

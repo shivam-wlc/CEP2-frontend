@@ -105,6 +105,7 @@ import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ShareIcon from "@mui/icons-material/Share";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
+import SchoolIcon from "@mui/icons-material/School";
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -142,6 +143,7 @@ const Sidebar = ({ userRole, handleMenuItemClick, currentPage }) => {
         { name: "Users", icon: <HistoryIcon />, route: "/users" },
         { name: "Creators", icon: <QueueMusicIcon />, route: "/creator" },
         { name: "Records", icon: <AssessmentIcon />, route: "/records" },
+        { name: "School Directory", icon: <SchoolIcon />, route: "/schoolcontactinfo" },
         { name: "Profile", icon: <SettingsIcon />, route: "/profile" },
       ];
       break;

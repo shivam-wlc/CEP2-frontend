@@ -7,6 +7,8 @@ import { selectToken, selectUserId } from "../../redux/slices/authSlice.js";
 import { getQuestions, getResultAndJob, selectOnet } from "../../redux/slices/onetSlice.js";
 import globalStyle from "./Common.module.css";
 import InterestQuestionCard from "./InterestQuestionCard.jsx";
+import { CircularProgress } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const styles = {
   containerStyle: {
@@ -31,9 +33,18 @@ export default function InterestProfiler() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [overallAnswers, setOverallAnswers] = useState(new Array(30).fill("?"));
   const [selectedValue, setSelectedValue] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
 
   const handleChooseOption = async () => {
-    await dispatchToRedux(getQuestions({ resource: "questions_30", start: 1, end: 60, token }));
+    try {
+      setLoading(true);
+      await dispatchToRedux(getQuestions({ resource: "questions_30", start: 1, end: 60, token }));
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -62,12 +73,20 @@ export default function InterestProfiler() {
       console.log("Please select an answer for the last question.");
       return;
     }
-    await dispatchToRedux(getResultAndJob({ answers: overallAnswers.join(""), token, userId }));
-    navigate("/disc");
+
+    try {
+      setIsButtonLoading(true);
+      await dispatchToRedux(getResultAndJob({ answers: overallAnswers.join(""), token, userId }));
+      navigate("/disc");
+      setIsButtonLoading(false);
+    } catch (error) {
+      console.error("Error submitting answers:", error);
+      setIsButtonLoading(false);
+    }
   };
 
   return (
-    <div style={{ backgroundImage: `url(${background})` }}>
+    <div style={{ backgroundImage: `url(${background})`, zIndex: "-1" }}>
       <div className={globalStyle["container"]}>
         <div className={globalStyle["left"]}>
           <div
@@ -77,24 +96,34 @@ export default function InterestProfiler() {
               borderRadius: "10px",
             }}
           >
-            <img src={interestHero} alt="heroImage" />
+            <img src={interestHero} alt="heroImage" height={"76.67px"} width={"248px"} />
           </div>
         </div>
         <div className={globalStyle["right"]}>
-          <img src={interestLogo} alt="logo" width={250} />
-          {onet?.questions?.length > 0 && (
-            <InterestQuestionCard
-              questionNumber={currentQuestionIndex + 1}
-              questionStatment={onet?.questions[currentQuestionIndex]["text"]}
-              totalQuestions={onet?.questions?.length}
-              onNext={handleNext}
-              onPrevious={handlePrevious}
-              isLastQuestion={currentQuestionIndex === onet?.questions?.length - 1}
-              isFirstQuestion={currentQuestionIndex === 0}
-              overallAnswers={overallAnswers}
-              setOverallAnswers={setOverallAnswers}
-              handleSubmitButton={handleSubmitButton}
-            />
+          <Link to="/">
+            {" "}
+            <img src={interestLogo} alt="logo" width={250} />
+          </Link>
+          {loading ? (
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50vh" }}>
+              <CircularProgress color="inherit" />
+            </div>
+          ) : (
+            onet?.questions?.length > 0 && (
+              <InterestQuestionCard
+                questionNumber={currentQuestionIndex + 1}
+                questionStatment={onet?.questions[currentQuestionIndex]["text"]}
+                totalQuestions={onet?.questions?.length}
+                onNext={handleNext}
+                onPrevious={handlePrevious}
+                isLastQuestion={currentQuestionIndex === onet?.questions?.length - 1}
+                isFirstQuestion={currentQuestionIndex === 0}
+                overallAnswers={overallAnswers}
+                setOverallAnswers={setOverallAnswers}
+                handleSubmitButton={handleSubmitButton}
+                isButtonLoading={isButtonLoading}
+              />
+            )
           )}
         </div>
       </div>

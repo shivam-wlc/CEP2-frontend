@@ -52,9 +52,16 @@ const Footer = () => {
           <h3>Contact & Support</h3>
           <div className={footerStyles["line"]}></div>
           <ul>
-            <li style={{ color: "#a98fa4" }}>Contact Us</li>
-            <li style={{ color: "#a98fa4" }}>Student Support</li>
-            <li style={{ color: "#a98fa4" }}>Technical Support</li>
+            <Link to="/contact-us" style={{ textDecoration: "none" }}>
+              <li style={{ color: "#a98fa4" }}>Contact Us</li>
+            </Link>
+            <Link to="/student-support" style={{ textDecoration: "none" }}>
+              {" "}
+              <li style={{ color: "#a98fa4" }}>Student Support</li>
+            </Link>
+            <Link to="/tech-support" style={{ textDecoration: "none" }}>
+              <li style={{ color: "#a98fa4" }}>Technical Support</li>
+            </Link>
           </ul>
         </div>
       </div>

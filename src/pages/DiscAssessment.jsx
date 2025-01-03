@@ -3,10 +3,11 @@ import "../styles/Question.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { discHero, discLogo } from "../assets/assest.js";
+import { discHero, discLogo, background } from "../assets/assest.js";
 import QuestionCard from "../components/disc/QuestionCard.jsx";
 import { selectToken, selectUserId } from "../redux/slices/authSlice.js";
 import { getDiscQuestions, selectQuestions } from "../redux/slices/discSlice.js";
+import { Link } from "react-router-dom";
 
 const DiscAssessment = () => {
   const userId = useSelector(selectUserId);
@@ -68,25 +69,29 @@ const DiscAssessment = () => {
   };
 
   return (
-    <div id="mainContainer">
-      <div id="left">
-        <img src={discHero} alt="heroImage" id="heroImage" />
-      </div>
-      <div id="right">
-        <img src={discLogo} alt="logo" width={"200px"} />
-        {questions.length > 0 && (
-          <QuestionCard
-            questionNumber={questions[currentQuestionIndex].questionNumber}
-            questionStatements={questions[currentQuestionIndex].statements}
-            totalQuestions={questions.length}
-            onNext={handleNext}
-            onPrevious={handlePrevious}
-            isLastQuestion={currentQuestionIndex === questions.length - 1}
-            isFirstQuestion={currentQuestionIndex === 0}
-            overallAnswers={overallAnswers}
-            setOverallAnswers={setOverallAnswers}
-          />
-        )}
+    <div style={{ backgroundImage: `url(${background})`, zIndex: -1 }}>
+      <div id="mainContainer">
+        <div id="left">
+          <img src={discHero} alt="heroImage" id="heroImage" />
+        </div>
+        <div id="right">
+          <Link to="/">
+            <img src={discLogo} alt="logo" width={"200px"} />{" "}
+          </Link>
+          {questions.length > 0 && (
+            <QuestionCard
+              questionNumber={questions[currentQuestionIndex].questionNumber}
+              questionStatements={questions[currentQuestionIndex].statements}
+              totalQuestions={questions.length}
+              onNext={handleNext}
+              onPrevious={handlePrevious}
+              isLastQuestion={currentQuestionIndex === questions.length - 1}
+              isFirstQuestion={currentQuestionIndex === 0}
+              overallAnswers={overallAnswers}
+              setOverallAnswers={setOverallAnswers}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

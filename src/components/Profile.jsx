@@ -625,6 +625,8 @@ const Profile = () => {
   const [tabValue, setTabValue] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
 
+  console.log("tabValue", tabValue);
+
   useEffect(() => {
     if (authenticated && !userData) {
       dispatchToRedux(getUserProfile({ userId, token }));
@@ -782,6 +784,11 @@ const Profile = () => {
     }
   };
 
+  useEffect(() => {
+    if (userData?.activeDashboard === "creator" && tabValue > 1) {
+      setTabValue(0); // Reset to the first visible tab if "creator"
+    }
+  }, [userData?.activeDashboard, tabValue]);
   return (
     <Container
       maxWidth="lg"
@@ -988,6 +995,7 @@ const Profile = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
+                  disabled
                 />
               </Grid>
               {/* Phone Extension */}
