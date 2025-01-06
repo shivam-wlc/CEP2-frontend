@@ -24,18 +24,32 @@ const InterestQuestionCard = ({
   const [selectedValue, setSelectedValue] = useState(null);
   const [circleValues, setCircleValues] = useState([]);
 
-  const handleNext = () => {
-    const updatedOverallAnswer = overallAnswers.map((value, index) => {
-      if (index === questionNumber - 1) {
-        return selectedValue; // Set the selected value
-      } else return value;
-    });
+  // const handleNext = () => {
+  //   const updatedOverallAnswer = overallAnswers.map((value, index) => {
+  //     if (index === questionNumber - 1) {
+  //       return selectedValue; // Set the selected value
+  //     } else return value;
+  //   });
 
-    setOverallAnswers(updatedOverallAnswer);
-    setSelectedValue(null);
+  //   setOverallAnswers(updatedOverallAnswer);
+  //   setSelectedValue(null);
+
+  //   if (isLastQuestion) {
+  //     handleSubmitButton(); // Call submit if it's the last question
+  //   } else {
+  //     onNext(); // Go to the next question
+  //   }
+  // };
+
+  const handleNext = () => {
+    const updatedOverallAnswer = [...overallAnswers];
+    updatedOverallAnswer[questionNumber - 1] = selectedValue; // Update the current question's answer
+
+    setOverallAnswers(updatedOverallAnswer); // Update the state
+    setSelectedValue(null); // Reset selected value for the next question
 
     if (isLastQuestion) {
-      handleSubmitButton(); // Call submit if it's the last question
+      handleSubmitButton(updatedOverallAnswer); // Pass the updated answers to submit
     } else {
       onNext(); // Go to the next question
     }

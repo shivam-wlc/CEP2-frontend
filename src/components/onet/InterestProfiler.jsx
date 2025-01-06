@@ -67,16 +67,36 @@ export default function InterestProfiler() {
     }
   };
 
-  const handleSubmitButton = async () => {
-    const finalAnswer = overallAnswers[overallAnswers.length - 1];
+  // const handleSubmitButton = async () => {
+  //   const finalAnswer = overallAnswers[overallAnswers.length - 1];
+  //   if (finalAnswer === "?") {
+  //     console.log("Please select an answer for the last question.");
+  //     return;
+  //   }
+
+  //   try {
+  //     setIsButtonLoading(true);
+  //     await dispatchToRedux(getResultAndJob({ answers: overallAnswers.join(""), token, userId }));
+  //     navigate("/disc");
+  //     setIsButtonLoading(false);
+  //   } catch (error) {
+  //     console.error("Error submitting answers:", error);
+  //     setIsButtonLoading(false);
+  //   }
+  // };
+
+  const handleSubmitButton = async (answers = overallAnswers) => {
+    const finalAnswer = answers[answers.length - 1];
     if (finalAnswer === "?") {
       console.log("Please select an answer for the last question.");
       return;
     }
 
+    // console.log("Submit", answers.join(""));
+
     try {
       setIsButtonLoading(true);
-      await dispatchToRedux(getResultAndJob({ answers: overallAnswers.join(""), token, userId }));
+      await dispatchToRedux(getResultAndJob({ answers: answers.join(""), token, userId }));
       navigate("/disc");
       setIsButtonLoading(false);
     } catch (error) {
