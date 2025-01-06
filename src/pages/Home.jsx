@@ -20,8 +20,8 @@ const Home = () => {
     "Virtual Internships",
     "Graduate Training",
   ];
-  const upskill = ["Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon"];
-  const serve = ["Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon"];
+  const upskill = ["Micro-credentials", "Certifications", "Simulations", "Game-based", "Learning"];
+  const serve = ["Volunteering"];
   const opotunityListItems = ["To Work", "To Upskill", "To Serve"];
   const [cardPerPage, setCardPerPage] = useState(2);
 
